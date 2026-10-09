@@ -1,10 +1,10 @@
 # Karar kartları ve dosya sınaması
 
-Bu sürümde **45 özgün kurgu senaryo**, her biri için üç ölçüt ve **10 yapılandırılmış karar kartı** vardır. Senaryolar gerçek müvekkil dosyaları değildir. Ölçütler mevcut kaynaklı rehberlerden türetilmiş yazar taslağıdır; bağımsız hukukçu değerlendirmesi yapılmış bir altın standart değildir. Paket testinin geçmesi asistanın hukuki cevaplarının başarılı olduğunu göstermez.
+Bu sürümde **49 özgün kurgu senaryo**, her biri için üç ölçüt ve **10 yapılandırılmış karar kartı** vardır. Senaryolar gerçek müvekkil dosyaları değildir. Ölçütler mevcut kaynaklı rehberlerden türetilmiş yazar taslağıdır; bağımsız hukukçu değerlendirmesi yapılmış bir altın standart değildir. Paket testinin geçmesi asistanın hukuki cevaplarının başarılı olduğunu göstermez.
 
 ## Kararı somut dosyaya bağla
 
-**Cevaplı örnekler:** [On karardan soru–yanıt rehberi](kararlardan-soru-yanit.md). Kaynaklı editoryal yanıtlar 45 senaryonun yanıt anahtarı veya canlı model sonucu değildir. `python scripts/decision_qa.py export` yalnız on soruyu verir; `show Q01` yanıtı ve kaynağı da gösterir. Kör sınamada cevaplı rehberi veya kaynak kartlarını önceden açmak sonucu etkileyebilir; bu setin açık kaynak olduğunu raporla.
+**Cevaplı örnekler:** [On karardan soru–yanıt rehberi](kararlardan-soru-yanit.md). Kaynaklı editoryal yanıtlar 49 senaryonun yanıt anahtarı veya canlı model sonucu değildir. `python scripts/decision_qa.py export` yalnız on soruyu verir; `show Q01` yanıtı ve kaynağı da gösterir. Kör sınamada cevaplı rehberi veya kaynak kartlarını önceden açmak sonucu etkileyebilir; bu setin açık kaynak olduğunu raporla.
 
 [Karar kartları](karar-kartlari.json) olay, belirleyici delil, mesele, gerekçe, hüküm, karşıoy, uygulanamayacağı durum ve kaynak izini ayrı alanlarda tutar. Kaynak kimliği/künye/hash [araştırma kaydıyla](egitim-kaynak-kaydi.json) eşleşir. Hash özgünlük veya hukuki doğruluk sertifikası değildir. Kartlar on yeni tam metin değildir; daha önce incelenmiş kararların yapılandırılmış özetleridir. Asıl metni okumadan dilekçeye birebir alıntı taşıma.
 
@@ -47,6 +47,6 @@ python scripts/quality.py score research-private/review.json
 
 ## Ölçümün anlamı
 
-Her dosyada hukuki ayrım (`analysis`), gerekli soru/belge (`questions`) ve yanlış genellemeden kaçınma (`avoid`) değerlendirilir. Bir dosya üçü de karşılandığında geçer. Hukuki ayrım ve yanlış sonuç ölçütündeki başarısızlık ayrıca kritik hata sayılır; yüksek toplam puan bunu gizlemez. Yalnız incelenen örneklerdeki oran, bütün set başarısı değildir; eksik dosya varken `suite_passed` false kalır. Henüz bu 45 soruyla canlı model performansı ölçülmedi.
+Her dosyada hukuki ayrım (`analysis`), gerekli soru/belge (`questions`) ve yanlış genellemeden kaçınma (`avoid`) değerlendirilir. Bir dosya üçü de karşılandığında geçer. Hukuki ayrım ve yanlış sonuç ölçütündeki başarısızlık ayrıca kritik hata sayılır; yüksek toplam puan bunu gizlemez. Yalnız incelenen örneklerdeki oran, bütün set başarısı değildir; eksik dosya varken `suite_passed` false kalır. Henüz bu 49 soruyla canlı model performansı ölçülmedi. B46–B49 Legaluga entegrasyonundaki hata türlerini sınar; araç çıktısı soruda verildiği için canlı bağlantı gerektirmez. Bunlarda `run` açıklamasına Legaluga erişimini de yaz.
 
 Yeni eklenen kaynakların konu/kapsam kontrolü [eğitim materyali kaydındadır](egitim-materyalleri.md). Ham eğitim metinleri ve gerçek dosya yanıtlarını kamuya açık depoya ekleme; yalnız anonimleştirilmiş ve paylaşılması uygun değerlendirmeleri ayrıca seç.

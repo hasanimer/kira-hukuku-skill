@@ -222,7 +222,7 @@ kira-tespit-asistani/
 
 **[Kararlardan hazırlanmış 10 soru ve kaynaklı örnek yanıt →](references/kararlardan-soru-yanit.md)** Olay sorusu, gerekçe, hüküm, belirleyici belgeler ve uygulama sınırları; yanıtlar açılır bölümlerdedir.
 
-[45 özgün dosyayla sınama ve 10 yapılandırılmış karar kartı](references/kalite-sinama.md): hukuki ayrım, gerekli sorular ve kritik yanlış sonuçlar için inceleme ölçütleri. Yanıtlar insan değerlendirmesiyle puanlanır; henüz canlı model başarı oranı ölçülmedi.
+[49 özgün dosyayla sınama ve 10 yapılandırılmış karar kartı](references/kalite-sinama.md): hukuki ayrım, gerekli sorular ve kritik yanlış sonuçlar için inceleme ölçütleri. Yanıtlar insan değerlendirmesiyle puanlanır; henüz canlı model başarı oranı ölçülmedi.
 
 | Başlamak için | Ayrıntıya inmek için |
 | :--- | :--- |

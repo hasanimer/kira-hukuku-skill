@@ -27,13 +27,13 @@ class QualityTests(unittest.TestCase):
     def test_blind_export_contains_no_rubric_or_reference(self):
         exported = quality.blind(self.suite)
         self.assertTrue(all(set(c) == {'id', 'prompt'} for c in exported['cases']))
-        self.assertEqual(len(exported['cases']), 45)
+        self.assertEqual(len(exported['cases']), len(self.suite['cases']))
 
     def test_partial_perfect_review_is_not_suite_pass(self):
         result = quality.score(self.suite, self.review())
         self.assertEqual(result['met_ratio_reviewed'], 1)
         self.assertFalse(result['suite_passed'])
-        self.assertEqual(len(result['missing']), 44)
+        self.assertEqual(len(result['missing']), len(self.suite['cases']) - 1)
 
     def test_critical_failure_survives_high_total(self):
         review = self.review(all_cases=True)

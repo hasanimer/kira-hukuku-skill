@@ -2,7 +2,7 @@
 
 10 kararın anonimleştirilmiş, sadeleştirilmiş olaylarından hazırlanan cevaplı çalışma. Sorular kararın sonucunu söylemez; yanıtlar aşağıda açılır. Bunlar editoryal örnek yanıtlardır, bağımsız bir modelin kör sınama çıktısı veya mahkeme metninden birebir alıntı değildir.
 
-Kontrol: 2026-09-20. Mevcut 45 kurgu senaryonun tamamının yanıt anahtarı değildir. Kaynak kararın dönemini ve usulünü korur; güncel dosyada sonraki mevzuat/içtihat ayrıca araştırılır.
+Kontrol: 2026-09-20. Kurgu sınama senaryolarının yanıt anahtarı değildir. Kaynak kararın dönemini ve usulünü korur; güncel dosyada sonraki mevzuat/içtihat ayrıca araştırılır.
 
 Makine okunur sürüm: [soru–yanıt verisi](../evals/decision-qa.json). Yalnız soru çıktısı: `python scripts/decision_qa.py export`. Kaynak sayfaları giriş gerektirebilir.
 

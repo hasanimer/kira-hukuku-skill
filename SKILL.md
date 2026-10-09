@@ -37,7 +37,7 @@ BAM kararlarını kullanırken [seçki ve kullanım sınırlarını](references/
 
 Cevaplı emsal örneği istenirse [kararlardan soru–yanıt rehberini](references/kararlardan-soru-yanit.md) kullan. `scripts/decision_qa.py show Q01` kaynaklı yanıtı, `export` yalnız soruları verir. Örnek yanıtları kör sınama sonucu veya güncel her dosyaya uygulanacak kesin hüküm gibi sunma.
 
-İlgili emsal için `python scripts/quality.py cards "konu veya künye"` ile [yapılandırılmış karar kartlarını](references/karar-kartlari.json) ara; olay, delil, gerekçe, hüküm ve uygulanamayacağı durumu ayrı değerlendir. Skill geliştirme veya değerlendirme talebinde [45 dosyalık sınama akışını](references/kalite-sinama.md) kullan; yapı kontrolünü hukuki başarı ölçümü diye sunma.
+İlgili emsal için `python scripts/quality.py cards "konu veya künye"` ile [yapılandırılmış karar kartlarını](references/karar-kartlari.json) ara; olay, delil, gerekçe, hüküm ve uygulanamayacağı durumu ayrı değerlendir. Skill geliştirme veya değerlendirme talebinde [49 dosyalık sınama akışını](references/kalite-sinama.md) kullan; yapı kontrolünü hukuki başarı ölçümü diye sunma.
 
 İhtiyaç nedeniyle tahliyede erken arabuluculuk, taahhütte boş tarih/ispat, aile konutu, iki haklı ihtar, yeniden kiralama tazminatı veya uyarlamada tedbir için [tahliye ve uyarlama kaynak kontrolünü](references/tahliye-ve-uyarlama-kontrol.md) oku. TBK 350 hakkındaki kararı 351/1'e otomatik taşıma; karşıoyu çoğunluk sonucu sayma. Eğitim dökümlerindeki kişisel görüşleri ve geçmiş dönem kurallarını doğrulanmış güncel içtihat gibi kullanma.
 
