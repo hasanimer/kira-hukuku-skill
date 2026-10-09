@@ -9,6 +9,7 @@ Kira tespiti, tahliye, uyarlama, alacak ve depozito dosyaları için kaynaklara 
 [![Paket kontrolü](https://github.com/hasanimer/kira-hukuku-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/hasanimer/kira-hukuku-skill/actions/workflows/validate.yml)
 ![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square)
 ![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827?style=flat-square)
+![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-D97757?style=flat-square)
 
 [Hızlı başlangıç](#hızlı-başlangıç) · [Kullanım örnekleri](#kullanım-örnekleri) · [Çalışma akışı](#çalışma-akışı) · [Rehberler](#rehberler)
 
@@ -16,7 +17,7 @@ Kira tespiti, tahliye, uyarlama, alacak ve depozito dosyaları için kaynaklara 
 
 ---
 
-| **1.603 karar** | **6098 sayılı Kanun** | **Taşınabilir paket** |
+| **1.738 karar** | **6098 sayılı Kanun** | **Taşınabilir paket** |
 | :---: | :---: | :---: |
 | Tam metin, künye ve kaynak izi | Türk Borçlar Kanunu tam metni | Yerel aramada API anahtarı gerekmez |
 
@@ -55,33 +56,47 @@ Bilirkişi raporunun emsallerini ve hesap yöntemini inceleyerek somut itirazlar
 
 ## Hızlı başlangıç
 
-**Gerekenler:** Codex, Git ve Python 3.10+. Yerel yardımcılar yalnız Python standart kütüphanesini kullanır.
+**Gerekenler:** Codex veya Claude Code, Git ve Python 3.10+. Yerel yardımcılar yalnız Python standart kütüphanesini kullanır.
 
 ### 1. Skill'i ekleyin
+
+**Codex**
 
 ```sh
 git clone https://github.com/hasanimer/kira-hukuku-skill.git "$HOME/.codex/skills/kira-tespit-asistani"
 ```
 
+**Claude Code**
+
+```sh
+git clone https://github.com/hasanimer/kira-hukuku-skill.git "$HOME/.claude/skills/kira-tespit-asistani"
+```
+
 <details>
 <summary>Kurulum yolu ve mevcut kurulum hakkında</summary>
 
-Komut PowerShell, Bash ve Zsh ile kullanılabilir. Özel bir `CODEX_HOME` kullanıyorsanız hedef olarak onun `skills` dizinini seçin. Hedef klasörde mevcut bir kopya varsa üzerine yazmadan önce değişikliklerinizi koruyun.
+Komutlar PowerShell, Bash ve Zsh ile kullanılabilir. Özel bir `CODEX_HOME` kullanıyorsanız hedef olarak onun `skills` dizinini seçin. Claude Code'da kişisel kurulum `~/.claude/skills/` (Windows'ta `%USERPROFILE%\.claude\skills\`), tek projeye özel kurulum proje kökündeki `.claude/skills/` altındadır; klasör adını `kira-tespit-asistani` olarak koruyun. Hedef klasörde mevcut bir kopya varsa üzerine yazmadan önce değişikliklerinizi koruyun.
 
 </details>
 
-### 2. Codex'te çağırın
+### 2. Çağırın
 
 ```text
 $kira-tespit-asistani kira tespit dosyamı incele;
 eksik belgeleri ve lehe/aleyhe emsalleri göster.
 ```
 
-### 3. Dosyanızla çalışın
+Codex'te `$kira-tespit-asistani`, Claude Code'da `/kira-tespit-asistani` ile çağırın. Claude Code, kira hukuku isteklerinde skill'i açıklamasına göre kendiliğinden de yükleyebilir. Aşağıdaki örneklerde Codex biçimi kullanılmıştır.
+
+### 3. Legaluga MCP'yi bağlayın (isteğe bağlı)
+
+Güncel mevzuat metni, 2020 sonrası ve BAM içtihadı, künye ön denetimi ve imzasız UDF dilekçe taslağı için skill Legaluga MCP'yi varsayılan dış kaynak olarak kullanır. Legaluga'nın verdiği MCP adresini Claude Code'da `claude mcp add --transport http legaluga <MCP_ADRESI>` komutuyla ya da claude.ai'de özel bağlayıcı olarak, Codex'te MCP sunucu ayarlarınıza ekleyin. Adres ve erişim bilgisi için [legaluga.com](https://legaluga.com). Bağlantı yoksa skill yerel paketle çalışır ve güncel doğrulama yapılamadığını belirtir. [Kullanım kuralları →](references/legaluga.md)
+
+### 4. Dosyanızla çalışın
 
 İlgili sözleşmeyi, dilekçeyi veya raporu paylaşın; istediğiniz çıktıyı belirtin. Asistan önce belirleyici olguları çıkarır, ardından ilgili kaynakları araştırır.
 
-[Yargıtay ek seçkisi ve kullanım notları →](references/yargitay-kararlari.md)
+[Yargıtay ek seçkisi ve kullanım notları →](references/yargitay-kararlari.md) · [Konu başlığına göre emsal derlemesi →](references/derleme-v5.md)
 
 ## Kullanım örnekleri
 
@@ -149,14 +164,15 @@ Skill, ilgili kaynakları paket içinden seçerek okur; kararlarla yeniden eğit
 
 ## Veri kapsamı
 
-Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konuları [modüller](references/moduller.md) üzerinden bağlı karar ve mevzuat kaynaklarında araştırılır. İsteğe bağlı [TypeSafe entegrasyonu](references/typesafe.md), karma talepleri yönlendirir ve karar adaylarını sıralar; hukuki sonuç veya dava başarı oranı üretmez. TypeSafe kullanımı ayrıca API anahtarı ve ağ erişimi gerektirir. Mevcut `$kira-tespit-asistani` çağrısı korunmuştur.
+Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konuları [modüller](references/moduller.md) üzerinden bağlı karar ve mevzuat kaynaklarında araştırılır. İsteğe bağlı [TypeSafe entegrasyonu](references/typesafe.md), karma talepleri yönlendirir ve karar adaylarını sıralar; hukuki sonuç veya dava başarı oranı üretmez. TypeSafe kullanımı ayrıca API anahtarı ve ağ erişimi gerektirir. [Legaluga MCP](references/legaluga.md) bağlıysa güncel mevzuat ve içtihat varsayılan olarak oradan araştırılır; araç sonuçları paket verisini değiştirmez ve künye/alıntı ön denetimi hukuki doğrulama yerine geçmez. Mevcut `$kira-tespit-asistani` çağrısı korunmuştur.
 
 | | |
 | :--- | :--- |
-| **Karar havuzu** | 1.603 karar · 14.10.2004–21.05.2026 |
-| **İçerik türü** | 446 esas gerekçesi · 549 usul gerekçesi · 11 sınırda · 570 kısa karar (model etiketi, insan onaysız) |
-| **Dağılım** | 1.024 karar 3. HD, 539 karar 6. HD; 1.212 karar 2010–2015, 71 karar 2020 ve sonrası |
-| **Kaynak izi** | Ana havuzda Bedesten belge kimliği ve ondan türetilen resmî adres; seçkilerde kayıttaki adres |
+| **Karar havuzu** | 1.738 karar · 14.10.2004–21.05.2026 |
+| **İçerik türü** | 578 esas gerekçesi · 572 usul gerekçesi · 14 sınırda · 574 kısa karar (model ve asistan etiketi, insan onaysız) |
+| **Dağılım** | 1.105 karar 3. HD, 557 karar 6. HD; 1.229 karar 2010–2015, 152 karar 2020 ve sonrası |
+| **Emsal derlemesi** | Av. Hakan Dimdik derlemesindeki (5. sürüm, 12.09.2026) 278 atıf konu dizininde; 135 kararın tam metni Bedesten'den çift aktarımla alındı, 6'sı ana havuzda, 101 atıf Bedesten'de bulunamadı (çoğu BAM) |
+| **Kaynak izi** | Ana havuzda ve derleme seçkisinde Bedesten belge kimliği ve resmî adres; BAM/Yargıtay seçkilerinde kayıttaki üçüncü taraf adresi |
 | **Mevzuat** | 6098 sayılı Türk Borçlar Kanunu |
 | **Kaynak kontrolü** | Künye, resmî adres, metin hash'i ve birebir alıntı doğrulaması |
 | **Otomatik denetim** | Windows ve Linux üzerinde paket bütünlüğü kontrolleri |
@@ -175,8 +191,17 @@ python scripts/pool.py stats
 # İlgili kararları arayın
 python scripts/pool.py search "eski kiracı" --kind esas_gerekcesi --limit 8
 
+# Emsal derlemesinde konu başlığına göre arayın
+python scripts/derleme.py search arabuluculuk tahliye
+
 # Kanun maddesini okuyun
 python scripts/tbk.py 344
+
+# Canlı metinden okunan pasajı boşluk farkı gözetmeden yerel kayıtta bulun
+python scripts/pool.py quote KARAR_KIMLIGI "Pasaj" --ignore-space
+
+# Legaluga'nın döndürdüğü imzasız UDF taslağını doğrulayıp kaydedin
+python scripts/udf.py kaydet yanit.b64 --sha256 YANITTAKI_SHA256 --cikti dilekce.udf
 
 # Paketin bütünlüğünü kontrol edin
 python scripts/validate.py
@@ -201,7 +226,7 @@ kira-tespit-asistani/
 
 **[Kararlardan hazırlanmış 10 soru ve kaynaklı örnek yanıt →](references/kararlardan-soru-yanit.md)** Olay sorusu, gerekçe, hüküm, belirleyici belgeler ve uygulama sınırları; yanıtlar açılır bölümlerdedir.
 
-[45 özgün dosyayla sınama ve 10 yapılandırılmış karar kartı](references/kalite-sinama.md): hukuki ayrım, gerekli sorular ve kritik yanlış sonuçlar için inceleme ölçütleri. Yanıtlar insan değerlendirmesiyle puanlanır; henüz canlı model başarı oranı ölçülmedi.
+[49 özgün dosyayla sınama ve 10 yapılandırılmış karar kartı](references/kalite-sinama.md): hukuki ayrım, gerekli sorular ve kritik yanlış sonuçlar için inceleme ölçütleri. Yanıtlar insan değerlendirmesiyle puanlanır; henüz canlı model başarı oranı ölçülmedi.
 
 | Başlamak için | Ayrıntıya inmek için |
 | :--- | :--- |
@@ -212,6 +237,8 @@ kira-tespit-asistani/
 | [Teslim, masraf, kefalet ve devir](references/teslim-masraf-kefalet.md) | [Karar kaynak kayıtları](references/egitim-kaynak-kaydi.json) |
 | [Tahliye ve uyarlama kaynak kontrolü](references/tahliye-ve-uyarlama-kontrol.md) | Arabuluculuk zamanı, taahhüt, aile konutu, iki ihtar, yeniden kiralama ve tedbir |
 | [Kira mevzuatı haritası](references/mevzuat-haritasi.md) | Maddi hukuk, usul, icra, kamu kiraları, aidat, döviz, dönüşüm ve vergi |
+| [Legaluga MCP akışı](references/legaluga.md) | Güncel mevzuat, emsal araştırması, künye/alıntı ön denetimi ve UDF taslağı |
+| [Emsal derlemesi konu dizini](references/derleme-v5.md) | Arabuluculuk, kira türü, tahliye, tespit ve diğer istemlerde derleyen başlıklarıyla 278 atıf ve doğrulama durumu |
 | [Rehber kaynak kontrolü](references/rehber-dogrulama.md) | [BAM kararları ve kullanım sınırları](references/bam-kararlari.md) |
 | [Katkı rehberi](CONTRIBUTING.md) | [Veri kaynakları ve bütünlük](data/README.md) |
 

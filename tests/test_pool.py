@@ -8,7 +8,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from pool import BEDESTEN_URL, enrich, kunye  # noqa: E402
+from pool import BEDESTEN_URL, enrich, find_ignoring_space, kunye, squash  # noqa: E402
 
 
 def row(document_id, text, kind, **extra):
@@ -63,6 +63,40 @@ class PoolTests(unittest.TestCase):
         self.assertEqual(result['results'][0]['kunye'],
                          'Yargıtay 3. HD, E. 2017/1, K. 2019/2, T. 28.05.2019')
         self.assertEqual(result['results'][0]['source_url'], BEDESTEN_URL.format('2'))
+
+    def test_squash_keeps_original_positions(self):
+        text = 'Kira  bedeli\n\n tespit'
+        squashed, kept = squash(text)
+        self.assertEqual(squashed, 'Kirabedelitespit')
+        self.assertEqual([text[i] for i in kept], list(squashed))
+        hit = find_ignoring_space(text, 'bedeli tespit')[0]
+        self.assertEqual(hit['matched_text'], 'bedeli\n\n tespit')
+        self.assertEqual(text[hit['start']:hit['end']], hit['matched_text'])
+        self.assertEqual(find_ignoring_space(text, 'bedel  yok'), [])
+
+    def test_quote_ignore_space_is_opt_in_and_keeps_exact_meaning(self):
+        text = 'Birinci  satır\n\nikinci satır'
+        with tempfile.TemporaryDirectory(prefix='kira-pool-') as directory:
+            path = Path(directory) / 'topic-rescan-assistant-adjusted.jsonl'
+            path.write_text(json.dumps(row('9', text, 'esas_gerekcesi'), ensure_ascii=False) + '\n',
+                            encoding='utf-8')
+
+            def quote(quotation, *flags):
+                out = subprocess.run([sys.executable, str(ROOT / 'scripts/pool.py'), '--root',
+                                      directory, 'quote', '9', quotation, *flags],
+                                     capture_output=True, text=True, encoding='utf-8')
+                return out.returncode, json.loads(out.stdout)
+
+            code, plain = quote('Birinci satır\nikinci')
+            self.assertEqual((code, plain['exact_match'], plain['match_mode']), (2, False, None))
+            code, loose = quote('Birinci satır\nikinci', '--ignore-space')
+            self.assertEqual((code, loose['exact_match'], loose['match_mode']),
+                             (0, False, 'ignore_space'))
+            self.assertEqual(loose['occurrences'][0]['start'], 0)
+            self.assertEqual(loose['occurrences'][0]['matched_text'], 'Birinci  satır\n\nikinci')
+            code, exact = quote('ikinci satır', '--ignore-space')
+            self.assertEqual((code, exact['exact_match'], exact['match_mode']), (0, True, 'exact'))
+            self.assertEqual(exact['occurrences'][0]['matched_text'], 'ikinci satır')
 
 
 if __name__ == '__main__':

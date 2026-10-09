@@ -35,7 +35,7 @@ def render(data, cards):
              f'{len(data["examples"])} kararın anonimleştirilmiş, sadeleştirilmiş olaylarından hazırlanan cevaplı çalışma. '
              'Sorular kararın sonucunu söylemez; yanıtlar aşağıda açılır. Bunlar editoryal örnek yanıtlardır, '
              'bağımsız bir modelin kör sınama çıktısı veya mahkeme metninden birebir alıntı değildir.', '',
-             'Kontrol: ' + data['checked_on'] + '. Mevcut 45 kurgu senaryonun tamamının yanıt anahtarı değildir. '
+             'Kontrol: ' + data['checked_on'] + '. Kurgu sınama senaryolarının yanıt anahtarı değildir. '
              'Kaynak kararın dönemini ve usulünü korur; güncel dosyada sonraki mevzuat/içtihat ayrıca araştırılır.', '',
              'Makine okunur sürüm: [soru–yanıt verisi](../evals/decision-qa.json). '
              'Yalnız soru çıktısı: `python scripts/decision_qa.py export`. '

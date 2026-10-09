@@ -1,6 +1,6 @@
 # Kira uyuşmazlıklarında mevzuat haritası
 
-Kontrol: 20.09.2026. Bu harita uygulanacak normu seçmek için bir araştırma dizinidir; bütün kanunların tam metni pakete eklenmiş değildir. TBK'nın sabit kopyası için [madde okuyucusunu](mevzuat.md), süreler için [süre rehberini](sure-hesaplama.md) kullan. Kanunun kabul metni ile olay tarihinde yürürlükteki konsolide metni ayır.
+Kontrol: 20.09.2026; araç notları 09.10.2026. Bu harita uygulanacak normu seçmek için bir araştırma dizinidir; bütün kanunların tam metni pakete eklenmiş değildir. TBK'nın sabit kopyası için [madde okuyucusunu](mevzuat.md), süreler için [süre rehberini](sure-hesaplama.md) kullan. Kanunun kabul metni ile olay tarihinde yürürlükteki konsolide metni ayır.
 
 ## Maddi hukuk ve geçiş hükümleri
 
@@ -29,7 +29,7 @@ Rızaen fazla ödeme yapılmış olması, TMK 2 nedeniyle bütün iade talepleri
 | **6325 HUAK 18/A–18/B; 7445 değişikliği** | 01.09.2023'ten itibaren kapsamdaki kira davalarında dava şartı arabuluculuk. İstisna, İİK'ya göre kiralanan taşınmazların ilamsız icra yoluyla tahliyesine ilişkin hükümlerdir; “icra takibiyle bağlantılı bütün davalar hariç” şeklinde genişletme. |
 | **7201 Tebligat Kanunu ve ilgili düzenlemeler** | Ulaşma, usulsüz tebligat ve elektronik tebligat; belgedeki gönderme/okuma tarihini kendiliğinden tebliğ tarihi sayma. |
 
-Kaynaklar: [HMK kabul metni](https://cdn.tbmm.gov.tr/KKBSPublicFile/D23/Y2/T1/KanunMetni/4f31a7dc-5457-494d-81e2-266e2518a374.html), [HUAK resmî kurum kopyası](https://adb.adalet.gov.tr/Resimler/SayfaDokuman/11120231556551.5.6325.pdf), [İİK resmî konsolide metin adresi](https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2004.pdf). İİK adresi bu incelemede açılamadı; bu tablo güncel metninin bütününün doğrulandığı iddiası değildir. Güncel parasal sınır veya başvuru son günü hesaplamaz. Arabuluculuğun başvuru zamanı için [2025 kararlarının kapsamını](tahliye-ve-uyarlama-kontrol.md) ayrıca incele.
+Kaynaklar: [HMK kabul metni](https://cdn.tbmm.gov.tr/KKBSPublicFile/D23/Y2/T1/KanunMetni/4f31a7dc-5457-494d-81e2-266e2518a374.html), [HUAK resmî kurum kopyası](https://adb.adalet.gov.tr/Resimler/SayfaDokuman/11120231556551.5.6325.pdf), [İİK resmî konsolide metin adresi](https://www.mevzuat.gov.tr/MevzuatMetin/1.5.2004.pdf). İİK adresi bu incelemede açılamadı; bu tablo güncel metninin bütününün doğrulandığı iddiası değildir. 09.10.2026'da İİK 269 ve 269/a–269/d güncel metni Legaluga `mevzuat_madde_getir` ile okunabildi (harfli maddeler 269'un `ek_hukumler` alanında); maddedeki Borçlar Kanunu atıflarının TBK karşılığını ayrıca araştır. HUAK 18/A–18/B aynı araçla 18. madde yanıtında gelmedi; resmî sayfadan doğrula. Güncel parasal sınır veya başvuru son günü hesaplamaz. Arabuluculuğun başvuru zamanı için [2025 kararlarının kapsamını](tahliye-ve-uyarlama-kontrol.md) ayrıca incele.
 
 ## Özel rejimler ve yan alanlar
 
@@ -50,3 +50,7 @@ Bu bölümün kaynakları ve kapsamları:
 - [GİB 2026 kira geliri rehberi](https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Ffileadmin%2Fbeyannamerehberi%2F2026%2F2026_Kira_Geliri.pdf), vergi araştırmasının başlangıcıdır; rehberin yayın yılı ile gelirin ait olduğu yılı ayır.
 
 Kullanım sırası: **talep ve sözleşme türü → olay tarihi → özel kanun ve geçiş hükümleri → görev/başvuru yolu → güncel norm ve emsal → süre/delil kontrolü**. Listede yer alması bir kanunun bütün dosyalara uygulanacağı anlamına gelmez.
+
+## Bağlı araçla güncel metin
+
+Legaluga MCP bağlıysa bu tablodaki kanunların güncel madde metnini `mevzuat_madde_getir` ile al; olay tarihindeki metin, değişikliklerin yürürlük tarihi ve geçiş hükümleri için [Legaluga akışındaki](legaluga.md) adımları uygula. 09.10.2026 gözlemleri: TBK geçici 1–2 647. maddenin `ek_hukumler` alanında gelir; TBK 344 dipnotu 6217 ertelemesini anar ama kapsamını göstermez. Araç yanıtı yeni hukuki tespit değildir; bu haritadaki kapsam uyarıları geçerliliğini korur.

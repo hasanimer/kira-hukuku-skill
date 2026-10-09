@@ -37,7 +37,7 @@ Genel kirada belirli sürenin sonu ve devam hâli TBK 327; belirsiz süreli taş
 
 ## Karşılaştırılan kararlar
 
-Bunlar dış kaynaklardan okunan araştırma kartlarıdır; 1.603 karar içeren yerel JSONL havuzuna yeni tam metin kaydı olarak eklenmemiştir. Bağlantılar giriş gerektirebilir. Yeni bir dosyada asıl metni yeniden aç, sonraki içtihadı ve somut farkları araştır.
+Bunlar dış kaynaklardan okunan araştırma kartlarıdır; yerel JSONL havuzuna yeni tam metin kaydı olarak eklenmemiştir. Bağlantılar giriş gerektirebilir. Yeni bir dosyada asıl metni yeniden aç, sonraki içtihadı ve somut farkları araştır.
 
 | Karar ve kaynak | Gerekçe, sonuç ve kullanım sınırı |
 | --- | --- |

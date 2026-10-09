@@ -22,5 +22,6 @@ Standart kütüphane yeterlidir. GitHub Actions aynı denetimi Windows ve Linux 
 - Veri değişirse ilgili `text_sha256` ve `data/manifest.json` dosya hash'lerini güncelleyin. Başarısız kontrolü geçirmek için doğrulanmamış bir kaynağın hash'ini değiştirmeyin.
 - Kanun sürümü değişirse bütün bölümleri, alınma bilgisini ve okunabilir metni birlikte güncelleyin.
 - Yeni sürümde dosya adlarını veya komut davranışını değiştiriyorsanız kullanıcı belgelerini de güncelleyin.
+- Legaluga veya TypeSafe araştırma dökümlerini, araç yanıtlarını ve UDF dosyalarını public depoya eklemeyin; yalnız anonim ve paylaşılması uygun doğrulama özetlerini ekleyin.
 
 Bir veri kaydının yayımlanmaması gerektiğini düşünüyorsanız hassas içeriği tekrar yayımlamadan yalnız kayıt kimliğini ve gerekçeyi belirtin.

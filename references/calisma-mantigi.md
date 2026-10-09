@@ -44,7 +44,7 @@ Skill kökünde `python scripts/pool.py stats` ve `python scripts/tbk.py` ile pa
 
 Örneğin hedef döneme etki araştırmasında önce `python scripts/tbk.py 345` ile maddeyi oku; ardından `python scripts/pool.py search ihtar --limit 8`, `search "artış şartı" --limit 8` gibi ayrı sorgular kur. Esas gerekçesi filtresini gerektiğinde kullan; sonuç azsa filtresiz de ara. Adayın `document_id` değerini `get` komutuna vererek tam metni oku; kullanacağın birebir alıntıyı `quote` ile kontrol et. Komut ayrıntıları [havuz rehberindedir](havuz.md).
 
-Yerel kanun ve kararlar ilk araştırma kaynağıdır. Uygulanacak tarihteki hükmü ve sonraki değişiklikleri çevrimiçi doğrula. Bağlı mevzuat araçları kullanılabiliyorsa önce araç yönergelerini uygula; mevzuatı resmî numarasıyla bul, dönen kimlikle ilgili maddeyi getir. Yerel karar yetersizse odaklı dış araştırma yap ve dışarıdan bulunan kararı paket havuzundan gelenlerden ayır. Dış kaynağı kullanmak paketi otomatik değiştirmez.
+Yerel kanun ve kararlar ilk araştırma kaynağıdır. Uygulanacak tarihteki hükmü ve sonraki değişiklikleri çevrimiçi doğrula. Bağlı mevzuat araçları kullanılabiliyorsa önce araç yönergelerini uygula; mevzuatı resmî numarasıyla bul, dönen kimlikle ilgili maddeyi getir. Yerel karar yetersizse odaklı dış araştırma yap ve dışarıdan bulunan kararı paket havuzundan gelenlerden ayır. Dış kaynağı kullanmak paketi otomatik değiştirmez. Legaluga MCP bağlıysa sıra şudur: paketteki madde ve kararlar → `mevzuat_madde_getir` ile güncel metin, değişiklik ve geçiş notları → `semantik_ictihat_ara` ve ayrı `karar_ara` sorguları → `karar_getir` ile tam metin. Araç kuralları ve uyarıların anlamı [Legaluga akışındadır](legaluga.md).
 
 Aramada eşanlamlı ifadeyi veya daha kısa terimi denemek, ilk sonuç sayfasında bulamamaktan daha güçlü bir araştırmadır. Yine de boş sonuçtan “böyle bir içtihat yok” sonucu çıkarma. Karar sayısını doldurmak için ilgisiz emsal ekleme.
 
@@ -56,16 +56,16 @@ Her belirleyici meselede şu zinciri görünür ve kısa biçimde kur:
 
 Kararı okurken kimin görüşünün aktarıldığını ve nihai sonucu belirle. Bozulan yerel mahkeme gerekçesini yüksek mahkemenin kabulü gibi kullanma. Lehe kararla birlikte karşı görüşü veya uygulanmasını zayıflatan farklı olguyu da araştır. Yeni tarihli olması tek başına kararı üstün veya uygulanabilir yapmaz; daire, kurul, uyuşmazlık, düzenleme dönemi ve usul aşamasını birlikte değerlendir. Çelişki çözülmüyorsa bunu belirt, tek çizgi varmış gibi yazma.
 
-Çalışma notu gerektiğinde `mesele | olgu kaynağı | madde ve sürüm | karar künyesi/kimliği | doğrulanmış pasaj | benzerlik/fark | sonuç/eksik` alanlarını kullan. Kullanıcıya yalnız kararını değerlendirmesine yardımcı olacak kısmını göster; iç muhakeme dökümü üretme.
+Çalışma notu gerektiğinde `mesele | olgu kaynağı | madde ve sürüm | karar künyesi/kimliği | kaynak (yerel/Bedesten/Core) | doğrulanmış pasaj ve doğrulama durumu | benzerlik/fark | sonuç/eksik` alanlarını kullan. Kullanıcıya yalnız kararını değerlendirmesine yardımcı olacak kısmını göster; iç muhakeme dökümü üretme.
 
 ## 6. İstenen ürüne dönüştür
 
-Analizde önce sorunun cevabını ve onu değiştiren eksik bilgiyi ver; ardından gerekli dayanakları açıkla. Dilekçede doğrulanmış vakıalar, deliller, hukuki açıklamalar ve talep sonucu birbiriyle uyumlu olsun. Dava veya cevap yönüne göre anlatımı uyarla; aleyhe kaynağı araştırma notunda değerlendir, karşı tarafın iddiasını müvekkilin kabulü gibi yazma.
+Analizde önce sorunun cevabını ve onu değiştiren eksik bilgiyi ver; ardından gerekli dayanakları açıkla. Dilekçede doğrulanmış vakıalar, deliller, hukuki açıklamalar ve talep sonucu birbiriyle uyumlu olsun. Dava veya cevap yönüne göre anlatımı uyarla; aleyhe kaynağı araştırma notunda değerlendir, karşı tarafın iddiasını müvekkilin kabulü gibi yazma. Dilekçeden önce `iddia | kaynak | doğrulama durumu` tablosu kur; kaynağı olmayan hukuki cümleyi metne alma.
 
 Belge eksikliği taslağı tamamen engellemiyorsa ilgili yere açıklayıcı doldurma alanı koy. Bir süre veya bedel doğrulanamıyorsa kesin tarih/tutar yazmak yerine gerekli girdiyi belirt. Başarı ihtimaline yapay yüzde verme. Hesap gerekiyorsa veri kaynağı, dönem, birim ve formülü göster.
 
 ## 7. Bitirme ve güncelleme ölçütü
 
-Teslimden önce sonucu değiştiren olguların kaynağı, atıf yapılan kararların tam metni, alıntıların doğruluğu, madde/sürüm ilişkisi ve taslağın talep tutarlılığını kontrol et. Açık kalan noktaları kısa bir eksik bilgi listesiyle göster. Bu kontroller tamamlanıp önemli belirsizlikler açıklandığında araştırmayı sonlandır; aynı sonucu veren sorguları süresiz tekrarlama.
+Teslimden önce sonucu değiştiren olguların kaynağı, atıf yapılan kararların tam metni, alıntıların doğruluğu, madde/sürüm ilişkisi ve taslağın talep tutarlılığını kontrol et. Açık kalan noktaları kısa bir eksik bilgi listesiyle göster. Bu kontroller tamamlanıp önemli belirsizlikler açıklandığında araştırmayı sonlandır; aynı sonucu veren sorguları süresiz tekrarlama. UDF istenmişse yalnız onaylanmış ve yer tutucusuz son metni paketle; kaydedilen dosyanın adını, boyutunu ve SHA-256 değerini kaynak notuna yaz, dosyayı imzasız taslak olarak sun.
 
 Yeni belge geldiğinde yalnız etkilenen meseleleri yeniden aç; önceki sonucun neden değiştiğini belirt. Paket güncellemesi ayrıca istenirse yeni kayıtları kimlik ve metin hash'iyle denetle, kaynak/alınma bilgisi ile manifesti güncelle ve yardımcıları doğrula. Normal dosya incelemesi sırasında paket kararlarını veya kanun metnini değiştirme.

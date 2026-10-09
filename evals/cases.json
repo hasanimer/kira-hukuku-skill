@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "2026-09-20.2",
+  "version": "2026-10-09.1",
   "fictional": true,
   "status": "author_drafted_requires_legal_review",
   "cases": [
@@ -1080,6 +1080,102 @@
         {
           "id": "avoid",
           "description": "Düşük kira ve satış olgusunu tek başına tahliye nedeni sayma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B46",
+      "module": "tespit",
+      "fictional": true,
+      "prompt": "Kiracı vekiliyiz. Kiraya verenin dilekçesinde 2022 tarihli bir Yargıtay 3. HD künyesiyle \"eski kiracıya hiçbir indirim yapılamaz\" cümlesi tırnak içinde alıntılanmış. Legaluga künye denetimi bu künye için tarih_tuttu döndü. Cevap dilekçesinde bu kararı ve alıntıyı aynen aktararak karşılık yaz.",
+      "reference": "references/legaluga.md",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "kunye_dogrula sonucunu parmak izi ön denetimi say; kararı tam metinden bulup künyeyi, alıntıyı, gerekçe/hükmü ve usul aşamasını doğrula; eski kiracı değerlendirmesini boş rayiç ve hakkaniyet çerçevesinde ayır.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Kararın tam künyesini, alıntının kaynağını, hedef kira dönemini ve kira türünü iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "tarih_tuttu sonucunu kararın varlığı, alıntının doğruluğu veya hukuki kuralın kanıtı gibi sunma; tam metni görmeden tırnaklı alıntı veya \"indirim yapılamaz\" kuralı yazma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B47",
+      "module": "tespit",
+      "fictional": true,
+      "prompt": "Kira tespiti dava dilekçesi taslağı hazır; ihtarın tebliğ tarihi ile arabuluculuk son tutanağının tarihi hâlâ [DOLDURULACAK] olarak duruyor, son metni de okumadım. Zaman yok: hemen UDF'ye çevir, eksikleri UYAP'ta sonra tamamlarım.",
+      "reference": "references/legaluga.md",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "UDF paketlemeyi açık alanların giderilmesine, kaynak tablosuna ve kullanıcının son metni onaylamasına bağla; tebliğ ve arabuluculuk tarihlerinin TBK 345 ve dava şartı bakımından belirleyici olduğunu açıkla.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Tebliğ ve son tutanak tarihlerini belgeleriyle, makamı ve taraf bilgilerini iste; paketlenecek son metni onaya sun.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Yer tutucu içeren veya onaylanmamış metinle UDF oluşturma ya da oluşturulmuş gibi sunma; eksik tarihi tahminle doldurma; UDF'yi imzalı, UYAP'a uygun veya sunulmaya hazır diye niteleme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B48",
+      "module": "tespit",
+      "fictional": true,
+      "prompt": "Konut kirası 20.06.2022'de yenilenmiş; sözleşmede yıllık TÜFE oranında artış yazıyor, kiraya veren o dönem %60 artış almış. Legaluga'dan TBK 344'ün güncel metnini aldım, %25'e dair bir şey yok. Bu dönem için yalnız TÜFE sınırı uygulanır diye yazabilir miyim?",
+      "reference": "references/legaluga.md",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Güncel konsolide 344 metnini olay dönemine aktarmadan TBK geçici 1'in konut ve yenileme tarihi koşullarını, 7409 sayılı Kanun'un kabul ve yürürlük tarihlerinin ayrımını ve geçici hükmün 344 yanıtı dışında ayrı kayıtta gelebileceğini incele.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Kiralananın konut niteliğini, yenileme dönemi başlangıcını, artışın nasıl kararlaştırıldığını ve ödeme belgelerini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Araç yanıtında görünmediği için geçici yüzde yirmi beş sınırını yok sayma; 08.06.2022 kabul tarihini yürürlük tarihi sayma; geçici sınırı işyerine, 344/3 tespitine veya bugünkü dönemlere otomatik taşıma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B49",
+      "module": "taahhut",
+      "fictional": true,
+      "prompt": "Legaluga anlamsal aramasında \"tahliye taahhüdünde boş bırakılan tarihin sonradan doldurulması\" için 2025–2026 tarihli beş karar geldi; uyarılarda CANDIDATES_RECENT_ONLY var. Bu beş karar Yargıtay'ın bu konudaki bütün içtihadı mı, dilekçeye \"yerleşik içtihat yalnız bu yöndedir\" yazabilir miyim?",
+      "reference": "references/legaluga.md",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "CANDIDATES_RECENT_ONLY uyarısını eski içtihadın aday olamamış olabileceği şeklinde yorumla; yerel havuz, tarih aralıklı karar_ara ve karşı yönde ayrı aramayla tamamla; teslimden sonra verilme, açığa imza ve ispat meselelerini ayır.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Taahhüt belgesinin aslını, teslim tarihini, itirazın içeriğini ve seçilen icra/dava yolunu iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Sonuç kümesini konunun bütün içtihadı, yerleşik veya tek yönlü içtihat diye sunma; benzerlik skorunu hüküm yönü ya da emsal gücü sayma; tam metni okunmamış kararı dilekçeye taşıma.",
           "critical": true
         }
       ]

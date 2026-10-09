@@ -11,6 +11,8 @@ import unicodedata
 # Ana havuzdaki document_id UYAP Mevzuat ve İçtihat (Bedesten) belge kimliğidir; resmî
 # adres bu desenle türetilir. Kayıtta yazılı source_url varsa ona dokunulmaz.
 BEDESTEN_URL = 'https://mevzuat.adalet.gov.tr/ictihat/{}'
+# Ana havuzla birlikte okunan seçkiler; kayıt hangi dosyadan geldiyse collection alanı onu gösterir.
+SELECTIONS = ('bam-selected.jsonl', 'yargitay-selected.jsonl', 'derleme-v5-selected.jsonl')
 # Arama sıralaması: önce içerik türü (esas gerekçesi en değerli), sonra sözcük geçişi.
 KIND_ORDER = {'esas_gerekcesi': 0, 'usul_gerekcesi': 1, 'sinirda': 2, 'kisa_karar': 3}
 COURT_SHORT = (
@@ -84,12 +86,35 @@ def metadata(row):
     keys = ('document_id', 'kunye', 'court', 'esas_no', 'karar_no', 'karar_tarihi',
             'text_sha256', 'human_validated', 'review_level', 'value_assessment',
             'court_type', 'source_url', 'source_provider', 'research_notes',
-            'source_text_sha256', 'redactions')
+            'source_text_sha256', 'redactions', 'collection')
     return {key: row.get(key) for key in keys}
 
 
 def emit(value):
     print(json.dumps(value, ensure_ascii=False, indent=2))
+
+
+def squash(text):
+    """Boşlukları atar; kalan her karakterin özgün metindeki konumunu da döndürür."""
+    kept = [i for i, c in enumerate(text) if not c.isspace()]
+    return ''.join(text[i] for i in kept), kept
+
+
+def find_ignoring_space(text, quotation):
+    """Bedesten çıktısı ile yerel metin yalnız boşlukta ayrışır; konumlar özgün metne göredir."""
+    squashed, kept = squash(text)
+    needle = squash(quotation)[0]
+    hits = []
+    offset = 0
+    while needle:
+        at = squashed.find(needle, offset)
+        if at < 0:
+            break
+        start, end = kept[at], kept[at + len(needle) - 1] + 1
+        hits.append({'start': start, 'end': end, 'matched_text': text[start:end],
+                     'context': text[max(0, start-200):end+200]})
+        offset = at + 1
+    return hits
 
 
 def main():
@@ -111,18 +136,17 @@ def main():
     quote = sub.add_parser('quote')
     quote.add_argument('document_id')
     quote.add_argument('quotation')
+    quote.add_argument('--ignore-space', action='store_true',
+                       help='Birebir eşleşme yoksa boşluk farklarını yok sayarak ara')
     args = parser.parse_args()
     source = args.root / 'topic-rescan-assistant-adjusted.jsonl'
-    rows = list(read_rows(source))
+    rows = [dict(r, collection=source.name) for r in read_rows(source)]
     sources = [source]
-    bam = args.root / 'bam-selected.jsonl'
-    if bam.exists():
-        rows.extend(read_rows(bam))
-        sources.append(bam)
-    yargitay = args.root / 'yargitay-selected.jsonl'
-    if yargitay.exists():
-        rows.extend(read_rows(yargitay))
-        sources.append(yargitay)
+    for name in SELECTIONS:
+        selected = args.root / name
+        if selected.exists():
+            rows.extend(dict(r, collection=name) for r in read_rows(selected))
+            sources.append(selected)
     ids = [str(row['document_id']) for row in rows]
     if len(ids) != len(set(ids)):
         raise ValueError('Duplicate document_id across pools')
@@ -187,11 +211,15 @@ def main():
                 if start < 0:
                     break
                 end = start + len(args.quotation)
-                positions.append({'start': start, 'end': end,
+                positions.append({'start': start, 'end': end, 'matched_text': args.quotation,
                                   'context': row['text'][max(0, start-200):end+200]})
                 offset = start + 1
-            emit({**envelope, **metadata(row), 'exact_match': bool(positions),
-                  'quotation': args.quotation, 'occurrences': positions})
+            mode = 'exact' if positions else None
+            if not positions and args.ignore_space:
+                positions = find_ignoring_space(row['text'], args.quotation)
+                mode = 'ignore_space' if positions else None
+            emit({**envelope, **metadata(row), 'exact_match': mode == 'exact',
+                  'match_mode': mode, 'quotation': args.quotation, 'occurrences': positions})
             if not positions:
                 return 2
     return 0
