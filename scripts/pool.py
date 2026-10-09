@@ -25,11 +25,13 @@ POOL_FILES = ('topic-rescan-assistant-adjusted.jsonl', 'bam-selected.jsonl',
 MAIN_POOL = POOL_FILES[0]
 EXIT_OK, EXIT_DATA, EXIT_USAGE, EXIT_NOT_FOUND = 0, 1, 2, 3
 EPILOG = (
-    'Çıkış kodları: 0 başarılı; 1 veri/bütünlük hatası (hash uyuşmazlığı, tekrarlanan kimlik,\n'
-    'okunamayan dosya); 2 kullanım hatası; 3 bulunamadı (quote: alıntı belgede yok, JSON yine\n'
-    'basılır ve exact_match false olur; get/quote: kimlik havuzda yok, stdout boş kalır).\n'
+    'Çıkış kodları: 0 başarılı; 1 veri/bütünlük hatası (hash veya manifest uyuşmazlığı, tekrarlanan kimlik,\n'
+    'okunamayan dosya; stderr "HATA (veri bütünlüğü)" ile başlar) ya da çıktıyı okuyan sürecin erken kapanması (ör. | head;\n'
+    'Linux/macOS\'ta stderr boş kalır; Windows\'ta "[Errno 22] Invalid argument" içeren bir HATA iletisi\n'
+    'görünebilir; ikisi de veri hatası değildir); 2 kullanım hatası; 3 bulunamadı (quote: alıntı\n'
+    'belgede yok, JSON yine basılır ve exact_match false olur; get/quote: kimlik havuzda yok, stdout boş kalır).\n'
     '"-" ile başlayan alıntı için: python scripts/pool.py quote KARAR_KIMLIGI -- "-alıntı"')
-# Arama sıralaması: önce içerik türü (esas gerekçesi en değerli), sonra sözcük geçişi.
+# Arama sıralaması: konu dışı kayıt en sona; sonra içerik türü, kapsam belirsizliği, sözcük geçişi.
 KIND_ORDER = {'esas_gerekcesi': 0, 'usul_gerekcesi': 1, 'sinirda': 2, 'kisa_karar': 3}
 ISO_DATE = re.compile(r'\d{4}-\d{2}-\d{2}')
 # Yeniden taramada hariç olasılığı bu eşiği aşan incelenmemiş kayıt konu bakımından sınırdadır.
@@ -37,7 +39,7 @@ SCOPE_HARIC_THRESHOLD = 0.30
 # Tam metinle konu dışı görülen kayıtlar; veri baytları değişmeden okuma sırasında işaretlenir.
 SCOPE_CAUTIONS = {
     ('1018247800', '144a842b557ad46f06ebd18de8b0b419adfe739921f9ca1f36ab29904057ebdd'): {
-        'outcome': 'Ticaret mahkemesi kararı onanmıştır; çoğunluk gerekçesi kısa onamadır.',
+        'outcome': 'Ticaret mahkemesi kararı oybirliğiyle onanmıştır; Yargıtay gerekçesi kısa onamadır.',
         'cautions': [('TCDD liman hizmetleri tarifesine dayalı yüzer vinç kirası; TBK 344 kira '
                       'tespiti veya konut/çatılı işyeri kirası emsali değildir.')]},
     ('504158200', 'ee67ea4dd909a2a898a1316dc5c02a2dcc980fd3401690a67291aba02c188f79'): {
@@ -289,10 +291,17 @@ def metadata(row):
     closing = text_decision_date(row)
     if closing and row.get('karar_tarihi') and closing != row['karar_tarihi']:
         shown = '.'.join(reversed(closing.split('-')))
+        provider = row.get('source_provider') or ''
+        if row.get('pool_file') == MAIN_POOL or provider.startswith('Bedesten'):
+            origin = ('Künye tarihi Bedesten üst verisidir; kapanış cümlesini alıntılarken farkı '
+                      'belirt ve resmî sayfadan (source_url) kontrol et.')
+        else:
+            # Seçki kayıtlarının künyesi Dejure üst verisidir; source_url resmî sayfa değildir.
+            origin = (f'Künye tarihi {provider or "kaynak"} üst verisidir; source_url resmî sayfa değildir. '
+                      'Kapanış cümlesini alıntılarken farkı belirt ve tarihi resmî kayıttan '
+                      '(UYAP Emsal / Yargıtay Karar Arama) doğrula.')
         meta['date_warning'] = (
-            f'Metnin kapanış cümlesindeki karar günü {shown}, künye tarihinden farklı. Künye '
-            'tarihi Bedesten üst verisidir; kapanış cümlesini alıntılarken farkı belirt ve resmî '
-            'sayfadan (source_url) kontrol et.')
+            f'Metnin kapanış cümlesindeki karar günü {shown}, künye tarihinden farklı. ' + origin)
     return meta
 
 
@@ -307,8 +316,10 @@ def best_paragraph(text, patterns):
     return best
 
 
-def search_rows(rows, terms, court_type=None, kind=None, substring=False):
-    """terms normalize() edilmiş olmalı. Sıralı (anahtar, kayıt, puan, kesit) listesi döner."""
+def search_rows(rows, terms, court_type=None, kind=None, substring=False, limit=None):
+    """terms normalize() edilmiş olmalı. (toplam eşleşme sayısı, sıralı ilk `limit` sonuç) döner;
+    her sonuç metadata + lexical_score + snippet içerir. Kesit ve üst veri yalnız döndürülen
+    sonuçlar için üretilir (limit=None: hepsi)."""
     patterns = [term_pattern(t, substring) for t in terms]
     found = []
     for row in rows:
@@ -317,19 +328,20 @@ def search_rows(rows, terms, court_type=None, kind=None, substring=False):
         row_kind = kind_of(row)
         if kind and row_kind != kind:
             continue
-        normalized = normalize(row['text'])
+        normalized = normalize(row['text'])  # kayıt başına bir kez, terim başına değil
         counts = [len(p.findall(normalized)) for p in patterns]
         if all(counts):
             score = sum(counts)
-            # Normalize metindeki ofset yerine özgün metinden paragraf kesiti döner.
-            snippet = snippet_of(best_paragraph(row['text'], patterns), patterns)
             # Konu dışı kayıt en sona; konu bakımından sınırdaki kayıt kendi türünün sonuna düşer.
             rank = (row['out_of_scope'], KIND_ORDER.get(row_kind, 4), row['scope_uncertain'])
-            found.append((rank, score, str(row['document_id']),
-                          {**metadata(row), 'lexical_score': score, 'snippet': snippet}))
+            found.append((rank, -score, str(row['document_id']), row, score))
     # Esas gerekçesi önce, sonra sözcük geçişi; kısa onama kararları listenin sonuna düşer.
-    found.sort(key=lambda item: (item[0], -item[1], item[2]))
-    return [item[3] for item in found]
+    # document_id tekil olduğundan sıralama kayıt sözlüklerini hiç karşılaştırmaz.
+    found.sort(key=lambda item: item[:3])
+    # Normalize metindeki ofset yerine özgün metinden paragraf kesiti döner.
+    return len(found), [{**metadata(row), 'lexical_score': score,
+                         'snippet': snippet_of(best_paragraph(row['text'], patterns), patterns)}
+                        for *_, row, score in found[:limit]]
 
 
 def find_quotes(text, quotation):
@@ -372,8 +384,11 @@ def build_parser():
     sub.add_parser('stats', help='Havuz özeti: kayıt sayısı, tarih aralığı, içerik türleri')
     search = sub.add_parser('search', help='Bütün terimleri içeren kararları sözcük eşleştirmesiyle arar')
     search.add_argument('terms', nargs='+',
-                        help='Aranacak terimler; hepsi geçmeli, sözcük başından eşleşir, '
-                             'aksanlar sadeleştirilir')
+                        help='Aranacak terimler; hepsi geçmeli. Sözcük başından eşleşir; büyük/küçük '
+                             'harf, aksan, kesme/tırnak ve tire biçimi farkı yok sayılır. Rakamla biten '
+                             'terimden hemen sonra rakam gelemez ("344" "13443" içinde eşleşmez, '
+                             '"344/3" ve "344.000" içinde eşleşir). Tırnaklı ifade tek terimdir; '
+                             'sözcükler aynı sırayla bitişik geçmeli')
     search.add_argument('--limit', type=limit_type, default=8,
                         help='Döndürülecek en çok sonuç (1-2000, varsayılan 8)')
     search.add_argument('--court-type', choices=['bam', 'yargitay'],
@@ -382,7 +397,9 @@ def build_parser():
                                            'kisa_karar', 'sinirda'],
                         help='Yalnız bu içerik türü (value_assessment.icerik_turu)')
     search.add_argument('--substring', action='store_true',
-                        help='Terimi sözcük içinde de eşleştir (eski davranış)')
+                        help='Sözcük başı ve sayı sınırı kuralını kaldırır; terim sözcük veya sayı '
+                             'içinde de eşleşir (ör. "artış" "tartışılması", "344" "13443" içinde '
+                             'bulunur). Varsayılan: yalnız sözcük başı')
     get = sub.add_parser('get', help='Kararın tam metnini ve künyesini getirir')
     get.add_argument('document_id', help='Aramada dönen document_id')
     quote = sub.add_parser('quote', help='Birebir alıntıyı tam metinde arar; bulunamazsa çıkış kodu 3')
@@ -418,8 +435,9 @@ def main(argv=None):
               'human_validated_records': sum(r.get('human_validated') is True for r in rows)})
         return EXIT_OK
     if args.command == 'search':
-        results = search_rows(rows, args.terms, args.court_type, args.kind, args.substring)
-        emit({**envelope, 'total_matches': len(results), 'results': results[:args.limit]})
+        total, results = search_rows(rows, args.terms, args.court_type, args.kind, args.substring,
+                                     args.limit)
+        emit({**envelope, 'total_matches': total, 'results': results})
         return EXIT_OK
     row = next((r for r in rows if str(r['document_id']) == args.document_id), None)
     if row is None:

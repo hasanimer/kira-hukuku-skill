@@ -122,8 +122,11 @@ def read_key(env_file=None):
         key = os.environ.get('TYPESAFE_API_KEY', '').strip()
         if not key:
             raise ValueError('TYPESAFE_API_KEY eksik')
-    if not key.isascii() or not key.isprintable() or any(c.isspace() for c in key):
-        raise ValueError('TYPESAFE_API_KEY geçersiz karakter içeriyor (boşluk, satır sonu, '
+    # Tırnak da reddedilir: kapanmamış tırnak (.env) veya Windows `set X="..."` değere tırnak
+    # bırakır; gerçek anahtarda tırnak bulunmaz.
+    if (not key.isascii() or not key.isprintable() or any(c.isspace() for c in key)
+            or any(c in '"\'' for c in key)):
+        raise ValueError('TYPESAFE_API_KEY geçersiz karakter içeriyor (boşluk, satır sonu, tırnak, '
                          'yorum veya ASCII dışı karakter); anahtar gösterilmedi')
     return key
 
@@ -137,6 +140,7 @@ def evaluate(request, key):
         with _OPENER.open(req, timeout=60) as response:
             raw = response.read()
     except urllib.error.HTTPError as exc:
+        exc.close()  # HTTPError açık yanıtı tutar (_NoRedirect ile engellenen yönlendirmede de)
         raise ValueError(f'TypeSafe HTTP {exc.code}; yanıt gövdesi gizlendi') from None
     except urllib.error.URLError as exc:
         raise ValueError(f'TypeSafe bağlantısı başarısız: {exc.reason}') from None
@@ -200,9 +204,12 @@ def main():
         if args.output and not args.output.parent.is_dir():
             raise ValueError(f'Çıktı klasörü yok: {args.output.parent}')
         try:
-            data = json.loads(args.input.read_text(encoding='utf-8-sig'))
+            # Baytlardan: json BOM'lu/BOM'suz UTF-8 ve UTF-16'yı (PowerShell 5.1 `>`) saptar.
+            data = json.loads(args.input.read_bytes())
         except json.JSONDecodeError as exc:
             raise ValueError(f'Girdi geçerli JSON değil: {exc}') from None
+        except UnicodeDecodeError:
+            raise ValueError('Girdi UTF-8 veya UTF-16 değil (ANSI/cp1254 desteklenmez)') from None
         request = build_request(data)
         result = request if args.dry_run else interpret(
             request, evaluate(request, read_key(args.env_file)), data.get('candidates', []))

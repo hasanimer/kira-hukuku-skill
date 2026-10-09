@@ -93,7 +93,7 @@ BAM doğrudan borcun tamamen sona erdiğine veya tahliye talebinin reddine hükm
 Aşağıdaki dört kararın olgu, sonuç ve kullanım sınırları [kiracı senaryolarında](kiraci-senaryolari.md) K1–K4 başlıkları altında ayrıntılı gösterilir. Kurgular kararların gerçek olaylarından ayrıdır. Adana BAM 5. HD E. 2022/1189 ile İstanbul BAM 55. HD E. 2023/2395 kayıtlarındaki açık kişi adları anonimleştirilmiştir; kaynak ve dağıtılan metin hash değerleri ile `redactions` alanı bu farkı gösterir.
 
 - **K1 — Adana Bölge Adliye Mahkemesi 5. Hukuk Dairesi, E. 2022/1189 K. 2024/1605 T. 14.11.2024** — sözleşmesel çıkış hakkı, menfi tespit. [Kaynak](https://app.dejure.ai/dokuman/7ad0f708-0612-47c9-956d-f722f4fe55fe) · Kimlik: `7ad0f708-0612-47c9-956d-f722f4fe55fe`
-- **K2 — İstanbul Bölge Adliye Mahkemesi 35. Hukuk Dairesi, E. 2017/1243 K. 2017/1468 T. 11.10.2017** — rutubet, ayıp nedeniyle indirim. Daire ve E./K. numaraları karar metninde yer almaz; künye Dejure üst verisidir, dilekçede kullanmadan önce doğrula. [Kaynak](https://app.dejure.ai/dokuman/eb8af224-a46c-4101-867f-2d58b76a0aef) · Kimlik: `eb8af224-a46c-4101-867f-2d58b76a0aef`
+- **K2 — İstanbul Bölge Adliye Mahkemesi 35. Hukuk Dairesi, E. 2017/1243 K. 2017/1468 T. 11.10.2017** — rutubet, ayıp nedeniyle indirim. Mahkeme adı, daire ve E./K. numaraları karar metninde yer almaz (yalnız 11/10/2017 karar tarihi görünür); künye Dejure üst verisidir, dilekçede kullanmadan önce doğrula. [Kaynak](https://app.dejure.ai/dokuman/eb8af224-a46c-4101-867f-2d58b76a0aef) · Kimlik: `eb8af224-a46c-4101-867f-2d58b76a0aef`
 - **K3 — İstanbul Bölge Adliye Mahkemesi 36. Hukuk Dairesi, E. 2019/3134 K. 2021/1779 T. 22.09.2021** — iki haklı ihtar, konusuz kalma ve yargılama giderleri. [Kaynak](https://app.dejure.ai/dokuman/fa461f44-de8b-43e1-aaa4-60c85a683530) · Kimlik: `fa461f44-de8b-43e1-aaa4-60c85a683530`
 - **K4 — İstanbul Bölge Adliye Mahkemesi 55. Hukuk Dairesi, E. 2023/2395 K. 2024/2656 T. 06.11.2024** — çıkış hasarı, yıpranma/yenileme payı. [Kaynak](https://app.dejure.ai/dokuman/880b0d47-5ca8-4e1a-9fab-41b5da8f1992) · Kimlik: `880b0d47-5ca8-4e1a-9fab-41b5da8f1992`
 
@@ -169,7 +169,7 @@ Dava anlatımındaki 47 madde atfını gerekçedeki TBK 347 yerine kullanma.
 
 Eski sözleşmelerde geçiş hükümlerini ve yeni sözleşme olup olmadığını ayrıca incele; otomatik bir aylık dava penceresi türetme.
 
-Daire ve E./K. numaraları karar metninde yer almaz; Dejure üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula.
+Mahkeme adı, daire ve E./K. numaraları karar metninde yer almaz (yalnız 19/10/2023 karar tarihi görünür); künye Dejure üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula.
 
 ## Seçime alınmayan aday
 
@@ -182,7 +182,7 @@ python scripts/pool.py search bilirkişi --court-type bam --limit 20
 python scripts/pool.py get 34ffba87-e4ff-4051-9441-4a72fe6564bd
 python scripts/pool.py get 615160e1-265c-486a-9b9a-4a82061a94b6
 python scripts/pool.py get KIMLIK
-python scripts/pool.py quote KIMLIK "Birebir kısa alıntı"
+python scripts/pool.py quote KIMLIK "Dilekçede kullanılacak alıntının tamamı"
 ```
 
 Bu sayfada `Kimlik` olarak verilen her kayıt aynı komutla okunur.

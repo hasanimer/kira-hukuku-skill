@@ -7,11 +7,13 @@ import tempfile
 from pathlib import Path
 import unicodedata
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from pool import (BEDESTEN_URL, QUOTE_MAX_OCCURRENCES, enrich, kind_of, kunye,  # noqa: E402
-                  load_pool, metadata, normalize, read_rows, term_pattern, text_decision_date)
+from pool import (BEDESTEN_URL, QUOTE_MAX_OCCURRENCES, SCOPE_CAUTIONS, enrich,  # noqa: E402
+                  kind_of, kunye, load_pool, metadata, normalize, read_rows, search_rows,
+                  term_pattern, text_decision_date)
 
 MAIN = 'topic-rescan-assistant-adjusted.jsonl'
 BAM = 'bam-selected.jsonl'
@@ -395,6 +397,24 @@ class PoolTests(unittest.TestCase):
         self.assertIs(results[0]['scope_uncertain'], False)
         self.assertIs(results[0]['out_of_scope'], False)
 
+    def test_out_of_scope_record_ranks_after_short_decisions(self):
+        # Gerçek uyarı hash'i --root ile kullanılamaz (metin hash'i tutmaz); süreç içinde sınanır.
+        text = 'kira depozito uçak'
+        key = ('9', hashlib.sha256(text.encode('utf-8')).hexdigest())
+        with mock.patch.dict(SCOPE_CAUTIONS, {key: {'outcome': 'x', 'cautions': ['konu dışı']}}):
+            rows = [enrich(row('9', text, 'esas_gerekcesi')),
+                    enrich(row('8', 'kira depozito', 'kisa_karar'))]
+        self.assertNotIn(key, SCOPE_CAUTIONS)
+        total, found = search_rows(rows, [normalize('depozito')])
+        self.assertEqual(total, 2)
+        self.assertEqual([r['document_id'] for r in found], ['8', '9'])
+        self.assertIs(found[1]['out_of_scope'], True)
+        self.assertEqual(found[1]['research_notes']['cautions'], ['konu dışı'])
+        # limit yalnız döndürülen sonuçları kısaltır; toplam eşleşme sayısı değişmez.
+        total, top = search_rows(rows, [normalize('depozito')], limit=1)
+        self.assertEqual((total, [r['document_id'] for r in top]), (2, ['8']))
+        self.assertIn('snippet', top[0])
+
     def test_closing_date_conflict_is_flagged_without_false_positives(self):
         diff = enrich(row('9', 'ONANMASINA, 28.05.2018 tarihinde oybirliğiyle karar verildi.', 'kisa_karar'))
         self.assertEqual(text_decision_date(diff), '2018-05-28')
@@ -404,6 +424,21 @@ class PoolTests(unittest.TestCase):
         hidden = enrich(row('11', '03.08.2010 tarihinde dava açılmış. ONANMASINA, ....05.2019 günü oybirliğiyle karar verildi.', 'kisa_karar'))
         self.assertIsNone(text_decision_date(hidden))
         self.assertNotIn('date_warning', metadata(hidden))
+
+    def test_date_warning_names_the_metadata_source(self):
+        text = 'ONANMASINA, 28.05.2018 tarihinde oybirliğiyle karar verildi.'
+        main = metadata(enrich(dict(row('9', text, 'kisa_karar'), pool_file=MAIN), bedesten_ids=True))
+        self.assertIn('Bedesten', main['date_warning'])
+        self.assertIn('source_url', main['date_warning'])
+        selection = metadata(enrich(dict(
+            row('615160e1-x', text, 'esas_gerekcesi', source_provider='Dejure',
+                source_url='https://app.dejure.ai/x', court_type='bam',
+                court='Ankara Bölge Adliye Mahkemesi 6. Hukuk Dairesi'), pool_file=BAM)))
+        warning = selection['date_warning']
+        self.assertIn('28.05.2018', warning)
+        self.assertIn('Dejure', warning)
+        self.assertNotIn('Bedesten', warning)
+        self.assertIn('resmî sayfa değildir', warning)
 
     def test_metadata_includes_provenance_fields(self):
         meta = metadata(enrich(dict(row('1', 'm', 'kisa_karar', raw_sha256='abc'), pool_file=MAIN)))
@@ -433,6 +468,8 @@ class PoolTests(unittest.TestCase):
         stderr = proc.stderr.read().decode('utf-8', errors='backslashreplace')
         proc.stderr.close()
         proc.wait(timeout=120)
+        # Python belgelerindeki SIGPIPE tarifi: çıkış kodu 1, stderr boş (EPILOG bunu belgeler).
+        self.assertEqual(proc.returncode, 1)
         self.assertNotIn('HATA', stderr)
         self.assertNotIn('Traceback', stderr)
 

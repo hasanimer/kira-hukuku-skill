@@ -17,7 +17,7 @@ python scripts/quality.py cards "Yargıtay 3. HD" "E. 2025/1495"
 python scripts/quality.py cards tahliye depozito
 ```
 
-Her terim ayrı aranır ve kartta hepsi geçmelidir; büyük/küçük harf ve Türkçe karakter farkı gözetilmez. Çıktıdaki `kunye` alanı `pool.py` künye biçimindedir. Kart araması ölçüt dosyası olmadan da çalışır.
+Her terim ayrı aranır ve kartta hepsi geçmelidir; büyük/küçük harf ve Türkçe karakter farkı gözetilmez ve terim `pool.py search` gibi sözcük başından eşleşir; rakamla biten terim daha uzun sayının parçası olarak eşleşmez (`K. 2025/304`, `K. 2025/3048`'i bulmaz). Çıktıdaki `kunye` alanı `pool.py` künye biçimindedir. Kart araması ölçüt dosyası olmadan da çalışır.
 
 Yeni kartta aynı alanları doldur; çoğunluk ile karşıoyu, bozma ile esas kabulünü birleştirme. Kartın sınama dosyası bağlantısı (`scenario_ids`) o kararı bütün o olaylara doğrudan uygulama izni değildir. Somut olgu farklarını ve sonraki içtihadı yeniden araştır.
 
@@ -40,7 +40,7 @@ python scripts/quality.py --output research-private/review.json review-template 
 python scripts/quality.py score research-private/review.json
 ```
 
-Çıktı yolu mevcutsa araç üzerine yazmaz; yeni dosya adı seç. `research-private` klasörü git'e girmez (.gitignore); Windows'ta (cmd veya PowerShell) klasörü `mkdir research-private` ile oluştur. `review-template` çalıştırılmadan önce `research-private/answers.json` aşağıdaki biçimde elle hazırlanmalıdır. `case` yalnız inceleyici içindir.
+Çıktı yolu mevcutsa araç üzerine yazmaz; yeni dosya adı seç. `research-private` klasörü git'e girmez (.gitignore); Windows'ta (cmd veya PowerShell) klasörü `mkdir research-private` ile oluştur. `review-template` çalıştırılmadan önce `research-private/answers.json` aşağıdaki biçimde elle hazırlanmalıdır. Dosya UTF-8 (BOM'lu veya BOM'suz) ya da UTF-16 (Windows PowerShell 5.1'de `>`/`Out-File` varsayılanı) olabilir; ANSI/cp1254 kabul edilmez. `case` yalnız inceleyici içindir.
 
 `answers.json` biçimi (aşağıdaki yer tutucular gerçek sonuç değildir):
 

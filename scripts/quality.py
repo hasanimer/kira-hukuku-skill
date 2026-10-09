@@ -12,7 +12,7 @@ _HERE = str(Path(__file__).resolve().parent)
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
 
-from pool import full_court, kunye, normalize  # noqa: E402
+from pool import full_court, kunye, normalize, term_pattern  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 # triage.py MODULES anahtarları ve references/moduller.md tablosuyla aynı olmalıdır.
@@ -25,8 +25,12 @@ MIN_TRIGGER_CASES = 10  # her kutup (tetiklenmeli / tetiklenmemeli) için en az
 
 
 def read(path):
-    # utf-8-sig: PowerShell 5.1 veya "UTF-8 with BOM" ile kaydedilen inceleme dosyaları da okunur.
-    return json.loads(Path(path).read_text(encoding='utf-8-sig'))
+    # Baytlardan okunur; json kodlamayı kendisi saptar: BOM'lu/BOM'suz UTF-8 ve Windows
+    # PowerShell 5.1'de `>`/Out-File varsayılanı UTF-16 kabul edilir (ANSI/cp1254 edilmez).
+    try:
+        return json.loads(Path(path).read_bytes())
+    except UnicodeDecodeError:
+        raise ValueError(f'{path}: UTF-8 veya UTF-16 değil (ANSI/cp1254 desteklenmez)') from None
 
 
 def digest(value):
@@ -88,6 +92,9 @@ def load(root=ROOT):
     require(suite.get('fictional') is True, 'Missing fiction label')
     cases = unique(suite.get('cases'), 'cases')
     require(bool(cases), 'Empty catalog')
+    # Sayfa ve belgeler aralığı sayıdan türetir (B01–Bnn); kimlikler boşluksuz olmalıdır.
+    require(set(cases) == {f'B{i:02d}' for i in range(1, len(cases) + 1)},
+            'Case IDs must be contiguous B01–Bnn (page and docs derive the range from the count)')
     for case in cases.values():
         require(case.get('fictional') is True, 'Missing case fiction label')
         empty = [k for k in ('id', 'prompt', 'topic', 'reference')
@@ -129,11 +136,13 @@ def card_haystack(card):
 
 
 def search_cards(catalog, terms):
-    """Her terim bir ifadedir ve kartta hepsi geçmelidir (pool.py search gibi); büyük/küçük
-    harf ve Türkçe karakter farkı gözetilmez. Künye pool.py biçimiyle aranabilir."""
-    terms = [normalize(t.strip()) for t in terms if t.strip()]
+    """Her terim bir ifadedir ve kartta hepsi geçmelidir; pool.py search gibi sözcük başından
+    eşleşir, rakamla biten terim daha uzun sayının parçası olarak eşleşmez. Büyük/küçük harf ve
+    Türkçe karakter farkı gözetilmez. Künye pool.py biçimiyle aranabilir."""
+    # Boş terim normalize sonrası elenir (ör. yalnız U+00AD): term_pattern('') çağrılmaz.
+    patterns = [term_pattern(n) for n in map(normalize, terms) if n]
     return [dict(c, kunye=card_kunye(c)) for c in catalog['cards']
-            if all(t in card_haystack(c) for t in terms)]
+            if all(p.search(card_haystack(c)) for p in patterns)]
 
 
 def load_triggers(root=ROOT, suite=None):

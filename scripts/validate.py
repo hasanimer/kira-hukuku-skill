@@ -125,7 +125,6 @@ def check_pool(manifest, pool):
                 require(bam['text'].count('[KİŞİ ADI ANONİMLEŞTİRİLDİ]') ==
                         bam['redactions']['replacement_count'],
                         'Anonymization count mismatch')
-            require(bam['text'][-100:] in fetched['text'], 'BAM final text quote failed')
         filtered = run('pool.py', 'search', 'kira', '--court-type', 'bam')
         require(filtered['total_matches'] == manifest['collections']['bam-selected.jsonl'],
                 'BAM filter missed records')
@@ -141,12 +140,18 @@ def check_pool(manifest, pool):
                     fetched['source_url'] == decision['source_url'] and
                     fetched['research_notes'] == decision['research_notes'],
                     'Yargitay text or provenance lost')
-            require(decision['text'][-100:] in fetched['text'], 'Yargitay final text quote failed')
         filtered = run('pool.py', 'search', 'kira', '--court-type', 'yargitay', '--limit', '2000')
         require({r['document_id'] for r in filtered['results']}.issuperset(
                 {r['document_id'] for r in selected}), 'Yargitay filter missed additions')
         require(all(r['court_type'] == 'yargitay' for r in filtered['results']),
                 'Yargitay filter leaked')
+    # Seçki kimlikleri (UUID) için CLI quote yolunu gerçek veriyle bir kez sına.
+    for name in ('bam-selected.jsonl', 'yargitay-selected.jsonl'):
+        if (ROOT / 'data' / name).exists():
+            sample = read_jsonl(ROOT / 'data' / name)[0]
+            quoted = run('pool.py', 'quote', str(sample['document_id']), '--', sample['text'][-100:])
+            require(quoted['exact_match'] and quoted['pool_file'] == name,
+                    f'{name}: final text quote failed')
     # Kod tarafındaki kapsam uyarıları ve kapanış tarihi uyarısı veriyle eşleşmeyi sürdürmeli.
     for key in ('1018247800', '504158200'):
         require(key in by_id and by_id[key]['out_of_scope'] and by_id[key]['research_notes'],
@@ -295,6 +300,8 @@ def check_frontmatter():
             and meta['name'] == SKILL_NAME, 'Skill name invalid')
     require(0 < len(meta['description']) <= 1024 and not ({'<', '>'} & set(meta['description'])),
             'Skill description invalid')
+    # Codex önceki skill belgelerinde açıklamayı tek satır ve 500 karakterle sınırlıyordu; bayt sayımına karşı temkinli.
+    require(len(meta['description'].encode('utf-8')) <= 500, 'Skill description exceeds 500-byte Codex budget')
     require('$' + meta['name'] in (ROOT / 'agents/openai.yaml').read_text(encoding='utf-8'),
             'openai.yaml invocation does not match skill name')
     require(len(skill.splitlines()) <= 500, 'SKILL.md exceeds 500 lines')

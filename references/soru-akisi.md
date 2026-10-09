@@ -39,7 +39,7 @@ Rejim veya taraf sıfatı belirsizse [ön inceleme rehberine](kira-rejimi-ve-tar
 
 Önce talebin TBK 344 kapsamında tespit, sözleşmedeki artış şartının yorumu veya TBK 138 kapsamında uyarlama olup olmadığını ayır. Tespit sorularını uyarlamaya, uyarlama koşullarını tespite taşıma. Yalnız ileri sürülen değişikliğe ilişkin soruları seç. [Kaynaklar ve yorum sınırları](tahliye-ve-uyarlama-kontrol.md).
 
-- Sözleşme ne zaman yapıldı? Kira bedeli Türk lirası olarak mı, yabancı para olarak mı kararlaştırıldı? Yabancı paraysa TBK 344/4'teki beş yıllık süre doldu mu?
+- Sözleşme ne zaman yapıldı? Kira bedeli Türk lirası olarak mı, yabancı para olarak mı kararlaştırıldı? Yabancı paraysa bu kararlaştırma 1567 sayılı Kanun ve ona dayanan düzenlemeler bakımından geçerli mi, sonradan Türk lirasına çevrildi mi ([mevzuat haritası](mevzuat-haritasi.md)); sözleşme başlangıcından itibaren beş yıl doldu mu? TBK 344/4'e göre beş yıl geçmedikçe kira bedelinde değişiklik yapılamaz; ancak aynı fıkra TBK 138'i saklı tuttuğundan beş yılın dolmamış olması tek başına uyarlama talebini engellemez. Beş yıl dolduysa 344/4 son cümlesi uyarınca 344/3'e göre bedel belirleme yolu da ayrıca değerlendirilir.
 - Sözleşmeden sonra hangi olağanüstü değişiklik, ne zaman ortaya çıktı? Bu değişiklik sözleşme yapılırken öngörülebilir miydi? Uyarlama isteyen taraftan kaynaklanıyor mu?
 - Değişiklik edimler arasındaki dengeyi nasıl ve ne ölçüde bozdu? Bunu gösteren kapanma/kısıtlama kararı, ciro, kur veya ödeme kayıtları neler?
 - Uyarlama istenen dönemin kiraları ödendi mi? Ödendiyse haklar saklı tutularak mı ödendi; çekince hangi belgede yer alıyor?

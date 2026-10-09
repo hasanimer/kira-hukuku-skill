@@ -174,18 +174,19 @@ Tarihler YYYY-AA-GG, GG.AA.YYYY veya GG/AA/YYYY biçiminde girilebilir; `deadlin
 **Kira dönemi ve süre takvimi hesaplayıcı (`hesap.py`):** kira dönemi çizelgesini, beş yıllık dönem adaylarını (TBK 344/3), hedef dönem için TBK 345/2–3 tarih koşullarını (yeni dönemden en az otuz gün önce dava veya yazılı bildirim; dönem sonuna kadar dava) ve TBK 347 on yıllık uzama sonrası fesih bildirimi takvimini yerel olarak hesaplar. TBK 345/1 uyarınca tespit davası her zaman açılabilir; araç genel dava açma son günü vermez, yalnız kararın hangi dönemden etkili olabileceğine ilişkin takvim adayı üretir:
 
 ```sh
-# Kira tespiti hedef dönem analizi (artış şartı, ihtar ve dava tarihi denetimi; geçiş hükmü uyarıları)
+# Kira tespiti hedef dönem analizi: artış şartı, ihtar ve dava tarihi denetimi, geçiş hükmü uyarıları
 python scripts/hesap.py tespit --baslangic 01.07.2018 --artis-sarti --dava-tarihi 15.05.2024 --hedef-donem 01.07.2024
 
-# 10 yıllık uzama süresi sonu tahliye takvimi (--sure-yil: ilk sözleşme süresi, yıl; tam yıl değilse --sure-ay
-# veya --ilk-bitis; hiçbiri verilmezse 12 ay varsayılır ve çıktıda uyarılır)
+# 10 yıllık uzama süresi sonu tahliye takvimi
 python scripts/hesap.py tahliye-10yil --baslangic 01.01.2015 --sure-yil 1
-python scripts/hesap.py tahliye-10yil --baslangic 01.01.2015 --sure-yil 3   # ilk hedef 01.01.2029; ihtar en geç 30.09.2028 (temkinli; yıldönümü eşiği 01.10.2028)
-python scripts/hesap.py tahliye-10yil --baslangic 01.01.2015 --sure-ay 11   # ilk hedef 01.12.2026; ihtar en geç 30.08.2026 (temkinli)
+python scripts/hesap.py tahliye-10yil --baslangic 01.01.2015 --sure-yil 3
+python scripts/hesap.py tahliye-10yil --baslangic 01.01.2015 --sure-ay 11
 
 # Kronolojik kira dönemleri, beş yıllık takvim döngüsü ve koşullu TBK 344/3 aday çizelgesi
 python scripts/hesap.py donemler --baslangic 15.09.2017
 ```
+
+`--sure-yil` ilk sözleşme süresidir (yıl); tam yıl değilse `--sure-ay` veya `--ilk-bitis` verin, hiçbiri verilmezse 12 ay varsayılır ve çıktıda uyarılır. Üç yıllık örnekte ilk hedef 01.01.2029, en geç ihtar 30.09.2028'dir (temkinli; yıldönümü eşiği 01.10.2028); on bir aylık örnekte ilk hedef 01.12.2026, en geç ihtar 30.08.2026'dır (temkinli; yıldönümü eşiği 01.09.2026).
 
 ## Çalışma akışı
 
@@ -201,7 +202,7 @@ Skill, ilgili kaynakları paket içinden seçerek okur; kararlarla yeniden eğit
 
 ## Veri kapsamı
 
-Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konuları [modüller](references/moduller.md) üzerinden bağlı karar ve mevzuat kaynaklarında araştırılır. İsteğe bağlı [TypeSafe entegrasyonu](references/typesafe.md), karma talepleri yönlendirir ve karar adaylarını sıralar; hukuki sonuç veya dava başarı oranı üretmez. TypeSafe kullanımı ayrıca API anahtarı ve ağ erişimi gerektirir; ücretli canlı çağrı yalnız kullanıcı istediğinde veya onay verdiğinde yapılır.
+Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konularında da önce yerel havuz ve BAM/Yargıtay seçkileri aranır; sonuç yetersizse [modüller](references/moduller.md) üzerinden bağlı karar ve mevzuat kaynaklarında odaklı araştırma yapılır ve dışarıdan bulunan kararlar ayrı işaretlenir ([dış kaynak kuralları](references/havuz.md#dış-kaynak-araçları)). İsteğe bağlı [TypeSafe entegrasyonu](references/typesafe.md), karma talepleri yönlendirir ve karar adaylarını sıralar; hukuki sonuç veya dava başarı oranı üretmez. TypeSafe kullanımı ayrıca API anahtarı ve ağ erişimi gerektirir; ücretli canlı çağrı yalnız gönderilecek içerik kullanıcıya gösterilip onayı alındıktan sonra yapılır.
 
 | | |
 | :--- | :--- |

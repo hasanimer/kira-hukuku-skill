@@ -137,13 +137,21 @@ class NetworkErrorTests(unittest.TestCase):
             {'provider': 'p', 'source_id': '1', 'text': 'Metin', 'full_text': False}]})
 
     def test_http_error_hides_body_and_key(self):
-        error = urllib.error.HTTPError(ENDPOINT, 401, 'Unauthorized', {}, io.BytesIO(b'sk-SECRET'))
+        body = io.BytesIO(b'sk-SECRET')
+        error = urllib.error.HTTPError(ENDPOINT, 401, 'Unauthorized', {}, body)
         with mock.patch.object(triage._OPENER, 'open', side_effect=error):
             with self.assertRaises(ValueError) as ctx:
                 evaluate(self.request, 'sk-SECRET')
         self.assertNotIn('sk-SECRET', str(ctx.exception))
         self.assertIn('HTTP 401', str(ctx.exception))
         self.assertIsNone(ctx.exception.__cause__)
+        self.assertTrue(body.closed)  # HTTPError'ın tuttuğu yanıt kapatılır (ResourceWarning yok)
+
+    def test_http_error_without_body_is_closed_safely(self):
+        error = urllib.error.HTTPError(ENDPOINT, 500, 'Server Error', {}, None)
+        with mock.patch.object(triage._OPENER, 'open', side_effect=error):
+            with self.assertRaisesRegex(ValueError, 'HTTP 500'):
+                evaluate(self.request, 'sk-test')
 
     def test_url_error_reports_reason(self):
         with mock.patch.object(triage._OPENER, 'open', side_effect=urllib.error.URLError('x')):
@@ -221,8 +229,11 @@ class ReadKeyTests(unittest.TestCase):
         return handle.name
 
     def read_file(self, content, environ=None):
+        # Geçici dosya ortam temizlenmeden önce oluşturulur: TEMP/TMP silinmişken ilk
+        # gettempdir() Windows'ta çalışma klasörüne (depoya) düşüp önbelleğe alınabilir.
+        path = self.env_file(content)
         with mock.patch.dict(os.environ, environ or {}, clear=environ is None):
-            return read_key(self.env_file(content))
+            return read_key(path)
 
     def test_env_file_parsing(self):
         cases = {
@@ -260,7 +271,8 @@ class ReadKeyTests(unittest.TestCase):
                 read_key()
 
     def test_malformed_key_is_rejected_without_echo(self):
-        for bad in ('sk-gizli\nX', 'sk-gizli\rX: y', 'sk gizli', 'sk-gizliş', 'sk-gizli\x7f'):
+        for bad in ('sk-gizli\nX', 'sk-gizli\rX: y', 'sk gizli', 'sk-gizliş', 'sk-gizli\x7f',
+                    '"sk-gizli"', "'sk-gizli'"):
             with self.subTest(bad=bad):
                 with mock.patch.dict(os.environ, {'TYPESAFE_API_KEY': bad}):
                     with self.assertRaises(ValueError) as ctx:
@@ -270,6 +282,12 @@ class ReadKeyTests(unittest.TestCase):
         with self.assertRaises(ValueError) as ctx:
             self.read_file('TYPESAFE_API_KEY=sk-gizli şifre\n')
         self.assertNotIn('sk-gizli', str(ctx.exception))
+        # Kapanmamış tırnak: değer tırnakla birlikte kalır ve gönderilmeden reddedilir.
+        for content in ('TYPESAFE_API_KEY="sk-gizli\n', "TYPESAFE_API_KEY='sk-gizli # not\n"):
+            with self.subTest(content=content):
+                with self.assertRaises(ValueError) as ctx:
+                    self.read_file(content)
+                self.assertNotIn('sk-gizli', str(ctx.exception))
 
 
 class CliTests(unittest.TestCase):
@@ -311,9 +329,25 @@ class CliTests(unittest.TestCase):
         self.assertTrue(stderr.startswith('HATA: '), stderr)
         self.assertIn('zaten var', stderr)
         self.assertEqual(out.read_bytes(), before)
-        proc = self.run_cli(str(self.input), '--output', str(self.dir / 'yok' / 'sonuc.json'))
+        proc = self.run_cli(str(self.input), '--output', str(self.dir / 'yok' / 'sonuc.json'),
+                            TYPESAFE_API_KEY='')
         self.assertEqual(proc.returncode, 1)
         self.assertIn('Çıktı klasörü yok', proc.stderr.decode('utf-8'))
+
+    def test_utf16_and_bom_input_accepted(self):
+        # Windows PowerShell 5.1'de `>` ve Out-File varsayılanı BOM'lu UTF-16LE'dir.
+        data = json.loads(self.input.read_text(encoding='utf-8'))
+        for encoding in ('utf-16', 'utf-8-sig'):
+            with self.subTest(encoding=encoding):
+                self.input.write_text(json.dumps(data, ensure_ascii=False), encoding=encoding)
+                proc = self.run_cli(str(self.input), '--dry-run')
+                self.assertEqual(proc.returncode, 0, proc.stderr.decode('utf-8', 'replace'))
+                self.assertEqual(json.loads(proc.stdout.decode('utf-8'))['state']['query'],
+                                 self.query)
+        self.input.write_bytes(json.dumps(data, ensure_ascii=False).encode('cp1254'))
+        proc = self.run_cli(str(self.input), '--dry-run')
+        self.assertEqual(proc.returncode, 1)
+        self.assertIn('HATA: Girdi UTF-8 veya UTF-16 değil', proc.stderr.decode('utf-8'))
 
     def test_invalid_input_json_is_labelled(self):
         self.input.write_text('{bozuk', encoding='utf-8')

@@ -74,6 +74,17 @@ class CorpusFigureTests(unittest.TestCase):
         for phrase in expected:
             self.assertPhrase(phrase, self.readme, 'README.md')
 
+    def test_skill_period_figures_match_data(self):
+        # SKILL.md ajana havuzun yaş dağılımını verir; veri değişirse bu sayılar da güncellenmeli.
+        years = collections.Counter(int(r['karar_tarihi'][:4]) for r in self.rows)
+        n1015 = sum(v for y, v in years.items() if 2010 <= y <= 2015)
+        n2020 = sum(v for y, v in years.items() if y >= 2020)
+        pre_tbk = sum(r['karar_tarihi'] < '2012-07-01' for r in self.rows)  # TBK: 01.07.2012
+        for phrase in (f"{tr(len(self.rows))} kaydın {tr(n1015)}'",
+                       f"{tr(pre_tbk)} karar TBK'nın yürürlüğünden",
+                       f"yalnız {tr(n2020)} karar 2020 ve sonrası"):
+            self.assertPhrase(phrase, self.skill, 'SKILL.md')
+
 
 class ValidateHelperTests(unittest.TestCase):
     def test_heading_slugs_follow_github_rules(self):

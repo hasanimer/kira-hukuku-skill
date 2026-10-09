@@ -110,8 +110,13 @@ def _transitional_notes(target_start: date) -> List[str]:
         notes.append("Kiracı tacir veya özel/kamu hukuku tüzel kişisi olan işyeri kirasıysa 6217 s.K. geçici 2 (6353 değişikliği) "
                      "uyarınca TBK 344, 01.07.2012'den itibaren 8 yıl uygulanmamış olabilir (TBK 345 bu listede yoktur); "
                      "sözleşme hükümleri ve mülga 818 s. BK incelenir, 01.07.2020 sınır günü ayrıca değerlendirilir.")
+        if target_start >= date(2019, 1, 1):
+            notes.append("2019 ve sonrası yenilemelerde 7161 s.K. m. 59 ile 6217 geçici 2'ye eklenen TÜFE fıkrasını ayrıca "
+                         "incele (references/uygulama-rehberi.md).")
     elif target_start < date(2012, 7, 1):
-        notes.append("Hedef dönem 01.07.2012 öncesinde başlıyor; mülga 818 s. BK ve 6101 s. Yürürlük Kanunu geçiş hükümleri incelenir.")
+        notes.append("Hedef dönem 01.07.2012 öncesinde başlıyor; mülga 818 s. BK, kapsamına giren çatılı taşınmazlarda (konut, "
+                     "çatılı işyeri) mülga 6570 s. Gayrimenkul Kiraları Hakkında Kanun, bu dönemin Yargıtay içtihadı ve 6101 s. "
+                     "Yürürlük Kanunu geçiş hükümleri incelenir.")
     return notes
 
 
@@ -187,8 +192,19 @@ def compute_tespit(
                          "güvenli yol, artış bildiriminin bu tarihe kadar kiracıya yazılı olarak ulaşmasıdır; bu durumda "
                          "arabuluculuk tamamlanıp dava hedef dönem sonuna kadar açılabilir.")
     elif arabuluculuk is None:
-        notes.append("Dava tarihi verilmedi: 01.09.2023 ve sonrasında açılacak kira tespiti davasında HUAK 18/B-1-a uyarınca "
-                     "dava şartı arabuluculuk aranır; arabuluculuk süresini TBK 345 eşiğinden önce planla.")
+        lead = ("Dava tarihi verilmedi: 01.09.2023 ve sonrasında açılacak kira tespiti davasında HUAK 18/B-1-a uyarınca "
+                "dava şartı arabuluculuk aranır (HUAK 18/B-2: üç hafta, zorunlu hâlde en fazla bir hafta uzatma). ")
+        if has_increase_clause or ihtar_suresinde:
+            route = "TBK 345/3 (artış şartı)" if has_increase_clause else "TBK 345/2 süresinde yazılı bildirim"
+            notes.append(lead + f"{route} yolunda hükmün hedef dönemden etkili olması için arabuluculuk son tutanağı "
+                         f"düzenlenmiş ve dava en geç {format_date(target_end)} tarihinde açılmış olmalıdır; bu tarih genel "
+                         "dava son günü değildir, araç arabuluculuk süresini hesaplamaz.")
+        else:
+            notes.append(lead + "Artış şartı ve süresinde yazılı bildirim olmayan yolda hükmün hedef dönemden etkili olması "
+                         f"için arabuluculuk son tutanağı düzenlenmiş ve dava en geç {format_date(deadline_notice)} tarihinde "
+                         "açılmış olmalıdır; arabuluculuk başvurusunun bu eşiği durdurduğu veya karşıladığı varsayılmaz. Daha "
+                         "güvenli yol, artış bildiriminin bu tarihe kadar kiracıya yazılı olarak ulaşmasıdır; bu durumda "
+                         f"arabuluculuk tamamlanıp dava hedef dönem sonuna ({format_date(target_end)}) kadar açılabilir.")
     if condition is None:
         notes.append("Dava tarihi verilmedi; hedef döneme etki henüz doğrulanamaz.")
     elif condition:
@@ -252,6 +268,7 @@ def compute_tahliye_10yil(
     """
     if sum(value is not None for value in (initial_years, initial_months, first_end)) > 1:
         raise ValueError("--sure-yil, --sure-ay ve --ilk-bitis birlikte verilemez")
+    notes: List[str] = []
     if initial_years is not None:
         if initial_years < 1:
             raise ValueError("İlk sözleşme süresi en az 1 yıl olmalıdır")
@@ -282,15 +299,32 @@ def compute_tahliye_10yil(
         month_diff = (first_end.year - start_date.year) * 12 + first_end.month - start_date.month
         if add_months(start_date, month_diff) == first_end:
             initial_months = month_diff
+        # Sözleşmedeki "bitiş tarihi" çoğu kez son kullanım günüdür; ertesi gün başlangıçla hizalıysa uyar, hesabı değiştirme.
+        next_day = first_end + timedelta(days=1)
+        next_diff = (next_day.year - start_date.year) * 12 + next_day.month - start_date.month
+        if initial_months is None and add_months(start_date, next_diff) == next_day:
+            notes.append(
+                f"--ilk-bitis {format_date(first_end)} sözleşmedeki son kullanım günü gibi görünüyor; ilk sürenin bittiği "
+                f"yıldönümü sınırı {format_date(next_day)} olabilir. Girdi son kullanım günüyse yıldönümü sınırları ve "
+                f"yıldönümü ihtar eşikleri bir gün erken hesaplanmıştır; sözleşmeyi kontrol edip gerekirse "
+                f"--ilk-bitis {format_date(next_day)} ile yeniden çalıştır.")
 
         def boundary(years_after_first_end: int) -> date:
             return add_months(anchor, 12 * years_after_first_end)
+
+    def chained_boundary(years_after_first_end: int) -> date:
+        # Kırpılmış ilk süre bitiminden zincirleme okuma; --ilk-bitis girdisinde boundary() ile aynıdır.
+        return add_months(first_end, 12 * years_after_first_end)
+
+    def latest_notice(years_after_first_end: int) -> date:
+        # Temkinli en geç ihtar: iki okumadan erken olan yıldönümünün bir önceki gününden üç ay geri.
+        edge = min(boundary(years_after_first_end), chained_boundary(years_after_first_end))
+        return sub_months(edge - timedelta(days=1), 3)
 
     whole_years = initial_months // 12 if initial_months is not None and initial_months % 12 == 0 else None
     calculation = calculate('tbk347', first_end)
     ten_year_end = boundary(10)
     target = boundary(11)
-    notes: List[str] = []
     if source == "varsayilan_12_ay":
         notes.append("İlk sözleşme süresi verilmedi; 12 ay (1 yıl) varsayıldı. Sözleşmedeki ilk süreyi --sure-yil, --sure-ay "
                      "veya --ilk-bitis ile ver; çok yıllı sözleşmede bu varsayım tarihleri yıllarca erken gösterir.")
@@ -302,13 +336,14 @@ def compute_tahliye_10yil(
     def clamp_note(label: str, value: date, years_after_first_end: int) -> None:
         if source == "ilk_bitis":
             return
-        chained = add_months(first_end, 12 * years_after_first_end)
+        chained = chained_boundary(years_after_first_end)
         if chained != value:
             notes.append(f"Ay sonu kırpması (ör. 29 Şubat başlangıcı): {label} başlangıçtan tek adımda yıldönümü "
                          f"{format_date(value)}, kırpılmış ilk süre bitiminden ({format_date(first_end)}) zincirleme okumada "
-                         f"{format_date(chained)} olur. İhtarı erken eşik olan "
-                         f"{format_date(sub_months(chained - timedelta(days=1), 3))} tarihine kadar ulaştır (zincirleme okumada "
-                         f"yıldönümü eşiği {format_date(sub_months(chained, 3))}); uygulanacak sınırı sözleşme ve belgelerle doğrula.")
+                         f"{format_date(chained)} olur. En geç ihtar alanı bu nedenle erken eşik olan "
+                         f"{format_date(latest_notice(years_after_first_end))} tarihine çekildi; ihtarı bu tarihe kadar ulaştır "
+                         f"(zincirleme okumada yıldönümü eşiği {format_date(sub_months(chained, 3))}, tek adım okumada "
+                         f"{format_date(sub_months(value, 3))}); uygulanacak sınırı sözleşme ve belgelerle doğrula.")
 
     clamp_note("ilk hedef", target, 11)
     following = []
@@ -318,7 +353,7 @@ def compute_tahliye_10yil(
             "uzama_yili": 11 + extra,
             "toplam_kira_yili": whole_years + 11 + extra if whole_years is not None else None,
             "donem_sonu": format_date(year_boundary),
-            "en_gec_ihtar_tarihi": format_date(sub_months(year_boundary - timedelta(days=1), 3)),
+            "en_gec_ihtar_tarihi": format_date(latest_notice(11 + extra)),
             "yildonumu_ihtar_esigi": format_date(sub_months(year_boundary, 3)),
             "tahliye_dava_donemi": None})
         clamp_note(f"{11 + extra}. uzama yılı sonu", year_boundary, 11 + extra)
@@ -328,7 +363,8 @@ def compute_tahliye_10yil(
     notes.extend([
         "Tarihler yıldönümü sınırlarıdır; bir önceki kullanım günüyle karıştırılmamalı (son kullanım günleri ayrı alanlarda verilir).",
         "İlk sözleşme süresi + 10 uzama yılı + izleyen 1 yıl esas alınır.",
-        "en_gec_ihtar_teblig_tarihi temkinli okumadır (uzama yılı yıldönümünden bir önceki gün biter); yildonumu_ihtar_esigi "
+        "en_gec_ihtar_teblig_tarihi temkinli okumadır (uzama yılı yıldönümünden bir önceki gün biter; ay sonu nedeniyle tek "
+        "adım ve zincirleme okuma ayrışırsa erken olan yıldönümü esas alınır); yildonumu_ihtar_esigi "
         "kararlardaki 'yıldönümünden yıldönümüne' dönem anlatımına karşılık gelir. Daha önce tebliğ edilmiş bir ihtarı yalnız "
         "temkinli tarihe göre süresiz sayma.",
         "TBK 347 için otomatik bir aylık dava penceresi veya TBK 353 uzaması üretilmez.",
@@ -346,7 +382,7 @@ def compute_tahliye_10yil(
         "on_yillik_uzama_son_kullanim_gunu": format_date(ten_year_end - timedelta(days=1)),
         "toplam_yil": whole_years + 11 if whole_years is not None else None,
         "ilk_fesih_donem_sonu": format_date(target),
-        "en_gec_ihtar_teblig_tarihi": format_date(sub_months(target - timedelta(days=1), 3)),
+        "en_gec_ihtar_teblig_tarihi": format_date(latest_notice(11)),
         "yildonumu_ihtar_esigi": format_date(sub_months(target, 3)),
         "tahliye_dava_acma_araligi": None,
         "izleyen_uzama_yillari": following,

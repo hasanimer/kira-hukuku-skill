@@ -53,6 +53,9 @@ class DeadlineTests(unittest.TestCase):
         self.assertEqual(self.dates('tbk350', '2026-01-31'), {'bir_aylik_dava_ham_sonu': '2026-02-28'})
         result = calculate('tbk350', date(2026, 1, 31))
         self.assertIn('2025/1495', ' '.join(result['pending_checks']))
+        # Girdi yalnız ilk süre sonu değildir; TBK 347/1 ile uzamış sözleşmede içinde bulunulan uzama yılının bitimidir.
+        self.assertIn('uzama yılı', result['meaning'])
+        self.assertIn('TBK 347/1', result['meaning'])
         # TBK 353: "en geç" sürede ulaşan bildirim yeter; daha önce yapılan bildirim dışlanmaz.
         notice = [c for c in result['pending_checks'] if 'TBK 353' in c]
         self.assertEqual(len(notice), 1)

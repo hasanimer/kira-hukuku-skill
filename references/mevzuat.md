@@ -10,7 +10,7 @@ Diğer kanunların hangi meselede araştırılacağı ve sık karıştırılan d
 
 Alınma zamanı kaynak JSON dosyasındadır. Paket sabit kopyadır; sonraki değişiklikleri ve geçmiş olayda uygulanacak sürümü ayrıca kontrol edin. Geçici hükmün metinde bulunması bugün uygulanacağı anlamına gelmez.
 
-Depo kökünde:
+Skill kökünde çalıştır; başka çalışma dizininde betiğin mutlak yolunu kullan. `python` (Python 3.10 veya üstü) bulunmazsa `python3`, Windows'ta gerekirse `py -3` kullan:
 
 ```sh
 python scripts/tbk.py

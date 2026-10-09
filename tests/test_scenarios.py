@@ -84,7 +84,8 @@ class ScenarioTests(unittest.TestCase):
         by_id = {row['id']: row for row in result['scenarios']}
         self.assertEqual(by_id['K6']['matched_terms'], ['depozito', 'kira'])
         self.assertIn('show', result['next'])
-        self.assertLess(len(proc.stdout.encode('utf-8')), 10000)
+        # Satır başına bütçe: katalog büyüdükçe sınır da büyür; tam kayıt (~10 KB) sızarsa aşılır.
+        self.assertLess(len(proc.stdout.encode('utf-8')), 500 + 1500 * result['total'])
 
 
 class CatalogGuardTests(unittest.TestCase):

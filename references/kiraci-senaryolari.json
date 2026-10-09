@@ -76,7 +76,7 @@
         "eb8af224-a46c-4101-867f-2d58b76a0aef",
         "e5c8048b-4685-4456-8ad1-39133abef50f"
       ],
-      "coverage": "İki karar farklı yöndedir. İstanbul BAM 35. HD 2017/1243 (eb8af224): indirim hükmü; iki tespit raporu arasındaki çelişki, TBK 306 kapsamında giderim için süre verilip verilmediği, kiracı kusuru ve TBK 307'deki indirim dönemi (kiraya verenin öğrenmesinden giderilmeye kadar) incelenmeden kurulduğu için kaldırılıp iade edildi; kesin oran veya tek taraflı eksik ödeme izni değildir. Yargıtay 3. HD 2023/2841 (e5c8048b) kiracı aleyhinedir: ayıpların giderilmesi için süre verilmeden ve bildirilen fesih tarihlerinde tahliye edilmeden yapılan fesih haklı sayılmadı; anahtar teslimine kadar kira ve TBK 325 makul süre kirası yönünden bozuldu. İndirim (TBK 307), giderim/fesih (TBK 306) ve zarar tazmini (TBK 308) ayrı taleplerdir.",
+      "coverage": "İki karar farklı yöndedir. İstanbul BAM 35. HD, E. 2017/1243, K. 2017/1468 (eb8af224; künye metinde yer almaz, Dejure üst verisidir): indirim hükmü; iki tespit raporu arasındaki çelişki, TBK 306 kapsamında giderim için süre verilip verilmediği, kiracı kusuru ve TBK 307'deki indirim dönemi (kiraya verenin öğrenmesinden giderilmeye kadar) incelenmeden kurulduğu için kaldırılıp iade edildi; kesin oran veya tek taraflı eksik ödeme izni değildir. Yargıtay 3. HD, E. 2023/2841, K. 2024/1036 (e5c8048b) kiracı aleyhinedir: ayıpların giderilmesi için süre verilmeden ve bildirilen fesih tarihlerinde tahliye edilmeden yapılan fesih haklı sayılmadı; BAM kararı HMK 373/1 ile kaldırılıp ilk derece kararı anahtar teslimine kadar kira ve TBK 325 makul süre kirası yönünden kiraya veren yararına bozuldu (2015 sözleşmesi; 6217 geçici 2 dönemi). İndirim (TBK 307), giderim/fesih (TBK 306) ve zarar tazmini (TBK 308) ayrı taleplerdir.",
       "counterfacts": [
         "Ayıbın kiracının kullanımından doğması",
         "Ayıbın giderildiği dönemin talebe dahil edilmesi"
@@ -405,7 +405,7 @@
         "aa156eaa-5348-4eef-963a-75a3f84b14a7",
         "9ca8de68-9bcb-444d-9c07-3257427162e2"
       ],
-      "coverage": "İki kararın sonucu da kiracı aleyhinedir. İstanbul BAM 35. HD 2025/3212 kararındaki erken arabuluculuk değerlendirmesi, 26.05.2025 tarihli içtihattan önce açılmış davaya özgüdür. TBK 350 için Yargıtay 3. HD E. 2025/1495 K. 2025/3048 (26.05.2025), başvurunun dava açma hakkı doğduktan sonra ve dava süresi içinde yapılmasını arar (kart C01, tahliye-ve-uyarlama-kontrol.md). TBK 351/1 yönünden uyuşmazlık giderilmemiştir (E. 2025/3292 K. 2025/5039); yeni malik dosyasında ayrıca araştır. Gaziantep BAM 2017/286 kararı güncel arabuluculuk koşullarına kaynak değildir.",
+      "coverage": "İki kararın sonucu da kiracı aleyhinedir. İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212 (aa156eaa; E./K. numaraları metinde yer almaz, Dejure üst verisidir) kararındaki erken arabuluculuk değerlendirmesi, 26.05.2025 tarihli içtihattan önce açılmış davaya özgüdür. TBK 350 için Yargıtay 3. HD E. 2025/1495 K. 2025/3048 (26.05.2025), başvurunun dava açma hakkı doğduktan sonra ve dava süresi içinde yapılmasını arar (kart C01, tahliye-ve-uyarlama-kontrol.md). TBK 351/1 yönünden uyuşmazlık giderilmemiştir (E. 2025/3292 K. 2025/5039); yeni malik dosyasında ayrıca araştır. Gaziantep BAM 3. HD, E. 2017/288, K. 2017/286 (9ca8de68; künye metinde yer almaz, Dejure üst verisidir) kararı güncel arabuluculuk koşullarına kaynak değildir.",
       "counterfacts": [
         "İhtiyaç anlatımıyla çelişen somut belgeler",
         "Farklı dava tarihi ve arabuluculuk kronolojisi"

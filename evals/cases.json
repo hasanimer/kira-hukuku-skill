@@ -151,7 +151,7 @@
       "criteria": [
         {
           "id": "analysis",
-          "description": "2025/3048 kararına göre arabuluculuğa dava hakkı doğduktan sonra ve dava süresi içinde başvurulması gerektiğini, 10–20.12.2025 başvurusunun 31.12.2025 dönemi için dava şartını sağladığının varsayılamayacağını tespit et. Daha düşük riskli yol olarak 31.12.2025'ten sonra yeni arabuluculuk başvurusunu ve son tutanaktan sonra davayı göster: bir aylık sürenin ham sonu 31.01.2026'dır (tatil kontrolü ayrıca), başvurudan son tutanağa kadar süre işlemez (HUAK 18/A/15). Süre içinde kiracıya ulaşan TBK 353 yazılı dava bildirimiyle dava açma süresinin bir kira yılı uzayabileceğini; süre kaçırılırsa yolun bu dönem için kapanabileceğini ve sonraki imkânın 31.12.2026 uzama yılı sonundan başlayan bir aylık süre olduğunu koşullu olarak belirt.",
+          "description": "2025/3048 kararına göre arabuluculuğa dava hakkı doğduktan sonra ve dava süresi içinde başvurulması gerektiğini, 10–20.12.2025 başvurusunun 31.12.2025 dönemi için dava şartını sağladığının varsayılamayacağını tespit et. Daha düşük riskli yol olarak 31.12.2025'ten sonra yeni arabuluculuk başvurusunu ve son tutanaktan sonra davayı göster: bir aylık sürenin ham sonu 31.01.2026'dır (tatil kontrolü ayrıca), başvurudan son tutanağa kadar süre işlemez (HUAK 18/A/15).",
           "critical": true
         },
         {
@@ -178,7 +178,7 @@
       "criteria": [
         {
           "id": "analysis",
-          "description": "Kararın 351/1 hakkında uyuşmazlık yokluğundan karar verilmesine yer olmadığı sonucunu koru; 351/1'de erken başvurunun geçerliliğinin Yargıtayca birleştirilmediğini, 2025/3048'deki 'dava açma hakkı doğduktan sonra başvuru' gerekçesinin kıyasen uygulanması riskini ve altı ay dolduktan sonra yeniden arabuluculuğa başvurmanın daha düşük riskli seçenek olduğunu belirt.",
+          "description": "Kararın 351/1 hakkında uyuşmazlık yokluğundan karar verilmesine yer olmadığı sonucunu koru; 351/1'de erken başvurunun geçerliliği hakkında Yargıtay'ın esastan bir ölçüt koymadığını (kararın içtihadı birleştirme değil, BAM kararları arasındaki uyuşmazlığın giderilmesi incelemesi olduğunu), 2025/3048'deki 'dava açma hakkı doğduktan sonra başvuru' gerekçesinin kıyasen uygulanması riskini ve altı ay dolduktan sonra yeniden arabuluculuğa başvurmanın daha düşük riskli seçenek olduğunu belirt.",
           "critical": true
         },
         {
@@ -1216,8 +1216,8 @@
       ],
       "fictional": true,
       "prompt": "Konutun yeni maliki mevcut kirayı düşük buluyor ve belirli sözleşmenin bitiminde kiracının çıkmasını istiyor; başka sebep bildirmemiş.",
-      "reference": "references/mevzuat-haritasi.md",
-      "anchor": "Konut/çatılı işyerinde salt süre bitimi tahliye sebebi yapılmaz",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "| TBK 351/1 yeni malik |",
       "criteria": [
         {
           "id": "analysis",
@@ -1331,17 +1331,17 @@
       "criteria": [
         {
           "id": "analysis",
-          "description": "01.10.2023 yenilemesinin geçici 2. madde kapsamına (02.07.2023–01.07.2024) girdiğini ve sınırı aşan anlaşmanın fazla miktar yönünden geçersiz olduğunu belirt; TÜFE oranının %25'in altında kalıp kalmadığını kontrol et. Genel iade/sebepsiz zenginleşme (TBK 77 vd.; TBK 78'deki kendini borçlu sanarak ödeme koşulu ve bunun geçici maddedeki özel geçersizlikle ilişkisi) ile İİK 72 istirdadını ayır. Zamanaşımı sorununu ödeme tarihleriyle birlikte açıkça işaretle (TBK 82: öğrenmeden iki yıl, her hâlde on yıl; sözleşmeye dayalı nitelendirmede TBK 146; talebin nitelendirilmesine ilişkin tartışma). Dava öncesi HUAK 18/B dava şartı arabuluculuğunu ve sulh hukuk görevini kontrol et.",
+          "description": "01.10.2023 yenilemesinin geçici 2. madde kapsamına (02.07.2023–01.07.2024) girdiğini ve %25'i (önceki kira yılının TÜFE on iki aylık ortalamalara göre değişim oranı daha düşükse o oranı) aşan anlaşmanın fazla miktar yönünden geçersiz olduğunu belirt. İadeyi genel hükümlere (TBK 77 vd.) bağla; malikin rızaen ödeme savunmasını TBK 78'deki kendini borçlu sanarak ödeme koşulu ve geçici maddedeki özel geçersizlikle birlikte değerlendir. Zamanaşımı riskini ödeme tarihleriyle açıkça işaretle (TBK 82: öğrenmeden iki yıl, her hâlde on yıl; sözleşmeye dayalı nitelendirmede TBK 146).",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Sözleşmeyi, yenileme yazışmalarını/protokolü, dönem bazlı dekontları ve açıklamalarını, ilişkinin sürüp sürmediğini ve iade hakkının öğrenildiği tarihe ilişkin olguları iste.",
+          "description": "Sözleşmeyi, yenileme yazışmalarını/protokolü, dönem bazlı dekontları ve açıklamalarını, ilişkinin sürüp sürmediğini, iade hakkının öğrenildiği tarihe ilişkin olguları, arabuluculuğa başvurulup başvurulmadığını ve başvuru/son tutanak tarihlerini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "İhtirazi kayıt yokluğunu otomatik ret, rızaen ödemeyi sınırı aşan anlaşmayı geçerli kılan kesin sebep veya sınır aşımını kesin kabul sebebi sayma; İzmir BAM 23. HD E. 2024/3426 kararını genel içtihat gibi sunma; kesin zamanaşımı sonucu verme.",
+          "description": "İhtirazi kayıt yokluğunu otomatik ret, rızaen ödemeyi sınırı aşan anlaşmayı geçerli kılan kesin sebep veya sınır aşımını kesin kabul sebebi sayma; İzmir BAM 23. HD E. 2024/3426 kararını genel içtihat gibi sunma; kesin zamanaşımı sonucu verme; icra takibi dışında yapılan fazla ödemenin iadesine İİK 72'nin cebri icra tehdidi altında ödeme ve bir yıllık hak düşürücü süre koşullarını uygulama; HUAK 18/B dava şartı arabuluculuğu atlayarak doğrudan dava önerme.",
           "critical": true
         }
       ]
@@ -1586,7 +1586,7 @@
       "criteria": [
         {
           "id": "analysis",
-          "description": "TBK 333 mirasçı fesih hakkını (yasal bildirim süresi, en yakın fesih dönemi sonu) TBK 356 uyarınca birlikte oturanın sözleşmeyi taraf olarak sürdürmesinden ayır; ölümün kiraya verene tek başına tahliye nedeni vermediğini belirt.",
+          "description": "TBK 333 mirasçı fesih hakkını (yasal bildirim süresi ve TBK 329'a göre en yakın fesih dönemi sonu) açıkla; birden çok mirasçı varsa bu hakkın mirasçılık ortaklığına ait olduğunu ve TMK 640 uyarınca elbirliğiyle (mirasçıların birlikte bildirimi, diğerlerinin katılımı/onayı ya da tereke temsilcisi veya yetkili temsilci aracılığıyla) kullanılacağını belirt; eş mirası reddetmedikçe mirasçı olduğundan oğlun tek başına yaptığı bildirimin sözleşmeyi sona erdirmeyeceğini açıkla. Bunu TBK 356 uyarınca ölen kiracıyla birlikte oturan eşin sözleşmeyi taraf olarak sürdürme imkânından ayır; ölümün kiraya verene tek başına tahliye nedeni vermediğini belirt.",
           "critical": true
         },
         {
@@ -1596,7 +1596,7 @@
         },
         {
           "id": "avoid",
-          "description": "Sözleşmenin ölümle kendiliğinden sona erdiğini veya tek mirasçının bildiriminin konutta kalan eşin sürdürme imkânını kesin ortadan kaldırdığını söyleme.",
+          "description": "Sözleşmenin ölümle kendiliğinden sona erdiğini veya tek mirasçının bildiriminin konutta kalan eşin sürdürme imkânını kesin ortadan kaldırdığını söyleme. Oğlun TBK 333 fesih hakkını diğer mirasçılardan bağımsız olarak tek başına kullanabileceğini kesin kabul etme.",
           "critical": true
         }
       ]

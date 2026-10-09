@@ -60,7 +60,10 @@ def calculate(rule, start, *, count=None, unit=None, backward=False):
         basis = 'TBK 92 / HMK 92: hangi rejimin uygulanacağı ayrıca seçilir'
         if backward:
             meaning = ('Geri sayım: girdi hedef tarihtir (dönem/süre bitimi). Çıktı “en az … önce” bildirimin '
-                       'en geç ulaşması gereken ham eşiktir; ay/yıl hesabında karşılık gelen gün, yoksa ayın son günü alınır.')
+                       'en geç ulaşması gereken ham eşiktir; ay/yıl hesabında karşılık gelen gün, yoksa ayın son günü alınır. '
+                       'Girdi bir dönem/süre bitimi olarak yıldönümü ise (ör. TBK 347 kiracı veya kiraya veren bildirimi), '
+                       'son kullanım gününden de geri say ve erken çıkan tarihi esas al; girdi yeni dönem başlangıcıysa '
+                       '(TBK 345/2 otuz gün eşiği) bu ek hesap yapılmaz.')
             checks.append('Geri sayılan eşiği tatil nedeniyle ileri taşıma; bildirimin bu tarihe kadar karşı tarafa '
                           'ulaşmasını ve hedef tarihin belgeden doğru seçildiğini doğrula.')
         else:
@@ -92,9 +95,11 @@ def calculate(rule, start, *, count=None, unit=None, backward=False):
         elif rule == 'tbk350':
             dates['bir_aylik_dava_ham_sonu'] = add_months(start, 1)
             basis = 'TBK 350: ihtiyaç veya yeniden inşa/imar nedeniyle tahliye'
-            meaning = ('Girdi belirli süreli sözleşmede sürenin sonu, belirsiz süreli sözleşmede genel hükümlere göre fesih '
-                       'dönemi ve bildirim süresine uyularak belirlenen tarihtir; ihtar, arabuluculuk veya ilk kira '
-                       'başlangıcı değildir. Çıktı bir aylık dava süresinin ham sonudur. Bir ay 30 güne çevrilmez.')
+            meaning = ('Girdi belirli süreli sözleşmede sürenin sonudur: ilk sözleşme süresinin veya sözleşme TBK 347/1 ile '
+                       'uzamışsa içinde bulunulan uzama yılının bitimi (bir dönemde dava açılmaması hakkı düşürmez; izleyen '
+                       'uzama yılının bitimi yeni girdidir). Belirsiz süreli sözleşmede girdi, genel hükümlere göre fesih '
+                       'dönemi ve bildirim süresine uyularak belirlenen tarihtir. İhtar, arabuluculuk veya ilk kira '
+                       'başlangıcı girdi değildir. Çıktı bir aylık dava süresinin ham sonudur. Bir ay 30 güne çevrilmez.')
             checks.append('Zorunlu arabuluculuk başvurusu dava hakkı doğduktan sonra yapılmalıdır (Yargıtay 3. HD 2025/1495 E., '
                           '2025/3048 K.); erken başvuru dava şartını sağlamış sayılmaz. Başvurudan son tutanağa kadarki '
                           'durma (HUAK 18/A/15) uygulanmadı.')

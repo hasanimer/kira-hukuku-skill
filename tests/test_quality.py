@@ -105,6 +105,24 @@ class QualityTests(unittest.TestCase):
             self.assertEqual(quality.read(path), review)
             self.assertFalse(quality.score(self.suite, quality.read(path))['suite_passed'])
 
+    def test_utf16_review_file_is_accepted(self):
+        # Windows PowerShell 5.1'de `>` ve Out-File varsayılanı BOM'lu UTF-16LE'dir.
+        review = self.review()
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'review.json'
+            for encoding in ('utf-16', 'utf-16-le', 'utf-8'):
+                with self.subTest(encoding=encoding):
+                    path.write_text(json.dumps(review, ensure_ascii=False), encoding=encoding)
+                    self.assertEqual(quality.read(path), review)
+
+    def test_ansi_review_file_is_rejected_as_value_error(self):
+        # cp1254 (ANSI) desteklenmez; hata ValueError olarak CLI'da HATA satırına dönüşür.
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'review.json'
+            path.write_bytes(json.dumps({'run': 'İhtiyaç'}, ensure_ascii=False).encode('cp1254'))
+            with self.assertRaisesRegex(ValueError, 'UTF-8 veya UTF-16 değil'):
+                quality.read(path)
+
     def test_score_reports_topic_modules_and_linked_cards(self):
         review = self.review()
         first = self.suite['cases'][0]
@@ -130,8 +148,13 @@ class QualityTests(unittest.TestCase):
         for q in ('İhtiyaç', 'ihtiyaç', 'İHTİYAÇ', 'IHTIYAC'):
             self.assertEqual(ids(q), ['C01', 'C03'])
         self.assertEqual(ids('E. 2025/1495'), ['C01'])
+        # pool.py search gibi sözcük başından eşleşir; sayı daha uzun sayının parçası olamaz.
+        self.assertEqual(ids('K. 2025/304'), [])     # K. 2025/3048 değil
+        self.assertEqual(ids('2025/36'), [])         # E. 2025/366 değil
         self.assertEqual(ids('6. HD', 'E. 2014/8939'), ['C06'])
         self.assertEqual(ids('tahliye', 'depozito'), ['C07', 'C10'])
+        self.assertEqual(ids('artış'), [])            # 'tartışmalıdır' içinde eşleşmez
+        self.assertEqual(ids('\u00ad'), ids())        # normalize sonrası boş terim yok sayılır
         for q in ('false', 'dejure', 'url'):
             self.assertEqual(ids(q), [])
         self.assertEqual(len(ids()), len(self.cards['cards']))
@@ -256,6 +279,11 @@ class CatalogGuardTests(unittest.TestCase):
     def test_missing_topic_rejected(self):
         self.assert_rejects('evals/cases.json', lambda d: d['cases'][0].pop('topic'),
                             'Empty case field')
+
+    def test_non_contiguous_case_ids_rejected(self):
+        # Sayfa ve belgeler aralığı sayıdan türetir (B01–Bnn); boşluklu kimlik reddedilir.
+        self.assert_rejects('evals/cases.json', lambda d: d['cases'][-1].update(id='B99'),
+                            'contiguous')
 
     def test_unknown_outcome_rejected(self):
         self.assert_rejects('references/karar-kartlari.json', lambda d: d['cards'][0].update(

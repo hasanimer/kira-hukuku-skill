@@ -217,10 +217,42 @@ class HesapTests(unittest.TestCase):
         self.assertIn("geçici 2", n(date(2018, 7, 1), date(2024, 7, 1)))
         self.assertIn("geçici 1", n(date(2018, 7, 1), date(2023, 7, 1)))
         self.assertIn("6217", n(date(2014, 7, 1), date(2019, 7, 1)))
+        self.assertIn("7161", n(date(2014, 7, 1), date(2019, 7, 1)))
+        self.assertNotIn("7161", n(date(2013, 7, 1), date(2018, 7, 1)))
+        self.assertIn("6217", n(date(2013, 7, 1), date(2018, 7, 1)))
         self.assertIn("818", n(date(2008, 7, 1), date(2011, 7, 1)))
+        self.assertIn("6570", n(date(2008, 7, 1), date(2011, 7, 1)))
+        self.assertNotIn("6570", n(date(2014, 7, 1), date(2019, 7, 1)))
         clean = n(date(2020, 7, 1), date(2025, 7, 1))
         self.assertNotIn("geçici", clean)
         self.assertNotIn("6217", clean)
+
+    def test_transitional_and_mediation_boundaries(self):
+        def n(s, t):
+            return " ".join(compute_tespit(s, True, target_period_start=t)["tespitler"])
+        # TBK geçici 1: yürürlük günü 11.06.2022 dahil, önceki gün değil
+        self.assertIn("geçici 1", n(date(2017, 6, 11), date(2022, 6, 11)))
+        self.assertNotIn("geçici", n(date(2017, 6, 10), date(2022, 6, 10)))
+        # geçici 1 -> geçici 2 devri: 01.07.2023 / 02.07.2023
+        self.assertIn("geçici 1", n(date(2018, 7, 1), date(2023, 7, 1)))
+        self.assertIn("geçici 2", n(date(2018, 7, 2), date(2023, 7, 2)))
+        self.assertNotIn("geçici 1", n(date(2018, 7, 2), date(2023, 7, 2)))
+        # geçici 2 sonu: 01.07.2024 dahil, 02.07.2024 değil
+        self.assertIn("geçici 2", n(date(2019, 7, 1), date(2024, 7, 1)))
+        self.assertNotIn("geçici", n(date(2019, 7, 2), date(2024, 7, 2)))
+        # 6217 s.K. geçici 2 penceresi: 01.07.2012 – 01.07.2020 (sınır günü işaretlenir); öncesi 818/6570/6101 notu
+        self.assertIn("6217", n(date(2007, 7, 1), date(2012, 7, 1)))
+        self.assertNotIn("6101", n(date(2007, 7, 1), date(2012, 7, 1)))
+        self.assertIn("6101", n(date(2007, 6, 30), date(2012, 6, 30)))
+        self.assertNotIn("6217", n(date(2007, 6, 30), date(2012, 6, 30)))
+        self.assertIn("6217", n(date(2015, 7, 1), date(2020, 7, 1)))
+        self.assertNotIn("6217", n(date(2015, 7, 2), date(2020, 7, 2)))
+
+        # HUAK 18/B: 01.09.2023 ve sonrasında açılan davada arabuluculuk dava şartı
+        def med(d):
+            return compute_tespit(date(2016, 9, 1), True, None, d, date(2023, 9, 1))["sure_analizi"]["arabuluculuk_zorunlu"]
+        self.assertIs(med(date(2023, 8, 31)), False)
+        self.assertIs(med(date(2023, 9, 1)), True)
 
     def test_mediation_flag(self):
         with_action = compute_tespit(date(2018, 7, 1), False, None, date(2024, 5, 15), date(2024, 7, 1))
@@ -233,6 +265,23 @@ class HesapTests(unittest.TestCase):
         self.assertNotIn("ihtarsız", mediation[0])
         without = compute_tespit(date(2018, 7, 1), True, target_period_start=date(2024, 7, 1))
         self.assertIsNone(without["sure_analizi"]["arabuluculuk_zorunlu"])
+        # Dava tarihi yokken not yola göre sınır verir: artış şartında hedef dönem sonu, ihtarsız yolda 30 gün eşiği.
+        clause_note = [note for note in without["tespitler"] if "HUAK 18/B-1-a" in note]
+        self.assertEqual(len(clause_note), 1)
+        self.assertIn("30.06.2025", clause_note[0])
+        self.assertNotIn("01.06.2024", clause_note[0])
+        self.assertIn("genel dava son günü değildir", clause_note[0])
+        no_clause = compute_tespit(date(2018, 7, 1), False, target_period_start=date(2024, 7, 1))
+        bare_note = [note for note in no_clause["tespitler"] if "HUAK 18/B-1-a" in note]
+        self.assertEqual(len(bare_note), 1)
+        self.assertIn("01.06.2024", bare_note[0])
+        self.assertIn("durdurduğu veya karşıladığı varsayılmaz", bare_note[0])
+        timely_notice = compute_tespit(date(2018, 7, 1), False, date(2024, 5, 25), None, date(2024, 7, 1))
+        notice_note = [note for note in timely_notice["tespitler"] if "HUAK 18/B-1-a" in note]
+        self.assertEqual(len(notice_note), 1)
+        self.assertIn("TBK 345/2 süresinde yazılı bildirim", notice_note[0])
+        self.assertIn("30.06.2025", notice_note[0])
+        self.assertNotIn("01.06.2024", notice_note[0])
         before = compute_tespit(date(2016, 7, 1), True, None, date(2022, 9, 1), date(2022, 7, 1))
         self.assertIs(before["sure_analizi"]["arabuluculuk_zorunlu"], False)
 
@@ -304,6 +353,23 @@ class HesapTests(unittest.TestCase):
         self.assertTrue(any("TBK 339/1" in note for note in short["tespitler"]))
         self.assertFalse(any("TBK 339/1" in note for note in yearly["tespitler"]))
 
+        self.assertFalse(any("son kullanım günü gibi" in note for note in explicit["tespitler"]))
+
+        # Sözleşmedeki son kullanım günü --ilk-bitis olarak verilirse uyarılır; hesap girdiden yürür.
+        last_day = compute_tahliye_10yil(date(2015, 1, 1), first_end=date(2015, 12, 31))
+        warn = [note for note in last_day["tespitler"] if "son kullanım günü gibi" in note]
+        self.assertEqual(len(warn), 1)
+        self.assertIn("01.01.2016", warn[0])
+        self.assertEqual(last_day["ilk_fesih_donem_sonu"], "31.12.2026")
+        self.assertIsNone(last_day["ilk_sozlesme_suresi_ay"])
+        clamped_last_day = compute_tahliye_10yil(date(2015, 1, 31), first_end=date(2015, 2, 27))
+        self.assertTrue(any("son kullanım günü gibi" in note and "28.02.2015" in note
+                            for note in clamped_last_day["tespitler"]))
+        for start, end in ((date(2015, 1, 31), date(2015, 2, 28)), (date(2016, 2, 29), date(2017, 2, 28)),
+                           (date(2015, 1, 1), date(2015, 1, 15)), (date(2015, 3, 15), date(2018, 7, 20))):
+            self.assertFalse(any("son kullanım günü gibi" in note
+                                 for note in compute_tahliye_10yil(start, first_end=end)["tespitler"]), (start, end))
+
         for kwargs in ({"initial_years": 1, "initial_months": 12}, {"initial_months": 12, "first_end": date(2016, 1, 1)},
                        {"initial_months": 0}, {"first_end": date(2015, 1, 1)}):
             with self.assertRaises(ValueError):
@@ -313,13 +379,25 @@ class HesapTests(unittest.TestCase):
         r = compute_tahliye_10yil(date(2020, 2, 29), 1)
         self.assertEqual(r["ilk_fesih_donem_sonu"], "29.02.2032")
         self.assertEqual(r["yildonumu_ihtar_esigi"], "29.11.2031")
-        self.assertEqual(r["en_gec_ihtar_teblig_tarihi"], "28.11.2031")
-        self.assertTrue(any("28.02.2032" in note and "28.11.2031" in note for note in r["tespitler"]))
+        # Temkinli alan zincirleme okumanın (28.02.2032) erken eşiğine çekilir; not ile alan aynı tarihi verir.
+        self.assertEqual(r["en_gec_ihtar_teblig_tarihi"], "27.11.2031")
+        self.assertTrue(any("28.02.2032" in note and "28.11.2031" in note and "27.11.2031" in note
+                            and "29.11.2031" in note for note in r["tespitler"]))
+        # Aynı sözleşme --ilk-bitis ile verildiğinde temkinli alan değişmez.
+        explicit = compute_tahliye_10yil(date(2020, 2, 29), first_end=date(2021, 2, 28))
+        self.assertEqual(explicit["en_gec_ihtar_teblig_tarihi"], "27.11.2031")
         r2 = compute_tahliye_10yil(date(2020, 2, 29), 2)
         self.assertEqual(r2["on_yillik_uzama_bitis"], "29.02.2032")
         self.assertEqual(r2["ilk_fesih_donem_sonu"], "28.02.2033")
         self.assertEqual(r2["izleyen_uzama_yillari"][2]["donem_sonu"], "29.02.2036")
-        self.assertTrue(any("28.02.2036" in note for note in r2["tespitler"]))
+        self.assertEqual(r2["izleyen_uzama_yillari"][2]["en_gec_ihtar_tarihi"], "27.11.2035")
+        self.assertEqual(r2["izleyen_uzama_yillari"][2]["yildonumu_ihtar_esigi"], "29.11.2035")
+        self.assertTrue(any("28.02.2036" in note and "27.11.2035" in note for note in r2["tespitler"]))
+        # Ay sonu (31 Ocak) başlangıcında da alan erken eşiğe çekilir.
+        month_end = compute_tahliye_10yil(date(2020, 1, 31), initial_months=13)
+        self.assertEqual((month_end["ilk_sozlesme_bitis"], month_end["ilk_fesih_donem_sonu"],
+                          month_end["en_gec_ihtar_teblig_tarihi"], month_end["yildonumu_ihtar_esigi"]),
+                         ("28.02.2021", "29.02.2032", "27.11.2031", "29.11.2031"))
         # Kırpma olmayan başlangıçta zincirleme okuma uyarısı üretilmez.
         self.assertFalse(any("kırpması" in note for note in compute_tahliye_10yil(date(2015, 1, 1), 1)["tespitler"]))
 
@@ -382,6 +460,9 @@ class HesapTests(unittest.TestCase):
         proc4 = self._cli("tahliye-10yil", "--baslangic", "01.01.2015", "--ilk-bitis", "01.01.2018", "--json")
         self.assertEqual(proc4.returncode, 0, proc4.stderr)
         self.assertEqual(json.loads(proc4.stdout)["ilk_fesih_donem_sonu"], "01.01.2029")
+        proc5 = self._cli("tahliye-10yil", "--baslangic", "01.01.2015", "--ilk-bitis", "31.12.2015")
+        self.assertEqual(proc5.returncode, 0, proc5.stderr)
+        self.assertIn("son kullanım günü gibi", proc5.stdout)
         both = self._cli("tahliye-10yil", "--baslangic", "01.01.2015", "--sure-yil", "1", "--sure-ay", "12")
         self.assertEqual(both.returncode, 2)
         self.assertEqual(both.stdout, "")
