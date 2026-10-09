@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import sys
 
+from pool import normalize
+
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / 'data/derleme-v5-index.json'
 DATA = ROOT / 'data/derleme-v5-selected.jsonl'
@@ -22,11 +24,6 @@ EXCERPT = {'tam': 'alıntı tam metinde geçiyor', 'kismi': 'alıntı kısmen ge
 def require(condition, message):
     if not condition:
         raise ValueError(message)
-
-
-def fold(text):
-    text = text.replace('ı', 'i').replace('İ', 'i').casefold()
-    return text
 
 
 def load(root=ROOT):
@@ -76,6 +73,8 @@ def line(c):
         parts = [STATUS[c['status']]]
     if c.get('qualifier'):
         parts.append(c['qualifier'])
+    if c.get('kira_disi'):
+        parts.append('kira dışı uyuşmazlık')
     text = f"- {head} — {'; '.join(parts)}."
     if c.get('compiler_note'):
         text += f" Derleyen notu: {c['compiler_note']}"
@@ -139,11 +138,17 @@ def main():
         require(found, 'Unknown citation number')
         print(json.dumps(found[0], ensure_ascii=False, indent=2))
     else:
-        terms = [fold(t) for t in args.terms]
+        if not 1 <= args.limit <= 2000:
+            parser.error('--limit must be between 1 and 2000')
+        terms = [normalize(t.strip()) for t in args.terms]
+        if not all(terms):
+            parser.error('Search terms cannot be empty')
+        # Derlemedeki atıf da aranır: hatalı numarayla arayan düzeltme notunu görür.
+        fields = ('citation', 'kunye', 'qualifier', 'compiler_note', 'note')
         hits = [c for c in index['citations']
-                if all(t in fold(' '.join(c['section']) + ' ' + (c.get('kunye') or c['citation'])) for t in terms)]
+                if all(t in normalize(' '.join(c['section'] + [c.get(f) or '' for f in fields])) for t in terms)]
         print(json.dumps({'total_matches': len(hits), 'results': hits[:args.limit],
-                          'note': 'Eşleşme derleme başlıklarında yapılır; hukuki önem sırası değildir.'},
+                          'note': 'Eşleşme derleme başlıkları, atıfları ve notlarında yapılır; hukuki önem sırası değildir.'},
                          ensure_ascii=False, indent=2))
     return 0
 

@@ -48,6 +48,28 @@ class DerlemeTests(unittest.TestCase):
         self.assertEqual(row['collection'], 'derleme-v5-selected.jsonl')
         self.assertEqual(row['text'], self.rows[document_id]['text'])
 
+    def search(self, *terms):
+        out = subprocess.run([sys.executable, str(ROOT / 'scripts/derleme.py'), 'search', *terms],
+                             capture_output=True, text=True, encoding='utf-8', check=True)
+        return json.loads(out.stdout)
+
+    def test_search_ignores_accents_and_finds_compiler_numbers(self):
+        self.assertEqual(self.search('taahhutname')['total_matches'], self.search('taahhütnâme')['total_matches'])
+        # Derlemedeki hatalı numara da bulunur; düzeltme notu sonuçla birlikte döner.
+        corrected = [c for c in self.index['citations']
+                     if c['status'] == 'paket' and c['citation'].split()[-2] not in (c['kunye'] or '')]
+        for c in corrected:
+            hits = self.search(c['citation'].split()[-2])['results']
+            self.assertIn(c['n'], [h['n'] for h in hits])
+            self.assertTrue(c['note'])
+
+    def test_redacted_texts_keep_provenance(self):
+        for row in self.rows.values():
+            if row.get('redactions'):
+                self.assertEqual(row['text'].count('[KİŞİ ADI ANONİMLEŞTİRİLDİ]'),
+                                 row['redactions']['replacement_count'])
+                self.assertNotEqual(row['source_text_sha256'], row['text_sha256'])
+
     def test_search_uses_headings_without_ranking_claim(self):
         out = subprocess.run([sys.executable, str(ROOT / 'scripts/derleme.py'), 'search', 'arabuluculuk'],
                              capture_output=True, text=True, encoding='utf-8', check=True)

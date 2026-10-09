@@ -1,5 +1,5 @@
 {
-  "snapshot_date": "2026-09-20",
+  "snapshot_date": "2026-10-09",
   "records": 1738,
   "source_sha256": "44135540d2ca7bbe42140a59a7b42269082e456504b20d1138d4d2594c4dd8b0",
   "labels_source_sha256": "24c105c9f12b2e51d3040a25d80e9990dacd81e1c558f14a692bf786722c11c0",
@@ -17,8 +17,8 @@
     "topic-rescan-report.md": "c311b56954dec76f3912983fc7cca1077837a7cbfdf02d9ddae298539d879e87",
     "verified-topic-report.md": "7e82acb72e6b5b664dba354736d01258b4641184d6b2563595f629655e4af59d",
     "yargitay-selected.jsonl": "0dfe73a90e965a1a0ee3225852af4d56c2547d3ba05fe4c831acfea04c8c1629",
-    "derleme-v5-selected.jsonl": "18dd57669e185ee732b37d50a7298b322f60cb6e801eea41a1725ce97ca6acbb",
-    "derleme-v5-index.json": "6a7db3f69e13691ff94de26c0665b4c3544ea931ddac665544cc10d87f15da2e"
+    "derleme-v5-selected.jsonl": "7d447e8e2f4930b9f6cc4533a7cc043f40e3e66668f139da93012e1a55eac00f",
+    "derleme-v5-index.json": "7008a3afcd5995d94d09dd0416b75d18ff9b5313410db425da61f5c37726204d"
   },
   "collections": {
     "topic-rescan-assistant-adjusted.jsonl": 1576,

@@ -36,7 +36,7 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 
 #### A. ARABULUCULUK ŞARTININ SAĞLANMASI İÇİN BAŞVURU YETERLİDİR
 
-- [Yargıtay 9. HD, E. 2022/3398, K. 2022/5294, T. 26.04.2022](https://mevzuat.adalet.gov.tr/ictihat/768943400) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Yargıtay 9. HD, E. 2022/3398, K. 2022/5294, T. 26.04.2022](https://mevzuat.adalet.gov.tr/ictihat/768943400) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
 
 #### B. ARABULUCULUK ŞARTININ SAĞLANMASI İÇİN BAŞVURU YETERLİ DEĞİLDİR, SÜREÇ USÛLE UYGUN TAMAMLANMALIDIR
 
@@ -60,20 +60,20 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 
 #### A. ARABULUCULUK DAVA ŞARTI SAĞLANIR
 
-- [Yargıtay HGK, E. 2025/255, K. 2026/11, T. 21.01.2026](https://mevzuat.adalet.gov.tr/ictihat/1202391900) — tam metin pakette; alıntı kısmen geçiyor.
-- [Yargıtay 9. HD, E. 2024/15018, K. 2025/2088, T. 27.02.2025](https://mevzuat.adalet.gov.tr/ictihat/1129287700) — tam metin pakette; alıntı tam metinde geçiyor.
-- [Yargıtay 4. HD, E. 2022/2757, K. 2022/17299, T. 20.12.2022](https://mevzuat.adalet.gov.tr/ictihat/949101000) — tam metin pakette; alıntı tam metinde geçiyor.
-- [Yargıtay 11. HD, E. 2022/4240, K. 2022/6367, T. 27.09.2022](https://mevzuat.adalet.gov.tr/ictihat/824176000) — tam metin pakette; alıntı kısmen geçiyor.
+- [Yargıtay HGK, E. 2025/255, K. 2026/11, T. 21.01.2026](https://mevzuat.adalet.gov.tr/ictihat/1202391900) — tam metin pakette; alıntı kısmen geçiyor; kira dışı uyuşmazlık.
+- [Yargıtay 9. HD, E. 2024/15018, K. 2025/2088, T. 27.02.2025](https://mevzuat.adalet.gov.tr/ictihat/1129287700) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
+- [Yargıtay 4. HD, E. 2022/2757, K. 2022/17299, T. 20.12.2022](https://mevzuat.adalet.gov.tr/ictihat/949101000) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
+- [Yargıtay 11. HD, E. 2022/4240, K. 2022/6367, T. 27.09.2022](https://mevzuat.adalet.gov.tr/ictihat/824176000) — tam metin pakette; alıntı kısmen geçiyor; kira dışı uyuşmazlık.
 
 #### B. ARABULUCULUK DAVA ŞARTI SAĞLANMAZ
 
-- [Ankara BAM 31. HD, E. 2025/763, K. 2026/339, T. 09.04.2026](https://mevzuat.adalet.gov.tr/ictihat/1202171700) — tam metin pakette; alıntı tam metinde geçiyor.
-- [İstanbul BAM 53. HD, E. 2024/1567, K. 2025/215, T. 12.03.2025](https://mevzuat.adalet.gov.tr/ictihat/1124451200) — tam metin pakette; alıntı tam metinde geçiyor.
-- [Kayseri BAM 6. HD, E. 2025/1774, K. 2025/1972, T. 05.11.2025](https://mevzuat.adalet.gov.tr/ictihat/1176523200) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Ankara BAM 31. HD, E. 2025/763, K. 2026/339, T. 09.04.2026](https://mevzuat.adalet.gov.tr/ictihat/1202171700) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
+- [İstanbul BAM 53. HD, E. 2024/1567, K. 2025/215, T. 12.03.2025](https://mevzuat.adalet.gov.tr/ictihat/1124451200) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
+- [Kayseri BAM 6. HD, E. 2025/1774, K. 2025/1972, T. 05.11.2025](https://mevzuat.adalet.gov.tr/ictihat/1176523200) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
 
 ### VIII. ARABULUCULUK SON TUTAĞINA İMZALARIN ELEKTRONİK İMZA İLE ATILMASI HÂLİNDE EN SON ATILAN İMZA TARİHİNDE ARABULUCULUK SÜRECİ SONA ERER
 
-- [Yargıtay 9. HD, E. 2025/1242, K. 2025/5080, T. 16.06.2025](https://mevzuat.adalet.gov.tr/ictihat/1169042400) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Yargıtay 9. HD, E. 2025/1242, K. 2025/5080, T. 16.06.2025](https://mevzuat.adalet.gov.tr/ictihat/1169042400) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
 
 ### IX. TAHLİYE DAVASINA İLİŞKİN DAVA ŞARTI ARABULUCULUK BAŞVURUSU TBK 353 UYARINCA DAVA AÇMA SÜRESİNİ DÖNEM SONUNA KADAR UZATIR MI?
 
@@ -87,7 +87,7 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 
 #### A. İCRA EDİLEBİLİRLİK ŞERHİ ALINMASININ KOŞULLARI
 
-- [Yargıtay 9. HD, E. 2016/25300, K. 2016/21744, T. 08.12.2016](https://mevzuat.adalet.gov.tr/ictihat/272080200) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Yargıtay 9. HD, E. 2016/25300, K. 2016/21744, T. 08.12.2016](https://mevzuat.adalet.gov.tr/ictihat/272080200) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
 
 #### B. SÖZLEŞME YAPMA VAADİ BORCU YALNIZCA MAHKEME KARARI İLE MÜMKÜNDÜR
 
@@ -99,7 +99,7 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 
 #### D. İCRA EDİLEBİLİRLİK ŞERHİ İSTEMİNDE YARGILAMA GİDERLERİ İSTEMDE BULUNANA AİTTİR VE İSTEMDE BULUNAN LEHİNE VEKÂLET ÜCRETİNE HÜKMEDİLMEZ
 
-- [Yargıtay 3. HD, E. 2024/971, K. 2024/4021, T. 02.12.2024](https://mevzuat.adalet.gov.tr/ictihat/1098486600) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Yargıtay 3. HD, E. 2024/971, K. 2024/4021, T. 02.12.2024](https://mevzuat.adalet.gov.tr/ictihat/1098486600) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
 
 ## §2. ÖNEM ARZ EDEN BAZI HUSUSLAR
 
@@ -316,11 +316,11 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 
 ### II. TEMERRÜT NEDENİYLE TAHLİYE VE 13 ÖRNEK İCRA TAKİBİ
 
-#### A. TEMERRÜT İHTARINDA (YA DA ÖDEME EMRİNDE) EN AZ 30 GÜN SÜRE VERİLMELİDİR[^4]
+#### A. TEMERRÜT İHTARINDA (YA DA ÖDEME EMRİNDE) EN AZ 30 GÜN SÜRE VERİLMELİDİR
 
-- [Yargıtay HGK, E. 2017/1918, K. 2021/1707, T. 21.12.2021](https://mevzuat.adalet.gov.tr/ictihat/746178000) — tam metin pakette; alıntı tam metinde geçiyor.
-- [Yargıtay 3. HD, E. 2018/6466, K. 2018/11915, T. 22.11.2018](https://mevzuat.adalet.gov.tr/ictihat/481207700) — tam metin pakette; alıntı tam metinde geçiyor.
-- [Yargıtay 6. HD, E. 2015/2187, K. 2015/11456, T. 24.12.2015](https://mevzuat.adalet.gov.tr/ictihat/149286500) — tam metin pakette; alıntı tam metinde geçiyor. Derlemedeki 2015/1456 K. alıntıyı içermez; alıntı 6. HD, K. 2015/11456 metninde geçer.
+- [Yargıtay HGK, E. 2017/1918, K. 2021/1707, T. 21.12.2021](https://mevzuat.adalet.gov.tr/ictihat/746178000) — tam metin pakette; alıntı tam metinde geçiyor. Derleyen notu: Başlık notu: Bu suüre adî/genel kirada en az 10 gün, ürün/hasılat kirasında en az 60 gündür.
+- [Yargıtay 3. HD, E. 2018/6466, K. 2018/11915, T. 22.11.2018](https://mevzuat.adalet.gov.tr/ictihat/481207700) — tam metin pakette; alıntı tam metinde geçiyor. Derleyen notu: Başlık notu: Bu suüre adî/genel kirada en az 10 gün, ürün/hasılat kirasında en az 60 gündür.
+- [Yargıtay 6. HD, E. 2015/2187, K. 2015/11456, T. 24.12.2015](https://mevzuat.adalet.gov.tr/ictihat/149286500) — tam metin pakette; alıntı tam metinde geçiyor. Derleyen notu: Başlık notu: Bu suüre adî/genel kirada en az 10 gün, ürün/hasılat kirasında en az 60 gündür. Derlemedeki 2015/1456 K. alıntıyı içermez; alıntı 6. HD, K. 2015/11456 metninde geçer.
 
 #### B. TEMERRÜT İHTARINDA (YA DA ÖDEME EMRİNDE) FESİH VE TAHLİYE NİYETİ AÇIK OLMALIDIR
 
@@ -448,7 +448,7 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 
 #### F. ELEKTRONİK YOLLA YAPILAN TEBLİGAT TEBLİĞ TARİHİ SİSTEME DÜŞMEDEN İTİBAREN BEŞİNCİ GÜNÜN SONU OLACAĞINDAN BEŞ GÜN İÇİNDE KİRA BEDELİNİN ÖDENMESİ DURUMUNDA HAKLI İHTAR GERÇEKLEŞMİŞ OLMAZ
 
-- [Yargıtay HGK, E. 2020/547, K. 2020/924, T. 24.11.2020](https://mevzuat.adalet.gov.tr/ictihat/638643400) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Yargıtay HGK, E. 2020/547, K. 2020/924, T. 24.11.2020](https://mevzuat.adalet.gov.tr/ictihat/638643400) — tam metin pakette; alıntı tam metinde geçiyor; kira dışı uyuşmazlık.
 
 #### G. İHTARNÂMEDE HANGİ AYLARA AİT İHTARAT YAPILDIĞININ BELİRTİLMESİ
 
@@ -456,9 +456,9 @@ Toplam 278 atıf: 171 tam metin pakette, 6 tam metin ana havuzda, 101 Bedesten'd
 - [Yargıtay 3. HD, E. 2017/11179, K. 2018/5354, T. 16.05.2018](https://mevzuat.adalet.gov.tr/ictihat/427128300) — tam metin pakette; alıntı tam metinde bulunamadı. Derlemedeki metin kararın birebir alıntısı değil, derleyenin özetidir; karar numarası ve daire eşleşti.
 - İstanbul BAM 36. HD 2021/1779 K. (derlemedeki atıf) — Bedesten'de bulunamadı. Bedesten'de numara, daire ve alıntı ifadesiyle arandı; karşılık bulunamadı (09.10.2026).
 
-#### I. İHTARNAMENİN TEBLİĞİ İLE ÖDEME AYNI GÜNE DENK GELİYORSA VE HANGİSİNİN ÖNCE YAPILDIĞI TESPİT EDİLEMİYORSA HAKLI İHTAR OLUŞMAZ[^5]
+#### I. İHTARNAMENİN TEBLİĞİ İLE ÖDEME AYNI GÜNE DENK GELİYORSA VE HANGİSİNİN ÖNCE YAPILDIĞI TESPİT EDİLEMİYORSA HAKLI İHTAR OLUŞMAZ
 
-- [Yargıtay 3. HD, E. 2018/5827, K. 2018/9394, T. 02.10.2018](https://mevzuat.adalet.gov.tr/ictihat/444696400) — tam metin pakette; alıntı tam metinde geçiyor.
+- [Yargıtay 3. HD, E. 2018/5827, K. 2018/9394, T. 02.10.2018](https://mevzuat.adalet.gov.tr/ictihat/444696400) — tam metin pakette; alıntı tam metinde geçiyor. Derleyen notu: Başlık notu: In dubio pro debitoris (şüpheden borçlu yararlanır) ilkesinin sonucu.
 
 #### J. İHTARNÂMEDE 30 GÜNLÜK ÖDEME SÜRESİNE YER VERİLMESİNE GEREK VAR MIDIR?
 

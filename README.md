@@ -170,7 +170,7 @@ Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konuları 
 | :--- | :--- |
 | **Karar havuzu** | 1.738 karar · 14.10.2004–21.05.2026 |
 | **İçerik türü** | 578 esas gerekçesi · 572 usul gerekçesi · 14 sınırda · 574 kısa karar (model ve asistan etiketi, insan onaysız) |
-| **Dağılım** | 1.111 karar 3. HD, 557 karar 6. HD; 1.229 karar 2010–2015, 152 karar 2020 ve sonrası |
+| **Dağılım** | 1.105 karar 3. HD, 557 karar 6. HD; 1.229 karar 2010–2015, 152 karar 2020 ve sonrası |
 | **Emsal derlemesi** | Av. Hakan Dimdik derlemesindeki (5. sürüm, 12.09.2026) 278 atıf konu dizininde; 135 kararın tam metni Bedesten'den çift aktarımla alındı, 6'sı ana havuzda, 101 atıf Bedesten'de bulunamadı (çoğu BAM) |
 | **Kaynak izi** | Ana havuzda ve derleme seçkisinde Bedesten belge kimliği ve resmî adres; BAM/Yargıtay seçkilerinde kayıttaki üçüncü taraf adresi |
 | **Mevzuat** | 6098 sayılı Türk Borçlar Kanunu |

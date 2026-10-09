@@ -2,7 +2,7 @@
 
 Varsayılan kök: bu skill klasöründeki `data/`. Yardımcı yolu kendi konumundan çözer; skill klasörünün tamamı başka dizine taşınabilir. Ana havuzdaki 1.576 karar ile `bam-selected.jsonl` dosyasındaki 17 BAM kararı, `yargitay-selected.jsonl` dosyasındaki 10 Yargıtay kararı ve `derleme-v5-selected.jsonl` dosyasındaki 135 kararın toplam 1.738 tam metni pakete dahildir. Derleme seçkisinin konu dizini ve doğrulama yöntemi [derleme dizinindedir](derleme-v5.md); her kaydın `collection` alanı geldiği dosyayı gösterir. BAM seçkisi için [kullanım notlarını](bam-kararlari.md) oku. Başka havuzu açıkça seçmek için komuta `--root "..."` ekle.
 
-Bu paket 20.09.2026 tarihinde güncellenmiş sabit kopyadır; kaynak proje değişince otomatik güncellenmez. `data/manifest.json` kaynak ve paket dosyalarının hash değerlerini, kayıt sayısını ve etiket birleştirme yöntemini içerir. Hukuki içerik korunarak aktarılmıştır. Açık kişi adı çıkarılan kayıtlarda `redactions` anonimleştirmeyi, `source_text_sha256` kaynak metnini, `text_sha256` yerel metni izler.
+Bu paket 20.09.2026 tarihinde güncellenmiş, derleme seçkisi 09.10.2026'da eklenmiş sabit kopyadır; kaynak proje değişince otomatik güncellenmez. `data/manifest.json` kaynak ve paket dosyalarının hash değerlerini, kayıt sayısını ve etiket birleştirme yöntemini içerir. Hukuki içerik korunarak aktarılmıştır. Açık kişi adı çıkarılan kayıtlarda `redactions` anonimleştirmeyi, `source_text_sha256` kaynak metnini, `text_sha256` yerel metni izler.
 
 ## Sürümler
 
@@ -36,6 +36,6 @@ Araştırma izinde: havuz dosyası, document_id, `kunye`, `source_url`, text_sha
 
 `kunye` alanı dilekçe biçiminde hazır gelir: "Yargıtay 3. HD, E. 2017/8082, K. 2019/5082, T. 28.05.2019". Ana havuzda `court` yalnız daire adıdır; mahkeme adını yardımcı ekler.
 
-Yalnız BAM kararları için `python scripts/pool.py search ihtar --court-type bam` kullan. BAM kaynak adresleri `source_url`, kullanım sınırları `research_notes` alanında döner. Dejure bağlantıları giriş gerektirebilir ve resmî adres değildir; yerel tam metin erişimi çevrimdışı çalışır. Bu kararların resmî karşılığını E., K. ve tarihle bağlı kaynakta (Legaluga `karar_ara`) ara; bulunamazsa adres türetme.
+Yalnız BAM kararları için `python scripts/pool.py search ihtar --court-type bam` kullan; sonuç BAM seçkisini ve derleme seçkisindeki BAM kararlarını birlikte verir. Kaynak adresleri `source_url`, kullanım sınırları `research_notes` alanında döner. `bam-selected.jsonl` kayıtlarındaki Dejure bağlantıları giriş gerektirebilir ve resmî adres değildir; derleme seçkisindeki adresler resmî Bedesten sayfasıdır; yerel tam metin erişimi çevrimdışı çalışır. Bu kararların resmî karşılığını E., K. ve tarihle bağlı kaynakta (Legaluga `karar_ara`) ara; bulunamazsa adres türetme.
 
-Yargıtay ekleri için [seçki ve kullanım sınırlarını](yargitay-kararlari.md) oku. Ana havuz kayıtlarına yardımcı `court_type: yargitay` etiketini okuma sırasında ekler; `--court-type yargitay` ana havuzu ve Yargıtay seçkisini birlikte, `--court-type bam` yalnız BAM seçkisini verir.
+Yargıtay ekleri için [seçki ve kullanım sınırlarını](yargitay-kararlari.md) oku. Ana havuz kayıtlarına yardımcı `court_type: yargitay` etiketini okuma sırasında ekler; `--court-type yargitay` ana havuzu, Yargıtay seçkisini ve derleme seçkisindeki Yargıtay kararlarını birlikte verir. Derleme seçkisinde kira dışı uyuşmazlıklar `research_notes.kira_disi` ile işaretlidir; adı maskelenmemiş gerçek kişiler `redactions` ile anonimleştirilmiştir.

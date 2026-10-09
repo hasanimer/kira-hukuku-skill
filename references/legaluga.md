@@ -44,7 +44,7 @@ Araç adları istemcide ön ek alabilir (Claude Code'da `mcp__<sunucu adı>__kar
 
 Ana havuzdaki `document_id` Bedesten belge kimliğidir; `karar_getir` aynı kimlikle aynı kararı döndürür. İki metin boşluk ve satır sonlarında ayrışabildiği için `text_sha256` canlı metinle karşılaştırılamaz. Canlı metinde okuduğun pasajı `python scripts/pool.py quote KIMLIK "pasaj" --ignore-space` ile yerel kayıtta bul; dilekçeye yalnız dönen `matched_text` parçasını birebir alıntı olarak taşı ve `match_mode` değerini izde tut.
 
-BAM ve Yargıtay seçkisindeki kayıtların kimliği DeJure kimliğidir; `source_url` üçüncü taraf kaydıdır (`source_provider`: Dejure), resmî adres değildir ve giriş gerektirebilir. Bu kararların Bedesten karşılığını E., K. ve tarihle `karar_ara` üzerinden ara; bulunamazsa bunu belirt, adres türetme.
+`bam-selected.jsonl` ve `yargitay-selected.jsonl` kayıtlarının kimliği DeJure kimliğidir; `source_url` üçüncü taraf kaydıdır (`source_provider`: Dejure), resmî adres değildir ve giriş gerektirebilir. Derleme seçkisindeki kayıtlar ise Bedesten kimliği ve resmî adresiyle gelir. Bu kararların Bedesten karşılığını E., K. ve tarihle `karar_ara` üzerinden ara; bulunamazsa bunu belirt, adres türetme.
 
 ## Künye ve alıntı
 
