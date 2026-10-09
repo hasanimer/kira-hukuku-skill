@@ -38,7 +38,7 @@ Canlı çağrı `TYPESAFE_API_KEY` ortam değişkenini kullanır; açıkça veri
 
 - Yerel paket: `pool.py search/get/quote`. Mevcut 1.603 kayıt kira tespiti ağırlıklıdır; bütün kira hukuku modüllerini kapsadığı iddia edilmez.
 - DeJure: `search_decisions` ile aday, `lookup_decisions` ile künye, `get_decision` ile metin. Kesilme varsa `next_offset` üzerinden devam et.
-- Legaluga: `search_cases` → `get_case` → gerektiğinde `verify_quotation`. `source_ref`, `passage_id`, görüş sahibi ve kesilme alanlarını koru. `get_case` yalnız kesit döndürebilir; `full_text_truncated` doğruysa tam metin sayma. Büyük havuzun tamamının yerel pakete eklendiğini veya her sorguda tarandığını iddia etme.
+- Legaluga (varsayılan dış kaynak; ayrıntı [Legaluga akışında](legaluga.md)): Bedesten için `semantik_ictihat_ara` veya `karar_ara` → `karar_getir`; Core derlemi için `search_cases_v1` → `get_case_v1` → gerektiğinde `verify_quotation_v1`. Adaylarda `provider` olarak `legaluga-bedesten` veya `legaluga-core` yaz; `documentId`, `canonical_ref`, görüş sahibi ve kesilme alanlarını koru. `get_case_v1` yalnız kesit döndürebilir (`excerpt_truncated`); bu durumda `full_text: false` işaretle. Aynı Bedesten kimliği yerel havuzda da varsa tek aday gönder. Büyük havuzun tamamının yerel pakete eklendiğini veya her sorguda tarandığını iddia etme.
 - Bağlı mevzuat/içtihat aracı: kendi başlangıç yönergesini uygula; maddeyi veya kararı dönen kimlikle getir. Arama sözdizimini sağlayıcıya göre kullan; boşlukların AND olduğu varsayımında bulunma.
 
 Kaynak araç hatası, sıfır sonuç değildir. Bir kaynak erişilemiyorsa bunu araştırma izine yaz, diğerlerinde devam et. Aynı karar farklı kaynaklardan gelirse künyeyi karşılaştır; farklı kaynak kimliklerini sakla. Eşleşmeyen metinleri sessizce birleştirme.

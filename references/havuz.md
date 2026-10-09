@@ -30,10 +30,12 @@ python scripts/pool.py quote KARAR_KIMLIGI "Birebir kısa alıntı"
 
 Yardımcı her okumada kayıt metni SHA-256 değerini kontrol eder; uyuşmazlıkta durur. Hash yalnız dosya içi bütünlüğü doğrular, resmî kaynağın doğruluğunu veya eksiksizliğini kanıtlamaz. `quote` büyük/küçük harf, noktalama ve boşlukları değiştirmeden arar; konumlar Python Unicode karakter dizisinde sıfır tabanlı, bitiş hariçtir. Bulunamayan alıntıyı yaklaşık eşleşmiş diye doğrulama.
 
+Ana havuz kararının metni Bedesten'den (`karar_getir`) canlı alındıysa yerel metinden yalnız boşluk ve satır sonlarında ayrışabilir. Bu durumda `python scripts/pool.py quote KARAR_KIMLIGI "Pasaj" --ignore-space` kullan: birebir eşleşme yoksa boşluk farkları yok sayılır, `match_mode` alanı `ignore_space` olur ve `exact_match` false kalır. Harf, noktalama veya Unicode biçimi farkı yine eşleşmez. Dilekçeye canlı pasajı değil, dönen `matched_text` yerel parçasını birebir alıntı olarak taşı.
+
 Araştırma izinde: havuz dosyası, document_id, `kunye`, `source_url`, text_sha256, alıntı ve konumu, dosyaya uygulanabilirlik gerekçesi. Ana havuzdaki `document_id` UYAP Mevzuat ve İçtihat (Bedesten) belge kimliğidir; yardımcı `source_url` alanını `https://mevzuat.adalet.gov.tr/ictihat/<document_id>` deseniyle türetir ve `source_provider` alanında "kimlikten türetildi" diye işaretler. Bu adres kararın resmî sayfasıdır; okuyucuya künyeyle birlikte verilir. Kayıtta yazılı başka bir adres varsa ona dokunulmaz. Kimliği sayısal olmayan kayıt (BAM ve Yargıtay seçkileri) için adres türetilmez; yalnız kayıttaki `source_url` kullanılır. Bunların dışında adres uydurma.
 
 `kunye` alanı dilekçe biçiminde hazır gelir: "Yargıtay 3. HD, E. 2017/8082, K. 2019/5082, T. 28.05.2019". Ana havuzda `court` yalnız daire adıdır; mahkeme adını yardımcı ekler.
 
-Yalnız BAM kararları için `python scripts/pool.py search ihtar --court-type bam` kullan. BAM kaynak adresleri `source_url`, kullanım sınırları `research_notes` alanında döner. Dejure bağlantıları giriş gerektirebilir; yerel tam metin erişimi çevrimdışı çalışır.
+Yalnız BAM kararları için `python scripts/pool.py search ihtar --court-type bam` kullan. BAM kaynak adresleri `source_url`, kullanım sınırları `research_notes` alanında döner. Dejure bağlantıları giriş gerektirebilir ve resmî adres değildir; yerel tam metin erişimi çevrimdışı çalışır. Bu kararların resmî karşılığını E., K. ve tarihle bağlı kaynakta (Legaluga `karar_ara`) ara; bulunamazsa adres türetme.
 
 Yargıtay ekleri için [seçki ve kullanım sınırlarını](yargitay-kararlari.md) oku. Ana havuz kayıtlarına yardımcı `court_type: yargitay` etiketini okuma sırasında ekler; `--court-type yargitay` ana havuzu ve Yargıtay seçkisini birlikte, `--court-type bam` yalnız BAM seçkisini verir.
