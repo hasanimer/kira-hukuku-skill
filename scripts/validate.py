@@ -1,11 +1,14 @@
 """Validate packaged source integrity and portable command behavior offline."""
+import base64
 import hashlib
+import io
 import json
 from pathlib import Path
 import re
 import subprocess
 import sys
 import tempfile
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -101,6 +104,24 @@ def main():
     absent = run('pool.py', 'quote', row['document_id'],
                  'NONEXISTENT-QUOTE-f06d52cb', expected=2)
     require(not absent['exact_match'], 'Absent quote was accepted')
+    # Bedesten çıktısı yerel metinden yalnız boşlukta ayrışabilir; gevşek mod isteğe bağlıdır.
+    loose = re.sub(r'\s+', lambda m: m.group(0) + ' ', quote, count=1)
+    require(loose != quote, 'Whitespace probe needs a quote with spaces')
+    run('pool.py', 'quote', row['document_id'], loose, expected=2)
+    spaced = run('pool.py', 'quote', row['document_id'], loose, '--ignore-space')
+    require(spaced['match_mode'] == 'ignore_space' and not spaced['exact_match'] and
+            spaced['occurrences'][0]['start'] == len(quote) - len(quote.lstrip()) and
+            spaced['occurrences'][0]['matched_text'] == quote.strip(),
+            'Whitespace-insensitive quote mapping failed')
+    skill = (ROOT / 'SKILL.md').read_text(encoding='utf-8').splitlines()
+    require(skill[0] == '---' and '---' in skill[1:], 'SKILL.md frontmatter missing')
+    front = dict(line.split(': ', 1) for line in skill[1:skill.index('---', 1)])
+    description = front.get('description', '')
+    require(set(front) == {'name', 'description'} and front['name'] == 'kira-tespit-asistani',
+            'SKILL.md frontmatter keys or name changed')
+    # Codex 500 karakter sınırı Claude Code'dan katıdır; düz YAML skaleri ': ' ve ' #' taşıyamaz.
+    require(0 < len(description) <= 500 and ': ' not in description and ' #' not in description
+            and description[0] not in '>|[]{}&*!%@`\'"#,?:-', 'SKILL.md description unsafe')
     for number in (1, 59, 344, 345, 649):
         article = run('tbk.py', str(number))
         require(article['requested_article'] == number and article['markdown'],
@@ -113,6 +134,22 @@ def main():
     require(calc10['toplam_yil'] == 12 and calc10['en_gec_ihtar_teblig_tarihi'] == '01.10.2026',
             'hesap.py tahliye-10yil calculation error')
     run('hesap.py', 'tespit', '--baslangic', 'invalid', '--hedef-donem', '01.07.2024', '--artis-sarti', expected=1)
+    archive = io.BytesIO()
+    with zipfile.ZipFile(archive, 'w') as udf:
+        udf.writestr('content.xml', '<content>KURGU SINAMA</content>')
+    with tempfile.TemporaryDirectory(prefix='kira-udf-') as directory:
+        encoded = Path(directory) / 'yanit.b64'
+        encoded.write_bytes(base64.b64encode(archive.getvalue()))
+        target = str(Path(directory) / 'taslak.udf')
+        digest = hashlib.sha256(archive.getvalue()).hexdigest()
+        saved = run('udf.py', 'kaydet', str(encoded), '--sha256', digest, '--cikti', target)
+        require(saved['kaydedildi'] and Path(target).read_bytes() == archive.getvalue(),
+                'UDF save failed')
+        rejected = run('udf.py', 'kaydet', str(encoded), '--sha256', '0' * 64, '--cikti',
+                       str(Path(directory) / 'baska.udf'), expected=2)
+        require(not rejected['kaydedildi'] and not (Path(directory) / 'baska.udf').exists(),
+                'UDF hash mismatch was saved')
+        run('udf.py', 'kaydet', str(encoded), '--sha256', digest, '--cikti', target, expected=1)
     with tempfile.TemporaryDirectory(prefix='kira-integrity-') as directory:
         corrupt = dict(row, text=row['text'] + 'changed')
         path = Path(directory) / 'topic-rescan-assistant-adjusted.jsonl'
@@ -123,7 +160,8 @@ def main():
             if '://' not in target and not target.startswith('#'):
                 require((doc.parent / target.split('#')[0]).exists(),
                         f'Broken link in {doc.name}: {target}')
-    print(f'PASS: {stats["records"]} decisions, file/text hashes, law, links, CLI and rejection checks')
+    print(f'PASS: {stats["records"]} decisions, file/text hashes, law, links, frontmatter, '
+          'CLI, UDF and rejection checks')
 
 
 if __name__ == '__main__':

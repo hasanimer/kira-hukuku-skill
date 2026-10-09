@@ -92,6 +92,29 @@ def emit(value):
     print(json.dumps(value, ensure_ascii=False, indent=2))
 
 
+def squash(text):
+    """Boşlukları atar; kalan her karakterin özgün metindeki konumunu da döndürür."""
+    kept = [i for i, c in enumerate(text) if not c.isspace()]
+    return ''.join(text[i] for i in kept), kept
+
+
+def find_ignoring_space(text, quotation):
+    """Bedesten çıktısı ile yerel metin yalnız boşlukta ayrışır; konumlar özgün metne göredir."""
+    squashed, kept = squash(text)
+    needle = squash(quotation)[0]
+    hits = []
+    offset = 0
+    while needle:
+        at = squashed.find(needle, offset)
+        if at < 0:
+            break
+        start, end = kept[at], kept[at + len(needle) - 1] + 1
+        hits.append({'start': start, 'end': end, 'matched_text': text[start:end],
+                     'context': text[max(0, start-200):end+200]})
+        offset = at + 1
+    return hits
+
+
 def main():
     if hasattr(sys.stdout, 'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
@@ -111,6 +134,8 @@ def main():
     quote = sub.add_parser('quote')
     quote.add_argument('document_id')
     quote.add_argument('quotation')
+    quote.add_argument('--ignore-space', action='store_true',
+                       help='Birebir eşleşme yoksa boşluk farklarını yok sayarak ara')
     args = parser.parse_args()
     source = args.root / 'topic-rescan-assistant-adjusted.jsonl'
     rows = list(read_rows(source))
@@ -190,8 +215,12 @@ def main():
                 positions.append({'start': start, 'end': end,
                                   'context': row['text'][max(0, start-200):end+200]})
                 offset = start + 1
-            emit({**envelope, **metadata(row), 'exact_match': bool(positions),
-                  'quotation': args.quotation, 'occurrences': positions})
+            mode = 'exact' if positions else None
+            if not positions and args.ignore_space:
+                positions = find_ignoring_space(row['text'], args.quotation)
+                mode = 'ignore_space' if positions else None
+            emit({**envelope, **metadata(row), 'exact_match': mode == 'exact',
+                  'match_mode': mode, 'quotation': args.quotation, 'occurrences': positions})
             if not positions:
                 return 2
     return 0
