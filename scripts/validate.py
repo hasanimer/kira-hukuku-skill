@@ -11,6 +11,8 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from pool import BEDESTEN_URL, SELECTIONS, normalize, read_rows  # noqa: E402
 
 
 def require(condition, message):
@@ -62,8 +64,10 @@ def main():
             quoted = run('pool.py', 'quote', bam['document_id'], bam['text'][-100:])
             require(quoted['exact_match'], 'BAM final text quote failed')
         filtered = run('pool.py', 'search', 'kira', '--court-type', 'bam')
-        require(filtered['total_matches'] == manifest['collections']['bam-selected.jsonl'],
-                'BAM filter missed records')
+        expected = sum(row.get('court_type') == 'bam' and 'kira' in normalize(row['text'])
+                       for name in SELECTIONS if (ROOT / 'data' / name).exists()
+                       for row in read_rows(ROOT / 'data' / name))
+        require(filtered['total_matches'] == expected, 'BAM filter missed records')
         require(all(r['court_type'] == 'bam' for r in filtered['results']), 'BAM filter leaked')
     yargitay_file = ROOT / 'data/yargitay-selected.jsonl'
     if yargitay_file.exists():
@@ -80,6 +84,19 @@ def main():
         require({r['document_id'] for r in filtered['results']}.issuperset(
                 {r['document_id'] for r in selected}), 'Yargitay filter missed additions')
         require(all(r['court_type'] == 'yargitay' for r in filtered['results']), 'Yargitay filter leaked')
+    derleme_file = ROOT / 'data/derleme-v5-selected.jsonl'
+    if derleme_file.exists():
+        index = run('derleme.py', 'validate')
+        require(index['structural_validation'] == 'pass', 'Compilation index invalid')
+        compiled = list(read_rows(derleme_file))
+        require(all(d['source_url'] == BEDESTEN_URL.format(d['document_id']) for d in compiled),
+                'Compilation texts must carry their Bedesten address')
+        # CLI yolunu ilk ve son kayıtla sına; tüm kayıtlar aynı okuyucudan geçer.
+        for decision in (compiled[0], compiled[-1]):
+            fetched = run('pool.py', 'get', decision['document_id'])
+            require(fetched['text'] == decision['text'] and
+                    fetched['research_notes'] == decision['research_notes'] and
+                    fetched['collection'] == derleme_file.name, 'Compilation text or provenance lost')
     scenarios = run('scenarios.py', 'list')
     quality = run('quality.py', 'validate')
     answers = run('decision_qa.py', 'validate')

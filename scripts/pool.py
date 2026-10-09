@@ -11,6 +11,8 @@ import unicodedata
 # Ana havuzdaki document_id UYAP Mevzuat ve İçtihat (Bedesten) belge kimliğidir; resmî
 # adres bu desenle türetilir. Kayıtta yazılı source_url varsa ona dokunulmaz.
 BEDESTEN_URL = 'https://mevzuat.adalet.gov.tr/ictihat/{}'
+# Ana havuzla birlikte okunan seçkiler; kayıt hangi dosyadan geldiyse collection alanı onu gösterir.
+SELECTIONS = ('bam-selected.jsonl', 'yargitay-selected.jsonl', 'derleme-v5-selected.jsonl')
 # Arama sıralaması: önce içerik türü (esas gerekçesi en değerli), sonra sözcük geçişi.
 KIND_ORDER = {'esas_gerekcesi': 0, 'usul_gerekcesi': 1, 'sinirda': 2, 'kisa_karar': 3}
 COURT_SHORT = (
@@ -84,7 +86,7 @@ def metadata(row):
     keys = ('document_id', 'kunye', 'court', 'esas_no', 'karar_no', 'karar_tarihi',
             'text_sha256', 'human_validated', 'review_level', 'value_assessment',
             'court_type', 'source_url', 'source_provider', 'research_notes',
-            'source_text_sha256', 'redactions')
+            'source_text_sha256', 'redactions', 'collection')
     return {key: row.get(key) for key in keys}
 
 
@@ -138,16 +140,13 @@ def main():
                        help='Birebir eşleşme yoksa boşluk farklarını yok sayarak ara')
     args = parser.parse_args()
     source = args.root / 'topic-rescan-assistant-adjusted.jsonl'
-    rows = list(read_rows(source))
+    rows = [dict(r, collection=source.name) for r in read_rows(source)]
     sources = [source]
-    bam = args.root / 'bam-selected.jsonl'
-    if bam.exists():
-        rows.extend(read_rows(bam))
-        sources.append(bam)
-    yargitay = args.root / 'yargitay-selected.jsonl'
-    if yargitay.exists():
-        rows.extend(read_rows(yargitay))
-        sources.append(yargitay)
+    for name in SELECTIONS:
+        selected = args.root / name
+        if selected.exists():
+            rows.extend(dict(r, collection=name) for r in read_rows(selected))
+            sources.append(selected)
     ids = [str(row['document_id']) for row in rows]
     if len(ids) != len(set(ids)):
         raise ValueError('Duplicate document_id across pools')
