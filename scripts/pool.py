@@ -212,7 +212,7 @@ def main():
                 if start < 0:
                     break
                 end = start + len(args.quotation)
-                positions.append({'start': start, 'end': end,
+                positions.append({'start': start, 'end': end, 'matched_text': args.quotation,
                                   'context': row['text'][max(0, start-200):end+200]})
                 offset = start + 1
             mode = 'exact' if positions else None

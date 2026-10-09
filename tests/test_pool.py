@@ -96,6 +96,7 @@ class PoolTests(unittest.TestCase):
             self.assertEqual(loose['occurrences'][0]['matched_text'], 'Birinci  satır\n\nikinci')
             code, exact = quote('ikinci satır', '--ignore-space')
             self.assertEqual((code, exact['exact_match'], exact['match_mode']), (0, True, 'exact'))
+            self.assertEqual(exact['occurrences'][0]['matched_text'], 'ikinci satır')
 
 
 if __name__ == '__main__':
