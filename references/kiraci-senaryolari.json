@@ -25,7 +25,8 @@
       ],
       "decisive_questions": [
         "Çıkış hakkının koşulları yerine getirildi mi?",
-        "Kiralananın geri verildiği tarih hangi belgeyle sabit?"
+        "Kiralananın geri verildiği tarih hangi belgeyle sabit?",
+        "Anahtar kime verildi; alan kişi kiraya veren adına teslim almaya yetkili miydi veya kiraya veren bildirilen teslim tarihine itiraz etti mi?"
       ],
       "search_queries": [
         "sözleşmesel fesih hakkı anahtar teslimi kira alacağı",
@@ -39,7 +40,8 @@
       "coverage": "Sözleşmesel çıkış BAM kararı ile gerçek erken tahliyeyi inceleyen Yargıtay kararlarını ayır. Makul süre sabit değildir; yeniden kiralama ve haklı fesih koşulları ayrı incelenir.",
       "counterfacts": [
         "Bildirim koşuluna uyulmaması",
-        "Teslim tarihinin ispatlanamaması"
+        "Teslim tarihinin ispatlanamaması",
+        "Anahtarın yetkisiz emlakçı veya üçüncü kişiye bırakılması"
       ]
     },
     {
@@ -74,7 +76,7 @@
         "eb8af224-a46c-4101-867f-2d58b76a0aef",
         "e5c8048b-4685-4456-8ad1-39133abef50f"
       ],
-      "coverage": "Eksik inceleme nedeniyle kaldırma; kesin indirim oranı veya tek taraflı eksik ödeme izni değildir.",
+      "coverage": "İki karar farklı yöndedir. İstanbul BAM 35. HD 2017/1243 (eb8af224): indirim hükmü; iki tespit raporu arasındaki çelişki, TBK 306 kapsamında giderim için süre verilip verilmediği, kiracı kusuru ve TBK 307'deki indirim dönemi (kiraya verenin öğrenmesinden giderilmeye kadar) incelenmeden kurulduğu için kaldırılıp iade edildi; kesin oran veya tek taraflı eksik ödeme izni değildir. Yargıtay 3. HD 2023/2841 (e5c8048b) kiracı aleyhinedir: ayıpların giderilmesi için süre verilmeden ve bildirilen fesih tarihlerinde tahliye edilmeden yapılan fesih haklı sayılmadı; anahtar teslimine kadar kira ve TBK 325 makul süre kirası yönünden bozuldu. İndirim (TBK 307), giderim/fesih (TBK 306) ve zarar tazmini (TBK 308) ayrı taleplerdir.",
       "counterfacts": [
         "Ayıbın kiracının kullanımından doğması",
         "Ayıbın giderildiği dönemin talebe dahil edilmesi"
@@ -99,11 +101,14 @@
         "İhtar ve ödeme emirleri",
         "Tebliğ ve öğrenme belgeleri",
         "Saat bilgili itiraz ve dekontlar",
-        "Dava ve tahliye tarihleri"
+        "Dava ve tahliye tarihleri",
+        "Kira sözleşmesi (başlangıç tarihi, süre ve kira yılı)"
       ],
       "decisive_questions": [
         "Her ödeme öğrenme veya tebliğden önce mi sonra mı?",
-        "İhtarlar hangi kira dönemlerine ait?"
+        "İhtarlar hangi kira dönemlerine ait?",
+        "Dava, kira süresinin veya ihtarların yapıldığı kira yılının bitiminden başlayan bir aylık TBK 352/2 süresi geçmeden açıldı mı?",
+        "Dava açıldığı tarihte iki haklı ihtar koşulları gerçekleşmiş miydi? (Konusuz davada giderler HMK 331/1 uyarınca bu tarihteki haklılığa göre belirlenir.)"
       ],
       "search_queries": [
         "iki haklı ihtar aynı gün ödeme itiraz saati",
@@ -112,10 +117,12 @@
       "decision_ids": [
         "fa461f44-de8b-43e1-aaa4-60c85a683530"
       ],
-      "coverage": "Kiracı aleyhine gider sonucu; dava konusuz kaldığından yeni tahliye hükmü değildir.",
+      "coverage": "Kiracı aleyhine gider sonucu; dava konusuz kaldığından yeni tahliye hükmü değildir. Giderler dava tarihindeki haklılığa göre yüklenmiştir (HMK 331/1 ölçütü; kararda madde numarası anılmaz, bir aylık dava süresi tartışılmaz).",
       "counterfacts": [
         "Ödemenin tebliğ veya öğrenmeden önce olması",
-        "İhtar konusu borcun muaccel olmaması"
+        "İhtar konusu borcun muaccel olmaması",
+        "Davanın TBK 352/2'deki bir aylık süre geçtikten sonra açılması",
+        "Dava tarihinde ikinci haklı ihtarın henüz oluşmamış olması"
       ]
     },
     {
@@ -142,11 +149,13 @@
       ],
       "decisive_questions": [
         "Her kalem ilk teslimde hangi durumdaydı?",
-        "Talep normal kullanım izini mi somut hasarı mı karşılıyor?"
+        "Talep normal kullanım izini mi somut hasarı mı karşılıyor?",
+        "Kiraya veren geri vermede hasarları kiracıya hemen ve yazılı olarak bildirdi mi; delil tespiti ve tebliğ tarihleri teslim tarihine göre ne kadar sonra?"
       ],
       "search_queries": [
         "kiralanan hor kullanım olağan yıpranma amortisman",
-        "kiracı sökülen demirbaş hasar bilirkişi"
+        "kiracı sökülen demirbaş hasar bilirkişi",
+        "TBK 335 hemen yazılı bildirim kiracı sorumluluktan kurtulur"
       ],
       "decision_ids": [
         "880b0d47-5ca8-4e1a-9fab-41b5da8f1992"
@@ -154,7 +163,8 @@
       "coverage": "Hasar hesabının yeniden incelenmesine ilişkin karar; borçsuzluk veya depozito iadesi hükmü değildir.",
       "counterfacts": [
         "Olağan kullanımı aşan hasarın belgelenmesi",
-        "Sökülen malzemenin kiraya verene ait olması"
+        "Sökülen malzemenin kiraya verene ait olması",
+        "Teslimden hemen sonra kiracıya ulaşan somut yazılı hasar bildirimi veya olağan incelemeyle görülemeyen gizli hasar"
       ]
     },
     {
@@ -174,15 +184,18 @@
         "Taahhüdün aslı",
         "Sözleşme ve fiili teslim belgesi",
         "Takip, itiraz ve tebliğ evrakı",
-        "Aile konutu bildirimi ve ulaşma belgesi"
+        "Aile konutu bildirimi ve ulaşma belgesi",
+        "Taahhütten sonra düzenlenen sözleşme, yenileme veya ek protokoller"
       ],
       "decisive_questions": [
         "İmza mı tarih mi yoksa doldurma anlaşması mı çekişmeli?",
-        "Teslim, taahhüt ve takip tarihleri hangi belgelerde yer alıyor?"
+        "Teslim, taahhüt ve takip tarihleri hangi belgelerde yer alıyor?",
+        "Taahhütten sonra yeni kira sözleşmesi veya yenileme yapıldı mı; belge yeni bir kira ilişkisi mi kuruyor, yoksa yalnız bedeli mi değiştiriyor?"
       ],
       "search_queries": [
         "tahliye taahhüdü boş imza anlaşmaya aykırı doldurma ispat",
-        "aile konutu tahliye taahhüdü bildirim"
+        "aile konutu tahliye taahhüdü bildirim",
+        "tahliye taahhüdünden sonra yeni kira sözleşmesi taahhüt hükümsüz"
       ],
       "decision_ids": [
         "191fe3e9-f690-420c-ad33-23cfeb89e8ad",
@@ -192,7 +205,8 @@
       "coverage": "BAM ve Yargıtay somut ispat değerlendirmeleri ile tarihsel HGK ayrımı birlikte okunur. Boş imza, anlaşmaya aykırı doldurma ve hile savunmaları eşit değildir; güncel delil rejimi ayrıca doğrulanır.",
       "counterfacts": [
         "İmzanın ayrıca inkâr edilmesi",
-        "Farklı teslim veya bildirim kronolojisi"
+        "Farklı teslim veya bildirim kronolojisi",
+        "Taahhütten sonra kiraya verenin kabul ettiği yeni kira sözleşmesi"
       ]
     },
     {
@@ -322,7 +336,8 @@
         "bakiye",
         "icra",
         "temerrüt",
-        "mahsup"
+        "mahsup",
+        "makbuz"
       ],
       "modules": [
         "alacak",
@@ -335,7 +350,7 @@
         "Tebliğ, itiraz ve dava tarihleri"
       ],
       "decisive_questions": [
-        "Her ödeme hangi borç dönemine ait?",
+        "Her ödeme hangi borç dönemine ait: kiracı ödeme günü dekontta dönem bildirdi mi (TBK 101/1); bildirmediyse kiraya verenin makbuzda gösterdiği döneme derhâl itiraz edildi mi (TBK 101/2); açıklama yoksa TBK 102 sırası (muaccel borç → birden çok muaccel borçta ilk takip edilen borç → takip yoksa vadesi ilk gelen borç → vadeler aynıysa orantılı) nasıl işliyor?",
         "Ödeme takipten veya davadan önce mi sonra mı?"
       ],
       "search_queries": [
@@ -348,7 +363,9 @@
       "coverage": "Ödeme ve bakiye incelemesi için kaldırma/iade; borcun tamamen bittiğini veya tahliye talebinin reddini kesinleştirmez.",
       "counterfacts": [
         "Dekontun farklı borca ilişkin olması",
-        "Ödeme tarihinin ilgili hukuki süreyi karşılamaması"
+        "Ödeme tarihinin ilgili hukuki süreyi karşılamaması",
+        "Açıklamasız ödemenin TBK 102 uyarınca önce takip edilen veya vadesi daha önce gelen kiraya sayılması ve ihtardaki ayın ödenmemiş kalması",
+        "Faiz veya giderlerde gecikmiş kiracının kısmi ödemeyi doğrudan ana kira borcundan düşürememesi (TBK 100/1)"
       ]
     },
     {
@@ -368,11 +385,17 @@
         "İhtiyaç iddiasını açıklayan dilekçe",
         "Tarafların konut ve kira belgeleri",
         "Tanık anlatımları",
-        "Arabuluculuk ve dava tarihleri"
+        "Arabuluculuk başvuru, son tutanak ve dava tarihleri",
+        "Kira sözleşmesi (başlangıç tarihi ve süresi)",
+        "Tapu kaydı ve edinme tarihi (kiraya veren sonradan edinmişse)",
+        "Kiraya verenin ihtarnamesi veya yazılı bildirimi ile tebliğ belgesi"
       ],
       "decisive_questions": [
         "İhtiyacı destekleyen ve zayıflatan somut olgular neler?",
-        "Usul tartışmasındaki kararın tarihsel koşulları dosyayla aynı mı?"
+        "Usul tartışmasındaki kararın tarihsel koşulları dosyayla aynı mı?",
+        "Tahliye TBK 350, 351/1 veya 351/2 yoluna mı dayanıyor; kiraya veren sözleşmeyi kuran malik mi, kiralananı sonradan edinen mi?",
+        "Sözleşme belirli süreli mi; dava açma hakkı hangi tarihte doğdu ve arabuluculuk başvurusu bu tarihten sonra, dava süresi içinde mi yapıldı?",
+        "TBK 353 kapsamında dava açma süresi içinde dava açılacağına ilişkin yazılı bildirim yapılmış ve kiracıya ulaşmış mı?"
       ],
       "search_queries": [
         "ihtiyaç nedeniyle tahliye gerçek samimi zorunlu ihtiyaç",
@@ -382,7 +405,7 @@
         "aa156eaa-5348-4eef-963a-75a3f84b14a7",
         "9ca8de68-9bcb-444d-9c07-3257427162e2"
       ],
-      "coverage": "İhtiyaç nedeniyle tahliye sonucu kiracı aleyhinedir. Erken arabuluculuk değerlendirmesi geçmişte açılmış davaya özgü; güncel usul için ayrıca araştırma gerekir.",
+      "coverage": "İki kararın sonucu da kiracı aleyhinedir. İstanbul BAM 35. HD 2025/3212 kararındaki erken arabuluculuk değerlendirmesi, 26.05.2025 tarihli içtihattan önce açılmış davaya özgüdür. TBK 350 için Yargıtay 3. HD E. 2025/1495 K. 2025/3048 (26.05.2025), başvurunun dava açma hakkı doğduktan sonra ve dava süresi içinde yapılmasını arar (kart C01, tahliye-ve-uyarlama-kontrol.md). TBK 351/1 yönünden uyuşmazlık giderilmemiştir (E. 2025/3292 K. 2025/5039); yeni malik dosyasında ayrıca araştır. Gaziantep BAM 2017/286 kararı güncel arabuluculuk koşullarına kaynak değildir.",
       "counterfacts": [
         "İhtiyaç anlatımıyla çelişen somut belgeler",
         "Farklı dava tarihi ve arabuluculuk kronolojisi"

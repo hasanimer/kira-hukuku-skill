@@ -9,15 +9,18 @@
 | Dava dilekçesi | Talebi, dayanak vakıaları, delilleri ve istenen dönemi eşleştir | Somut dosyaya uyarlanmış taslak |
 | Cevap dilekçesi | Dava dilekçesindeki iddiaları ve talepleri ayrı ayrı karşıla | Usul/esas savunmaları ve karşı deliller |
 | Bilirkişi raporuna itiraz | Raporun verilerini, yöntemini ve dosyadaki karşılıklarını incele | Raporun ilgili bölümüne bağlı somut itirazlar |
+| İhtar veya bildirim taslağı | Dayanak normunu (TBK 315, 345, 347, 351/1, 352/2, 353), muhatabı, yazılı şekli (TBK 348), aile konutunda eşe ayrı bildirim gerekip gerekmediğini (TBK 349/3) ve tebliğ yolunu belirle; ulaşması gereken son günü [süre rehberine](sure-hesaplama.md) göre koşullu hesapla. Normun zorunlu içeriğini eksiksiz yaz (ör. TBK 315'te ödeme için verilen süre ve sürede ödenmezse sözleşmenin feshedileceği bildirimi) | Kullanıcının kendisinin göndereceği düzenlenebilir ihtarname taslağı ve ayrı tebliğ/son gün notu |
+| Arabuluculuk hazırlığı | Uyuşmazlık konusunu, talep kalemlerini, başvuru ve son tutanak tarihlerini ve dava şartı kapsamını [mevzuat haritası](mevzuat-haritasi.md) ile [süre rehberine](sure-hesaplama.md) göre ayır; lehe/aleyhe dayanakları ve belgeleri listele | Başvuru özeti, toplantı hazırlık notu, uzlaşma seçenekleri ve riskleri |
+| İcra takibine itiraz veya cevap | Ödeme emrinin türünü ve tebliğ tarihini, itiraz konusunu (kira ilişkisi, borç, ödeme, imza) belirle; itiraz mercii ve süresini güncel İİK metninden doğrula; itirazın kaldırılması ile itirazın iptali yollarını ayır ([mevzuat haritası](mevzuat-haritasi.md)) | Ödeme emrine itiraz taslağı veya itirazın kaldırılması/iptali dosyasına cevap taslağı; doğrulanmamış süreyi kesin son gün olarak yazmadan |
 | Yeni belge veya düzeltme | Önceki değerlendirmede hangi olgu ve sonuçların değiştiğini belirle | Etkilenen kısımların güncellenmesi |
 
 Kullanıcının istemediği ayrı bir dilekçe veya hukuki işlem üretme. Kısa bir soruyu tam dosya kabulüne dönüştürme.
 
 ## 2. Olguları ve zaman çizelgesini kur
 
-Eksik bilgi için [soru akışındaki](soru-akisi.md) ilgili başlığı kullan. İlk turda sonucu etkileyen en fazla 3–5 kısa soru seç; mevcut belgelerde cevaplananları çıkar. Yeni cevap geldikçe yalnız etkilenen meseleleri ve kalan belirleyici eksikleri ele al.
+Eksik bilgi için [soru akışındaki](soru-akisi.md) ilgili başlığı kullan. Soru sayısı, öncelik ve takip kuralları oradadır: ilk turda yalnız sonucu veya süreyi etkileyen 3–5 kısa soru seç, daha azı yeterliyse listeyi doldurma; mevcut belgelerde cevaplananları sorma. Yeni cevap geldikçe yalnız etkilenen meseleleri ve kalan belirleyici eksikleri ele al.
 
-Her belirleyici bilgiyi şu ayrımla ele al: **belgede görülen**, **kullanıcının beyanı**, **karşı tarafın iddiası**, **henüz bilinmeyen**. Belgede yazması, çekişmeli bir iddianın ispatlandığı anlamına gelmez. Çelişen tarih veya bedelleri sessizce birleştirme.
+Her belirleyici bilgiyi şu ayrımla ele al: **belgede görülen**, **kullanıcının beyanı**, **karşı tarafın iddiası**, **henüz bilinmeyen**. Yanıtta araç çıktısını, dosya belgesini ve kendi yorumunu da birbirinden ayrı göster. Belgede yazması, çekişmeli bir iddianın ispatlandığı anlamına gelmez. Çelişen tarih veya bedelleri sessizce birleştirme.
 
 İhtiyaç varsa kısa bir çalışma tablosu tut: `olgu | değer/tarih | belge ve sayfa | çekişme/eksik`. Sözleşme başlangıcı, hedef kira dönemi, ihtar-tebliğ, arabuluculuk ve dava tarihlerini birbirinden ayrı yerleştir. Aylık/yıllık ve net/brüt bedelleri aynı temele getirmeden karşılaştırma.
 
@@ -40,9 +43,9 @@ Her mesele için önce hangi olgunun sonucu değiştirdiğini belirle. Bir dosya
 
 ## 4. Kaynağı bul, sonra doğrula
 
-Skill kökünde `python scripts/pool.py stats` ve `python scripts/tbk.py` ile paket erişimini kontrol et. Komutları başka dizinden çalıştırıyorsan betiklerin mutlak yolunu kullan. Karar aramasının sözcük eşleştirmesi yaptığını, anlamsal arama veya hukukî ağırlık ölçümü olmadığını dikkate al.
+Skill kökünde `python scripts/pool.py stats` ve `python scripts/tbk.py` ile paket erişimini, havuzun fiilî kayıt sayısını ve tarih aralığını kontrol et. Komutları başka dizinden çalıştırıyorsan betiklerin mutlak yolunu kullan. Karar aramasının sözcük eşleştirmesi yaptığını, anlamsal arama veya hukukî ağırlık ölçümü olmadığını dikkate al.
 
-Örneğin hedef döneme etki araştırmasında önce `python scripts/tbk.py 345` ile maddeyi oku; ardından `python scripts/pool.py search ihtar --limit 8`, `search "artış şartı" --limit 8` gibi ayrı sorgular kur. Esas gerekçesi filtresini gerektiğinde kullan; sonuç azsa filtresiz de ara. Adayın `document_id` değerini `get` komutuna vererek tam metni oku; kullanacağın birebir alıntıyı `quote` ile kontrol et. Komut ayrıntıları [havuz rehberindedir](havuz.md).
+Örneğin hedef döneme etki araştırmasında önce `python scripts/tbk.py 345` ile maddeyi oku; ardından `python scripts/pool.py search ihtar --limit 8`, `python scripts/pool.py search "artış şartı" --limit 8` gibi ayrı sorgular kur. Esas gerekçesi filtresini (`--kind esas_gerekcesi`) gerektiğinde kullan; sonuç azsa filtresiz de ara. Adayın `document_id` değerini `python scripts/pool.py get KARAR_KIMLIGI` komutuna vererek tam metni oku; kullanacağın birebir alıntıyı `python scripts/pool.py quote KARAR_KIMLIGI "alıntı"` ile kontrol et. Komut ayrıntıları [havuz rehberindedir](havuz.md).
 
 Yerel kanun ve kararlar ilk araştırma kaynağıdır. Uygulanacak tarihteki hükmü ve sonraki değişiklikleri çevrimiçi doğrula. Bağlı mevzuat araçları kullanılabiliyorsa önce araç yönergelerini uygula; mevzuatı resmî numarasıyla bul, dönen kimlikle ilgili maddeyi getir. Yerel karar yetersizse odaklı dış araştırma yap ve dışarıdan bulunan kararı paket havuzundan gelenlerden ayır. Dış kaynağı kullanmak paketi otomatik değiştirmez.
 
@@ -63,6 +66,16 @@ Kararı okurken kimin görüşünün aktarıldığını ve nihai sonucu belirle.
 Analizde önce sorunun cevabını ve onu değiştiren eksik bilgiyi ver; ardından gerekli dayanakları açıkla. Dilekçede doğrulanmış vakıalar, deliller, hukuki açıklamalar ve talep sonucu birbiriyle uyumlu olsun. Dava veya cevap yönüne göre anlatımı uyarla; aleyhe kaynağı araştırma notunda değerlendir, karşı tarafın iddiasını müvekkilin kabulü gibi yazma.
 
 Belge eksikliği taslağı tamamen engellemiyorsa ilgili yere açıklayıcı doldurma alanı koy. Bir süre veya bedel doğrulanamıyorsa kesin tarih/tutar yazmak yerine gerekli girdiyi belirt. Başarı ihtimaline yapay yüzde verme. Hesap gerekiyorsa veri kaynağı, dönem, birim ve formülü göster.
+
+### Yanıt ve taslak biçimi
+
+İskeleti talebin kapsamına göre kısalt; boş başlık bırakma.
+
+- **Kısa soru:** Kısa cevap → Dayanak (madde ve doğrulama durumu; karar künyesi ve adresi) → Sonucu değiştirebilecek eksik bilgi.
+- **Dosya değerlendirmesi:** 1) Kısa sonuç ve belirleyici eksikler; 2) Olgu/tarih çizelgesi (belgede görülen / kullanıcı beyanı / karşı taraf iddiası / bilinmeyen); 3) Her mesele için olgu → ilgili tarihteki düzenleme → karar gerekçesi → benzerlik/fark → sonuç; 4) Lehe ve aleyhe kaynaklar; 5) Delil ihtiyaçları; 6) Sonraki adımlar ve süre adayları (doğrulanmamış tarih "takvim adayı" olarak).
+- **Dava dilekçesi (HMK 119):** Mahkeme; taraflar, kimlik ve adresler, vekil `[DOLDURULACAK: ...]`; konu ve dava değeri; açıklamalar (numaralı vakıalar, her vakıanın yanında dayandığı delil); hukuki nedenler; deliller (dava şartı arabuluculukta son tutanak eki); sonuç ve istem; imza. **Cevap dilekçesi (HMK 129):** usul itirazları önce, ardından iddiaların ayrı ayrı karşılanması ve karşı deliller.
+- **İşaretler:** Çevrimiçi doğrulanamayan güncel düzenleme, geçici hüküm veya süre için metinde `[DOĞRULANMADI: ... — uygulanacak tarihteki metin kontrol edilmeli]` kullan. Paket dışından bulunan kararı kaynak notunda "dış kaynak" diye ayır.
+- **Kaynak notu** (dilekçe dışında, kaynak başına bir satır): `künye | kaynak adresi (source_url) ve sağlayıcısı: ana havuzda resmî UYAP sayfası, seçkilerde Dejure | paket (dosya, document_id, text_sha256) veya dış kaynak (sağlayıcı, kimlik) | tam metin okundu mu | alıntı quote ile doğrulandı mı | kullanılan madde ve sürüm / çevrimiçi kontrol tarihi`.
 
 ## 7. Bitirme ve güncelleme ölçütü
 

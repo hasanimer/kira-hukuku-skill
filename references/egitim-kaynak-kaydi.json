@@ -68,7 +68,9 @@
       "url": "https://app.dejure.ai/dokuman/0c136e01-8523-48e3-8399-436929f7382f",
       "text_chars": 15544,
       "text_sha256_utf8": "103a9d49e63a60363e0a366d7530b4b94be183773e5a6b6b2b7022537980651f",
-      "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula"
+      "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula",
+      "local_document_id": "1158814600",
+      "local_note": "Aynı karar 1.603 kayıtlı yerel havuzda da bulunur (Bedesten kopyası). Sağlayıcı farkı nedeniyle metin uzunluğu ve hash farklıdır; alıntıyı hangi kopyaya dayandırıyorsan onunla denetle."
     },
     {
       "id": "87b60136-cba6-4401-aa2e-69c72276f021",
@@ -222,7 +224,9 @@
       "url": "https://app.dejure.ai/dokuman/a85e9245-6ec8-46ee-9006-d9c439b58330",
       "text_chars": 2948,
       "text_sha256_utf8": "3f8eb124b4b7db4376a3f413e19adffb52ed1e6f6c95eec708f636087afca0bb",
-      "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula"
+      "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula",
+      "local_document_id": "97376300",
+      "local_note": "Aynı karar 1.603 kayıtlı yerel havuzda da bulunur (Bedesten kopyası). Sağlayıcı farkı nedeniyle metin uzunluğu ve hash farklıdır; alıntıyı hangi kopyaya dayandırıyorsan onunla denetle."
     },
     {
       "id": "16fba563-a747-4e52-bebb-d2a6f4d75333",

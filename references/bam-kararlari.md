@@ -18,20 +18,6 @@ Artış şartı olmayan sözleşmede ihtar, hedef kira dönemi ve işyeri bedeli
 
 Metin TBK 344'ü eski ÜFE ifadesiyle aktarmaktadır. Güncel mevzuat yerine kullanılmaz. Vekâlet ücreti hesabı ve taraf ifadelerinde tutarsızlık vardır; bu kısım ücret hesabına veya genel kurala dayanak yapılmaz. Talepteki 7.000 TL ile hükümdeki 7.650 TL brüt bedel, talebin net/brüt niteliği dosyadan doğrulanmadan karşılaştırılmaz.
 
-## Seçime alınmayan aday
-
-Antalya BAM 6. HD, 2022/1456 E., 2024/385 K., 19.02.2024 tam metni incelendi. Gerekçede davacının katılma istinafı kesinlik nedeniyle reddedilirken sonuç bölümünde taraf sıfatları ve ret türü farklı aktarılıyor. Bu metin uyuşmazlığı çözülmeden örnek seçkiye alınmadı. Tam metni pakete kopyalanmadı.
-
-## Erişim
-
-```sh
-python scripts/pool.py search bilirkişi --court-type bam
-python scripts/pool.py get 34ffba87-e4ff-4051-9441-4a72fe6564bd
-python scripts/pool.py get 615160e1-265c-486a-9b9a-4a82061a94b6
-```
-
-Sonuçlardaki `research_notes` asistan değerlendirmesidir; mahkeme metni değildir. Atıf ve alıntıdan önce `get` ile metni oku ve `quote` ile birebir eşleşmeyi kontrol et. Bu seçki ülke çapındaki BAM uygulamasının tamamını temsil etmez.
-
 ## İstanbul BAM 36. Hukuk Dairesi
 
 **2024/2242 E., 2026/1952 K., 21.05.2026** — [Kaynak](https://app.dejure.ai/dokuman/961c549c-b29a-4239-b9d7-38dc51045170).
@@ -56,7 +42,9 @@ Aşağıdaki beş kararın tam metni de `data/bam-selected.jsonl` içindedir. İ
 
 Usulden ret kaldırılarak ihtiyaç nedeniyle tahliyeye yeniden hükmedildi.
 
-26.05.2025 tarihli içtihattan önce açılmış 05.08.2024 tarihli davaya özgü öngörülebilirlik değerlendirmesidir; sonraki davalarda erken arabuluculuğun yeterli olduğunu söylemez. Aktarılan Yargıtay 3. HD E.2025/1495 K.2025/3048 ve AYM kararı bu güncellemede bağımsız tam metinden doğrulanmadı. İhtiyaç değerlendirmesinde sözleşme, dekont ve tanık birlikte ele alınmıştır; kirada oturma beyanını tek başına kesin delil sayma.
+26.05.2025 tarihli içtihattan önce açılmış 05.08.2024 tarihli davaya özgü öngörülebilirlik değerlendirmesidir; sonraki davalarda erken arabuluculuğun yeterli olduğunu söylemez. Aktarılan Yargıtay 3. HD E.2025/1495 K.2025/3048 kararının gerekçe ve hükmü sonradan ayrıca incelendi (bkz. [kart C01](karar-kartlari.json) ve [tahliye kontrolü](tahliye-ve-uyarlama-kontrol.md)); tam metni yerel havuzda değildir ve BAM metnindeki alıntının lafzı bu kaynakla karşılaştırılmadı. Aktarılan AYM kararı (B. No: 2014/13916, 12/1/2017) bağımsız tam metinden doğrulanmadı. İhtiyaç değerlendirmesinde sözleşme, dekont ve tanık birlikte ele alınmıştır; kirada oturma beyanını tek başına kesin delil sayma.
+
+E./K. numaraları karar metninde yer almaz; Dejure üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula.
 
 ### İzmir Bölge Adliye Mahkemesi 27. Hukuk Dairesi, E. 2025/805 K. 2025/376 T. 25.11.2025
 
@@ -67,6 +55,8 @@ Usulden ret kaldırılarak ihtiyaç nedeniyle tahliyeye yeniden hükmedildi.
 Tespit bedeli ile yüzde 10 artış şartının uyarlanması talebinin reddine ilişkin karşılıklı istinaflar esastan reddedildi.
 
 Dava anlatımında 06.06.2020, hüküm ve somut olay değerlendirmesinde 06.06.2022 dönemi geçiyor; bu fark giderilmeden dönem hesabına dayanak yapma. Bir yıllık sözleşmelerde uyarlamanın hiçbir zaman mümkün olmadığı veya kararlaştırılan her artışın geçerli olduğu sonucunu çıkarma. Somut yüzde 10 hakkaniyet indirimi evrensel oran değildir; boş rayiç ile talep miktarı farklıdır.
+
+Kayıttaki vekil adı anonimleştirilmiştir; kaynak ve dağıtılan metin hash değerleri ile `redactions` alanı bu farkı gösterir.
 
 ### İstanbul Bölge Adliye Mahkemesi 36. Hukuk Dairesi, E. 2026/1607 K. 2026/1348 T. 10.04.2026
 
@@ -96,11 +86,20 @@ Boş imza, aile konutu bildirimi ve ispat değerlendirmesi somut olayla sınırl
 
 Ödemeler ve bakiye alacak araştırılmadığından kabul ve tahliye kararı kaldırılarak dosya geri gönderildi.
 
-BAM doğrudan borcun tamamen sona erdiğine veya tahliye talebinin reddine hükmetmemiştir; bilirkişi hesabı ve yeniden değerlendirme istemiştir. Takipten sonra fakat davadan önce ödeme ile dava sırasında ödeme aynı sonuçta değerlendirilmez. Aktarılan HGK kararları bağımsız olarak okunmuş kaynak değildir; ihtirazi kayıtsız ödeme değerlendirmesini bütün kira iade davalarına taşıma.
+BAM doğrudan borcun tamamen sona erdiğine veya tahliye talebinin reddine hükmetmemiştir; bilirkişi hesabı ve yeniden değerlendirme istemiştir. Takipten sonra fakat davadan önce ödeme ile dava sırasında ödeme aynı sonuçta değerlendirilmez. Aktarılan HGK kararları bağımsız olarak okunmuş kaynak değildir; ihtirazi kayıtsız ödeme değerlendirmesini bütün itirazın iptali ve temerrüt nedeniyle tahliye davalarına otomatik taşıma.
 
-## Kiracı sorunlarından seçilen dört yeni karar
+## Kiracı senaryolarında kullanılan dört karar
 
-[Sözleşmesel çıkış, rutubet, iki haklı ihtar ve çıkış hasarı senaryoları](kiraci-senaryolari.md) her kararın künyesini, kaynak bağlantısını, sonucunu ve kullanım sınırlarını birlikte gösterir. Kurgular kararların gerçek olaylarından ayrıdır. İki yeni kayıttaki açık kişi adları anonimleştirilmiştir; kaynak ve dağıtılan metin hash değerleri ile `redactions` alanı bu farkı gösterir.
+Aşağıdaki dört kararın olgu, sonuç ve kullanım sınırları [kiracı senaryolarında](kiraci-senaryolari.md) K1–K4 başlıkları altında ayrıntılı gösterilir. Kurgular kararların gerçek olaylarından ayrıdır. Adana BAM 5. HD E. 2022/1189 ile İstanbul BAM 55. HD E. 2023/2395 kayıtlarındaki açık kişi adları anonimleştirilmiştir; kaynak ve dağıtılan metin hash değerleri ile `redactions` alanı bu farkı gösterir.
+
+- **K1 — Adana Bölge Adliye Mahkemesi 5. Hukuk Dairesi, E. 2022/1189 K. 2024/1605 T. 14.11.2024** — sözleşmesel çıkış hakkı, menfi tespit. [Kaynak](https://app.dejure.ai/dokuman/7ad0f708-0612-47c9-956d-f722f4fe55fe) · Kimlik: `7ad0f708-0612-47c9-956d-f722f4fe55fe`
+- **K2 — İstanbul Bölge Adliye Mahkemesi 35. Hukuk Dairesi, E. 2017/1243 K. 2017/1468 T. 11.10.2017** — rutubet, ayıp nedeniyle indirim. Daire ve E./K. numaraları karar metninde yer almaz; künye Dejure üst verisidir, dilekçede kullanmadan önce doğrula. [Kaynak](https://app.dejure.ai/dokuman/eb8af224-a46c-4101-867f-2d58b76a0aef) · Kimlik: `eb8af224-a46c-4101-867f-2d58b76a0aef`
+- **K3 — İstanbul Bölge Adliye Mahkemesi 36. Hukuk Dairesi, E. 2019/3134 K. 2021/1779 T. 22.09.2021** — iki haklı ihtar, konusuz kalma ve yargılama giderleri. [Kaynak](https://app.dejure.ai/dokuman/fa461f44-de8b-43e1-aaa4-60c85a683530) · Kimlik: `fa461f44-de8b-43e1-aaa4-60c85a683530`
+- **K4 — İstanbul Bölge Adliye Mahkemesi 55. Hukuk Dairesi, E. 2023/2395 K. 2024/2656 T. 06.11.2024** — çıkış hasarı, yıpranma/yenileme payı. [Kaynak](https://app.dejure.ai/dokuman/880b0d47-5ca8-4e1a-9fab-41b5da8f1992) · Kimlik: `880b0d47-5ca8-4e1a-9fab-41b5da8f1992`
+
+## Tahliye, depozito ve süre hesabına ilişkin dört ek karar
+
+Aşağıdaki dört kararın tam metni de `data/bam-selected.jsonl` içindedir. İnceleme notları asistan değerlendirmesidir.
 
 ### Ankara Bölge Adliye Mahkemesi 37. Hukuk Dairesi, E. 2024/2839 K. 2024/2118 T. 24.10.2024
 
@@ -136,6 +135,8 @@ Satılık ilanı fotoğraflarının tarih ve taşınmaz bağlantısı ispatlanam
 
 2017 tarihli karar güncel arabuluculuk koşullarına kaynak değildir; edinme gününün dahil olduğu anlatımı süre rejimiyle birlikte incelenmelidir.
 
+Metin istinaf mahkemesini ve daireyi adlandırmaz; Gaziantep BAM 3. HD, E./K. bilgisi Dejure üst verisidir, dilekçede kullanmadan önce doğrula.
+
 ### İstanbul Bölge Adliye Mahkemesi 35. Hukuk Dairesi, E. 2017/1061 K. 2018/40 T. 10.01.2018
 
 [Kaynak](https://app.dejure.ai/dokuman/22c1c746-82ef-49f2-9db7-66b4e2326652) · Kimlik: `22c1c746-82ef-49f2-9db7-66b4e2326652`
@@ -167,3 +168,23 @@ Pandemi nedeniyle dört ay eklenmesi taraf savunmasıdır; kabul edilmiş hesap 
 Dava anlatımındaki 47 madde atfını gerekçedeki TBK 347 yerine kullanma.
 
 Eski sözleşmelerde geçiş hükümlerini ve yeni sözleşme olup olmadığını ayrıca incele; otomatik bir aylık dava penceresi türetme.
+
+Daire ve E./K. numaraları karar metninde yer almaz; Dejure üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula.
+
+## Seçime alınmayan aday
+
+Antalya BAM 6. HD, 2022/1456 E., 2024/385 K., 19.02.2024 tam metni incelendi. Gerekçede davacının katılma istinafı kesinlik nedeniyle reddedilirken sonuç bölümünde taraf sıfatları ve ret türü farklı aktarılıyor. Bu metin uyuşmazlığı çözülmeden örnek seçkiye alınmadı. Tam metni pakete kopyalanmadı.
+
+## Erişim
+
+```sh
+python scripts/pool.py search bilirkişi --court-type bam --limit 20
+python scripts/pool.py get 34ffba87-e4ff-4051-9441-4a72fe6564bd
+python scripts/pool.py get 615160e1-265c-486a-9b9a-4a82061a94b6
+python scripts/pool.py get KIMLIK
+python scripts/pool.py quote KIMLIK "Birebir kısa alıntı"
+```
+
+Bu sayfada `Kimlik` olarak verilen her kayıt aynı komutla okunur.
+
+Sonuçlardaki `research_notes` asistan değerlendirmesidir; mahkeme metni değildir. Atıf ve alıntıdan önce `get` ile metni oku ve `quote` ile birebir eşleşmeyi kontrol et. Bu seçki ülke çapındaki BAM uygulamasının tamamını temsil etmez.

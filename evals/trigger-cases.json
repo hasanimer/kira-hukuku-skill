@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "version": "2026-10-09",
+  "fictional": true,
+  "status": "not_measured",
+  "note": "Yalnız yapı doğrulanır; tetiklenme oranı canlı oturumlarda ölçülmedi. module alt konu etiketidir (cases.json topic değerleriyle aynı), modules altı modül anahtarıdır.",
+  "cases": [
+    {
+      "id": "T01",
+      "query": "Kiracım üç aydır kirayı ödemiyor, tahliye için ne yapmalıyım?",
+      "should_trigger": true,
+      "module": "temerrut",
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
+      "note": "Temerrüt nedeniyle tahliye ve kira alacağı."
+    },
+    {
+      "id": "T02",
+      "query": "2019'dan beri oturduğum dairenin kirasını ev sahibi %80 artırmak istiyor; tespit davası açarsa ne olur?",
+      "should_trigger": true,
+      "module": "tespit",
+      "modules": [
+        "tespit"
+      ],
+      "note": "Beş yılı aşan konut kirasında tespit."
+    },
+    {
+      "id": "T03",
+      "query": "Ev sahibi oğlu evlenecek diye ihtiyaç nedeniyle tahliye davası açtı, cevap dilekçesi taslağı hazırla.",
+      "should_trigger": true,
+      "module": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "TBK 350 ihtiyaç davası ve dilekçe taslağı."
+    },
+    {
+      "id": "T04",
+      "query": "Taşınırken ev sahibi depozitomu boya badana gerekçesiyle iade etmiyor.",
+      "should_trigger": true,
+      "module": "depozito",
+      "modules": [
+        "guvence"
+      ],
+      "note": "Depozito iadesi ve olağan kullanım."
+    },
+    {
+      "id": "T05",
+      "query": "İşyeri kirasında verdiğim tahliye taahhütnamesine dayanılarak icra takibi başlatıldı, itiraz edebilir miyim?",
+      "should_trigger": true,
+      "module": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "Tahliye taahhüdüne dayalı ilamsız takip."
+    },
+    {
+      "id": "T06",
+      "query": "Döviz cinsinden kararlaştırılan kiranın uyarlanması için dava açabilir miyim?",
+      "should_trigger": true,
+      "module": "uyarlama",
+      "modules": [
+        "uyarlama"
+      ],
+      "note": "TBK 138 uyarlaması; dövizli kira."
+    },
+    {
+      "id": "T07",
+      "query": "Kiralanan dairenin yakıt ve aidat giderlerini kiracı mı, kiraya veren mi öder?",
+      "should_trigger": true,
+      "module": "masraf",
+      "modules": [
+        "guvence"
+      ],
+      "note": "Kiracı ile kiraya veren arasındaki yan gider paylaşımı."
+    },
+    {
+      "id": "T08",
+      "query": "Kira sözleşmem on yılı doldurdu, ev sahibi sebep göstermeden beni çıkarabilir mi?",
+      "should_trigger": true,
+      "module": "uzama",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "TBK 347 on yıllık uzama."
+    },
+    {
+      "id": "T09",
+      "query": "Kira tespit davasından önce arabulucuya gitmek zorunlu mu?",
+      "should_trigger": true,
+      "module": "tespit",
+      "modules": [
+        "tespit"
+      ],
+      "note": "HUAK 18/B dava şartı arabuluculuk; kira tespiti."
+    },
+    {
+      "id": "T10",
+      "query": "Birikmiş kira alacağım için ilamsız icra takibi mi açmalıyım, alacak davası mı?",
+      "should_trigger": true,
+      "module": "alacak",
+      "modules": [
+        "alacak"
+      ],
+      "note": "Kira alacağı için yol seçimi."
+    },
+    {
+      "id": "T11",
+      "query": "Belediyeden ihaleyle kiraladığım dükkânın süresi bitti; belediye on beş gün içinde tahliye edeceğini yazdı. Ne yapabilirim?",
+      "should_trigger": true,
+      "module": "rejim",
+      "modules": [
+        "sozlesme",
+        "tahliye"
+      ],
+      "note": "Kamu kiralaması: TBK 339/2 ve 2886/75 ayrımı."
+    },
+    {
+      "id": "T12",
+      "query": "2023'te yenilenen konut kiramda yüzde 25 sınırının üstünde ödediğim fazla kirayı geri alabilir miyim?",
+      "should_trigger": true,
+      "module": "alacak",
+      "modules": [
+        "alacak"
+      ],
+      "note": "Geçici %25 sınırı döneminde fazla ödemenin iadesi."
+    },
+    {
+      "id": "T13",
+      "query": "Kira sözleşmesine kefil olarak imza attım; kiracı ödemediği için sekiz yıl sonraki kira borcu benden isteniyor.",
+      "should_trigger": true,
+      "module": "kefalet",
+      "modules": [
+        "guvence",
+        "alacak"
+      ],
+      "note": "Kira kefaletinin şekli ve kapsamı."
+    },
+    {
+      "id": "N01",
+      "query": "Ev satın alırken tapu harcını alıcı mı satıcı mı öder?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: satış ve tapu harcı; kira ilişkisi yok."
+    },
+    {
+      "id": "N02",
+      "query": "Kira gelirim için gelir vergisi beyannamesini nasıl doldururum?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: vergi hukuku."
+    },
+    {
+      "id": "N03",
+      "query": "Finansal kiralama (leasing) sözleşmemde temerrüde düştüm, 6361 sayılı Kanuna göre fesih nasıl işler?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: finansal kiralama, TBK kira hükümleri değil."
+    },
+    {
+      "id": "N04",
+      "query": "Kat malikleri kurulu, aidat borcu olan kat malikine icra takibi başlatabilir mi?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: kat mülkiyeti; kiracı-kiraya veren ilişkisi yok."
+    },
+    {
+      "id": "N05",
+      "query": "İşverenim iş sözleşmemi feshetti, kıdem tazminatımı hesapla.",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Kapsam dışı: iş hukuku."
+    },
+    {
+      "id": "N06",
+      "query": "Miras kalan evde ortaklığın giderilmesi davası nasıl açılır?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: paylı mülkiyet ve miras."
+    },
+    {
+      "id": "N07",
+      "query": "Kiralık daire ilanı için çekici bir ilan metni yaz.",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Kapsam dışı: hukuki olmayan pazarlama metni."
+    },
+    {
+      "id": "N08",
+      "query": "Python ile kira ödemelerini takip eden bir uygulama yaz.",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Kapsam dışı: yazılım geliştirme."
+    },
+    {
+      "id": "N09",
+      "query": "Tüketici kredisi faizini erken kapamada nasıl hesaplarım?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Kapsam dışı: tüketici kredisi."
+    },
+    {
+      "id": "N10",
+      "query": "Boşanma davasında nafaka miktarı nasıl belirlenir?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Kapsam dışı: aile hukuku."
+    },
+    {
+      "id": "N11",
+      "query": "Konut kredisiyle ev alırken DASK ve konut sigortası yaptırmak zorunlu mu?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: konut edinimi ve sigorta."
+    },
+    {
+      "id": "N12",
+      "query": "Yurt dışında yaşarken Türkiye'deki evimin satışı için konsoloslukta vekâletname nasıl verilir?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: temsil ve satış işlemi; kira ilişkisi yok."
+    },
+    {
+      "id": "N13",
+      "query": "Komşumun ağacının dalları bahçeme taşıyor, kesilmesini nasıl isterim?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Kapsam dışı: komşuluk hukuku."
+    }
+  ]
+}

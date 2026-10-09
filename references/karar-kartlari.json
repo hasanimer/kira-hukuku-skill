@@ -12,7 +12,7 @@
       "outcome": "uyusmazligin_giderilmesi",
       "result": "BAM görüş ayrılığı bu yönde giderildi.",
       "dissent": [],
-      "limits": "TBK 351/1 veya kira tespiti hakkında doğrudan hüküm değildir.",
+      "limits": "TBK 351/1 veya kira tespiti hakkında doğrudan hüküm değildir. 26.05.2025'ten önce açılmış davalarda havuzdaki İstanbul BAM 35. HD 2025/5438 E., 2025/3212 K. (30.12.2025, kesin) öngörülebilirlik ve mahkemeye erişim gerekçesiyle erken başvuruyu yeterli saymıştır; tek BAM görüşüdür, ayrıca araştır.",
       "scenario_ids": [
         "B06"
       ],
@@ -258,7 +258,7 @@
       "facts": "Demirbaşlarıyla kiralanan işyerinin ruhsatı kiracıya aittir; kiraya veren süre sonu tahliye ve günlük bedel ister.",
       "evidence": "Sözleşme ve demirbaş listesi; Belediyenin ruhsat cevabı; Fesih bildirimi; Tahliye taahhüdü ve uzama döneminin belgeleri",
       "issue": "İşletme sözleşmesi başlığı ve demirbaşlar ürün kirası için yeterli midir?",
-      "reasoning": "Daire, demirbaşların tek başına hasılat kirası göstermediğini belirtti. Somut sözleşme ve belediye cevabı uyarınca TBK 339 ve devamı uygulandı. Süre bitimine dayalı tek taraflı fesih ve buna bağlı cezai şart kabul edilmedi. Geçmiş döneme ait tahliye taahhüdü de somut uzama bağlamında tahliye sağlamadı.",
+      "reasoning": "Daire, demirbaşların tek başına ürün (hasılat) kirası göstermediğini belirtti. Somut sözleşme ve belediye cevabı uyarınca TBK 339 ve devamı uygulandı. Süre bitimine dayalı tek taraflı fesih ve buna bağlı cezai şart kabul edilmedi. Geçmiş döneme ait tahliye taahhüdü de somut uzama bağlamında tahliye sağlamadı.",
       "outcome": "onama",
       "result": "Tahliye ve cezai şart istemlerinin reddine ilişkin BAM kararı onandı.",
       "dissent": [],
