@@ -17,7 +17,7 @@ Kira tespiti, tahliye, uyarlama, alacak ve depozito dosyaları için kaynaklara 
 
 ---
 
-| **1.603 karar** | **6098 sayılı Kanun** | **Taşınabilir paket** |
+| **1.738 karar** | **6098 sayılı Kanun** | **Taşınabilir paket** |
 | :---: | :---: | :---: |
 | Tam metin, künye ve kaynak izi | Türk Borçlar Kanunu tam metni | Yerel aramada API anahtarı gerekmez |
 
@@ -96,7 +96,7 @@ Güncel mevzuat metni, 2020 sonrası ve BAM içtihadı, künye ön denetimi ve i
 
 İlgili sözleşmeyi, dilekçeyi veya raporu paylaşın; istediğiniz çıktıyı belirtin. Asistan önce belirleyici olguları çıkarır, ardından ilgili kaynakları araştırır.
 
-[Yargıtay ek seçkisi ve kullanım notları →](references/yargitay-kararlari.md)
+[Yargıtay ek seçkisi ve kullanım notları →](references/yargitay-kararlari.md) · [Konu başlığına göre emsal derlemesi →](references/derleme-v5.md)
 
 ## Kullanım örnekleri
 
@@ -168,10 +168,11 @@ Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konuları 
 
 | | |
 | :--- | :--- |
-| **Karar havuzu** | 1.603 karar · 14.10.2004–21.05.2026 |
-| **İçerik türü** | 446 esas gerekçesi · 549 usul gerekçesi · 11 sınırda · 570 kısa karar (model etiketi, insan onaysız) |
-| **Dağılım** | 1.024 karar 3. HD, 539 karar 6. HD; 1.212 karar 2010–2015, 71 karar 2020 ve sonrası |
-| **Kaynak izi** | Ana havuzda Bedesten belge kimliği ve ondan türetilen resmî adres; seçkilerde kayıttaki adres |
+| **Karar havuzu** | 1.738 karar · 14.10.2004–21.05.2026 |
+| **İçerik türü** | 578 esas gerekçesi · 572 usul gerekçesi · 14 sınırda · 574 kısa karar (model ve asistan etiketi, insan onaysız) |
+| **Dağılım** | 1.111 karar 3. HD, 557 karar 6. HD; 1.229 karar 2010–2015, 152 karar 2020 ve sonrası |
+| **Emsal derlemesi** | Av. Hakan Dimdik derlemesindeki (5. sürüm, 12.09.2026) 278 atıf konu dizininde; 135 kararın tam metni Bedesten'den çift aktarımla alındı, 6'sı ana havuzda, 101 atıf Bedesten'de bulunamadı (çoğu BAM) |
+| **Kaynak izi** | Ana havuzda ve derleme seçkisinde Bedesten belge kimliği ve resmî adres; BAM/Yargıtay seçkilerinde kayıttaki üçüncü taraf adresi |
 | **Mevzuat** | 6098 sayılı Türk Borçlar Kanunu |
 | **Kaynak kontrolü** | Künye, resmî adres, metin hash'i ve birebir alıntı doğrulaması |
 | **Otomatik denetim** | Windows ve Linux üzerinde paket bütünlüğü kontrolleri |
@@ -189,6 +190,9 @@ python scripts/pool.py stats
 
 # İlgili kararları arayın
 python scripts/pool.py search "eski kiracı" --kind esas_gerekcesi --limit 8
+
+# Emsal derlemesinde konu başlığına göre arayın
+python scripts/derleme.py search arabuluculuk tahliye
 
 # Kanun maddesini okuyun
 python scripts/tbk.py 344
@@ -234,6 +238,7 @@ kira-tespit-asistani/
 | [Tahliye ve uyarlama kaynak kontrolü](references/tahliye-ve-uyarlama-kontrol.md) | Arabuluculuk zamanı, taahhüt, aile konutu, iki ihtar, yeniden kiralama ve tedbir |
 | [Kira mevzuatı haritası](references/mevzuat-haritasi.md) | Maddi hukuk, usul, icra, kamu kiraları, aidat, döviz, dönüşüm ve vergi |
 | [Legaluga MCP akışı](references/legaluga.md) | Güncel mevzuat, emsal araştırması, künye/alıntı ön denetimi ve UDF taslağı |
+| [Emsal derlemesi konu dizini](references/derleme-v5.md) | Arabuluculuk, kira türü, tahliye, tespit ve diğer istemlerde derleyen başlıklarıyla 278 atıf ve doğrulama durumu |
 | [Rehber kaynak kontrolü](references/rehber-dogrulama.md) | [BAM kararları ve kullanım sınırları](references/bam-kararlari.md) |
 | [Katkı rehberi](CONTRIBUTING.md) | [Veri kaynakları ve bütünlük](data/README.md) |
 

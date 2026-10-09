@@ -1,10 +1,12 @@
 # Veri paketi
 
-Karar havuzu 1.603 kayıt içerir; kararların hukuki içeriği korunur. Açık kişi adı çıkarılan kayıtlarda anonimleştirme `redactions` alanında belirtilir; `source_text_sha256` kaynak metnini, `text_sha256` dağıtılan metni izler. Seçim ve etiketleme yöntemleri [havuz rehberinde](../references/havuz.md) açıklanır. Bu paket tüm kira uyuşmazlıklarını veya güncel içtihadın tamamını kapsadığı iddiasını taşımaz.
+Karar havuzu 1.738 kayıt içerir; kararların hukuki içeriği korunur. Açık kişi adı çıkarılan kayıtlarda anonimleştirme `redactions` alanında belirtilir; `source_text_sha256` kaynak metnini, `text_sha256` dağıtılan metni izler. Seçim ve etiketleme yöntemleri [havuz rehberinde](../references/havuz.md) açıklanır. Bu paket tüm kira uyuşmazlıklarını veya güncel içtihadın tamamını kapsadığı iddiasını taşımaz.
 
 | Dosya | Amaç |
 | --- | --- |
 | `yargitay-selected.jsonl` | On Yargıtay kararının tam metni, kaynak bağlantısı ve inceleme notları |
+| `derleme-v5-selected.jsonl` | Av. Hakan Dimdik derlemesinde atıf yapılan ve Bedesten'de bulunan 135 kararın tam metni, resmî adresi ve derleme atıfları |
+| `derleme-v5-index.json` | Derlemedeki 278 atıfın konu başlığı, eşleştiği karar ve doğrulama durumu; okunur sürümü `references/derleme-v5.md` |
 | `bam-selected.jsonl` | On yedi BAM kararının tam metni, kaynak bağlantısı ve asistan inceleme notları |
 | `topic-rescan-assistant-adjusted.jsonl` | Karar künyesi, tam metin, metin hash'i ve değerlendirme etiketleri |
 | `topic-rescan-report.md` | Sıkı havuz seçiminin yöntemi |

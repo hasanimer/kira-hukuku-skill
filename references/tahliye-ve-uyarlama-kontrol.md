@@ -53,6 +53,6 @@ Gerçek zarar iddiasını desteklemek için mevcut ve gerçek belgeleri araştı
 
 ## Kaynak sınırı
 
-Altı kaynak kartının metin hash'leri [araştırma kaydındadır](egitim-kaynak-kaydi.json). Bunlar 1.603 karar içeren yerel havuza eklenmiş altı tam metin değildir; bağlantılı araştırma kartlarıdır. Gerekirse karar sayfasına erişim için oturum açılması gerekir. Kaynak metindeki maskelenmemiş kişisel adlar kamuya açık özete taşınmadı.
+Altı kaynak kartının metin hash'leri [araştırma kaydındadır](egitim-kaynak-kaydi.json). Bunlar yerel havuza eklenmiş altı tam metin değildir; bağlantılı araştırma kartlarıdır. Gerekirse karar sayfasına erişim için oturum açılması gerekir. Kaynak metindeki maskelenmemiş kişisel adlar kamuya açık özete taşınmadı.
 
 Kanun karşılaştırmasında [TBK kabul metni](https://cdn.tbmm.gov.tr/KKBSPublicFile/D23/Y2/T1/KanunMetni/a657b33d-109c-473d-9266-5aa48d603ab2.html) ve yukarıdaki TMK kabul metni kullanıldı. Kabul metinleri sonraki değişiklikleri içermez; bütün mevzuatın güncel konsolide sürümünün doğrulandığı iddia edilmez. Somut dosyada tarih ve güncel karşı içtihat denetimini tekrarla.

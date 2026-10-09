@@ -1,6 +1,6 @@
 # Yerel havuz ve kaynak izi
 
-Varsayılan kök: bu skill klasöründeki `data/`. Yardımcı yolu kendi konumundan çözer; skill klasörünün tamamı başka dizine taşınabilir. Ana havuzdaki 1.576 karar ile `bam-selected.jsonl` dosyasındaki 17 BAM kararı ve `yargitay-selected.jsonl` dosyasındaki 10 Yargıtay kararının toplam 1.603 tam metni pakete dahildir. BAM seçkisi için [kullanım notlarını](bam-kararlari.md) oku. Başka havuzu açıkça seçmek için komuta `--root "..."` ekle.
+Varsayılan kök: bu skill klasöründeki `data/`. Yardımcı yolu kendi konumundan çözer; skill klasörünün tamamı başka dizine taşınabilir. Ana havuzdaki 1.576 karar ile `bam-selected.jsonl` dosyasındaki 17 BAM kararı, `yargitay-selected.jsonl` dosyasındaki 10 Yargıtay kararı ve `derleme-v5-selected.jsonl` dosyasındaki 135 kararın toplam 1.738 tam metni pakete dahildir. Derleme seçkisinin konu dizini ve doğrulama yöntemi [derleme dizinindedir](derleme-v5.md); her kaydın `collection` alanı geldiği dosyayı gösterir. BAM seçkisi için [kullanım notlarını](bam-kararlari.md) oku. Başka havuzu açıkça seçmek için komuta `--root "..."` ekle.
 
 Bu paket 20.09.2026 tarihinde güncellenmiş sabit kopyadır; kaynak proje değişince otomatik güncellenmez. `data/manifest.json` kaynak ve paket dosyalarının hash değerlerini, kayıt sayısını ve etiket birleştirme yöntemini içerir. Hukuki içerik korunarak aktarılmıştır. Açık kişi adı çıkarılan kayıtlarda `redactions` anonimleştirmeyi, `source_text_sha256` kaynak metnini, `text_sha256` yerel metni izler.
 

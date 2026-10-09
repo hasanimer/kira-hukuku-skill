@@ -24,7 +24,7 @@ Araç adları istemcide ön ek alabilir (Claude Code'da `mcp__<sunucu adı>__kar
 
 ## Emsal: yerel havuzdan sonra
 
-Önce `pool.py search/get/quote` ile paketi kullan. Yerel havuz 2010–2015 ağırlıklıdır ve kira tespitine odaklanır. 2020 ve sonrası kararlar, BAM içtihadı, tespit dışındaki modüller ve karşı yöndeki görüş için Legaluga'ya geç:
+Önce `pool.py search/get/quote` ile paketi, konu başlığından başlarken `derleme.py search` ile [derleme dizinini](derleme-v5.md) kullan. Yerel havuz 2010–2015 ağırlıklıdır ve kira tespitine odaklanır. 2020 ve sonrası kararlar, BAM içtihadı, tespit dışındaki modüller ve karşı yöndeki görüş için Legaluga'ya geç:
 
 1. `semantik_ictihat_ara`: her hukuki soruyu ayrı `olay` cümlesiyle sor; karşı sonucu anlatan ayrı bir sorgu da yap. `yil_baslangic`/`yil_bitis` ile dönemi, gerekirse `daire` ile daireyi daralt. Yerel havuzdaki kararların çoğu 3. ve 6. Hukuk Dairesindendir; dairelerin iş bölümü dönemsel olarak değiştiği için emin değilsen süzgeçsiz ara.
 2. `karar_ara`: 2–5 ayırt edici sözcükle ayrı aramalar yap ("kira bedelinin tespiti", "eski kiracı", "tahliye taahhüdü"). Sonuçlar ilgililiğe göre değil, yeniden eskiye tarih sırasıyla gelir; `baslangic_tarihi` ve `bitis_tarihi` ile dönemi seç. BAM için `mahkeme`: ISTINAFHUKUK.
