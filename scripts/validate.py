@@ -167,6 +167,15 @@ def main():
         require(not rejected['kaydedildi'] and not (Path(directory) / 'baska.udf').exists(),
                 'UDF hash mismatch was saved')
         run('udf.py', 'kaydet', str(encoded), '--sha256', digest, '--cikti', target, expected=1)
+        template = io.BytesIO()
+        with zipfile.ZipFile(template, 'w') as udf:
+            udf.writestr('content.xml', '<template format_id="1.8"><content><![CDATA[KURGU]]></content>'
+                         '<elements><paragraph><content startOffset="0" length="5" /></paragraph>'
+                         '</elements></template>')
+        (Path(directory) / 'okunacak.udf').write_bytes(template.getvalue())
+        shown = run('udf.py', 'oku', str(Path(directory) / 'okunacak.udf'), '--json')
+        require(shown['okundu'] and shown['metin'] == 'KURGU' and shown['paragraf'] == 1, 'UDF read failed')
+        run('udf.py', 'oku', str(Path(directory) / 'yanit.b64'), expected=2)
     with tempfile.TemporaryDirectory(prefix='kira-integrity-') as directory:
         corrupt = dict(row, text=row['text'] + 'changed')
         path = Path(directory) / 'topic-rescan-assistant-adjusted.jsonl'

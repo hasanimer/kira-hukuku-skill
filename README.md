@@ -203,6 +203,9 @@ python scripts/pool.py quote KARAR_KIMLIGI "Pasaj" --ignore-space
 # Legaluga'nın döndürdüğü imzasız UDF taslağını doğrulayıp kaydedin
 python scripts/udf.py kaydet yanit.b64 --sha256 YANITTAKI_SHA256 --cikti dilekce.udf
 
+# Paylaşılan bir UDF dilekçeyi metne çevirin ve boş alanları görün
+python scripts/udf.py oku dilekce.udf --json
+
 # Paketin bütünlüğünü kontrol edin
 python scripts/validate.py
 ```

@@ -11,7 +11,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from udf import UdfError, check  # noqa: E402
+from udf import UdfError, check, read  # noqa: E402
 
 
 def udf_bytes(content='<template><content><![CDATA[KURGU SINAMA METNİ]]></content></template>',
@@ -63,6 +63,31 @@ class UdfCheckTests(unittest.TestCase):
                     check(*args)
 
 
+TEMPLATE = ('<?xml version="1.0" encoding="UTF-8" ?><template format_id="1.8">'
+            '<content><![CDATA[\nKURGU MAHKEMESİNE\nDAVACI\t: ...\n]]></content>'
+            '<elements resolver="hvl-default"><paragraph><content startOffset="0" length="1" /></paragraph>'
+            '<paragraph><content bold="true" startOffset="1" length="17" /></paragraph></elements></template>')
+
+
+class UdfReadTests(unittest.TestCase):
+    def test_reads_text_structure_and_blanks(self):
+        result = read(udf_bytes(TEMPLATE))
+        self.assertEqual(result['format_id'], '1.8')
+        self.assertEqual(result['paragraf'], 2)
+        self.assertTrue(result['metin'].startswith('\nKURGU MAHKEMESİNE'))
+        self.assertEqual(result['bos_alan']['uc_nokta'], 1)
+        self.assertTrue(result['uyarilar'])
+
+    def test_rejects_entities_missing_text_and_offsets_outside(self):
+        for content in ('<!DOCTYPE t [<!ENTITY a "x">]><template><content>&a;</content></template>',
+                        '<template><elements /></template>', '<template><content>açık'):
+            with self.subTest(content[:20]):
+                with self.assertRaises(UdfError):
+                    read(udf_bytes(content))
+        result = read(udf_bytes(TEMPLATE.replace('length="17"', 'length="999"')))
+        self.assertIn('dışına', ' '.join(result['uyarilar']))
+
+
 class UdfCliTests(unittest.TestCase):
     def run_cli(self, *args, stdin=None):
         return subprocess.run([sys.executable, str(ROOT / 'scripts/udf.py'), 'kaydet', *args],
@@ -92,6 +117,22 @@ class UdfCliTests(unittest.TestCase):
             self.assertTrue(failure['yedek'].startswith('https://'))
             self.assertFalse(other.exists())
             self.assertNotIn(raw.decode('ascii')[:40], bad.stdout.decode('utf-8'))
+
+    def test_oku_prints_text_or_json(self):
+        with tempfile.TemporaryDirectory(prefix='kira-udf-') as directory:
+            path = Path(directory) / 'dilekce.udf'
+            path.write_bytes(udf_bytes(TEMPLATE))
+            run = lambda *a: subprocess.run([sys.executable, str(ROOT / 'scripts/udf.py'), 'oku', *a],
+                                            capture_output=True)
+            text = run(str(path))
+            self.assertEqual(text.returncode, 0)
+            self.assertTrue(text.stdout.decode('utf-8').startswith('KURGU MAHKEMESİNE'))
+            data = json.loads(run(str(path), '--json').stdout.decode('utf-8'))
+            self.assertTrue(data['okundu'])
+            self.assertEqual(data['paragraf'], 2)
+            other = Path(directory) / 'duz.udf'
+            other.write_bytes(b'duz metin')
+            self.assertEqual(run(str(other)).returncode, 2)
 
 
 if __name__ == '__main__':
