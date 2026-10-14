@@ -2,7 +2,7 @@
 
 10 kararın anonimleştirilmiş, sadeleştirilmiş olaylarından hazırlanan cevaplı çalışma. Sorular kararın sonucunu söylemez; yanıtlar aşağıda açılır. Bunlar editoryal örnek yanıtlardır, bağımsız bir modelin kör sınama çıktısı veya mahkeme metninden birebir alıntı değildir.
 
-Kontrol: 2026-09-20. Kurgu sınama senaryolarının yanıt anahtarı değildir. Kaynak kararın dönemini ve usulünü korur; güncel dosyada sonraki mevzuat/içtihat ayrıca araştırılır.
+Kontrol: 20.09.2026. Mevcut 74 kurgu sınama dosyasının (B01–B74) tamamının yanıt anahtarı değildir. Kaynak kararın dönemini ve usulünü korur; güncel dosyada sonraki mevzuat/içtihat ayrıca araştırılır.
 
 Makine okunur sürüm: [soru–yanıt verisi](../evals/decision-qa.json). Yalnız soru çıktısı: `python scripts/decision_qa.py export`. Kaynak sayfaları giriş gerektirebilir.
 
@@ -23,7 +23,7 @@ Makine okunur sürüm: [soru–yanıt verisi](../evals/decision-qa.json). Yalnı
 
 **Kararın sonucu:** BAM kararları arasındaki uyuşmazlık, başvurunun dava açma hakkının doğumundan sonra yapılması gerektiği yönünde giderilmiştir; bu karar bireysel dosyada doğrudan tahliye hükmü değildir.
 
-**Uygulama sınırı:** Yeni malikin TBK 351/1 yolu veya kira tespiti aynı kapsamda çözülmüş sayılmaz. Güncel dosyada sonraki içtihat, başvuru yolu ve süre ayrıca araştırılır.
+**Uygulama sınırı:** Yeni malikin TBK 351/1 yolu veya kira tespiti aynı kapsamda çözülmüş sayılmaz. Dava 26.05.2025'ten önce açılmışsa havuzdaki tek BAM kararı (İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, 30.12.2025, kesin; E./K. numaraları karar metninde yer almaz, sağlayıcı üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula) öngörülebilirlik ve mahkemeye erişim hakkı gerekçesiyle erken başvuruyu yeterli saymıştır; bu görüşün diğer dairelerde ve Yargıtay'da benimsenip benimsenmediği ayrıca araştırılır. Güncel dosyada sonraki içtihat, başvuru yolu ve süre ayrıca araştırılır.
 
 **Hangi olgu değişirse değerlendirme değişebilir?** Arabuluculuk dönem bittikten sonra başlatılmış olsaydı erken başvuru sorunu değişirdi; yine de kalan süre ve diğer dava şartları incelenirdi.
 
@@ -215,7 +215,7 @@ Makine okunur sürüm: [soru–yanıt verisi](../evals/decision-qa.json). Yalnı
 
 **Kısa yanıt:** Bu kararda sağlamadı. Ruhsatın kiracı adına olması ve ruhsatla birlikte kiralamanın kararlaştırılmaması dikkate alınarak ilişki çatılı işyeri kirası kabul edildi.
 
-**Gerekçe:** Daire, demirbaşların tek başına hasılat kirası göstermediğini belirtti. Somut sözleşme ve belediye cevabı uyarınca TBK 339 ve devamı uygulandı. Süre bitimine dayalı tek taraflı fesih ve buna bağlı cezai şart kabul edilmedi. Geçmiş döneme ait tahliye taahhüdü de somut uzama bağlamında tahliye sağlamadı.
+**Gerekçe:** Daire, demirbaşların tek başına ürün (hasılat) kirası göstermediğini belirtti. Somut sözleşme ve belediye cevabı uyarınca TBK 339 ve devamı uygulandı. Süre bitimine dayalı tek taraflı fesih ve buna bağlı cezai şart kabul edilmedi. Geçmiş döneme ait tahliye taahhüdü de somut uzama bağlamında tahliye sağlamadı.
 
 **Hukuki dayanak:** TBK m. 339 ve devamı; TBK m. 347; TBK m. 357.
 

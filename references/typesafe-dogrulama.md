@@ -8,7 +8,7 @@
 
 Depozito, hasar ve ödenmeyen kira içeren karma örnekte güvence 0,94 ve alacak 0,85 çıktı. Kira ilişkisi bulunmadığı açıkça belirtilen fazla mesai örneğinde kapsam dışı sinyali 0,86 oldu. Bu iki örnek tanım düzeltmesinden önce çalıştırıldı; güncel sürüm için geniş regresyon değerlendirmesi yerine geçmez.
 
-Tam metni okunmuş İstanbul BAM 36. HD E. 2024/5083, K. 2026/377 ile ilgisiz temsili ceza pasajı birlikte verildiğinde, ilgili karar 0,90; ilgisiz pasaj 0,02 sıralama sinyali aldı. Kaynak kimliği korundu ve eksik pasaj tam metin olarak işaretlenmedi. Bu deneme hukuki yorumun doğrulandığı anlamına gelmez. Karar bağlantısı [modül rehberindedir](moduller.md).
+Tam metni okunmuş İstanbul BAM 36. HD E. 2024/5083, K. 2026/377 ile ilgisiz temsili ceza pasajı birlikte verildiğinde, ilgili karar 0,90; ilgisiz pasaj 0,02 sıralama sinyali aldı. Kaynak kimliği korundu ve eksik pasaj tam metin olarak işaretlenmedi. Bu deneme hukuki yorumun doğrulandığı anlamına gelmez. Karar bağlantısı ve kullanım sınırları [BAM seçkisindedir](bam-kararlari.md); tam metin: `python scripts/pool.py get 191fe3e9-f690-420c-ad33-23cfeb89e8ad`.
 
 ## Erişim durumu
 
@@ -20,9 +20,9 @@ API anahtarı kullanıcı tarafından belirtilen yerel env dosyasından okundu; 
 
 ## Yerel kontroller
 
-`python -m unittest discover -s tests -v`: kaynak kimliklerinin korunması, sıralamada düşük puanlı adayların kaybolmaması, eksik yanıt ve geçersiz olasılıkların reddi, yinelenen kaynak ve belirsiz tam metin durumunun reddi.
+`python -m unittest discover -s tests -v`: kaynak kimliklerinin korunması, sıralamada düşük puanlı adayların kaybolmaması, eksik yanıt ve geçersiz olasılıkların reddi, yinelenen kaynak ve belirsiz tam metin durumunun reddi. Sonradan eklenen testler, TypeSafe'e aday başına yalnız izinli alanların gönderildiğini ve env dosyasından anahtar okuma kurallarını da denetler.
 
-`python scripts/validate.py`: 1.580 mevcut kararın ve mevzuatın bütünlüğü, yerel bağlantılar ve yardımcı komutlar. Skill şema kontrolü ayrıca çalıştırılır. Bu denetimler canlı servislerin her zaman erişilebilirliğini veya hukuki sonuçların doğruluğunu garanti etmez.
+`python scripts/validate.py`: `data/manifest.json` içindeki tüm kararların (kayıt sayısı manifestin `records` alanındadır), dosya ve metin özetlerinin, derleme dizininin, mevzuat metninin, yerel bağlantıların, SKILL.md ön bilgisinin, `agents/openai.yaml` çağrı adının, UDF kaydetme yardımcısının ve yardımcı komutların denetimi. Bu denetimler canlı servislerin her zaman erişilebilirliğini veya hukuki sonuçların doğruluğunu garanti etmez.
 
 ## 20.09.2026 — ek karar elemesi
 
@@ -30,7 +30,7 @@ Legaluga arama aracı hata verdi; aynı yetkili API yoluyla doğrudan denemede H
 
 Canlı TypeSafe çağrısı `jev-1.13.0` döndürdü: 10.061 girdi ve 487 çıktı tokenı. Adayların hiçbiri puan eşiğiyle otomatik elenmedi. İlk iki sıradaki kararlar dahil 5 tam metin okundu: 3 yeni karar eklendi; E.2014/7121 K.2014/8734 mevcut havuzla mükerrerdi. E.2017/4223 K.2019/175 hedeflenen zamanaşımı süresini esastan çözmediği ve ret gerekçelerinin birlikte kullanılması nedeniyle bozma içerdiği için seçilmedi. Kalan 4 adayın tam metni bu turda incelenmedi.
 
-Eklenenler: E.2024/2523 K.2025/1572 (uyarlamanın reddi); E.2018/2258 K.2018/6300 (alt kira ve yazılı muvafakat araştırması); E.2014/10567 K.2015/10451 (hasılat kirasında alacak türü/ıslah/zamanaşımı). Kaynaklar ve sınırlar [Yargıtay seçkisinde](yargitay-kararlari.md). Ham araştırma ve API dosyaları public pakete eklenmedi. Bu çalışma 9 milyon kaydın taranması veya model puanlarının hukuken doğrulanması değildir.
+Eklenenler: E.2024/2523 K.2025/1572 (uyarlamanın reddi); E.2018/2258 K.2018/6300 (alt kira ve yazılı muvafakat araştırması); E.2014/10567 K.2015/10451 (ürün/hasılat kirasında alacak türü/ıslah/zamanaşımı). Kaynaklar ve sınırlar [Yargıtay seçkisinde](yargitay-kararlari.md). Ham araştırma ve API dosyaları public pakete eklenmedi. Bu çalışma 9 milyon kaydın taranması veya model puanlarının hukuken doğrulanması değildir.
 
 ## 09.10.2026 — Legaluga erişimi
 

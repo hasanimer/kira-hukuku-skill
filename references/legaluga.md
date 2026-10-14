@@ -70,7 +70,7 @@ Dilekçe veya gerekçeli görüşten önce kısa bir tablo kur: `iddia | kaynak 
 
 - Metinde `[DOLDURULACAK` alanı kalmamış; eksik tarih, tebliğ veya tutar tahminle doldurulmamış.
 - Son metin kullanıcıya gösterilmiş ve onaylanmış; kaynak tablosundaki dayanaklar doğrulanmış.
-- Dilekçe metninin ve taraf bilgilerinin Legaluga sunucusuna gönderileceği kullanıcıya söylenmiş. `dosya_adi` kişisel veri içermez (`kira-tespit-dava` gibi).
+- Dilekçe metninin ve taraf bilgilerinin Legaluga sunucusuna gönderileceği kullanıcıya söylenmiş ve kullanıcı bunu onaylamış. `dosya_adi` kişisel veri içermez (`kira-tespit-dava` gibi).
 
 Zorunlu alanlar `makam`, `taraflar` (`sifat`, `bilgi`), `konu`, `aciklamalar` ve `sonuc_istem`dir; varsa `hukuki_nedenler`, `deliller`, `ekler`, `dosya_no`, `tarih` ve `imza` eklenir. 09.10.2026 araç tanımına göre dilekçenin tamamı en çok 35.000 karakter ve 130 paragraf olabilir; bir alandaki her satır sonu ayrı paragraf sayılır. Sınırlar değişebilir; sunucunun kendi denetimi esastır.
 

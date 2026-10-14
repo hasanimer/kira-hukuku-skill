@@ -5,9 +5,10 @@ On kararın tam metni `data/yargitay-selected.jsonl` dosyasındadır. Asistan ta
 ```sh
 python scripts/pool.py search depozito --court-type yargitay
 python scripts/pool.py get 3ed4fe74-ff6b-4f4e-891c-e355ee63f916
+python scripts/pool.py quote 3ed4fe74-ff6b-4f4e-891c-e355ee63f916 "olağan kullanımdan mı yoksa hor kullanımdan mı kaynaklandığının araştırılması"
 ```
 
-Filtre `court_type=yargitay` etiketi olan kayıtları seçer; ana havuzdaki tür etiketi bulunmayan kararların tamamını kapsadığı iddia edilmez. Birebir alıntıdan önce tam metni oku ve `quote` ile doğrula.
+`--court-type yargitay` filtresi bu on kararlık seçkiyle birlikte ana havuzdaki kararların tamamını ve derleme seçkisindeki Yargıtay kararlarını da kapsar: yardımcı, ana havuz kayıtlarına `court_type: yargitay` etiketini okuma sırasında ekler (BAM seçkisi bu filtreye girmez). Sonuçların kaynağını kayıttaki `collection` alanından ayırt et: `yargitay-selected.jsonl` bu seçkidir (`source_provider: Dejure`, Dejure `source_url`); `topic-rescan-assistant-adjusted.jsonl` ana havuzdur (`source_provider: Bedesten (kimlikten türetildi)`); `derleme-v5-selected.jsonl` [derleme seçkisidir](derleme-v5.md) (`source_provider: Bedesten (Legaluga MCP karar_getir)`). Bu notlardaki inceleme yalnız bu seçki için geçerlidir. Birebir alıntıdan önce tam metni oku ve `quote` ile doğrula.
 
 ## Yargıtay 3. Hukuk Dairesi, E. 2017/4355, K. 2019/607, T. 04.02.2019
 
@@ -45,7 +46,7 @@ Takip/ihtar tarihleri ve hesap kalemleri anlatımında tutarsızlıklar vardır;
 
 **Kullanım:** yeniden kiralama, TBK 355, kazanç kaybı, zararın ispatı.
 
-Bir yıllık kira karşılığı tazminatın kısmen kabul edildiği dosyada, fazlasına ilişkin zarar ispatlanamadığından davacının temyizi reddedilerek karar onandı.
+İlk derece mahkemesi davayı kısmen kabul ederek son kira yılında ödenen kira üzerinden hesaplanan bir yıllık kira bedeli 18.094,32 TL'ye (talep 18.165,00 TL; faiz dava tarihinden) hükmetti, kazanç kaybı ve manevi tazminat taleplerini reddetti; BAM istinafı esastan reddetti. Bir yıllık kira bedelini aşan zarar ispatlanamadığından davacının temyizi reddedilerek BAM kararı onandı.
 
 Davacı ve ilk derece anlatımındaki 353/3 atfı, Yargıtay gerekçesindeki 355/3 ile karıştırılmamalıdır.
 
@@ -151,11 +152,11 @@ TBK 316 ihtar anlatımını bütün aykırılık türlerinde istisnasız uygulam
 
 [Kaynak](https://app.dejure.ai/dokuman/3d040a9a-72cd-42ce-b64a-72bf63459651)
 
-**Kullanım:** zamanaşımı, kısmi dava, ıslah, hasılat kirası.
+**Kullanım:** zamanaşımı, kısmi dava, ıslah, ürün (hasılat) kirası.
 
 Islah edilen alacaklar yönünden zamanaşımı ve alacak türü ayrımı değerlendirilmediğinden hüküm oyçokluğuyla bozuldu.
 
-Otobüs işletmesine ilişkin hasılat kirasıdır; konut veya çatılı işyeri uyuşmazlığı değildir.
+Otobüs işletmesine ilişkin hasılat kirasıdır (818 sayılı BK'daki ad; TBK 357'de ürün kirası); konut veya çatılı işyeri uyuşmazlığı değildir.
 
 Dönemsel kira ile sözleşmeye dayalı ceza geri istemi ayrı değerlendirilmiştir; tüm yan alacaklara otomatik aynı süreyi uygulama.
 

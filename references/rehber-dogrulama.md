@@ -4,9 +4,9 @@ Kontrol: 20.09.2026. Paylaşılan uygulama, kira tespiti, hak ve nesafet ve iade
 
 ## Doğrudan kontrol edilenler
 
-- TBK 344–346, 306, 315, 327, 330, 339 ve 78; HMK 4, 17, 190; HUAK 18, 18/A, 18/B; İİK 72 çevrimiçi mevzuat metninden incelendi. Geçici kira hükümleri paket TBK metniyle, 7409'un yayın tarihi TBMM kaydıyla karşılaştırıldı.
+- TBK 344–346, 306, 315, 327, 330, 339 ve 78; HMK 4, 17, 190; HUAK 18, 18/A, 18/B; İİK 72 bu ilk kontrolde çevrimiçi metinden incelendi. Aynı gün yapılan sonraki incelemelerde Mevzuat Bilgi Sistemi'nin konsolide PDF uçlarına erişilemedi ([süre rehberi](sure-hesaplama.md), [mevzuat haritası](mevzuat-haritasi.md)). HMK, HUAK ve İİK hükümlerinin güncel konsolide metnini somut dosyada yeniden doğrula. Geçici kira hükümleri paket TBK metniyle, 7409'un yayın tarihi TBMM kaydıyla karşılaştırıldı.
 - İzmir BAM 23. HD, E. 2024/3426, K. 2025/1209 ve Yargıtay 6. HD, E. 2012/3307, K. 2012/7044 tam metinleri okundu. Bunlar dış araştırma kaynaklarıdır; bu güncellemede karar havuzuna eklenmedi.
-- Paketteki dört BAM kararı, kendi kullanım uyarılarıyla [BAM rehberinden](bam-kararlari.md) yönlendirildi.
+- Kontrol tarihinde paketteki dört BAM kararı, kendi kullanım uyarılarıyla [BAM rehberinden](bam-kararlari.md) yönlendirildi. BAM seçkisi sonradan 17 karara genişledi; sonradan eklenen kararlar bu kontrolün kapsamında değildir.
 
 Kaynak bağlantıları ilgili önermelerin yanında [uygulama](uygulama-rehberi.md) ve [iade/ispat](iade-ispat.md) rehberlerindedir. Bu kontrol gelecekteki değişiklikleri kapsamaz.
 
@@ -22,4 +22,11 @@ Kaynak bağlantıları ilgili önermelerin yanında [uygulama](uygulama-rehberi.
 
 Aramada bulunamama, kararın hiç bulunmadığı veya önermenin mutlaka yanlış olduğu anlamına gelmez. Tam künye/metin sağlanmadan bu atıfları dilekçede doğrulanmış emsal gibi kullanma.
 
-Sonradan iletilen eğitim notu [rejim ve taraflar rehberinde](kira-rejimi-ve-taraflar.md), 30 karar listesi [ayrı kontrol kaydında](emsal-listesi-dogrulama.md) değerlendirildi. 1965 görev/harç karışıklığı ve 1979/1995 kira farkı–kesinleşme–faiz ayrımı burada düzeltildi; bu sınırlı kontrol ıslah, ücret ve bütün takip ihtimallerini kapsamaz. Resmî konsolide mevzuata erişim sınırı yeni rehberde açıklanmıştır.
+Sonradan iletilen eğitim notu [rejim ve taraflar rehberinde](kira-rejimi-ve-taraflar.md), 30 karar listesi [ayrı kontrol kaydında](emsal-listesi-dogrulama.md) değerlendirildi. 1965 görev/harç karışıklığı ve 1979/1995 kira farkı–kesinleşme–faiz ayrımı burada düzeltildi; bu sınırlı kontrol ıslah, ücret ve bütün takip ihtimallerini kapsamaz. Sonraki incelemede resmî konsolide mevzuata erişilemedi; bu sınır yeni rehberde açıklanmıştır. TBK için paketteki 19.09.2026 tarihli sabit kopya (`python scripts/tbk.py <madde>`) kullanılabilir.
+
+## 09.10.2026 ek kontrolü
+
+- 7409 ve 7456 sayılı Kanunların TBK geçici 1–2 için yürürlük tarihleri (11.06.2022; 15.07.2023) paket TBK metnindeki yürürlük tablosuyla (`python scripts/tbk.py --ek`) karşılaştırıldı; geçici 2'nin 7456 sayılı Kanunla eklendiği [uygulama rehberine](uygulama-rehberi.md) işlendi.
+- Yargıtay 3. HD, E. 2026/3039, K. 2026/2767 (RG 19.08.2026) kanun yararına bozma kararı ikincil kaynak özetlerinden alındı; Resmî Gazete'deki tam metni okunamadı ve doğrulanmadı. [İade rehberindeki](iade-ispat.md) özet bu sınırla kullanılmalıdır.
+- Mevzuat Bilgi Sistemi, Resmî Gazete ve Anayasa Mahkemesi sitelerine bu kontrolde de erişilemedi. HMK basit yargılama ve kanun yolu süreleri, HMK Ek m. 1/2'nin 7550 sayılı Kanunla değişik kesinlik ölçütü, İİK takip süreleri (269/a altı aylık tahliye talebi dahil), 7499 sayılı Kanunla değişen İİK 363–364 kanun yolu süreleri, HUAK 18/A/2, 18/A/11 ve 18/B, 7464 sayılı Kanun ve ilgili AYM kararlarına ilişkin eklemeler ikincil kaynaklar ve genel hukuk bilgisiyle yazıldı; ilgili rehberlerde resmî metinden doğrulama uyarısıyla işaretlidir.
+- 7161 sayılı Kanunun 59. maddesiyle 6217 geçici 2'ye eklenen fıkra yalnız havuzdaki Yargıtay 3. HD, E. 2017/7041, K. 2019/3045 kararındaki aktarmadan alındı; paket TBK kopyasının `--ek` çıktısında yer almaz. [Uygulama rehberindeki](uygulama-rehberi.md) not bu sınırla kullanılmalıdır.

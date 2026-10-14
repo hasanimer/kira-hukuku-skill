@@ -1,60 +1,69 @@
 {
   "schema_version": 1,
-  "version": "2026-10-09.1",
+  "version": "2026-10-14.2",
   "fictional": true,
   "status": "author_drafted_requires_legal_review",
   "cases": [
     {
       "id": "B01",
-      "module": "tespit",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Konut kirası 01.09.2022 başladı. Malik 01.09.2026 için emsal seviyesinde tespit istiyor. İlk değerlendirmeyi yap.",
       "reference": "references/uygulama-rehberi.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "İlk beş yıl ile TBK 344/3 dönemini ayır; emsal seviyesini otomatik uygulama.",
+          "description": "01.09.2026 hedef döneminin beşinci kira yılı (01.09.2026–31.08.2027) olduğunu belirt. İlk beş yıl 31.08.2027'de dolduğundan TBK 344/3 kapsamındaki emsal/hakkaniyet tespiti, önceki bir kira ilişkisi belgelenmedikçe ilk kez 01.09.2027'de başlayan altıncı kira yılı için gündeme gelir. 01.09.2026 dönemi için TBK 344/1–2'yi ve TÜFE'deki on iki aylık ortalamalara göre değişim oranı tavanını incele; emsal seviyesini otomatik uygulama.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Sözleşme, hedef dönem ve önceki tespit/değişiklik belgelerini iste.",
+          "description": "Sözleşmenin tamamını ve yeni dönemde artış hükmü bulunup bulunmadığını; 02.08.2026'ya kadar kiracıya yazılı artış bildirimi ulaşıp ulaşmadığını veya dava açılıp açılmadığını; 01.09.2022'den önce aynı kiracıyla başlamış bir kira ilişkisi ile önceki tespit/değişiklik belgelerinin olup olmadığını sor.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Dört yıl geçtiği için hak ve nesafet tespiti kesin mümkündür deme.",
+          "description": "Dört yıl geçtiği için 01.09.2026 dönemi için emsal veya hak ve nesafet tespitinin mümkün olduğunu söyleme; önceki bir kira ilişkisi belgelenmeden beş yılın dolduğunu varsayma.",
           "critical": true
         }
       ]
     },
     {
       "id": "B02",
-      "module": "tespit",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Konut sözleşmesinde artış hükmü var. Malik yeni dönemden iki ay sonra tespit davası istiyor; ihtar yok. İncele.",
       "reference": "references/uygulama-rehberi.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "TBK 345/3 kapsamında hükmün içeriği ve dönem sonunu değerlendir.",
+          "description": "TBK 345/3 kapsamında hükmün içeriği ve dönem sonunu değerlendir; hedef dönemin ilk beş yıl içinde mi (344/1-2 TÜFE sınırı) yoksa 344/3 kapsamında mı olduğunu ayır.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Artış maddesinin birebir metni ve dava/arabuluculuk tarihlerini iste.",
+          "description": "Artış maddesinin birebir metnini, sözleşme başlangıç tarihi ile hedef kira döneminin tarihlerini (kaçıncı kira yılı olduğu) ve dava/arabuluculuk tarihlerini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "İhtar yokluğundan davanın mutlaka reddedileceğini söyleme.",
+          "description": "İhtar yokluğundan davanın mutlaka reddedileceğini söyleme; artış hükmü bulunduğu için belirlenecek bedelin her durumda yeni dönem başından geçerli olacağını da kesin kabul etme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B03",
-      "module": "tespit",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Artış hükmü olmayan sözleşmede yeni dönem 01.09.2026. Yazılı artış bildirimi 10.08.2026 ulaştı. Etki tarihini incele.",
       "reference": "references/uygulama-rehberi.md",
@@ -78,7 +87,10 @@
     },
     {
       "id": "B04",
-      "module": "tespit",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Bilirkişi boş rayici 40.000 TL, davacı talebini 35.000 TL belirtiyor. Eski kiracı indirimi isteniyor.",
       "reference": "references/uygulama-rehberi.md",
@@ -102,79 +114,91 @@
     },
     {
       "id": "B05",
-      "module": "tespit",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Kiracı altıncı yılda yeni bedel yazan ek protokol imzaladı. Malik iki yıl sonra yeniden emsal tespiti istiyor.",
       "reference": "references/uygulama-rehberi.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "Protokolün hukuki niteliğini, önceki bedel belirlemesini ve 344/345'i birlikte incele.",
+          "description": "Protokolün hukuki niteliğini (rayici yansıtan yeni bir bedel belirlemesi sayılıp sayılmadığını), önceki bedel belirlemesini ve 344/345'i birlikte incele; altıncı yılda 344/3'e göre belirleme yapılmamışsa izleyen yıllarda da 344/3 talebinin incelenebileceğini, yapılmışsa sonraki beş yıllık aralığın o belirlemeden sayılacağını ayır.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Protokolün tamamı, tarih ve önceki tespit kararını iste.",
+          "description": "Protokolün tamamını ve tarihini, ilk sözleşmenin başlangıç tarihini, talep edilen hedef kira dönemini ve önceki tespit kararını iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Her ek protokol beş yılı kesin sıfırlar deme.",
+          "description": "Her ek protokolün beş yılı kesin sıfırladığını da, protokolün niteliği ve önceki bedel belirlemesi incelenmeden sekizinci yılda emsal/hakkaniyet tespitinin kesin mümkün olduğunu da söyleme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B06",
-      "module": "ihtiyac",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
-      "prompt": "TBK 350 ihtiyacına dayanılacak. Belirli kira dönemi 31.12.2025 bitiyor; arabuluculuk 10–20.12.2025 arasında tamamlandı. İncele.",
+      "prompt": "Bugünün tarihi 22.12.2025. TBK 350 ihtiyacına dayanılacak. Belirli kira dönemi 31.12.2025 bitiyor; arabuluculuk 10–20.12.2025 arasında tamamlandı. İncele.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "2025/3048 kararındaki erken başvuru sorununu tespit et; dava hakkının doğumunu ayır.",
+          "description": "2025/3048 kararına göre arabuluculuğa dava hakkı doğduktan sonra ve dava süresi içinde başvurulması gerektiğini, 10–20.12.2025 başvurusunun 31.12.2025 dönemi için dava şartını sağladığının varsayılamayacağını tespit et. Daha düşük riskli yol olarak 31.12.2025'ten sonra yeni arabuluculuk başvurusunu ve son tutanaktan sonra davayı göster: bir aylık sürenin ham sonu 31.01.2026'dır (tatil kontrolü ayrıca), başvurudan son tutanağa kadar süre işlemez (HUAK 18/A/15).",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Sözleşme süresi, ihtar, son tutanak ve dava tarihini iste.",
+          "description": "Sözleşme süresi ve uzama durumu, ihtar veya TBK 353 bildirimi ve ulaşma tarihi, son tutanak, planlanan yeni arabuluculuk başvurusu ve dava tarihini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Erken arabuluculuğu koşulsuz yeterli sayma.",
+          "description": "Erken arabuluculuğu koşulsuz yeterli sayma; bir aylık dava süresini 20.12.2025 tarihli son tutanaktan başlatma.",
           "critical": true
         }
       ]
     },
     {
       "id": "B07",
-      "module": "ihtiyac",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Yeni malik TBK 351/1'e dayanıyor. Altı ay dolmadan arabuluculuğa gitti. 2025/5039 kararını emsal gösteriyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "Kararın 351/1 hakkında uyuşmazlık yokluğundan karar verilmesine yer olmadığı sonucunu koru.",
+          "description": "Kararın 351/1 hakkında uyuşmazlık yokluğundan karar verilmesine yer olmadığı sonucunu koru; 351/1'de erken başvurunun geçerliliği hakkında Yargıtay'ın esastan bir ölçüt koymadığını (kararın içtihadı birleştirme değil, BAM kararları arasındaki uyuşmazlığın giderilmesi incelemesi olduğunu), 2025/3048'deki 'dava açma hakkı doğduktan sonra başvuru' gerekçesinin kıyasen uygulanması riskini ve altı ay dolduktan sonra yeniden arabuluculuğa başvurmanın daha düşük riskli seçenek olduğunu belirt.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Edinme, bildirim ulaşması ve başvuru tarihlerini iste.",
+          "description": "Edinme, bildirim ulaşması, arabuluculuk başvurusu, son tutanak ve planlanan dava tarihlerini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Kararı erken başvuru hakkında esastan kesin kabul veya ret kararı sayma.",
+          "description": "Kararı erken başvuru hakkında esastan kesin kabul veya ret kararı sayma; 351/1'de erken arabuluculuğu koşulsuz yeterli ya da kesin geçersiz sayma.",
           "critical": true
         }
       ]
     },
     {
       "id": "B08",
-      "module": "ihtiyac",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Malik ihtiyaç ihtarı çektiğini söylüyor ve bu yüzden dava süresine otomatik bir yıl eklenmesini istiyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -198,31 +222,37 @@
     },
     {
       "id": "B09",
-      "module": "ihtiyac",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Konutun yeni maliki edinmeden beş ay sonra dava açmak istiyor; sözleşme süresi bitmiş olabilir.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "351/1 altı ay yolu ile 351/2 sözleşme sonu yolunu ayrı incele.",
+          "description": "351/1 altı ay yolu ile 351/2 sözleşme sonu yolunu ayrı incele; her yolda HUAK 18/B zorunlu arabuluculuğunu dava şartı olarak belirt ve en düşük riskli başvuru zamanını göster (351/1'de altı ay dolduktan sonra; 351/2'de sözleşme süresinin bitiminden sonra ve bir aylık dava süresi içinde).",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Edinme ve sözleşme sonu belgeleri ile ihtarı iste.",
+          "description": "Edinme ve sözleşme sonu belgeleri, ihtar ve ulaşma tarihi ile varsa arabuluculuk başvuru ve son tutanak tarihlerini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Her durumda altı ay beklenmesini veya hemen dava açılmasını kesin önerme.",
+          "description": "Her durumda altı ay beklenmesini veya hemen dava açılmasını kesin önerme; arabuluculuk yapılmadan dava açılmasını önerme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B10",
-      "module": "ihtiyac",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "İhtiyaç davasında kiracı taşınmazın satış ilanını buldu. Malik ihtiyacın devam ettiğini söylüyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -246,31 +276,37 @@
     },
     {
       "id": "B11",
-      "module": "taahhut",
+      "topic": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Sözleşme 1 Mart, taahhüt 2 Mart tarihli; anahtarlar 5 Mart'ta teslim edilmiş. Belgeyi değerlendir.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "352/1 bakımından teslimden sonra verilme koşulunu ayrı kontrol et.",
+          "description": "Belge üzerindeki tarihin (2 Mart) anahtar tesliminden (5 Mart) önce olduğunu tespit et ve bu hâliyle TBK 352/1'deki 'kiralananın tesliminden sonra' verilme koşulunun karşılanmadığını açıkça belirt. Geçerlilik ancak fiilî teslimin (zilyetliğin devrinin) taahhütten önce gerçekleştiği veya belgenin gerçekte teslimden sonra imzalandığı ispatlanırsa tartışılabilir; ispat rejimini ayrıca incele.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Gerçek imza tarihi ve teslim tutanağını iste.",
+          "description": "Gerçek imza tarihini, teslim tutanağını ve fiilî zilyetliğin hangi tarihte geçtiğini gösteren belgeleri iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Sözleşmeden bir gün sonra olduğu için geçerliliği kesin kabul etme.",
+          "description": "Sözleşmeden bir gün sonra tarihli olduğu için taahhüdü geçerli veya muhtemelen geçerli sayma; belge tarihinin teslimden önce olduğunu atlama.",
           "critical": true
         }
       ]
     },
     {
       "id": "B12",
-      "module": "taahhut",
+      "topic": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Kiracı boş tarihli taahhüdü ilk sözleşmede verdiğini söylüyor; yazılı karşı delil yok, yemin deliline dayanmış. 2017/475'i uygula.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -294,7 +330,10 @@
     },
     {
       "id": "B13",
-      "module": "taahhut",
+      "topic": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Kiracı taahhütteki imzanın kendisine ait olmadığını söylüyor; malik boş tarihli belge emsali gösteriyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -318,43 +357,49 @@
     },
     {
       "id": "B14",
-      "module": "taahhut",
+      "topic": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
-      "prompt": "Taahhütte boşaltma 30.06.2026, düzenleme 01.02.2026 yazıyor. Sürenin Şubat'ta başladığı söyleniyor.",
+      "prompt": "Bugünün tarihi 15.07.2026. Taahhütte boşaltma 30.06.2026, düzenleme 01.02.2026 yazıyor. Sürenin Şubat'ta başladığı söyleniyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "352/1 başvuru başlangıcını taahhüt edilen boşaltma tarihine bağla.",
+          "description": "352/1 başvuru başlangıcını taahhüt edilen boşaltma tarihine (30.06.2026) bağla; bir aylık sürenin ham sonunun 30.07.2026 olduğunu (tatil kontrolü ayrıca), 15.07.2026 itibarıyla sürenin işlediğini ve bu süre içinde icra takibine veya davaya (dava için önce dava şartı arabuluculuk; başvurudan son tutanağa kadar süre işlemez) başvurulmadıkça ya da TBK 353 yazılı bildirimi yapılmadıkça 352/1 yolunun kaybedilebileceğini koşullu belirt.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Başvuru, tebliğ ve seçilen icra/dava yolunu sor.",
+          "description": "Başvuru, tebliğ, TBK 353 bildirimi ve seçilen icra/dava yolunu sor.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Başvuru süresini düzenleme tarihinden başlatma.",
+          "description": "Başvuru süresini düzenleme tarihinden başlatma veya bu nedenle 15.07.2026 itibarıyla yolun kapandığını söyleme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B15",
-      "module": "taahhut",
+      "topic": "aile_konutu",
+      "modules": [
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "Aile konutunda sözleşmede olmayan eş malike bildirim yaptı. İlk kiracı borçtan çıktığını savunuyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "194'te sözleşmeye katılım ve müteselsil sorumluluk ayrımını açıkla.",
+          "description": "TMK 194/4 uyarınca taraf olmayan eşin bildirimle sözleşmenin tarafı olduğunu ve bildirimde bulunan eşin diğeriyle müteselsilen sorumlu olduğunu açıkla; katılımın ilk kiracıyı borçtan kurtarmadığını ayır.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Bildirim içeriği/ulaşması ve aile konutu niteliğini iste.",
+          "description": "Bildirimin içeriği, tarihi ve kiraya verene ulaşmasını, aile konutu niteliğini sor; ilk kiracı bir fesih bildirimine dayanıyorsa eşin açık rızasını (TBK 349/1) ve kiraya verenin fesih bildirimi/ödeme süresini TBK 349/3 uyarınca kiracıya ve eşine ayrı ayrı yapıp yapmadığını araştır.",
           "critical": false
         },
         {
@@ -366,31 +411,37 @@
     },
     {
       "id": "B16",
-      "module": "alacak",
+      "topic": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
-      "prompt": "Aynı kira yılında iki aylık borç için ayrı haklı ihtarlar ulaştı; ikisi de tebliğden sonra ödendi. Tahliye itirazını incele.",
+      "prompt": "Belirli süreli konut kirasında aynı kira yılı içinde iki ayrı ayın kirası için yazılı ihtarlar tebliğ edildi; kiracı ikisini de tebliğden sonra ödedi. Kiraya veren iki haklı ihtara dayanarak tahliye davası açtı. Kiracı vekili olarak savunmayı incele.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "352/2'de ödeme sonrası haklı ihtar ile 315 temerrüt koşullarını ayır.",
+          "description": "352/2'de tebliğ sonrası ödemenin haklı ihtarı kendiliğinden kaldırmadığını 315 temerrüt koşullarından ayır; bu yolun yalnız dava yolu olduğunu, davanın en geç ihtarların yapıldığı kira yılının (bir yıldan kısa sözleşmede kira süresinin) bitiminden başlayarak bir ay içinde açılması gerektiğini ve HUAK 18/B dava şartı arabuluculuğun kontrol edilmesi gerektiğini belirt.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Vade, ihtar tebliği, ödeme ve kira yılı belgelerini iste.",
+          "description": "Vade, ihtar tebliği ve ödeme tarihlerini; kira başlangıcı/kira yılını; arabuluculuk başvurusu, son tutanak ve dava tarihlerini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Ödendiği için iki haklı ihtarın otomatik yok olduğunu söyleme.",
+          "description": "Ödendiği için iki haklı ihtarın otomatik yok olduğunu söyleme; iki haklı ihtar için ilamsız icra yoluyla tahliye önerme veya bir aylık süreyi ikinci ihtarın tarihinden başlatma.",
           "critical": true
         }
       ]
     },
     {
       "id": "B17",
-      "module": "alacak",
+      "topic": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Malik aynı anda muaccel olmuş borcu iki parçaya bölerek iki ihtar oluşturmak istiyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -414,19 +465,23 @@
     },
     {
       "id": "B18",
-      "module": "alacak",
+      "topic": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Kiracı ödeme ve ihtarın aynı gün gerçekleştiğini söylüyor; saat bilinmiyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
+      "anchor": "Her ihtar için borç dönemi, vade, istenen tutar, tebliğ ve ödeme zamanını eşleştir",
       "criteria": [
         {
           "id": "analysis",
-          "description": "Tebliğ ve ödeme sırasının belirleyici olduğunu göster; kesin sonuç verme.",
+          "description": "Tebliğ/öğrenme ile ödeme arasındaki sıranın belirleyici olduğunu göster; tebliğden sonra yapılan ödemenin ihtarı haksız kılmadığını belirt; kesin sonuç verme.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Saat bilgisi, banka işlem kaydı ve tebliğ belgesini iste.",
+          "description": "Saat bilgisi, banka işlem kaydı (dekont saati) ve tebliğ belgesini iste; takibe itiraz edilmişse icra dairesinden itiraz dilekçesinin kayıt/tarama saatini sor (İstanbul BAM 36. HD, E. 2019/3134, K. 2021/1779 kararında bu saatler karşılaştırılmıştır).",
           "critical": false
         },
         {
@@ -438,14 +493,19 @@
     },
     {
       "id": "B19",
-      "module": "alacak",
+      "topic": "temerrut",
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
       "fictional": true,
       "prompt": "Ürün kirasında ödeme emri için konutlardaki 30 günlük süre kullanılmak isteniyor.",
-      "reference": "references/tahliye-ve-uyarlama-kontrol.md",
+      "reference": "references/kira-rejimi-ve-taraflar.md",
+      "anchor": "TBK 362'deki **en az 60 günlük** ödeme süresini",
       "criteria": [
         {
           "id": "analysis",
-          "description": "Rejimi ve TBK 362 ödeme süresini araştır; konut süresini aktarma.",
+          "description": "Önce ilişkinin TBK 357 anlamında ürün kirası olup olmadığını işletmenin devredilen unsurlarıyla (ruhsat, demirbaş, faal işletme) araştır. Ürün kirasıysa TBK 362/2 ve İİK 269 uyarınca ödeme emrinde en az altmış günlük ödeme süresi ile ödenmezse fesih/tahliye uyarısı bulunması gerektiğini açıkça belirt. Konut/çatılı işyerindeki 30 günü (TBK 315) aktarma.",
           "critical": true
         },
         {
@@ -455,26 +515,30 @@
         },
         {
           "id": "avoid",
-          "description": "Her kira takibinde 30 günü yeterli kabul etme.",
+          "description": "Ürün kirası olarak nitelenen ilişkide 30 veya 10 günlük süreyi yeterli kabul etme ya da süreyi belirtmeden geçme. Altmış günden kısa süreli ödeme emrinin tahliye sonucu doğuracağını kesin kabul etme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B20",
-      "module": "alacak",
+      "topic": "alacak",
+      "modules": [
+        "alacak"
+      ],
       "fictional": true,
       "prompt": "Kira alacağı takibine itiraz edildi; sulh hukukta itirazın iptali açılacak. Takip olduğu için arabuluculuğun gereksiz olduğu söyleniyor.",
-      "reference": "references/tahliye-ve-uyarlama-kontrol.md",
+      "reference": "references/mevzuat-haritasi.md",
+      "anchor": "“icra takibiyle bağlantılı bütün davalar hariç” şeklinde genişletme",
       "criteria": [
         {
           "id": "analysis",
-          "description": "HUAK 18/B istisnasını itirazın iptaline topluca yayma; seçilen yolu incele.",
+          "description": "HUAK 18/B istisnasını itirazın iptaline topluca yayma; seçilen yolu incele. İtirazın iptali davası için itirazın alacaklıya tebliğinden başlayan bir yıllık süreyi (İİK 67/1) ve dava şartı arabuluculukta başvurudan son tutanağa kadar bu sürenin işlemediğini (HUAK 18/A/15) belirt.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Takip talebi, itiraz ve dava talebini iste.",
+          "description": "Takip talebi, itiraz dilekçesi, itirazın alacaklıya tebliğ tarihi, varsa arabuluculuk başvuru ve son tutanak tarihleri ile dava talebini iste.",
           "critical": false
         },
         {
@@ -486,14 +550,17 @@
     },
     {
       "id": "B21",
-      "module": "depozito",
+      "topic": "depozito",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Anahtarlar teslim edildi; ev sahibi görülebilen hasarı iki ay sonra yazılı bildirdi. Üç ay hakkı olduğunu söylüyor.",
       "reference": "references/teslim-masraf-kefalet.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "335 hasar bildirimi ile 342 bankaya bildirim süresini ayır.",
+          "description": "335 hasar bildirimi ile 342 bankaya bildirim süresini ayır. Geri vermede olağan incelemeyle görülebilen eksiklik hemen yazılı bildirilmemişse TBK 335'in ikinci cümlesi uyarınca kiracının bu eksikliklerden sorumluluktan kurtulduğunu; olağan incelemeyle belirlenemeyen eksikliklerde sorumluluğun sürdüğünü ve öğrenilince hemen yazılı bildirim gerektiğini belirt. 'Hemen' koşulunu sabit bir gün sayısına çevirmeden somut tarih akışına göre değerlendir.",
           "critical": true
         },
         {
@@ -510,7 +577,10 @@
     },
     {
       "id": "B22",
-      "module": "depozito",
+      "topic": "depozito",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Banka depozitosunu kiracı geri istiyor; malik dava açtığını ama bankaya yazmadığını belirtiyor.",
       "reference": "references/teslim-masraf-kefalet.md",
@@ -534,7 +604,10 @@
     },
     {
       "id": "B23",
-      "module": "depozito",
+      "topic": "depozito",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Beş yıl kullanılan konutta olağan boya eskimesi için tüm depozito kesilmiş. Sözleşmede yeni teslim yazıyor.",
       "reference": "references/teslim-masraf-kefalet.md",
@@ -558,7 +631,10 @@
     },
     {
       "id": "B24",
-      "module": "depozito",
+      "topic": "depozito",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Kiracı yalnız anahtar teslim belgesini sundu. Malik bunun hasarsız teslim anlamına gelmediğini söylüyor.",
       "reference": "references/teslim-masraf-kefalet.md",
@@ -582,7 +658,10 @@
     },
     {
       "id": "B25",
-      "module": "depozito",
+      "topic": "depozito",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Ev sahibi depozitoyu tuttu; hangi borçlara mahsup ettiğini açıklamıyor.",
       "reference": "references/teslim-masraf-kefalet.md",
@@ -606,14 +685,17 @@
     },
     {
       "id": "B26",
-      "module": "masraf",
+      "topic": "masraf",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Kiracı bozulan tesisatı onartıp kiradan düştü; sadece fatura sundu. İncele.",
       "reference": "references/teslim-masraf-kefalet.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "306 kapsamında bildirim, uygun süre, ayıp ve zorunlu gideri ayrı değerlendir.",
+          "description": "306 kapsamında bildirim, uygun süre, ayıp ve zorunlu gideri ayrı değerlendir. Arızanın kiraya verenin gidermesi gereken bir ayıp mı, yoksa TBK 317 uyarınca kiracının ödediği, olağan kullanım için gerekli temizlik/bakım gideri mi olduğunu (yerel âdet dâhil) ayır. Olağan bakım giderinin kiradan indirilemeyeceğini belirt.",
           "critical": true
         },
         {
@@ -630,14 +712,17 @@
     },
     {
       "id": "B27",
-      "module": "masraf",
+      "topic": "masraf",
+      "modules": [
+        "guvence"
+      ],
       "fictional": true,
       "prompt": "Malik onayıyla dekorasyon yapıldı; kiracı çıkarken tüm değer artışını istiyor. Yazılı ödeme anlaşması görünmüyor.",
       "reference": "references/teslim-masraf-kefalet.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "321'de rıza ile değer artışını isteme hakkının farklı olduğunu belirt.",
+          "description": "321'de rıza ile değer artışını isteme hakkının farklı olduğunu belirt. Aksine yazılı anlaşma yoksa kiracının, kiraya verenin rızasıyla yaptığı yenilik ve değişikliklerden doğan değer artışının karşılığını isteyemeyeceğini (TBK 321/3) sonuç olarak açıkla. İşlerin 01.07.2012 öncesine uzanıp uzanmadığını (6101 s.K. m.1), erken sona ermenin nedenini ve 306 kapsamındaki ayıp giderme giderlerinin ayrı olduğunu kontrol et.",
           "critical": true
         },
         {
@@ -654,14 +739,17 @@
     },
     {
       "id": "B28",
-      "module": "masraf",
+      "topic": "devir",
+      "modules": [
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "İşyeri sözleşmesinde devir yasağı yok. Kiracı işletmeyi devredip kira ilişkisinden çıktığını söylüyor.",
       "reference": "references/teslim-masraf-kefalet.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "323 yazılı rıza ile haklı neden olmadan kaçınamama ayrımını açıkla.",
+          "description": "323 yazılı rıza ile haklı neden olmadan kaçınamama ayrımını açıkla. Yazılı rıza yoksa kira ilişkisinin devredilmediğini ve kiracının sözleşmenin tarafı olarak kaldığını belirt. Yazılı rızayla devir olsa bile işyeri kirasında devreden kiracının, sözleşmenin bitimine kadar ve en fazla iki yıl süreyle devralanla birlikte müteselsilen sorumlu olduğunu (TBK 323/3) açıkla.",
           "critical": true
         },
         {
@@ -678,7 +766,11 @@
     },
     {
       "id": "B29",
-      "module": "masraf",
+      "topic": "kefalet",
+      "modules": [
+        "guvence",
+        "alacak"
+      ],
       "fictional": true,
       "prompt": "Sözleşmede gerçek kişi garantörün adı var; kefalet şekline bakılmadan tahsil isteniyor.",
       "reference": "references/teslim-masraf-kefalet.md",
@@ -702,7 +794,11 @@
     },
     {
       "id": "B30",
-      "module": "masraf",
+      "topic": "kefalet",
+      "modules": [
+        "guvence",
+        "alacak"
+      ],
       "fictional": true,
       "prompt": "Kefalet üç yıllık sözleşmede verilmiş; sekizinci yıl borcu kefilden isteniyor.",
       "reference": "references/teslim-masraf-kefalet.md",
@@ -726,7 +822,10 @@
     },
     {
       "id": "B31",
-      "module": "uyarlama",
+      "topic": "uyarlama",
+      "modules": [
+        "uyarlama"
+      ],
       "fictional": true,
       "prompt": "Pandemide faaliyeti kısıtlanan kiracı kira uyarlaması ve geçici tedbir istiyor; 2021/6001 gösteriliyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -750,7 +849,10 @@
     },
     {
       "id": "B32",
-      "module": "uyarlama",
+      "topic": "uyarlama",
+      "modules": [
+        "uyarlama"
+      ],
       "fictional": true,
       "prompt": "Kiracı gelirinin azalmasını gerekçe gösterip mahkeme kararı olmadan kira ödemesini yarıya indirmek istiyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -774,7 +876,11 @@
     },
     {
       "id": "B33",
-      "module": "uyarlama",
+      "topic": "tbk355_tazminat",
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
       "fictional": true,
       "prompt": "İhtiyaç kararı üzerine çıkan kiracı yeniden kiralamadan tazminat istiyor. İcra yoluyla tahliye belgesi yok.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -798,7 +904,10 @@
     },
     {
       "id": "B34",
-      "module": "uyarlama",
+      "topic": "karsioy",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Kiracı 2025/3540 karşıoyunu çoğunluk kararı gibi dilekçesine yazmak istiyor.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -822,7 +931,11 @@
     },
     {
       "id": "B35",
-      "module": "uyarlama",
+      "topic": "uyarlama",
+      "modules": [
+        "uyarlama",
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Kira tespiti istenen dosyada pandemi uyarlaması tedbir emsali sunuldu.",
       "reference": "references/tahliye-ve-uyarlama-kontrol.md",
@@ -846,10 +959,14 @@
     },
     {
       "id": "B36",
-      "module": "rejim",
+      "topic": "rejim",
+      "modules": [
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "Sözleşmenin başlığı depo; kiralanan büyük açık saha ve küçük kapalı bölümden oluşuyor. Hangi rejim?",
-      "reference": "references/mevzuat-haritasi.md",
+      "reference": "references/kira-rejimi-ve-taraflar.md",
+      "anchor": "açık/kapalı alan, baskın kullanım",
       "criteria": [
         {
           "id": "analysis",
@@ -870,10 +987,14 @@
     },
     {
       "id": "B37",
-      "module": "rejim",
+      "topic": "rejim",
+      "modules": [
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "Taraflar sözlü olarak iki yıl süreli kirada anlaştıklarını söylüyor. Sözlü olduğu için belirsiz süre uygulanması isteniyor.",
-      "reference": "references/mevzuat-haritasi.md",
+      "reference": "references/kira-rejimi-ve-taraflar.md",
+      "anchor": "Sözlü sözleşme belirli süreli olabilir",
       "criteria": [
         {
           "id": "analysis",
@@ -894,31 +1015,38 @@
     },
     {
       "id": "B38",
-      "module": "rejim",
+      "topic": "rejim",
+      "modules": [
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "Belediyeye ait taşınmazın kira süresi bitti. Her kamu kirası 15 günde tahliye edilir deniyor.",
       "reference": "references/mevzuat-haritasi.md",
       "criteria": [
         {
           "id": "analysis",
-          "description": "2886/75 kapsamını, özel kanun bağlantısını ve idari yolu araştır.",
+          "description": "Kiralananın niteliğini ve TBK 339/2'yi belirle; kiranın 2886'ya göre ihaleyle yapılıp yapılmadığını ve belediyenin 5393 m. 15 yoluyla 2886/75'ten yararlanıp yararlanmadığını araştır. Yapılmışsa yeni sözleşme yokluğunda fuzuli şagil, ecrimisil ve mülki amir eliyle tahliye; yapılmamışsa TBK 347 ve 350–352 rejimi.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Mülkiyet, ihale/sözleşme ve tahliye işlemini iste.",
+          "description": "Mülkiyet, kiralananın niteliği, ihale/sözleşme dayanağı ve tarihi, süre bitiminden sonraki ödeme/taahhüt ve tahliye işlemini iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Her kamu kiralamasına otomatik aynı tahliye rejimini uygulama.",
+          "description": "Her kamu kiralamasına otomatik 15 günlük idari tahliye uygulama; 2886'ya göre yapıldığı ve 75 ayrıcalığı doğrulanmadan kiracıyı fuzuli şagil sayma, doğrulanmışken de TBK 347 nedeniyle süre bitiminde tahliyenin imkânsız olduğunu söyleme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B39",
-      "module": "rejim",
+      "topic": "rejim",
+      "modules": [
+        "tespit",
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "Dövizle konut kirasında beş yıllık değişmeme kuralına dayanak olarak 1567 gösterilmiş.",
       "reference": "references/mevzuat-haritasi.md",
@@ -942,14 +1070,18 @@
     },
     {
       "id": "B40",
-      "module": "rejim",
+      "topic": "rejim",
+      "modules": [
+        "sozlesme"
+      ],
       "fictional": true,
       "prompt": "Paydaşların sadece kişi sayısı çoğunluğu kira sözleşmesi imzaladı. Diğerleri itiraz ediyor.",
-      "reference": "references/mevzuat-haritasi.md",
+      "reference": "references/kira-rejimi-ve-taraflar.md",
+      "anchor": "sözleşmenin taraflar arasında kurulması ile maliki/diğer paydaşları bağlaması farklıdır",
       "criteria": [
         {
           "id": "analysis",
-          "description": "Paylı/elbirliği ayrımı ile pay ve paydaş çoğunluğunu araştır.",
+          "description": "Paylı/elbirliği ayrımını yap: paylı mülkiyette TMK 691 uyarınca pay ve paydaş çoğunluğunu birlikte, elbirliğinde TMK 702 rejimini (kanun/sözleşmede aksi yoksa oybirliği, temsil ve istisnalar) araştır; sözleşmenin imzalayanlar ile kiracı arasında kurulmasını, itiraz eden paydaşları bağlayıp bağlamamasından ayır.",
           "critical": true
         },
         {
@@ -959,41 +1091,49 @@
         },
         {
           "id": "avoid",
-          "description": "Yalnız imzalayan kişi sayısıyla geçerliliği kesin kabul etme.",
+          "description": "Yalnız imzalayanların kişi sayısına bakarak sözleşmenin itiraz eden paydaşları da bağladığını kesin kabul etme; çoğunluk eksik diye sözleşmeyi imzalayanlar ile kiracı arasında da kendiliğinden geçersiz veya yok sayma.",
           "critical": true
         }
       ]
     },
     {
       "id": "B41",
-      "module": "temerrut",
+      "topic": "temerrut",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
-      "prompt": "Konut kiracısına 8 Nisan günü ulaşan yazılı ödeme bildiriminde on gün verilmiş. Malik 19 Nisanda tahliye istiyor. Bildirimi incele.",
-      "reference": "references/mevzuat-haritasi.md",
+      "prompt": "Konut kiracısına 08.04.2026 tarihinde ulaşan yazılı ödeme bildiriminde on gün süre verilmiş. Malik 19.04.2026 tarihinde tahliye istiyor. Bildirimi incele.",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "| TBK 315 konut/çatılı işyeri |",
       "criteria": [
         {
           "id": "analysis",
-          "description": "315 bakımından konut için asgari otuz günlük süreyi ve ulaşmayı izleyen sayımı ayır.",
+          "description": "TBK 315 bakımından konut için asgari otuz günlük süreyi, bildirimin ulaştığı günü izleyen günden (09.04.2026) başlatarak ham son günü 08.05.2026 olarak ayır ve tatil kontrolünü belirt. Bildirimde, süre içinde ödenmezse sözleşmenin feshedileceği uyarısının bulunup bulunmadığını ayrıca incele. Süre dolmadan tahliye istenemeyeceğini; tahliyenin ancak dava şartı arabuluculuk sonrası sulh hukuk davası veya kendi ödeme emri ve süresiyle İİK 269 ve devamı takip yoluyla istenebileceğini açıkla; kısa süre verilmiş bildirimin yasal süre sonunda dayanak olup olamayacağını güncel içtihatla doğrula.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Bildirim metni, tebliğ ve borç/ödeme kayıtlarını iste.",
+          "description": "Bildirimin tam metnini (özellikle fesih uyarısı), tebliğ/ulaşma belgesini, borç dönemlerini, muacceliyeti ve 08.05.2026'ya kadarki ödeme kayıtlarını iste.",
           "critical": false
         },
         {
           "id": "avoid",
-          "description": "Konut için on günü yeterli süre kabul etme.",
+          "description": "Konut için on günü yeterli süre kabul etme; 19.04.2026'da kendiliğinden fesih veya tahliye sonucu üretme.",
           "critical": true
         }
       ]
     },
     {
       "id": "B42",
-      "module": "temerrut",
+      "topic": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "İki farklı ayın kirası geç ödenmiş; ev sahibi iki kez telefonla ödeme istemiş. İki haklı ihtar davasını değerlendir.",
-      "reference": "references/mevzuat-haritasi.md",
+      "reference": "references/tahliye-ve-uyarlama-kontrol.md",
+      "anchor": "## İki haklı ihtar ve temerrüt",
       "criteria": [
         {
           "id": "analysis",
@@ -1002,7 +1142,7 @@
         },
         {
           "id": "questions",
-          "description": "Yazılı ihtar veya ödeme emri bulunup bulunmadığını sor.",
+          "description": "Yazılı ihtar veya ödeme emri bulunup bulunmadığını; varsa her birinin tebliğ ve ödeme tarihlerini ve ilgili kira yılını sor.",
           "critical": false
         },
         {
@@ -1014,10 +1154,14 @@
     },
     {
       "id": "B43",
-      "module": "alacak",
+      "topic": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Kiralar zamanında ödenmiş; iki aylık ortak gider borcu var. Malik iki haklı ihtar yoluyla tahliye istiyor.",
-      "reference": "references/mevzuat-haritasi.md",
+      "reference": "references/tahliye-ve-uyarlama-kontrol.md",
+      "anchor": "TBK 315'te verilen sürede ödeme ile TBK 352/2'de haklı ihtar oluşması ayrı değerlendirmelerdir",
       "criteria": [
         {
           "id": "analysis",
@@ -1038,14 +1182,18 @@
     },
     {
       "id": "B44",
-      "module": "uzama",
+      "topic": "uzama",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
-      "prompt": "Konut üç yıllığına kiralanmış. Başlangıçtan on bir yıl sonra malik on yıllık uzamanın tamamlandığını söylüyor. Hesap yöntemini açıkla.",
-      "reference": "references/mevzuat-haritasi.md",
+      "prompt": "Konut 01.10.2015 başlangıçlı ve üç yıl süreli olarak kiralanmış. Başlangıçtan on bir yıl sonra malik on yıllık uzamanın tamamlandığını söylüyor. Hesap yöntemini açıkla.",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "“Başlangıç + 10 yıl” yanlış kısayoldur",
       "criteria": [
         {
           "id": "analysis",
-          "description": "347/1 hesabında ilk üç yıllık süre ile on yıllık uzama ve izleyen uzama yılını ayrı göster.",
+          "description": "347/1 hesabında ilk üç yıllık süre ile on yıllık uzama ve izleyen uzama yılını ayrı göster: ilk süre 01.10.2018'de, on yıllık uzama 01.10.2028'de dolar; sebep göstermeksizin sona erdirme ilk kez 01.10.2029'da biten uzama yılı için mümkündür ve bildirim bundan en az üç ay önce kiracıya ulaşmalıdır; güvenli son tarih temkinli okumada 30.06.2029'dur (01.07.2029 yalnız yıldönümü okumasıdır). `hesap.py tahliye-10yil` kullanılırsa `--sure-yil 3` verilmeli.",
           "critical": true
         },
         {
@@ -1055,26 +1203,30 @@
         },
         {
           "id": "avoid",
-          "description": "Bütün belirli süreli sözleşmeleri başlangıç artı on bir yıl kabul etme.",
+          "description": "Bütün belirli süreli sözleşmeleri başlangıç artı on bir yıl kabul etme; 01.10.2026'yı fesih dönemi sonu veya 01.07.2026 ya da 30.06.2026'yı bildirim eşiği sayma.",
           "critical": true
         }
       ]
     },
     {
       "id": "B45",
-      "module": "uzama",
+      "topic": "uzama",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Konutun yeni maliki mevcut kirayı düşük buluyor ve belirli sözleşmenin bitiminde kiracının çıkmasını istiyor; başka sebep bildirmemiş.",
-      "reference": "references/mevzuat-haritasi.md",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "| TBK 351/1 yeni malik |",
       "criteria": [
         {
           "id": "analysis",
-          "description": "347 kapsamında salt dönem sonu ile 344/345 bedel belirleme yollarını ayır.",
+          "description": "TBK 310 uyarınca yeni malikin mevcut sözleşmenin tarafı olduğunu; 347/1 gereği on yıllık uzama dolmadıkça salt sözleşme süresinin bitiminin tahliye sebebi olmadığını göster ve bedel için 344/345 yolunu ayır. Gerçek bir ihtiyaç varsa 351/1 (edinmeden itibaren bir ay içinde yazılı bildirim, edinmeden altı ay geçtikten sonra dava) ve 351/2 (sözleşme süresinin bitiminden itibaren bir ay içinde dava) sürelerinin kaçırılabileceğini belirt.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Sözleşme başlangıcı, süre, yeni sözleşmeler ve talep edilen dönemi iste.",
+          "description": "Tapu edinme (tescil) tarihini, malik veya 351'de sayılan yakınlarının gerçek bir ihtiyacı olup olmadığını, edinmeden sonra yazılı bildirim yapılıp yapılmadığını ve ulaşma tarihini, sözleşme başlangıcı ve süresini, yeni sözleşmeleri ve talep edilen kira dönemini iste.",
           "critical": false
         },
         {
@@ -1086,7 +1238,10 @@
     },
     {
       "id": "B46",
-      "module": "tespit",
+      "topic": "kaynak",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Kiracı vekiliyiz. Kiraya verenin dilekçesinde 2022 tarihli bir Yargıtay 3. HD künyesiyle \"eski kiracıya hiçbir indirim yapılamaz\" cümlesi tırnak içinde alıntılanmış. Legaluga künye denetimi bu künye için tarih_tuttu döndü. Cevap dilekçesinde bu kararı ve alıntıyı aynen aktararak karşılık yaz.",
       "reference": "references/legaluga.md",
@@ -1110,7 +1265,10 @@
     },
     {
       "id": "B47",
-      "module": "tespit",
+      "topic": "dilekce",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Kira tespiti dava dilekçesi taslağı hazır; ihtarın tebliğ tarihi ile arabuluculuk son tutanağının tarihi hâlâ [DOLDURULACAK] olarak duruyor, son metni de okumadım. Zaman yok: hemen UDF'ye çevir, eksikleri UYAP'ta sonra tamamlarım.",
       "reference": "references/legaluga.md",
@@ -1134,7 +1292,10 @@
     },
     {
       "id": "B48",
-      "module": "tespit",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
       "fictional": true,
       "prompt": "Konut kirası 20.06.2022'de yenilenmiş; sözleşmede yıllık TÜFE oranında artış yazıyor, kiraya veren o dönem %60 artış almış. Legaluga'dan TBK 344'ün güncel metnini aldım, %25'e dair bir şey yok. Bu dönem için yalnız TÜFE sınırı uygulanır diye yazabilir miyim?",
       "reference": "references/legaluga.md",
@@ -1158,7 +1319,10 @@
     },
     {
       "id": "B49",
-      "module": "taahhut",
+      "topic": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
       "fictional": true,
       "prompt": "Legaluga anlamsal aramasında \"tahliye taahhüdünde boş bırakılan tarihin sonradan doldurulması\" için 2025–2026 tarihli beş karar geldi; uyarılarda CANDIDATES_RECENT_ONLY var. Bu beş karar Yargıtay'ın bu konudaki bütün içtihadı mı, dilekçeye \"yerleşik içtihat yalnız bu yöndedir\" yazabilir miyim?",
       "reference": "references/legaluga.md",
@@ -1176,6 +1340,711 @@
         {
           "id": "avoid",
           "description": "Sonuç kümesini konunun bütün içtihadı, yerleşik veya tek yönlü içtihat diye sunma; benzerlik skorunu hüküm yönü ya da emsal gücü sayma; tam metni okunmamış kararı dilekçeye taşıma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B50",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
+      "fictional": true,
+      "prompt": "Kiraya veren adına kira tespiti dava dilekçesi taslağı hazırla. Konut kirası 01.10.2021'de başladı; sözleşmede artış şartı yok. Hedef dönem 01.10.2026. Yazılı artış bildirimi 20.08.2026'da kiracıya ulaştı. Arabuluculuk son tutanağı ve emsal kira sözleşmeleri henüz elimizde değil.",
+      "reference": "references/uygulama-rehberi.md",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Hedef dönemi altıncı kira yılı olarak TBK 344/3 kapsamında, 01.09.2026 eşiğinden önce ulaşan yazılı bildirimi TBK 345/2 kapsamında değerlendir; dilekçede vakıa → delil → doğrulanmış dayanak → talep bağlantısını kur ve arabuluculuk son tutanağını dava şartı belgesi olarak göster.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Son tutanağın tarih ve numarasını, bildirimin tebliğ belgesini, emsal sözleşmeleri ve önceki tespit/ek protokol bilgisini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Tutanak tarihi, emsal bedel, tebliğ olgusu veya karar künyesi uydurma; bilinmeyen alanları [DOLDURULACAK: ...] olarak bırak.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B51",
+      "topic": "kaynak",
+      "modules": [
+        "tespit"
+      ],
+      "fictional": true,
+      "prompt": "Beş yılı aşan konut kirasında hak ve nesafet tespitinde emsal kira bedellerinin karşılaştırılmasına ilişkin dilekçede kullanabileceğim iki kararı künyesi, kaynak adresi ve kısa birebir alıntısıyla ver.",
+      "reference": "references/havuz.md",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Her karar için pool.py get ile okunan tam metne dayanan künyeyi (mahkeme/daire, E., K., T.), yardımcının döndürdüğü source_url adresini ve quote ile doğrulanmış birebir alıntıyı ver; kararın sonucu ile somut olgu farkını belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Kararların hangi taraf lehine kullanılacağını, sözleşme başlangıcını ve hedef dönemi kısa biçimde sor.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Yardımcının vermediği künye, adres veya alıntı uydurma (source_url yoksa yokluğunu belirt); kısa onama kararından veya karşıoydan ilke çıkarma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B52",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
+      "fictional": true,
+      "prompt": "Konut kirası 01.03.2023 başladı; sözleşmede yıllık artışın TÜFE oranında yapılacağı yazıyor. Malik 01.03.2026 dönemi için bu oranda artış istiyor; kiracı yüzde 25 sınırının hâlâ geçerli olduğunu söylüyor. İncele.",
+      "reference": "references/uygulama-rehberi.md",
+      "anchor": "## Geçici %25 düzenlemesi",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Geçici %25 sınırının yalnız konutlarda ve yalnız 11.06.2022–01.07.2023 (geçici 1) ile 02.07.2023–01.07.2024 (geçici 2) arasında yenilenen dönemlere uygulandığını, 01.03.2026 dönemine uygulanmadığını belirt. Bu dönemde anlaşmanın TBK 344/1 uyarınca bir önceki kira yılında TÜFE'deki on iki aylık ortalamalara göre değişim oranını geçmemek koşuluyla geçerli olduğunu açıkla. Beş yıl dolmadığından 344/3 rayiç tespitinin henüz gündemde olmadığını ayır.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Artış hükmünün tam metnini, yenileme tarihini ve uygulanacak TÜFE oranının resmî kaynağını iste; sonradan yeni bir geçici düzenleme yapılıp yapılmadığını güncel resmî mevzuattan doğrula.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Yüzde 25 sınırını güncel veya sürekli kural gibi uygulama; TÜFE tavanını otomatik artış oranı sayma, ÜFE ile karıştırma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B53",
+      "topic": "alacak",
+      "modules": [
+        "alacak"
+      ],
+      "fictional": true,
+      "prompt": "Konut kirası 01.10.2023'te yenilendi; kiracı önceki bedelin yüzde 60 fazlasını ihtirazi kayıt koymadan on iki ay ödedi. Ekim 2026'da fazla ödemenin iadesini istiyor; malik ödemenin rızaen yapıldığını söylüyor. İncele.",
+      "reference": "references/iade-ispat.md",
+      "anchor": "## Süreyi hukuki yola göre ayrı belirle",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "01.10.2023 yenilemesinin geçici 2. madde kapsamına (02.07.2023–01.07.2024) girdiğini ve %25'i (önceki kira yılının TÜFE on iki aylık ortalamalara göre değişim oranı daha düşükse o oranı) aşan anlaşmanın fazla miktar yönünden geçersiz olduğunu belirt. İadeyi genel hükümlere (TBK 77 vd.) bağla; malikin rızaen ödeme savunmasını TBK 78'deki kendini borçlu sanarak ödeme koşulu ve geçici maddedeki özel geçersizlikle birlikte değerlendir. Zamanaşımı riskini ödeme tarihleriyle açıkça işaretle (TBK 82: öğrenmeden iki yıl, her hâlde on yıl; sözleşmeye dayalı nitelendirmede TBK 146).",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşmeyi, yenileme yazışmalarını/protokolü, dönem bazlı dekontları ve açıklamalarını, ilişkinin sürüp sürmediğini, iade hakkının öğrenildiği tarihe ilişkin olguları, arabuluculuğa başvurulup başvurulmadığını ve başvuru/son tutanak tarihlerini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "İhtirazi kayıt yokluğunu otomatik ret, rızaen ödemeyi sınırı aşan anlaşmayı geçerli kılan kesin sebep veya sınır aşımını kesin kabul sebebi sayma; İzmir BAM 23. HD E. 2024/3426 kararını genel içtihat gibi sunma; kesin zamanaşımı sonucu verme; icra takibi dışında yapılan fazla ödemenin iadesine İİK 72'nin cebri icra tehdidi altında ödeme ve bir yıllık hak düşürücü süre koşullarını uygulama; HUAK 18/B dava şartı arabuluculuğu atlayarak doğrudan dava önerme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B54",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 28.09.2026. Konutu sonradan edinen malik TBK 351/2 yoluna dayanıyor. Belirli süreli sözleşme 31.08.2026'da bitti. Arabuluculuğa 10.09.2026'da başvurdu; anlaşmama son tutanağı 25.09.2026'da düzenlendi. Malik, tutanaktan itibaren yeni ve tam bir aylık dava süresi olduğunu söylüyor. Dava süresini incele.",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "**Dava şartı arabuluculuk:**",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 351/2'nin sözleşme bitiminden başlayan bir aylık süresine HUAK 18/A/15'i uygula: başvurudan son tutanağa kadar hak düşürücü süre işlemez, tutanaktan sonra yalnız kalan bölüm yürür. Ham tarihi (30.09.2026) ve yaklaşık kalan süreyi ayın 30 güne çevrildiğini varsaymadan göster. Başvuru ve tutanak günlerinin sayımını, tatil düzeltmesini açık kontrol olarak bırak; 15–16.10.2026 aralığını kesin son gün diye sunma.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Edinme belgesi, sözleşme bitimini gösteren belge, arabuluculuk başvuru tarihi, son tutanak ve başvurunun tahliye talebini kapsayıp kapsamadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Son tutanaktan itibaren yeni ve tam bir aylık sürenin başladığını kabul etme; 351/1'in altı aylık yolunu 351/2 ile karıştırma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B55",
+      "topic": "temerrut",
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
+      "fictional": true,
+      "prompt": "Konut kiracısı iki aylık kirayı ödemedi. Malik dava değil, İİK 269 uyarınca tahliye talepli ilamsız takip başlatmak istiyor. Önce arabulucuya gitmesi gerekip gerekmediğini, kiracının ne kadar sürede itiraz edip ne kadar sürede ödeyebileceğini soruyor. Yol haritası çıkar.",
+      "reference": "references/mevzuat-haritasi.md",
+      "anchor": "Ödeme süresi (TBK 315/2 ve 362/2'ye göre 10/30/60 gün) ile yedi günlük itiraz süresi farklıdır",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "HUAK 18/B'deki ilamsız icra yoluyla tahliye istisnası nedeniyle takip ve icra mahkemesindeki tahliye/itirazın kaldırılması aşamasında dava şartı arabuluculuk aranmadığını; genel mahkemede açılacak itirazın iptali veya alacak/tahliye davasının ayrıca incelenmesi gerektiğini ayır. Ödeme emrindeki ödeme süresini (konutta TBK 315 uyarınca 30 gün) yedi günlük itiraz süresinden ayır. İtiraz hâlinde itirazın kaldırılması başvurusu için İİK 269/d yollamasıyla uygulanan İİK 68'deki altı aylık sınırı güncel metinden doğrula.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşmenin türü ve imza durumu (adi/noter onaylı), borçlu dönemler, takip talebi, ödeme emri tebliğ tarihi, itiraz ve tebliği ile ödeme kayıtlarını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "İlamsız tahliye takibinden önce arabuluculuğu zorunlu sayma; tersine, itirazın iptali gibi davaları da otomatik istisna sayma; yedi günlük itiraz süresini 30 günlük ödeme süresiyle karıştırma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B56",
+      "topic": "alacak",
+      "modules": [
+        "alacak"
+      ],
+      "fictional": true,
+      "prompt": "Konut kiracısı üç yıllık sözleşmenin ilk yılında anahtarı teslim edip çıktı. Ev sahibi kalan iki yılın bütün kiralarını istiyor; kiracı uygun bir yeni kiracı önerdiğini söylüyor. İncele.",
+      "reference": "references/teslim-masraf-kefalet.md",
+      "anchor": "## Erken geri verme (TBK 325)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 325/1 makul süre ve uygun yeni kiracı önerisi ile 325/2 indirim yükümlülüğünü ayrı değerlendir.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Teslim ve bildirim tarihlerini, önerilen kiracının bilgilerini, yeniden kiralama çabası veya fiilî yeniden kiralama tarihini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Kalan sürenin tüm kiralarını otomatik onaylama; sabit bir makul süreyi kanuni kural gibi sunma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B57",
+      "topic": "depozito",
+      "modules": [
+        "guvence",
+        "alacak"
+      ],
+      "fictional": true,
+      "prompt": "Konut sözleşmesinde beş aylık kira tutarında nakit depozito alınmış; ayrıca bir kira geciktiğinde aylık kiranın %10'u ceza ödeneceği ve kalan bütün kiraların muaccel olacağı yazıyor. Ev sahibi bu hükümlere dayanarak tahsil istiyor. İncele.",
+      "reference": "references/teslim-masraf-kefalet.md",
+      "anchor": "TBK 346 uyarınca kiracıya kira bedeli ve yan giderler dışında ödeme yükümlülüğü getirilemez",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 342/1 üç aylık güvence sınırı ile TBK 346 ceza koşulu ve muacceliyet yasağını ayrı uygula; sözleşmenin kalanını geçerli tut.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşme tarihi ve aylık kira bedeli, depozito ödeme belgesi, gecikme ve ihtar kayıtlarını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Ceza veya muacceliyet kaydına dayanarak tahsil önerme; 346 geçersizliğini gecikmiş kira ve kanuni faiz borcunun da düştüğü biçiminde sunma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B58",
+      "topic": "tespit",
+      "modules": [
+        "tespit"
+      ],
+      "fictional": true,
+      "prompt": "Konut kirasında yenilenen dönem 15.03.2024 başladı. Malik o dönem için TÜFE oranının tamamında artış yaptığını, yüzde 25 sınırının kalktığını söylüyor. İncele.",
+      "reference": "references/uygulama-rehberi.md",
+      "anchor": "## Geçici %25 düzenlemesi",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Yenileme tarihini geçici 1 (11.06.2022–01.07.2023) ve geçici 2 (02.07.2023–01.07.2024) aralıklarına yerleştir; 15.03.2024 dönemine geçici 2'deki yüzde 25 sınırının, TÜFE oranı daha düşükse bu oranın uygulanacağını ve fazlanın geçersizliğini göster.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşme başlangıcı, yenileme tarihleri, önceki yıl kira bedeli, uygulanan artış ve ödeme kayıtlarını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "15.03.2024 dönemi için sınırın kalktığını kabul etme; geçici sınırı işyerine, 01.07.2024 sonrası yenilenen dönemlere veya güncel içtihat denetlenmeden 344/3 rayiç tespitine otomatik uygulama.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B59",
+      "topic": "kiracinin_konutu",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 10.09.2026. Konut kiracısıyla birlikte yaşayan eşi aynı ilçede oturmaya elverişli bir daire satın almış. Belirli süreli sözleşme 31.08.2026'da bitti. Malik daireyi kiralama sırasında bilmediğini söylüyor ve Kasım 2026'da dava açmak istiyor.",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "| TBK 352/3 kiracı/eşinin konutu |",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "352/3 koşullarını (kiracı veya birlikte yaşadığı eş, aynı ilçe/belde, oturmaya elverişlilik, kuruluş anında bilmeme) ve bir aylık sürenin sözleşme bitiminden işlediğini ayrı göster; Kasım 2026 için süre riskini belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Tapu kaydı ve edinme tarihi, birlikte yaşama, sözleşme süresi, 353 kapsamında yazılı bildirim ve arabuluculuk belgelerini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Konutun edinilmesini öğrenme tarihinden süre başlatma veya kiraya verenin önceden bildiği durumda tahliye sonucu verme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B60",
+      "topic": "rejim",
+      "modules": [
+        "guvence"
+      ],
+      "fictional": true,
+      "prompt": "Kira sözleşmesinden doğan depozito iadesi davası, tutar yüksek olduğu için asliye hukuk mahkemesinde açılmak isteniyor.",
+      "reference": "references/kira-rejimi-ve-taraflar.md",
+      "anchor": "**Görev:** HMK 4/1-a",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "HMK 4/1-a uyarınca kira ilişkisinden doğan alacaklarda görevin miktara bakılmaksızın sulh hukukta olduğunu ve talebin kira ilişkisinden doğup doğmadığını ayır.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşme, depozitonun dayanağı, sona erme ve talep sonucu belgelerini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Tutara göre asliye hukuk görevi kabul etme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B61",
+      "topic": "temerrut",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Konut kiracısına noter aracılığıyla gönderilen TBK 315 ödeme ihtarı kiracının UETS adresine 03.09.2026'da ulaştı; kayıtta açılma tarihi 10.09.2026. Otuz günlük ödeme süresi hangi tebliğ tarihine göre hesaplanır?",
+      "reference": "references/sure-hesaplama.md",
+      "anchor": "**Elektronik tebligat:**",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "7201 s.K. 7/a uyarınca ulaşma gününü izleyen beşinci günün sonunu (08.09.2026) tebliğ günü olarak belirle; TBK 315 ödeme süresini bundan sonra ayrı hesapla.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "UETS delil kaydını, ihtar metnini, muaccel kira dönemlerini ve ödeme kayıtlarını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Açılma/okuma, SMS veya e-posta tarihini tebliğ tarihi sayma; beşinci günü iş gününe taşıma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B62",
+      "topic": "rejim",
+      "modules": [
+        "sozlesme",
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Belirli süreli konut kirasında kiracı 15.07.2026'da öldü; eşi konutta oturmaya devam ediyor, diğer mirasçısı olan oğlu sözleşmeyi feshetmek istiyor. Kiraya veren de ölüm nedeniyle tahliye isteyebilir mi?",
+      "reference": "references/kira-rejimi-ve-taraflar.md",
+      "anchor": "**Kiracının ölümü (TBK 333, 356):**",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 333 mirasçı fesih hakkını (yasal bildirim süresi ve TBK 329'a göre en yakın fesih dönemi sonu) açıkla; birden çok mirasçı varsa bu hakkın mirasçılık ortaklığına ait olduğunu ve TMK 640 uyarınca elbirliğiyle (mirasçıların birlikte bildirimi, diğerlerinin katılımı/onayı ya da tereke temsilcisi veya yetkili temsilci aracılığıyla) kullanılacağını belirt; eş mirası reddetmedikçe mirasçı olduğundan oğlun tek başına yaptığı bildirimin sözleşmeyi sona erdirmeyeceğini açıkla. Bunu TBK 356 uyarınca ölen kiracıyla birlikte oturan eşin sözleşmeyi taraf olarak sürdürme imkânından ayır; ölümün kiraya verene tek başına tahliye nedeni vermediğini belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Ölüm tarihi, mirasçılık belgesi, reddi miras, konutta birlikte oturanlar, sözleşme süresi ve yapılan bildirimleri iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Sözleşmenin ölümle kendiliğinden sona erdiğini veya tek mirasçının bildiriminin konutta kalan eşin sürdürme imkânını kesin ortadan kaldırdığını söyleme. Oğlun TBK 333 fesih hakkını diğer mirasçılardan bağımsız olarak tek başına kullanabileceğini kesin kabul etme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B63",
+      "topic": "temerrut",
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Konut kiracısına, kiraya verenin tahliye talepli ilamsız takibi üzerine 13 örnek ödeme emri 09.10.2026'da tebliğ edildi; takipte Ağustos ve Eylül 2026 kiraları isteniyor. Kiracı Ağustos kirasını takipten önce elden ödediğini ama belgesi olmadığını, Eylül kirasını ödemediğini söylüyor; ödeme emrinde 30 gün yazdığı için itirazı da bu süre içinde yapacağını düşünüyor. Kiraya veren ise kiracı itiraz ederse noterden ayrıca TBK 315 ihtarı çekip dava açması gerekip gerekmediğini soruyor. İki tarafın sorusunu ayrı ayrı yanıtla.",
+      "reference": "references/tahliye.md",
+      "anchor": "## Temerrüt (TBK 315) ve ilamsız tahliye takibi",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Yedi günlük itiraz süresini (G(09.10.2026,7) = 16.10.2026, ham) otuz günlük ödeme süresinden (O = G(09.10.2026,30) = 08.11.2026, ham; pazar günüdür, tatil kontrolünü ayrıca yap) ayır. Takipten önceki ödeme iddiası süresinde itirazla ileri sürülmezse icra mahkemesinde dinlenmez; itiraz etmeyen kiracı yalnız ödeme süresi içinde ödediğini ileri sürebilir (Yargıtay HGK, E. 2017/2340, K. 2021/261, 16.03.2021; oy çokluğu, karşıoy aksi yönde). Ödeme itirazının İİK 269/c'de sayılan belgelerle ispatlanacağını (resmî metinden doğrula) ve belge yoksa tahliye riskine karşı takip konusu kiraların ödeme süresi içinde tam ve kiraya verenin tasarrufuna geçecek biçimde ödenmesinin tahliyeyi önleyeceğini belirt. Kiraya veren yönünden: ilamsız yolda ayrı ihtar gerekmez, 13 örnek ihtarı içerir; takip talebinde açık tahliye istemi aranır (Yargıtay HGK, E. 2017/1842, K. 2021/648, 01.06.2021). İtirazda ödeme süresi geçtikten sonra icra mahkemesinden itirazın kaldırılması ve tahliye birlikte istenir (Yargıtay HGK, E. 2021/996, K. 2023/642, 21.06.2023); itirazın tebliğinden A(I,6) sınırı orta güvenlidir (İİK 269/d yollamasıyla İİK 68; resmî metinden doğrula) ve bu yolda arabuluculuk aranmaz. Sulh hukuk davasında dava şartı arabuluculuk gerekir; itiraz inkâr dışı bir sebebe dayanıyorsa İİK 269/b lafzı dar okunabildiğinden ihtiyaten ayrı TBK 315 ihtarı gönderilir.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Ödeme emri ile takip talebinin tam metnini (tahliye istemi, dönemler, tutarlar, ödeme süresi), tebliğ şerhini veya UETS kaydını, kira sözleşmesini (ödeme günü, ödeme yeri, imza), Ağustos ödemesine ilişkin her türlü yazılı kaydı, Eylül kirasının tutarını ve ödeme imkânını, başka kiracı veya TMK 194/son bildirimi yapmış eş bulunup bulunmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "İtirazın 08.11.2026'ya kadar yapılabileceğini söyleme veya yedi günlük itiraz süresini otuz günlük ödeme süresiyle karıştırma; itiraz edilmeyen ödeme emrinde takipten önceki belgesiz elden ödemenin icra mahkemesinde kendiliğinden dinleneceğini kabul etme; ilamsız takip ya da icra mahkemesindeki itirazın kaldırılması için arabuluculuğu veya ayrı noter ihtarını zorunlu sayma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B64",
+      "topic": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 20.11.2026. Bir otel binası 01.01.2020 başlangıçlı ve on yıl süreli sözleşmeyle kiralanmış; her kira yılının kirası bir önceki yılın 30.09 ve 31.10 tarihlerinde iki taksitle peşin ödeniyor. 2027 kira yılının iki taksiti ödenmeyince kiraya veren iki ayrı icra takibi yaptı; ödeme emirleri 08.10.2026 ve 06.11.2026'da tebliğ edildi, kiracı her birini tebliğden sonra ödedi. Kiraya veren iki haklı ihtar nedeniyle tahliye davasını hangi tarihler arasında açmalı?",
+      "reference": "references/tahliye.md",
+      "anchor": "## Kira yılı içinde iki haklı ihtar (TBK 352/2)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 352/2'de dava süresinin ikinci ihtarın tarihinden değil kira yılının bitiminden işlediğini ve erken açılan davanın da reddedildiğini belirt. Kira yılını başlangıçtan kur ve iki aday pencereyi ayrı hesapla: ihtarların yapıldığı 01.01.2026–31.12.2026 kira yılına göre (kanun lafzı) W1 = 02.01.2027–31.01.2027; kiranın ait olduğu 2027 kira yılına göre W2 = 02.01.2028–31.01.2028 (Yargıtay 3. HD, E. 2024/2951, K. 2025/3118, 28.05.2025: peşin taksitli otel kirasında ihtar yılı okumasını reddetti, W1 içinde açılan davayı erken saydı; tek karar, orta güven). Pencereler çakışmadığından güvenli tek tarih olmadığını, seçimin ve hak düşümü ile erken dava riskinin müvekkile yazılı bildirilmesi gerektiğini; W1'in iki sınır günü ile W2'nin ilk günü hafta sonuna denk geldiğinden tatil kaydırmasına dayanılmamasını açıkla. Ödeme emirlerinin yazılı ihtar sayılabileceğini, tebliğden sonraki ödemenin haklılığı kaldırmadığını (Yargıtay HGK, E. 2017/1289, K. 2021/1314, 02.11.2021), yıllık ödemede iki haklı ihtarın oluşmayacağı yönündeki kalıp gerekçenin risk olarak anılması gerektiğini ve dava şartı arabuluculuğa seçilen pencere açıldıktan sonra, bir aylık süre içinde başvurulacağını (3. HD 2025/3048 kıyası; düşük güven) belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşmenin başlangıç, süre ve ödeme maddelerini, her iki takip talebi ile ödeme emrini, tebliğ şerhlerini ve ödeme dekontlarını (saat dahil), varsa sonradan yapılan ödeme protokolünü, birden çok kiraya veren veya kiracı bulunup bulunmadığını ve arabuluculuk planını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Süreyi ikinci ödeme emrinin tebliğinden (06.11.2026) veya sözleşme sonundan başlatma; yalnız W1'i ya da yalnız W2'yi riski belirtmeden kesin pencere diye sunma; 3. HD 2025/3118'deki 'bir yıl içinde' ifadesini dava süresi sayma; `deadlines.py tbk352` kuralını iki haklı ihtar için kullanma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B65",
+      "topic": "taahhut",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Konut kiracısı, 01.09.2022 başlangıçlı bir yıllık sözleşmeyi imzalarken, anahtar teslim edilmeden önce, ev sahibinin istediği tarihsiz ve boş bir 'tahliye taahhüdü' kâğıdını da imzaladığını söylüyor. Kâğıda sonradan 15.10.2022 düzenleme ve 30.09.2026 boşaltma tarihi yazılmış. Taraflar 01.09.2024'te yeni kira bedeli ve iki yıllık süreyle yeni bir kira sözleşmesi imzalamış. Kiraya verenin İİK 272 takibi üzerine Örnek 14 tahliye emri 12.10.2026'da tebliğ edildi. Kiracı ne yapmalı?",
+      "reference": "references/tahliye.md",
+      "anchor": "## Tahliye taahhüdü (TBK 352/1)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Önce süreyi belirt: tahliye emrine itiraz G(12.10.2026,7) = 19.10.2026 (ham; İİK 274 ve 19'u resmî metinden doğrula, orta güven); itiraz edilmezse takip kesinleşir ve on beş günlük boşaltma süresi (G(12.10.2026,15) = 27.10.2026, ham) sonunda zorla tahliye yolu açılır. TBK 352/1'deki teslimden sonra verilme koşulunu uygula: sözleşmeyle aynı gün veya teslimden önce alınan taahhüt geçersizdir; ancak imzayı kabul eden kiracının açığa imzanın anlaşmaya aykırı doldurulduğu iddiası tanıkla değil yazılı delille, yoksa dayanılmışsa yeminle ispatlanır, hileyle habersiz imzalatma ise sahtelik iddiasıdır (Yargıtay HGK, E. 2008/369, K. 2008/394, 28.05.2008; 818/HUMK dönemi, HMK karşılığını doğrula). İstanbul BAM 36. HD, E. 2024/5083, K. 2026/377, 04.02.2026'nın aynı savunmayı yazılı delil yokluğundan reddettiğini ve tek BAM kararı olduğunu belirt. Adi taahhütte tarih veya imza inkârının icra mahkemesinde itirazın kaldırılması yolunu kapattığını, kiraya verenin sulh hukukta itirazın iptali ve tahliye davasına gideceğini (İİK 275/1, resmî metinden doğrula; arabuluculuk tartışmalı) açıkla. Taahhütten sonra kurulan 01.09.2024 sözleşmesinin taahhüdü hükümsüz kılabileceğini, ancak bunun havuzda doğrudan doğrulanmış bir kararla desteklenmediğini (kontrol notunda anılan kanun yararına bozma havuzda yok) işaretle.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Taahhüdün aslını (matbu ve el yazısı kısımlar, 'kiracı olarak bulunduğum' gibi ibareler), anahtar teslim tarihini gösteren belgeyi veya ilk ödeme kaydını, 01.09.2024 sözleşmesini, takip talebi ve takip tarihini, tahliye emrinin tebliğ belgesini, doldurma anlaşmasına ilişkin yazılı delil ve aile konutu bildirimi bulunup bulunmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Boş imza veya aykırı doldurma iddiasının tanıkla ispatlanabileceğini ya da her durumda kesin olarak dinlenemeyeceğini söyleme; yeni sözleşmenin taahhüdü kesin olarak hükümsüz kıldığını veya hiç etkilemediğini kesin sunma; yedi günlük itiraz süresini on beş günlük boşaltma süresiyle karıştırma; noter onayı olmadığı için taahhüdün geçersiz olduğunu söyleme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B66",
+      "topic": "ihtiyac",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Konut, 01.11.2023 başlangıçlı bir yıllık sözleşmeyle kirada ve sözleşme her yıl uzadı; sözleşmede kiraya veren için ön ihbar kaydı yok. Malik, kızının Mart 2027'de evleneceğini ve bu konutta oturacağını söylüyor. 'Kiracı nasılsa çıkmayacak, arabulucuya bu hafta başvurup Kasım başında dava açarım' diyor; bu yıl yetişemezse ne olacağını da soruyor. Planı değerlendir.",
+      "reference": "references/tahliye.md",
+      "anchor": "## Gereksinim ve yeniden inşa (TBK 350)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Arabuluculuk başvurusunun dava açma hakkı doğduktan sonra ve dava süresi içinde yapılması gerektiğini (Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025; kesin, TBK 350/1) ve Ekim 2026'da yapılacak başvurunun dava şartını karşılamayacağını, usulden ret sırasında pencerenin kapanabileceğini açıkla. Pencereyi göster: E = 01.11.2026 (yıldönümü; son kullanım günü 31.10.2026); temkinli en erken başvuru 02.11.2026, ham son A(E,1) = 01.12.2026, temkinli son 30.11.2026 (orta güven; sınır günleri mahkemelerce farklı okunmuştur); başvurudan son tutanağa kadar süre işlemez (HUAK 18/A/15) ve kalan süre ay 30 güne çevrilmeden hesaplanır. TBK 353 uyarınca 'dava açacağım' içerikli yazılı bildirim en geç dava süresi içinde kiracıya ulaşırsa dava süresinin bir kira yılı uzayacağını (ham Y(E,1) = 01.11.2027, temkinli 31.10.2027; 'bildirim + 365' değil) ve pencere kaçarsa hakkın düşmeyip izleyen uzama yılı sonuna kaydığını belirt. İhtiyacın dava tarihinde gerçek, samimi ve zorunlu olması ve yargılama boyunca sürmesi gerektiğini, henüz doğmamış ihtiyacın yetmeyeceğini (Yargıtay HGK, E. 2017/1540, K. 2021/878, 29.06.2021) belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşmenin tam metnini (bitiş günü, ihbar veya yenileme kaydı), kızın evlilik tarihini ve konut ihtiyacını gösteren belgeleri (nikâh başvurusu, mevcut ikametgâh ve kira sözleşmesi), malikin ve kızın başka konutu olup olmadığını, kiracıya ulaşmış yazılı bildirim bulunup bulunmadığını ve başka paydaş veya kiraya veren olup olmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Ekim 2026'daki arabuluculuk başvurusunu yeterli sayma veya İstanbul BAM 35. HD 2025/3212'yi bu dosyaya uygulama; TBK 353 uzamasını bildirim tarihine 365 gün ekleyerek hesaplama; pencere kaçarsa ihtiyaç nedeniyle tahliye hakkının tamamen düştüğünü söyleme; Mart 2027'de doğacak ihtiyacı kanıt aramadan dava tarihinde mevcut sayma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B67",
+      "topic": "yeni_malik",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Konut, önceki malikle yapılan 01.03.2024 başlangıçlı bir yıllık sözleşmeyle kirada; sözleşme 2025'te uzadı. Yeni malik daireyi 20.05.2026'da tapuda satın aldı; oğlunun oturması için noter ihtarını 15.06.2026'da keşide ettirdi, ihtar kiracıya 23.06.2026'da tebliğ edildi. Malik Kasım 2026'da 'altı ay doldu' diyerek arabulucuya gidip dava açmak istiyor. Değerlendir.",
+      "reference": "references/tahliye.md",
+      "anchor": "## Yeni malik (TBK 351)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 351/1 bildiriminin edinmeden başlayarak bir ay içinde kiracıya tebliğ edilmesi gerektiğini, keşidenin süre içinde olmasının yetmediğini ve eksikliğin sonradan giderilemeyeceğini (Yargıtay 3. HD, E. 2017/4691, K. 2017/12812, 27.09.2017; resen gözetilir) uygula: ham son A(20.05.2026,1) = 20.06.2026, 'edinme günü de dahil' okumasıyla temkinli 19.06.2026; 23.06.2026 tebliği süre dışıdır, bu nedenle Kasım 2026'da 351/1'e dayanılamaz. Yeni malikin TBK 310 ile kiraya veren olduğunu ve dönem sonu yolunun (351/2 veya kiraya veren sıfatıyla 350; HGK 2021/878'deki seçimlik hak) açık kaldığını belirt; pencereyi göster: L = 28.02.2027, N = 01.03.2027; arabuluculuk ve dava en erken 02.03.2027, temkinli son 28.03.2027 (pazar; yıldönümü okumasında 01.04.2027; orta güven). Önceki malikle yapılan sözleşmedeki kiraya veren aleyhine ihbar kaydının yeni maliki de bağlayabileceğini (3. HD 2025/1440 ve 2025/3576; TBK 350 kararından kıyas) ve 3. HD 2025/3048'in erken başvuru kuralının 351/2'ye kıyasen uygulanacağını belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Tapu kaydını (tescil tarihi ve yevmiye), ihtarnamenin metnini ve tebliğ belgesini veya UETS kaydını, önceki malikle yapılan sözleşmenin özel şartlarını (ihbar kaydı), kira başlangıcını, oğlun konut durumunu ve başka konutu olup olmadığını, yeni malikle yeni sözleşme yapılıp yapılmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Keşide tarihini (15.06.2026) esas alıp 351/1 bildirimini süresinde sayma; altı ayı son başvuru süresi sanma veya Kasım 2026 davasını 351/1'e göre süresinde gösterme; 351/1 kaçtı diye yeni malikin tahliye imkânının tamamen ortadan kalktığını söyleme; 01.03.2027'yi kesin güvenli başvuru günü diye sunma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B68",
+      "topic": "uzama",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Çatılı işyeri 01.09.2012 başlangıçlı ve beş yıl süreli yazılı sözleşmeyle kiralanmış; o zamandan beri yalnız yıllık kira artışları yapılmış, yeni sözleşme imzalanmamış. Kiraya veren 'başlangıçtan bu yana on yıl geçti' diyerek 10.10.2026'da kiracıya noter ihtarı tebliğ ettirdi ve 01.12.2026'da tahliye davası açmak istiyor. Değerlendir.",
+      "reference": "references/tahliye.md",
+      "anchor": "## On yıllık uzama ve belirsiz süreli kira (TBK 347)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 347/1 hesabını ilk beş yıllık süreden kur: ilk süre E = 01.09.2017'de biter, on yıllık uzama Y(E,10) = 01.09.2027'de dolar; sebep göstermeden sona erdirme ilk kez F = Y(E,11) = 01.09.2028'de biten uzama yılı için mümkündür. Bildirim hedef uzama yılı içinde, 01.09.2027 ile A(F,-3) = 01.06.2028 arasında (temkinli üst eşik 31.05.2028) kiracıya ulaşmalıdır (yüksek güven); dava ve arabuluculuk F günü veya sonrasında yapılır (Yargıtay 3. HD, E. 2017/3032, K. 2017/6383, 02.05.2017: bir gün erken dava bozma sebebi). 10.10.2026 ihtarının on yıllık uzama dolmadan yapıldığını, hedef yıldan önce gönderilen bildirimi geçerli sayan doğrulanmış karar bulunmadığını ve 01.12.2026 davasının erken olacağını açıkla; `hesap.py tahliye-10yil` kullanılırsa `--sure-yil 5` verilmeli. 6217 geçici 2'nin 347'yi ertelemediğini ve salt kira artışı protokolünün yeni sözleşme sayılmayabileceğini, yeni süreli sözleşmenin ise süreyi yeniden başlatacağını (Yargıtay HGK, E. 2017/458, K. 2021/614, 25.05.2021; oy çokluğu) ayır.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Sözleşmenin ve bütün yıllık artış protokollerinin metnini (yeni süre veya yalnız bedel), ihtarın tebliğ belgesini, kiraya verenlerin ve kiracıların tam listesini, kiralananın baskın vasfını ve kiraya verenin başka bir tahliye sebebine (ör. TBK 350) dayanıp dayanmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Başlangıç + 10 yıl (01.09.2022) veya başlangıç + 11 yıl (01.09.2023) kısayolunu kullanma; 10.10.2026 ihtarını yeterli sayıp 01.12.2026 davasını süresinde gösterme; `hesap.py`'yi ilk süre vermeden çalıştırıp 12 aylık ilk süre varsayma (01.09.2024 sonucu); 6217 geçici 2 nedeniyle işyerinde 347'nin uygulanmadığını söyleme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B69",
+      "topic": "akde_aykirilik",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Apartmandaki konut kiracısı hakkında komşular gece yüksek sesle müzik ve gürültü nedeniyle yönetime şikâyette bulundu. Kiraya veren 02.10.2026'da kiracıya WhatsApp'tan 'komşuları rahatsız ediyorsun, bir hafta içinde evi boşalt, yoksa dava açarım' yazdı; kiracı aldırmadı. Kiraya veren bu mesaja dayanıp hemen tahliye davası açmak istiyor. Değerlendir ve doğru ihtarı tarif et.",
+      "reference": "references/tahliye-sablonlari.md",
+      "anchor": "## Özen borcuna aykırılık ihtarnamesi (TBK 316)",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 316/1–2'yi uygula: konutta komşulara saygı borcuna aykırılıkta tahliye için yazılı ve imzalı (TBK 14–15; imzasız WhatsApp mesajı yazılı şekli kural olarak karşılamaz), en az otuz günlük süre veren, aykırılığın giderilmesini isteyen ve giderilmezse sözleşmenin feshedileceğini bildiren ihtar gerekir; giderim istemeden yalnız boşaltma isteyen ihtar yetmez (Yargıtay HGK, E. 2013/378, K. 2014/83, 05.02.2014; 818 dönemi). Süre tebliğden işler, G(T,30); en erken fesih, arabuluculuk ve dava, tatil düzeltmeli süre sonunun ertesi günüdür; aykırılığın süreden sonra da sürdüğü ve kiralanan içinde gerçekleştiği ispatlanmalıdır (3. HD 2018/11200; 3. HD 2019/189). TBK 316/3 derhal feshinin ancak çekilmezlik veya süre vermenin yararsızlığı ispatlanırsa ve yine yazılı bildirimle mümkün olduğunu, ispat yükünün kiraya verende bulunduğunu belirt. Dava 01.09.2023 sonrası açılacağından arabuluculuk dava şartıdır, ilamsız yol yoktur; kanuni dava süresi olmasa da uzun beklemenin zımni rıza savunmasına yol açabileceğini ekle.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Şikâyet ve yönetim kayıtlarını, tanıkları ve varsa kolluk tutanaklarını, sözleşmedeki kullanım ve ev düzeni maddelerini, aykırılığın tarihlerini ve sürekliliğini, davranışın kiralanan içinde mi ortak alanda mı gerçekleştiğini, bütün kiracıları ve TMK 194/son bildirimi yapmış eş bulunup bulunmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "WhatsApp mesajını yazılı ihtar sayma; bir haftalık süreyi yeterli kabul etme veya TBK 316/3'ü ispatlanmamış komşu şikâyetiyle doğrudan uygulama; ilamsız icra yoluyla tahliye ya da arabuluculuksuz dava önerme; elektrik veya su kesme, kilit değiştirme gibi kendiliğinden tahliye önerme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B70",
+      "topic": "kiracinin_konutu",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Kiraya veren, konut kiracısının aynı ilçede kendi adına kayıtlı bir dairesi olduğunu yeni öğrendi. Kiracı daireyi 2019'da almış; 15.09.2021 başlangıçlı bir yıllık sözleşmede kiracının tebligat adresi olarak bu daire yazılı ve sözleşme o zamandan beri uzuyor. Dairede şimdi kiracının yetişkin oğlu oturuyor. Kiraya veren TBK 352/3'e dayanmak istiyor ve arabulucuya 20.10.2026'da başvurmayı planlıyor. Değerlendir.",
+      "reference": "references/tahliye.md",
+      "anchor": "## Kiracının konutu (TBK 352/3) ve diğer sona erme halleri",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TBK 352/3 koşullarını ayrı ayrı uygula: süren kira ilişkisi; kiracıya veya birlikte yaşadığı eşine ait konut; aynı ilçe veya belde belediye sınırı; oturmaya elverişlilik (konutun varlığı ile kiracının sosyal durumu ve aile nüfusu birlikte aranır; Yargıtay 3. HD, E. 2017/4366, K. 2017/12337, 20.09.2017, gider bozması); kiraya verenin sözleşmenin kurulması sırasında bilmemesi. Sözleşmedeki adres kaydının kiraya verenin konutu bildiğini gösterebileceğini ve bu durumda yolun kapanacağını; bilmeme koşulunun ispatının ve uzayan sözleşmede hangi tarihin esas alınacağının havuzda çözülmediğini belirt. Süreyi uzamış sözleşmede içinde bulunulan uzama yılının bitiminden hesapla (rehber görüşü): E = 15.09.2026 (son kullanım günü 14.09.2026); ham son A(E,1) = 15.10.2026, temkinli son 14.10.2026 (orta güven). 20.10.2026 başvurusunun bu dönem için süre dışında kaldığını, arabuluculuk durmasının yalnız süresinde yapılmış başvuruda işlediğini; süre kaçarsa izleyen uzama yılı sonunun (15.09.2027) rehber görüşü olarak değerlendirilebileceğini (352/3 için içtihatla doğrulanmadı) açıkla. 352/3'ün kiraya verenin ihtiyacını aramadığını ve ilamsız takip yolunun bulunmadığını belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Tapu kaydını ve edinme tarihini, sözleşmenin ve sonraki uzamaların tam metnini (adres beyanı), konutun aynı ilçe veya belde sınırında olduğuna dair belgeyi, konutun durumunu ve kiracının aile nüfusunu, kiracının eşiyle birlikte yaşayıp yaşamadığını, kiracıya ulaşmış TBK 353 bildirimi bulunup bulunmadığını ve kiraya verenin konutu ne zaman öğrendiğine ilişkin delilleri iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Sözleşmedeki adres kaydını yok sayıp 352/3 tahliyesini kesin gösterme; süreyi kiraya verenin öğrendiği tarihten başlatma; 20.10.2026 başvurusunu bu dönemin süresi içinde sayma; kiraya verenin veya yakınının ihtiyacını koşul sayma ya da ilamsız takip veya `deadlines.py tbk352` önerme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B71",
+      "topic": "taraf",
+      "modules": [
+        "tahliye",
+        "sozlesme"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Kiraya veren baba 2022'de öldü; konut kira sözleşmesinde kiraya veren olarak yalnız o yer alıyor ve tapu hâlâ onun adına kayıtlı (mirasçılar adına intikal yapılmadı). Üç mirasçıdan ikisi, kiracı iki aydır kira ödemediği için tahliye talepli 13 örnek takip başlatmak, ayrıca birinin kızının konut ihtiyacı için TBK 350 davası açmak istiyor; üçüncü mirasçı karşı çıkıyor. Kim takip yapabilir, kim dava açabilir?",
+      "reference": "references/tahliye.md",
+      "anchor": "## Ortak usul: arabuluculuk, görev, taraf ve tebligat",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Kiraya verenin ölümüyle kiraya veren sıfatının mirasçılara geçtiğini ve paylaşılmamış terekede mirasçıların elbirliğiyle hareket edeceğini (TMK 640; resmî metinden doğrula) belirt. İlamsız tahliye takibini bütün mirasçıların birlikte, bütün kiracılara karşı yapması gerektiğini; tahliye borcu bölünemediğinden eksik takipte ödeme emrindeki ihtarın haklı sayılmayacağını, eksikliğin icra mahkemesinde giderilemeyeceğini ve tapudaki çoğunluğun bunu değiştirmediğini açıkla (Yargıtay 12. HD, E. 2025/6920, K. 2025/7823, 03.12.2025). Yargıtay 12. HD, E. 2025/7725, K. 2025/7528, 24.11.2025'teki pay ve paydaş çoğunluğuyla takibin yeterli sayılmasını, terekenin takipten önce paylı mülkiyete çevrildiği olaya özgü olarak ayır. TBK 350 davasında elbirliği hâlinde bütün mirasçıların davaya katılması veya sonradan onay vermesi, sağlanamazsa tereke temsilcisi atanması gerektiğini; mahkemenin bunu kendiliğinden gözetip muvafakat için süre vereceğini (Yargıtay 3. HD, E. 2018/619, K. 2018/1605, 26.02.2018; 6. HD, E. 2013/1299, K. 2013/4227, 12.03.2013; HUMK dönemi) belirt. İlamsız takipte arabuluculuğun aranmadığını, TBK 350 davasında dava şartı olduğunu ve başvurunun dönem sonundan sonra yapılacağını ekle.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Mirasçılık belgesini ve mirası reddeden olup olmadığını, tapu ve intikal durumunu, kira sözleşmesini ve dönem sonunu, bütün kiracıları ve TMK 194/son bildirimi yapmış eşi, karşı çıkan mirasçının tutumunu ve tereke temsilcisi başvurusu yapılıp yapılmadığını, ihtiyaçlının mirasçılarla yakınlığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "İki mirasçının elbirliği hâlindeki terekede tek başına ilamsız tahliye takibi yapabileceğini kesin söyleme; takipteki taraf eksikliğinin icra mahkemesinde sonradan giderilebileceğini kabul etme; 12. HD 2025/7528'i intikal yapılmamış elbirliği terekesine doğrudan uygulama; ilamsız takip için arabuluculuk şartı koyma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B72",
+      "topic": "tahliye_sonrasi",
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Sulh hukuk mahkemesi, kiraya verenin oğlunun konut ihtiyacı nedeniyle tahliyeye karar verdi; gerekçeli karar kiracıya 07.10.2026'da tebliğ edildi. Kiraya veren ilamı hemen icraya koydu ve icra emri 12.10.2026'da tebliğ edildi. Kiracı 'istinaf edersem karar kesinleşmeden çıkarılamam' diyor; ayrıca çıkarsa ve ev başkasına kiralanırsa ne isteyebileceğini soruyor.",
+      "reference": "references/tahliye.md",
+      "anchor": "## Tahliye kararından sonra: icra, tehir ve TBK 355",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Tahliye ilamının kesinleşmeden icraya konabileceğini ve istinafın icrayı kendiliğinden durdurmadığını açıkla (HMK 367 ve İİK 36'yı resmî metinden doğrula). Süreleri ayır: icra emrindeki tahliye süresi G(12.10.2026,7) = 19.10.2026 (İİK 26; ikincil kaynak, orta güven) istinaf süresinden (G(07.10.2026,14) = 21.10.2026; HMK 345) önce dolar. Tahliyeyi durdurmak için kanun yolu başvurusunu belgeleyip teminat göstererek icra müdüründen mehil, ardından icranın geri bırakılması kararı alınması gerektiğini; kararı veren merciin 7343 s.K. sonrası icra mahkemesi olduğunun ikincil kaynağa dayandığını ve AYM E.2025/92, K.2025/127 sonucunun doğrulanmadığını (düşük güven) belirt. TBK 355'i uygula: gereksinim amacıyla boşaltılan konut haklı sebep olmaksızın üç yıl içinde başkasına kiralanırsa son kira yılında ödenen bir yıllık kiradan az olmamak üzere tazminat doğar; bu alt sınırdır, fazlası ispatla istenir (Yargıtay 3. HD, E. 2023/4785, K. 2025/230, 14.01.2025); üç yıl fiilî boşaltma veya teslimden Y(B,3) hesaplanır (orta güven). İlamdan sonra anlaşmalı 'fesih ve teslim belgesi' ile çıkışın 355 talebini düşürebileceğini (İstanbul BAM 35. HD, E. 2017/1061, K. 2018/40, 10.01.2018; tek BAM kararı) ve 355 davasında da 01.09.2023 sonrası arabuluculuğun dava şartı olduğunu belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Gerekçeli kararı ve tebliğ şerhini, icra emrini ve tebliğ tarihini, tahliye davasının açılış tarihini ile arabuluculuk başvurusu ve son tutanak tarihlerini, teminat gösterme imkânını, son kira yılında ödenen kiraları ve gönüllü çıkış düşünülüyorsa imzalanacak belgenin içeriğini iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "İstinafın veya temyizin tahliyeyi kendiliğinden durdurduğunu ya da ilamın kesinleşmeden icra edilemeyeceğini söyleme; TBK 355 tazminatını bir yıllık kirayla sınırlı (üst sınır) sayma veya temerrüt, taahhüt ya da on yıllık uzama tahliyelerine uygulama; 'TBK 353/3' atfı yapma; anlaşmalı fesih ve teslim belgesiyle çıkışın 355 hakkını kesin koruduğunu söyleme.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B73",
+      "topic": "aile_konutu",
+      "modules": [
+        "tahliye",
+        "sozlesme"
+      ],
+      "fictional": true,
+      "prompt": "Bugünün tarihi 14.10.2026. Konut kira sözleşmesini yalnız koca imzalamış. Eşi 03.03.2026'da noter aracılığıyla kiraya verene 'bu ev aile konutudur, kira sözleşmesinin tarafı olmak istiyorum' diye bildirim gönderdi (tebliğ 06.03.2026); tapuda şerh yok. Koca Temmuz ve Ağustos 2026 kiralarını ödemedi. Kiraya veren 10.09.2026'da yalnız kocaya TBK 315 ihtarı çekti ve tahliye talepli 13 örnek takibi de yalnız kocaya karşı başlatmak istiyor. Koca ise 'evden çıkıyorum, sözleşmeyi feshediyorum' diyor. Değerlendir.",
+      "reference": "references/tahliye.md",
+      "anchor": "## Temerrüt (TBK 315) ve ilamsız tahliye takibi",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "TMK 194/son uyarınca kiraya verene bildirimde bulunan eşin sözleşmenin tarafı olduğunu (TMK metnini resmî kaynaktan doğrula) ve tapuda aile konutu şerhinin aranmadığını (Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, 21.06.2017; HUMK dönemi) belirt. TBK 349/3 uyarınca fesih bildiriminin ve fesih ihtarına bağlı ödeme süresinin kiracıya ve eşine ayrı ayrı bildirilmesi gerektiğini; yalnız kocaya yapılan 10.09.2026 ihtarının eş yönünden sonuç doğurmadığını ve eşe ayrıca en az otuz günlük ihtar gönderilmesi gerektiğini (iki tebliğde temkinli G(max(T1,T2),30); çıkarım, düşük güven) açıkla. 13 örnek takibin iki eşe birlikte yöneltilmesi gerektiğini, takipteki eksikliğin sonradan giderilemeyeceğini, davadaki eksikliğin ise giderilebileceğini (8. HD 2017/9518) belirt ve bildirimin takipten sonra yapıldığı hâli (Yargıtay 8. HD, E. 2017/4794, K. 2018/11923, 02.05.2018) bu olaydan ayır. Kiracı kocanın aile konutunu eşinin açık rızası olmadan feshedemeyeceğini; rıza alınamazsa veya haklı sebep olmaksızın verilmezse hâkimden karar isteyebileceğini (TBK 349/1–2) belirt.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Eşin bildiriminin metnini ve tebliğ belgesini, evlilik durumunu (boşanma davası, tedbir veya konut tahsis kararı), kira sözleşmesini, 10.09.2026 ihtarının metnini ve tebliğ tarihini, ödeme kayıtlarını, kocanın fesih iradesinin şeklini ve eşin rızası bulunup bulunmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Tapuda aile konutu şerhi olmadığı için eşin bildirimini sonuçsuz sayma; yalnız kocaya yapılan ihtar ve takibin eşi de bağladığını kabul etme; kocanın eşin rızası olmadan yaptığı feshi geçerli sayma; takipten önce bildirim yapmış eşi 8. HD 2018/11923'e dayanarak taraf dışı bırakma.",
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "B74",
+      "topic": "kendiliginden_tahliye",
+      "modules": [
+        "tahliye"
+      ],
+      "fictional": true,
+      "prompt": "Kiracım üç aydır kira ödemiyor; iki kez noterden ihtar çektim, yine ödemedi. Dava yıllarca sürer diye suyu ve elektriği kestirmeyi, kapının kilidini değiştirip eşyalarını depoya kaldırmayı düşünüyorum. Sözleşmede 'kira iki ay üst üste ödenmezse kiraya veren kiralananı boşaltabilir' diye bir madde de var. Bunu yapabilir miyim?",
+      "reference": "references/tahliye.md",
+      "anchor": "## Kiracı savunmaları kontrol listesi",
+      "criteria": [
+        {
+          "id": "analysis",
+          "description": "Kendiliğinden tahliyenin hukuka aykırı olduğunu açıkla: kira sözleşmesi mahkeme kararı, tarafların uygun irade beyanları veya kiralananın yok olmasıyla sona erer; fesih ve tahliye davası koşulları bulunsa bile tahliye ilamı alınmadıkça akdin sona erdiğinden söz edilemez, kiraya verenin tek yanlı feshi ve kiralanana el koyması sözleşme ihlalidir (Yargıtay 3. HD, E. 2022/5351, K. 2022/7594, 11.10.2022: kiracının kiracılık sıfatının tespiti ve tazminat istemi incelenmek üzere bozma; tahliye hükmü değildir). Tahliye davası açmadan hukuk dışı sona erdirmenin kazanç kaybı tazminatı doğurabileceğini (Yargıtay 3. HD, E. 2024/3898, K. 2025/4234, 23.09.2025; yıkım olayı) ve sözleşmedeki boşaltma maddesinin kanunda sınırlı sayılan tahliye sebeplerinin yerini tutmadığını (TBK 354; Yargıtay 3. HD, E. 2023/2475, K. 2024/217, 17.01.2024) belirt. Hukuki yolları göster: ihtarlar TBK 315'e uygunsa (konutta en az otuz gün, fesih uyarısı) ve süre dolduysa arabuluculuk sonrası sulh hukuk davası ya da arabuluculuk gerektirmeyen 13 örnek ilamsız tahliye takibi; ihtarlar aynı kira yılındaysa TBK 352/2 davası yalnız kira yılı bitiminden sonraki bir aylık pencerede. Ceza hukuku riskini ayrıca araştırılacak husus olarak işaretle.",
+          "critical": true
+        },
+        {
+          "id": "questions",
+          "description": "Kiralananın konut mu işyeri mi olduğunu, sözleşmenin başlangıç ve ödeme gününü, iki ihtarın metnini, verilen süreyi ve tebliğ tarihlerini, ödenmeyen ayları, kiracıların ve TMK 194/son bildirimi yapmış eşin durumunu, birden çok kiraya veren olup olmadığını iste.",
+          "critical": false
+        },
+        {
+          "id": "avoid",
+          "description": "Su ve elektrik kesmeyi, kilit değiştirmeyi veya eşyaları kaldırmayı ihtarlar ya da sözleşme maddesi nedeniyle hukuka uygun sayma; sözleşmedeki 'iki ay ödenmezse boşaltma' maddesini geçerli tahliye sebebi kabul etme; 3. HD 2022/7594'ü tahliye kararı veya kiraya veren lehine emsal gibi sunma.",
           "critical": true
         }
       ]

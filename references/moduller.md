@@ -1,23 +1,23 @@
 # Kira hukuku modülleri
 
-Talebi bir veya birden çok modülle eşleştir. TypeSafe sinyalleri yardımcıdır; kullanıcının açık talebini veya belgede görülen uyuşmazlığı düşük puan nedeniyle atlama. Mevzuat başlıkları araştırma başlangıcıdır; uygulanacak tarihteki metni doğrulamadan süre veya sonuç yazma.
+Talebi bir veya birden çok modülle eşleştir. TypeSafe sinyalleri yardımcıdır; kullanıcının açık talebini veya belgede görülen uyuşmazlığı düşük puan nedeniyle atlama. Mevzuat başlıkları araştırma başlangıcıdır; uygulanacak tarihteki metni doğrulamadan süre veya sonuç yazma. 01.09.2023 ve sonrasında açılan kira davalarında HUAK 18/B dava şartı arabuluculuğunu her modülde ayrıca kontrol et; 18/B'nin kira uyuşmazlıklarında öngördüğü istisna, İİK'ya göre ilamsız icra yoluyla tahliyedir. Parantez içindeki modül anahtarları TypeSafe yönlendirmesinde (`scripts/triage.py`) ve senaryo kataloğunun `modules` alanında aynen kullanılır.
 
-| Modül | Olgu ve belgeler | Araştırma başlangıcı |
-| --- | --- | --- |
-| Tespit | Başlangıç, dönem, artış şartı, bildirim, emsaller, önceki tespit | TBK 344–345; [uygulama rehberi](uygulama-rehberi.md) |
-| Uyarlama | Sonradan değişen koşul, öngörülebilirlik, edim dengesi, ifa ve çekince | TBK 138 ve 344/4; tespitten farklı koşulları araştır |
-| Tahliye | Dayanak türü, teslim, sözleşme, ihtar/tebliğ, taahhüt aslı, ödeme, takip | TBK 315, 316, 347–353; İİK'daki seçilen yol; ihtiyaç/taahhüt/iki ihtarı ayrı değerlendir |
-| Alacak ve icra | Dönem bazlı borç/ödeme, muacceliyet, dekont, takip ve itiraz | TBK 313–315; İİK 67, 68, 72, 269 ve devamı; [iade ve ispat](iade-ispat.md) |
-| Güvence ve masraf | Depozito, teslim/iade tutanakları, hasar, ayıp bildirimi, faturalar | TBK 301–308, 321, 334–335, 342; olağan yıpranmayı ve masraf türlerini ayır |
-| Sözleşme ve kullanım | Taşınmazın niteliği, taraflar, devir/alt kira izinleri, kullanım amacı | TBK 299, 310, 322–323, 339; aile konutu ve özel rejimleri ayrıca araştır |
+| Modül | Olgu ve belgeler | Araştırma başlangıcı | Rehber |
+| --- | --- | --- | --- |
+| Tespit (`tespit`) | Başlangıç, dönem, artış şartı, bildirim, emsaller, önceki tespit | TBK 344–345; yalnız konutta 11.06.2022–01.07.2024 arasında yenilenen dönemler için TBK geçici 1–2 (%25 sınırı; güncel artış oranı değildir, işyerine veya 344/3 rayiç tespitine otomatik uygulama) | [uygulama rehberi](uygulama-rehberi.md); [süre hesabı](sure-hesaplama.md) |
+| Uyarlama (`uyarlama`) | Sonradan değişen koşul, öngörülebilirlik, edim dengesi, ifa ve çekince | TBK 138 ve 344/4; tespitten farklı koşulları araştır | [tahliye ve uyarlama kontrolü](tahliye-ve-uyarlama-kontrol.md) |
+| Tahliye (`tahliye`) | Dayanak türü, teslim, sözleşme, ihtar/tebliğ, taahhüt aslı, ödeme, takip | TBK 315, 316, 331, 347–356; TMK 194; ilamsız yolda İİK 269–276, ilamlı yolda dava; HUAK 18/B (ilamsız icra yoluyla tahliye istisnası); ihtiyaç/taahhüt/iki ihtarı ayrı değerlendir | Önce [tahliye rehberi](tahliye.md) ([yol seçimi tablosu](tahliye.md#yol-seçimi-tablosu)); [tahliye şablonları](tahliye-sablonlari.md); [tahliye ve uyarlama kontrolü](tahliye-ve-uyarlama-kontrol.md); [süre hesabı](sure-hesaplama.md) |
+| Alacak ve icra (`alacak`) | Dönem bazlı borç/ödeme, muacceliyet, dekont, takip ve itiraz | TBK 313–315; kısmi ve belirtilmeden yapılan ödemenin hangi döneme sayılacağı için TBK 100–102; takastan önceden feragat yasağı TBK 326; ceza koşulu ve sonraki kiraları muaccel kılan kayıtlar için TBK 346 (sözleşme/işlem tarihini ve tacir/tüzel kişi işyeri kiracıları için 6217 geçici 2'yi kontrol et); kira bedellerinde beş yıllık zamanaşımı TBK 147/1, başlangıç her dönemin muacceliyeti (TBK 149/1); İİK 67, 68, 72, 269 ve devamı | [iade ve ispat](iade-ispat.md); [mevzuat haritası](mevzuat-haritasi.md) |
+| Güvence ve masraf (`guvence`) | Depozito, kefalet metni, teslim/iade tutanakları, hasar, ayıp bildirimi, faturalar, yan gider/aidat dökümü | TBK 301–308, 317–318, 321, 326, 334–335, 336–338 (hapis hakkı), 341–342, 346; kefalet için TBK 581–603 (özellikle 583, 584, 586, 598, 603); olağan yıpranmayı ve masraf türlerini ayır | [teslim, masraf ve kefalet](teslim-masraf-kefalet.md) |
+| Sözleşme ve kullanım (`sozlesme`) | Taşınmazın niteliği, taraflar, devir/alt kira izinleri, kullanım amacı | TBK 299–300, 310, 322–323, 339; ürün kirası 357–378; aile konutu ve özel rejimleri ayrıca araştır | [rejim ve taraflar](kira-rejimi-ve-taraflar.md); [teslim, masraf ve kefalet](teslim-masraf-kefalet.md) |
 
 ## Modüle özgü araştırma soruları
 
-Tahliye ve uyarlamada [eğitim notlarının kaynak kontrolünü](tahliye-ve-uyarlama-kontrol.md) kullan: altı kararın gerekçe/hüküm özeti, karşıoy ayrımı ve uygulama sınırları. Notların tamamının doğrulandığını varsayma.
+Tahliyede önce [tahliye rehberini](tahliye.md) ve sebebin rota kartını kullan: `python scripts/tahliye.py yol <sebep>` koşulları, süreleri, yolu, arabuluculuğu ve doğrulanmış emsalleri verir; sebep anahtarları (`python scripts/tahliye.py list`) modül anahtarı değildir. Tahliye ve uyarlamada [eğitim notlarının kaynak kontrolünü](tahliye-ve-uyarlama-kontrol.md) ayrıca kullan: altı kararın gerekçe/hüküm özeti, karşıoy ayrımı ve uygulama sınırları. Notların tamamının doğrulandığını varsayma.
 
-**Tahliye:** İhtiyaç iddiası ile tahliye taahhüdünü birbirinin yerine kullanma. Taahhüdün teslimden sonra verilip verilmediği, tarih ve imza itirazı, aile konutu iddiası, taraf sıfatı ve süre başlangıcını ayrı incele. On yıllık uzama hesabını ilk sözleşme süresini atlayarak kurma. İki haklı ihtarla temerrüt nedeniyle tahliyenin şartlarını karıştırma.
+**Tahliye:** İhtiyaç iddiası ile tahliye taahhüdünü birbirinin yerine kullanma. Taahhüdün teslimden sonra verilip verilmediği, tarih ve imza itirazı, aile konutu iddiası, taraf sıfatı ve süre başlangıcını ayrı incele. On yıllık uzama hesabını ilk sözleşme süresini atlayarak kurma. İki haklı ihtarla temerrüt nedeniyle tahliyenin şartlarını karıştırma. Sözleşmedeki ek tahliye sebeplerini TBK 354 karşısında değerlendir; kiracının ölümünde TBK 356 uyarınca sözleşmeyi sürdürebilecek kişileri ve taraf sıfatını ayrıca incele.
 
-**Alacak:** Borcun varlığı, ödeme ve mahsup iddiaları için ayrı delil çizelgesi kur. Tespit kararı ile eda hükmünü ayır. İtirazın iptali ve kaldırılması yollarını aynı süre/delil rejimi gibi ele alma.
+**Alacak:** Borcun varlığı, ödeme ve mahsup iddiaları için ayrı delil çizelgesi kur. Tespit kararı ile eda hükmünü ayır. İtirazın iptali ve kaldırılması yollarını aynı süre/delil rejimi gibi ele alma. Zamanaşımı def'ini (TBK 147/1) dönem dönem hesapla ve dava şartı arabuluculukta HUAK 18/A/15'teki durma etkisini [süre rehberiyle](sure-hesaplama.md) denetle. Açıklamasız ödemelerde dönem eşleştirmesini TBK 100–102'ye göre kur: önce borçlunun ödeme günündeki bildirimi (TBK 101/1); bildirim yoksa ve borçlu derhâl itiraz etmemişse alacaklının makbuzda gösterdiği borç (TBK 101/2); ikisi de yoksa muaccel borç, birden çok muaccel borçta borçluya karşı ilk takip edilen borç, takip yoksa vadesi ilk gelen borç; vadeler aynıysa orantılı mahsup (TBK 102). Faiz veya giderlerde gecikmiş borçlu kısmi ödemeyi ana borçtan düşme hakkına sahip değildir (TBK 100/1). Bu sıra, TBK 315 ihtarındaki ayın ve TBK 352/2 haklı ihtarlarına konu dönemlerin ödenip ödenmediğini değiştirebilir; metni `python scripts/tbk.py 102` ile doğrula.
 
 **Güvence:** Depozitonun hangi borcu güvence altına aldığı, banka/para biçimi, iade ve mahsup koşullarını araştır. Hasar ile olağan kullanım izini ayır; kiracının götürdüğü eşya bedelini otomatik taşınmaz masrafı sayma.
 
@@ -27,10 +27,6 @@ Hasar bildirimi, ayıp gideri, erken sona erme giderleri, kefalet veya alt kira/
 
 **Rejim, usul ve taraflar:** Ürün kirası/çatılı işyeri ayrımı, sözlü sözleşme, temsil, paydaşlık, görev/yetki veya tahkim tartışmasında [ön inceleme rehberini](kira-rejimi-ve-taraflar.md) kullan. Paylaşılan emsal özetini doğrudan kural sayma; [künye ve gerekçe kontrolünü](emsal-listesi-dogrulama.md) ayır.
 
-## Yeni kaynaklardan araştırma örnekleri
+## Kaynak seçkileri
 
-İstanbul BAM 36. HD, E. 2024/5083, K. 2026/377, 04.02.2026 tam metni incelendi: taahhüde dayalı itirazın iptali/tahliyede kiracının istinafı reddedilmiştir. Aile konutu ve boş imza değerlendirmelerini her dosyaya otomatik uygulama; hükümdeki somut tarihleri, ispat tartışmasını ve terditli ihtiyaç talebinin incelenmemiş olduğunu koru. Metinde pay oranı anlatımı belirsizdir; bundan pay çoğunluğu kuralı türetme. [Karar](https://app.dejure.ai/dokuman/191fe3e9-f690-420c-ad33-23cfeb89e8ad).
-
-Yargıtay 6. HD, E. 2013/5349, K. 2013/16244, 04.12.2013 tam metni incelendi: depozitodan kira alacağının mahsubunun araştırılması ve kiracının götürdüğü demirbaşlara ilişkin tazminat değerlendirmesi nedeniyle bozma. 2009 sözleşmesi ve 2010 feshiyle ilgili tarihî karar; güncel TBK 342 uygulaması yerine geçmez. Metindeki taraf sıfatı anlatım hatalarını ve aktarılan başka kararın bağımsız doğrulanmadığını dikkate al. [Karar](https://mevzuat.adalet.gov.tr/ictihat/520782500).
-
-İstanbul BAM 36. HD E. 2024/5083, K. 2026/377 tam metni 20.09.2026 tarihinde BAM ek havuzuna alındı; Yargıtay depozito kararı dış araştırma örneği olarak kalır. Yeni beş kararın kullanım sınırları [BAM seçkisindedir](bam-kararlari.md). Her modül için karşı yöndeki ve güncel kararları somut dosyada ayrıca araştır.
+Taahhüde dayalı tahliye örneği olarak İstanbul BAM 36. HD, E. 2024/5083, K. 2026/377, 04.02.2026 kararının kullanım sınırları [BAM seçkisindedir](bam-kararlari.md); tam metin: `python scripts/pool.py get 191fe3e9-f690-420c-ad33-23cfeb89e8ad`. Depozito mahsubu örnekleri [teslim, masraf ve kefalet rehberindedir](teslim-masraf-kefalet.md). Her modül için karşı yöndeki ve güncel kararları somut dosyada ayrıca araştır.

@@ -4,7 +4,12 @@ import json
 from pathlib import Path
 import sys
 
-from pool import normalize
+# Kardeş modül içe aktarımı PYTHONSAFEPATH / python -I altında da çalışsın.
+_HERE = str(Path(__file__).resolve().parent)
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+from pool import normalize  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / 'data/derleme-v5-index.json'
@@ -119,7 +124,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('validate')
-    sub.add_parser('render')
+    page = sub.add_parser('render')
+    page.add_argument('--write', action='store_true',
+                      help='references/derleme-v5.md dosyasına UTF-8 ve LF ile yazar')
     find = sub.add_parser('search')
     find.add_argument('terms', nargs='+')
     find.add_argument('--limit', type=int, default=20)
@@ -129,10 +136,17 @@ def main():
     index, rows = load()
     if args.command == 'validate':
         result = check(index, rows)
-        require(PAGE.read_text(encoding='utf-8') == render(index), 'Readable index differs from JSON')
+        require(PAGE.read_text(encoding='utf-8') == render(index),
+                'Readable index differs from JSON; run: python scripts/derleme.py render --write')
         print(json.dumps({**result, 'structural_validation': 'pass'}, ensure_ascii=False, indent=2))
     elif args.command == 'render':
-        print(render(index), end='')
+        text = render(index)
+        if args.write:
+            with PAGE.open('w', encoding='utf-8', newline='\n') as handle:
+                handle.write(text)
+            print(json.dumps({'written': 'references/derleme-v5.md'}, ensure_ascii=False))
+        else:
+            print(text, end='')
     elif args.command == 'show':
         found = [c for c in index['citations'] if c['n'] == args.n]
         require(found, 'Unknown citation number')

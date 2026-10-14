@@ -1,2 +1,4 @@
-# Preserve source snapshot bytes and intentional TSV empty fields.
+# Text files are checked out with LF on every platform (including Windows core.autocrlf=true).
+* text=auto eol=lf
+# Every file under data/ is SHA-256-pinned in data/manifest.json; no line-ending conversion or whitespace check (some .md snapshots are stored with CRLF).
 data/** -text -whitespace

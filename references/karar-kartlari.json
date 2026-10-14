@@ -12,7 +12,7 @@
       "outcome": "uyusmazligin_giderilmesi",
       "result": "BAM görüş ayrılığı bu yönde giderildi.",
       "dissent": [],
-      "limits": "TBK 351/1 veya kira tespiti hakkında doğrudan hüküm değildir.",
+      "limits": "TBK 351/1 veya kira tespiti hakkında doğrudan hüküm değildir. 26.05.2025'ten önce açılmış davalarda havuzdaki İstanbul BAM 35. HD 2025/5438 E., 2025/3212 K. (30.12.2025, kesin; E./K. numaraları karar metninde yer almaz, sağlayıcı üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula) öngörülebilirlik ve mahkemeye erişim gerekçesiyle erken başvuruyu yeterli saymıştır; tek BAM görüşüdür, ayrıca araştır.",
       "scenario_ids": [
         "B06"
       ],
@@ -25,7 +25,9 @@
         "url": "https://app.dejure.ai/dokuman/68d56bc1-56de-4c48-897f-26496fe36633",
         "text_chars": 25110,
         "text_sha256_utf8": "43fcd9aa67736d2a3911477a7f4122c1378f2a65df138e8782e646554064bdea",
-        "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula"
+        "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula",
+        "local_document_id": "1155987500",
+        "local_note": "Aynı karar yerel derleme seçkisinde (derleme-v5-selected.jsonl, Bedesten kopyası) bulunur. Sağlayıcı farkı nedeniyle metin uzunluğu ve hash farklıdır; alıntıyı hangi kopyaya dayandırıyorsan onunla denetle."
       },
       "checked_on": "2026-09-20",
       "review_status": "reasoning_and_disposition_reviewed",
@@ -258,7 +260,7 @@
       "facts": "Demirbaşlarıyla kiralanan işyerinin ruhsatı kiracıya aittir; kiraya veren süre sonu tahliye ve günlük bedel ister.",
       "evidence": "Sözleşme ve demirbaş listesi; Belediyenin ruhsat cevabı; Fesih bildirimi; Tahliye taahhüdü ve uzama döneminin belgeleri",
       "issue": "İşletme sözleşmesi başlığı ve demirbaşlar ürün kirası için yeterli midir?",
-      "reasoning": "Daire, demirbaşların tek başına hasılat kirası göstermediğini belirtti. Somut sözleşme ve belediye cevabı uyarınca TBK 339 ve devamı uygulandı. Süre bitimine dayalı tek taraflı fesih ve buna bağlı cezai şart kabul edilmedi. Geçmiş döneme ait tahliye taahhüdü de somut uzama bağlamında tahliye sağlamadı.",
+      "reasoning": "Daire, demirbaşların tek başına ürün (hasılat) kirası göstermediğini belirtti. Somut sözleşme ve belediye cevabı uyarınca TBK 339 ve devamı uygulandı. Süre bitimine dayalı tek taraflı fesih ve buna bağlı cezai şart kabul edilmedi. Geçmiş döneme ait tahliye taahhüdü de somut uzama bağlamında tahliye sağlamadı.",
       "outcome": "onama",
       "result": "Tahliye ve cezai şart istemlerinin reddine ilişkin BAM kararı onandı.",
       "dissent": [],
