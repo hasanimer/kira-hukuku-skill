@@ -147,7 +147,7 @@ Güncel mevzuat metni, 2020 sonrası ve BAM içtihadı, künye ön denetimi ve i
 
 ### Kiracı senaryoları
 
-[Kiracı sorunları: 10 kurgu senaryo, belge listeleri ve gerçek emsaller →](references/kiraci-senaryolari.md)
+[Kiracı sorunları: 16 kurgu senaryo, belge listeleri ve gerçek emsaller →](references/kiraci-senaryolari.md)
 
 Kiracının sorunundan ilgili karara ulaşmak için API anahtarı gerektirmeyen senaryo aracı:
 
@@ -159,6 +159,19 @@ python scripts/scenarios.py show K6
 
 Her senaryo gerekli belgeleri, sonucu değiştiren soruları ve emsalin sınırlarını gösterir. Kurgu olaylar gerçek karar metinlerinden ayrıdır; sıralama kazanma ihtimali değildir.
 
+### Tahliye yolları
+
+[Tahliye rehberi: sebep sebep yol seçimi, süreler ve doğrulanmış emsaller →](references/tahliye.md) · [İhtarname ve dilekçe iskeletleri →](references/tahliye-sablonlari.md)
+
+```sh
+python scripts/tahliye.py list
+python scripts/tahliye.py yol ihtiyac --tarih 2026-12-31
+python scripts/tahliye.py yol "yeni malik" --metin
+python scripts/tahliye.py emsal temerrut
+```
+
+`yol` sebebin koşullarını, sürelerini (başlangıç olayı, formül, güven düzeyi), yollarını, arabuluculuk durumunu ve emsallerini verir; `emsal` doğrulanmış kararları `python scripts/pool.py get <id>` komutlarıyla listeler. Sebep anahtarla veya kısa adla (ör. `temerrüt`, `352/2`) verilebilir. `--tarih` her kurala aynı tarihi verir; her süreyi kendi başlangıç olayının tarihiyle ayrıca hesaplayın. Katalog, rehber başlıkları ve alıntılar `python scripts/tahliye.py validate` ile denetlenir.
+
 ### Süre ve kira dönemi hesapları
 
 [Süre formülleri ve hesap rehberi →](references/sure-hesaplama.md)
@@ -168,12 +181,14 @@ python scripts/deadlines.py tbk345 2026-09-01
 python scripts/deadlines.py tbk350 2026-01-31
 python scripts/deadlines.py takvim 2026-01-31 --count 1 --unit ay
 python scripts/deadlines.py takvim 2026-09-01 --count 15 --unit gun --geri
+python scripts/deadlines.py tbk316 2026-09-01
+python scripts/deadlines.py iik269 2026-09-01
 python scripts/deadlines.py uets 2026-09-01
 ```
 
 Tarihler YYYY-AA-GG, GG.AA.YYYY veya GG/AA/YYYY biçiminde girilebilir; `deadlines.py` çıktıyı YYYY-AA-GG, `hesap.py` GG.AA.YYYY biçiminde verir. Tek bir sürenin ham hesabı için `deadlines.py`, kira dönemi çizelgesi ve TBK 345 hedef dönem koşulu için `hesap.py` kullanılır.
 
-`deadlines.py` gün/ay/yıl ayrımını, ilgili kira sürelerini ve UETS hesabını gösterir. Sonuçlar takvim adayıdır; tatil, arabuluculuk ve somut dosyanın hukuki koşulları ayrıca kontrol edilir.
+`deadlines.py` gün/ay/yıl ayrımını, ilgili kira sürelerini (TBK 316/2 giderim süresi ile 13 örnek ödeme emrinin itiraz, ödeme ve İİK 269/a tahliye talebi süreleri dahil) ve UETS hesabını gösterir; İİK süreleri resmî metinden ayrıca doğrulanır. Sonuçlar takvim adayıdır; tatil, arabuluculuk ve somut dosyanın hukuki koşulları ayrıca kontrol edilir.
 
 **Kira dönemi ve süre takvimi hesaplayıcı (`hesap.py`):** kira dönemi çizelgesini, beş yıllık dönem adaylarını (TBK 344/3), hedef dönem için TBK 345/2–3 tarih koşullarını (yeni dönemden en az otuz gün önce dava veya yazılı bildirim; dönem sonuna kadar dava) ve TBK 347 on yıllık uzama sonrası fesih bildirimi takvimini yerel olarak hesaplar. TBK 345/1 uyarınca tespit davası her zaman açılabilir; araç genel dava açma son günü vermez, yalnız kararın hangi dönemden etkili olabileceğine ilişkin takvim adayı üretir:
 
@@ -269,6 +284,7 @@ kira-tespit-asistani/
 │   ├── tbk.py           6098 sayılı TBK madde erişimi
 │   ├── hesap.py         Kira dönemi çizelgesi, TBK 345 hedef dönem koşulu ve TBK 347 takvimi
 │   ├── deadlines.py     Kira süreleri ve UETS için takvim adayları
+│   ├── tahliye.py       Tahliye sebebine göre rota kartı, emsal listesi ve katalog denetimi
 │   ├── scenarios.py     Kiracı senaryoları ve bağlı gerçek emsaller
 │   ├── triage.py        İsteğe bağlı TypeSafe yönlendirmesi ve aday sıralama
 │   ├── quality.py       Sınama seti, karar kartları ve insan değerlendirmesi puanlama
@@ -286,7 +302,7 @@ kira-tespit-asistani/
 
 **[Kararlardan hazırlanmış 10 soru ve kaynaklı örnek yanıt →](references/kararlardan-soru-yanit.md)** Olay sorusu, gerekçe, hüküm, belirleyici belgeler ve uygulama sınırları; yanıtlar açılır bölümlerdedir.
 
-[62 özgün dosyayla sınama ve 10 yapılandırılmış karar kartı](references/kalite-sinama.md): hukuki ayrım, gerekli sorular ve kritik yanlış sonuçlar için inceleme ölçütleri. Yanıtlar insan değerlendirmesiyle puanlanır; henüz canlı model başarı oranı ölçülmedi.
+[74 özgün dosyayla sınama ve 10 yapılandırılmış karar kartı](references/kalite-sinama.md): hukuki ayrım, gerekli sorular ve kritik yanlış sonuçlar için inceleme ölçütleri. Yanıtlar insan değerlendirmesiyle puanlanır; henüz canlı model başarı oranı ölçülmedi.
 
 | Başlamak için | Ayrıntıya inmek için |
 | :--- | :--- |
@@ -295,6 +311,7 @@ kira-tespit-asistani/
 | [Kira tespiti ve hak ve nesafet](references/uygulama-rehberi.md) | [Fazla ödeme iadesi ve ispat](references/iade-ispat.md) |
 | [Kira türü, usul ve taraflar](references/kira-rejimi-ve-taraflar.md) | [30 emsalin doğrulama durumu](references/emsal-listesi-dogrulama.md) |
 | [Teslim, masraf, kefalet ve devir](references/teslim-masraf-kefalet.md) | [Karar kaynak kayıtları](references/egitim-kaynak-kaydi.json) |
+| [Tahliye: sebepler, yollar ve süreler](references/tahliye.md)<br><sub>Sebep sebep koşul, süre, yol, arabuluculuk ve doğrulanmış emsaller</sub> | [Tahliye ihtarname ve dilekçe iskeletleri](references/tahliye-sablonlari.md)<br><sub>TBK 315, 316, 347, 350, 351 bildirimleri; arabuluculuk, dava, cevap ve takibe itiraz</sub> |
 | [Tahliye ve uyarlama kaynak kontrolü](references/tahliye-ve-uyarlama-kontrol.md)<br><sub>Arabuluculuk zamanı, taahhüt, aile konutu, iki ihtar, yeniden kiralama ve tedbir</sub> | [Kira hukuku modülleri](references/moduller.md) |
 | [Kira mevzuatı haritası](references/mevzuat-haritasi.md)<br><sub>Maddi hukuk, usul, icra, kamu kiraları, aidat, döviz, dönüşüm ve vergi</sub> | [Kira hukukunda süre hesabı](references/sure-hesaplama.md) |
 | [Legaluga MCP akışı](references/legaluga.md)<br><sub>Güncel mevzuat, emsal araştırması, künye/alıntı ön denetimi ve UDF taslağı</sub> | [Emsal derlemesi konu dizini](references/derleme-v5.md)<br><sub>Derleyen başlıklarıyla 278 atıf ve doğrulama durumu</sub> |

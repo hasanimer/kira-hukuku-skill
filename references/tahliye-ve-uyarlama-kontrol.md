@@ -2,6 +2,8 @@
 
 İnceleme: 20.09.2026; 09.10.2026'da güncellendi. Eğitim dökümleri araştırma sorusu üretmek için kullanıldı. Aşağıdaki altı eğitim kaynağı kararının gerekçe ve hükmü 20.09.2026'da incelendi. “Geçiş dönemi”, “Ek güncel kontrol” ve “Yerel havuz kaydı” etiketli paragraflardaki kararlar 09.10.2026'da eklendi ve bu altı karta dahil değildir. Bu belge dökümlerin tamamının doğrulandığı anlamına gelmez. Konuşmacının kişisel görüşü, aktardığı dosya ve mahkeme kararı ayrı kaynak türleridir. Konuşma çözümlemesindeki bozuk madde numaralarını tahmin ederek atıf yapma.
 
+Sebep sebep koşul, süre, yol, arabuluculuk ve havuzla doğrulanmış emsaller için önce [tahliye rehberini](tahliye.md) oku (`python scripts/tahliye.py yol <sebep>`); bu belge eğitim notlarının kaynak kontrolüdür. Aşağıda Dejure bağlantısıyla verilen kararlardan yalnız 3. HD 2025/3048 (`python scripts/pool.py get 1155987500`) ve İstanbul BAM 36. HD 2026/377 yerel havuzdadır; diğerlerinin tam metnini yeniden doğrulamadan dilekçede alıntılama.
+
 ## İhtiyaç nedeniyle tahliye ve arabuluculuk
 
 **Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025:** BAM kararları arasındaki uyuşmazlığın giderilmesi kararıdır. TBK 350 kapsamındaki ihtiyaç nedeniyle tahliyede, zorunlu arabuluculuğa tahliye davası açma hakkı doğduktan sonra, dava açma süresi içinde başvurulması gerektiği kabul edilmiştir. Belirli sürelide sözleşme sonu; belirsiz sürelide genel hükümlere uygun fesih dönemi ve bildirim süresi belirleyicidir. Erken başvurunun dava şartını sağladığı varsayılmaz. [Karar](https://app.dejure.ai/dokuman/68d56bc1-56de-4c48-897f-26496fe36633).

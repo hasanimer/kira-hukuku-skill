@@ -1,5 +1,6 @@
 """Belgelerdeki havuz sayıları veriden sapmamalı; validate.py yardımcıları doğru çalışmalı."""
 import collections
+import inspect
 import json
 from pathlib import Path
 import re
@@ -120,6 +121,14 @@ class ValidateHelperTests(unittest.TestCase):
 
     def test_skill_frontmatter_and_invocation_are_valid(self):
         validate.check_frontmatter()
+
+    def test_eviction_catalog_check_runs_before_frontmatter(self):
+        source = inspect.getsource(validate.main)
+        self.assertIn('check_tahliye()', source)
+        self.assertLess(source.index('check_tahliye()'), source.index('check_frontmatter()'))
+
+    def test_eviction_catalog_check_passes(self):
+        validate.check_tahliye()
 
     def test_bulk_data_link_pattern(self):
         for target in ('data/topic-rescan-assistant-adjusted.jsonl', './data/bam-selected.jsonl',

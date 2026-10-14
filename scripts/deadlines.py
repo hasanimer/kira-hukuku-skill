@@ -10,8 +10,9 @@ import sys
 
 TBK = 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5'
 TEBLIGAT = 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=7201&MevzuatTur=1&MevzuatTertip=3'
+IIK = 'https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=3'
 DATE_FORMATS = ('%Y-%m-%d', '%d.%m.%Y', '%d/%m/%Y')
-RULES = ['takvim', 'tbk344', 'tbk345', 'tbk315', 'tbk350', 'tbk351', 'tbk352', 'tbk347', 'uets']
+RULES = ['takvim', 'tbk344', 'tbk345', 'tbk315', 'tbk316', 'tbk350', 'tbk351', 'tbk352', 'tbk347', 'iik269', 'uets']
 
 
 def parse_date(value):
@@ -91,7 +92,30 @@ def calculate(rule, start, *, count=None, unit=None, backward=False):
                        'veya postaya verilme tarihi değildir. Elektronik tebligatta önce `uets` kuralıyla tebliğ edilmiş '
                        'sayılma gününü bul ve onu girdi yap. Ertesi gün birinci gündür; çıktı sürenin ham son günüdür, '
                        'tahliye tarihi değildir.')
-            checks.append('İhtarda daha uzun süre varsa onu esas al; diğer kiralar veya İİK takipleri için bu ön ayarı kullanma.')
+            checks.append('İhtarda daha uzun süre varsa onu esas al; diğer kiralar veya İİK takipleri için bu ön ayarı kullanma. '
+                          '13 örnek ödeme emri için iik269, TBK 316/2 giderim ihtarı için tbk316 kuralını kullan.')
+        elif rule == 'tbk316':
+            dates['otuzuncu_gun'] = start + timedelta(days=30)
+            basis = 'TBK 316/2: yalnız konut ve çatılı işyeri, aykırılığın giderilmesi için asgari 30 günlük süre'
+            meaning = ('Girdi, aykırılığın giderilmesini ve aksi hâlde sözleşmenin feshedileceğini bildiren yazılı ihtarın '
+                       'kiracıya ulaştığı (tebliğ edildiği) tarihtir; ihtarnamenin düzenleme/keşide veya postaya verilme '
+                       'tarihi, aykırılığın başladığı ya da öğrenildiği tarih değildir. Elektronik tebligatta önce `uets` '
+                       "kuralıyla tebliğ edilmiş sayılma gününü bul ve onu girdi yap. TBK 316/2, TBK 315/2'deki “izleyen "
+                       "günden” cümlesini içermez; aynı sonuç TBK 92/1'den çıkar: ertesi gün birinci gündür. Çıktı giderim "
+                       'süresinin ham son günüdür; fesih, arabuluculuk, dava veya tahliye tarihi değildir.')
+            checks.append('İhtarda daha uzun süre varsa onu esas al. İhtar aykırılığı, istenen giderimi ve süre içinde '
+                          'giderilmezse sözleşmenin feshedileceğini açıkça içermeli; 30 günden kısa süre veren ihtarın yasal '
+                          'süre sonunda sonuç doğuracağını varsayma.')
+            checks.append('Diğer kiralarda (TBK 316/2 son cümle) ve TBK 316/3 hâllerinde süre verilmeden yazılı bildirimle '
+                          'hemen fesih söz konusudur; bu ön ayarı kullanma. Kira bedeli/yan gider temerrüdü için tbk315 '
+                          'kuralını kullan; bu sebebe İİK 269 ilamsız tahliye yolu uygulanmaz.')
+            checks.append('Son gün tatile rastlarsa TBK 93 etkisini (aksine anlaşma dahil) ayrıca incele. Ayrı yazılı fesih '
+                          'bildirimini (zorunluluğu açık soru, ihtiyatlıdır) ve dava şartı arabuluculuk başvurusunu '
+                          '(HUAK 18/B; dava 01.09.2023 ve sonrası) süre, aykırılık giderilmeden dolduktan sonra yap; çıktıya '
+                          'otomatik +1 gün ekleme. Kanunda dava açma süresi yoktur.')
+            checks.append('30 gün tebliğden işler; keşide/postalama tarihi yetmez. UETS ile tebliğde bildirim, UETS adresine '
+                          'ulaşmayı izleyen beşinci günün sonunda tebliğ edilmiş sayılır. Aile konutunda eş TBK 349/3 ile '
+                          'taraf olmuşsa fesih bildirimini ona da ayrıca yap; giderim ihtarını da ihtiyaten ayrıca tebliğ et.')
         elif rule == 'tbk350':
             dates['bir_aylik_dava_ham_sonu'] = add_months(start, 1)
             basis = 'TBK 350: ihtiyaç veya yeniden inşa/imar nedeniyle tahliye'
@@ -128,6 +152,12 @@ def calculate(rule, start, *, count=None, unit=None, backward=False):
             basis = 'TBK 352/1: tahliye taahhüdü'
             meaning = 'Girdi taahhüt edilen boşaltma tarihidir; imza tarihi değildir. Bir ay 30 güne çevrilmez.'
             checks.append('Taahhüt geçerliliği, dava/icra yolu, arabuluculuk ve TBK 353 etkisi ayrıca incelenmeli; iki haklı ihtar için bu başlangıcı kullanma.')
+            checks.append('TBK 352/1 “icraya başvurmak veya dava açmak” der: aynı ham sonuç İİK 272 ilamsız tahliye takibi '
+                          '(14 örnek) için de kullanılır, ayrı kural yoktur. Tahliye emrine itiraz (7 gün) ve boşaltma '
+                          '(15 gün) süreleri tahliye emrinin tebliğinden işler; bunları takvim kuralıyla ayrı hesapla. '
+                          'İİK 272 vd. metni resmî metinden doğrulanmadı.')
+            checks.append('Son gün tatile rastlarsa dava yolunda TBK 93, takip yolunda İİK 19 (resmî metinden doğrula) '
+                          'etkisini ayrıca incele; araç tatil düzeltmesi yapmaz, başvuruyu son güne bırakma.')
         elif rule == 'tbk347':
             dates['on_yillik_uzama_ham_sonu'] = add_months(start, 120)
             target = add_months(start, 132)
@@ -142,6 +172,46 @@ def calculate(rule, start, *, count=None, unit=None, backward=False):
                           'arasındaki tebliğin süresinde olup olmadığı yoruma açıktır.')
             checks.append('Üç ay önce bildirim eşiği tebliğ içindir; UETS ile tebliğde ulaşmayı izleyen beşinci günün sonu '
                           "tebliğ günüdür, bu nedenle UETS'ye ulaşma en geç eşikten beş gün önce olmalıdır.")
+        elif rule == 'iik269':
+            payment_end = start + timedelta(days=30)
+            dates['itiraz_suresi_ham_sonu'] = start + timedelta(days=7)
+            dates['odeme_suresi_ham_sonu'] = payment_end
+            dates['en_erken_tahliye_talebi_ham_gunu'] = payment_end + timedelta(days=1)
+            dates['tahliye_talebi_alti_ay_ham_sonu'] = add_months(payment_end, 6)
+            basis = ('İİK 269 ve 269/a (13 örnek ödeme emri; resmî metinden doğrula) ile TBK 315/2: yalnız konut ve '
+                     'çatılı işyeri, 30 günlük ödeme süresi')
+            source = IIK
+            meaning = ('Girdi, tahliye ihtarlı (13 örnek) ödeme emrinin kiracıya tebliğ edildiği tarihtir (T); takip talebi, '
+                       'ödeme emrinin düzenlenmesi, noter ihtarnamesinin tebliği veya kiranın vade günü değildir. Elektronik '
+                       'tebligatta önce `uets` kuralıyla tebliğ edilmiş sayılma gününü bul ve onu girdi yap. Ertesi gün '
+                       'birinci gündür. Çıktı yalnız konut ve çatılı işyeri içindir: itiraz süresinin ham sonu G(T,7); ödeme '
+                       '(ihtar) süresinin ham sonu O = G(T,30); itiraz edilmemiş ve süresinde ödenmemişse en erken tahliye '
+                       'talebi G(O,1) ve altı aylık talep süresinin ham sonu A(O,6). Altı ay O\'dan sayılır; tebliğden veya '
+                       'itiraz süresinin bitiminden sayılmaz. Yedi günün geçmesi ödeme süresini kısaltmaz. Hiçbiri tahliye '
+                       'tarihi değildir; tahliyeye icra mahkemesi karar verir.')
+            checks.append('Yalnız konut ve çatılı işyerindeki 30 günlük ödeme süresi için ön ayardır. Diğer kiralarda 10 gün '
+                          '(TBK 315/2), ürün kirasında 60 gün (TBK 362/2) veya ödeme emrinde daha uzun süre yazılıysa O '
+                          'değerini takvim <T> --count <n> --unit gun ile, altı ayı takvim <O> --count 6 --unit ay ile '
+                          'ayrı hesapla; bu kuralın tarihlerini kullanma.')
+            checks.append('İİK metni resmî kaynaktan doğrulanmadı: yedi günlük itiraz süresi Yargıtay 12. HD 2025/7021 E., '
+                          '2025/5902 K. çoğunluk gerekçesinde, 269/a altı ay kuralı aynı kararın karşıoy yazısında ve '
+                          'Yargıtay HGK 2017/1918 E., 2021/1707 K. ile HGK 2017/2340 E., 2021/261 K. gerekçelerinde '
+                          'aktarılmıştır. Takip tarihindeki İİK 269–269/a metnini resmî metinden doğrula.')
+            checks.append('Ödeme süresi dolmadan icra mahkemesinden tahliye istenemez (HGK 2017/2340 E., 2021/261 K.). '
+                          '“Bitim tarihini takip eden altı ay” ifadesi bir günlük okuma farkı doğurabilir; talebi ham sondan '
+                          'önce yap. Altı ay talep içindir; kaçırılırsa bu takibe dayalı ilamsız tahliye istenemez, dava '
+                          'yolunu (HUAK 18/B dava şartı arabuluculuk dahil) ayrıca incele.')
+            checks.append('Kural yalnız ödeme emrine süresinde itiraz edilmeyen hâli kapsar. İtiraz varsa itirazın kaldırılması '
+                          've tahliye (İİK 269/b–269/c; itirazın alacaklıya tebliğinden altı ay görüşü ikincil kaynaklıdır) '
+                          'ayrı başlangıç olayına bağlıdır; bu tarihleri o yol için kullanma.')
+            checks.append('Son gün tatile rastlarsa İİK 19 (resmî metinden doğrula) etkisini ayrıca incele; araç tatil '
+                          'düzeltmesi yapmaz. O tatil nedeniyle uzarsa en erken talep günü de ileri kayar; altı ayı ham O\'dan '
+                          'say ve erken planla. İcra işlerinde HMK adli tatil uzatmasını uygulama (rehber; resmî metinden '
+                          'doğrula). İlamsız tahliye takibi HUAK 18/B istisnasındadır; arabuluculuk düzeltmesi yoktur.')
+            checks.append('T ödeme emrinin usulüne uygun tebliğidir; UETS ile tebliğde ulaşmayı izleyen beşinci günün sonu '
+                          'tebliğ günüdür. Tebliğ yapılmamış veya usulsüzse sürelerin başlangıcını ayrıca incele. Kiracı '
+                          'olmayan eş TBK 349/3 ile taraf olmuşsa ödeme süresi ona da ayrı bildirilir; farklı tebliğ '
+                          'tarihlerinde hangisinin esas alınacağı açık sorudur; temkinli olarak geç tebliğden hesapla.')
         elif rule == 'uets':
             dates['teblig_edilmis_sayilma_gunu'] = start + timedelta(days=5)
             basis = '7201 sayılı Kanun 7/a/4'

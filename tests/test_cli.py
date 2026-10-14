@@ -42,7 +42,7 @@ class EncodingTests(unittest.TestCase):
                                           'candidates': []}, ensure_ascii=False), encoding='utf-8')
             commands = [('pool.py', 'stats'), ('tbk.py', '344'), ('scenarios.py', 'list'),
                         ('quality.py', 'validate'), ('decision_qa.py', 'validate'),
-                        ('triage.py', str(sample), '--dry-run')]
+                        ('triage.py', str(sample), '--dry-run'), ('tahliye.py', 'list')]
             for script, *args in commands:
                 with self.subTest(script=script):
                     proc = run(script, *args, env=env)
@@ -57,7 +57,8 @@ class EncodingTests(unittest.TestCase):
 
     def test_isolated_mode_finds_sibling_modules(self):
         # -I (3.11+'da -P içerir) betik klasörünü sys.path'e eklemez; betikler kendisi ekler.
-        for script in ('quality.py', 'scenarios.py', 'decision_qa.py', 'triage.py', 'derleme.py'):
+        for script in ('quality.py', 'scenarios.py', 'decision_qa.py', 'triage.py', 'derleme.py',
+                       'tahliye.py'):
             with self.subTest(script=script):
                 run(script, '--help', flags=('-I',))
 

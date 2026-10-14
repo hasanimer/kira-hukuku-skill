@@ -14,7 +14,7 @@ import urllib.request
 MODULES = {
     'tespit': 'Kira bedelinin tespiti, emsal ve eski kiracı indirimi',
     'uyarlama': 'TBK 138 anlamında olağanüstü değişiklik veya aşırı ifa güçlüğü nedeniyle uyarlama; altıncı yılda emsal rayice göre TBK 344 kira tespiti buna dahil değildir',
-    'tahliye': 'İhtiyaç, taahhüt, temerrüt, iki haklı ihtar veya uzama nedeniyle tahliye',
+    'tahliye': 'Kiracının tahliyesi: temerrüt ve ilamsız tahliye takibi ile buna itiraz, iki haklı ihtar, taahhüt, ihtiyaç veya yeniden inşa, yeni malik, on yıllık uzama, özen borcuna aykırılık, kiracının konutu; tahliye kararının icrası, TBK 355 tazminatı ve kiraya verenin kendiliğinden tahliyesi',
     'alacak': 'Para borcu olarak kira alacağı, menfi tespit, istirdat ve fazla ödeme iadesi; salt tahliye için takip veya itiraz bu modüle girmez',
     'guvence': 'Parasal depozito, taşınmaz hasarı/ayıbı veya masraf iadesi uyuşmazlığı; aile konutu koruması, boş imza ve tahliye savunması bu modül değildir',
     'sozlesme': 'Sözleşmenin kurulması, devir, alt kira, taraf sıfatı veya kullanım hakkında bağımsız mesele; yalnız başka talebin sözleşmeye dayanması yeterli değildir',

@@ -336,6 +336,27 @@ def check_udf():
             parse=False)
 
 
+def check_tahliye():
+    """Tahliye rota kataloğu: şema, rehber başlıkları, kararlar/alıntılar ve takvim çıktısı."""
+    report = run('tahliye.py', 'validate')
+    require(report.get('ok') is True and report.get('grounds', 0) > 0
+            and report.get('decisions', 0) > 0 and report.get('deadlines', 0) > 0,
+            'Eviction catalog report incomplete')
+    card = run('tahliye.py', 'yol', 'ihtiyac', '--tarih', '2026-12-31')
+    computed = [item for item in card.get('takvim') or [] if item.get('sonuc')]
+    require(card.get('key') == 'ihtiyac' and card.get('uyari') and computed
+            and card.get('rehber', '').startswith('references/tahliye.md#'),
+            'Eviction route card lost its schedule, warning or guide link')
+    # Her hesaplanan süre, kendi komutuyla çalıştırılan deadlines.py çıktısıyla aynı olmalı.
+    for item in computed:
+        script, *args = item['komut'].split()[1:]
+        require(script == 'scripts/deadlines.py' and run('deadlines.py', *args) == item['sonuc'],
+                f'Eviction schedule differs from deadlines.py: {item["komut"]}')
+    text = run('tahliye.py', 'yol', 'ihtiyac', '--metin', parse=False)
+    require(text.startswith(card['title']) and 'python scripts/pool.py get ' in text,
+            'Eviction route text rendering lost title or decision commands')
+
+
 def check_frontmatter():
     skill = (ROOT / 'SKILL.md').read_text(encoding='utf-8')
     require(skill.startswith('---\n') and '\n---\n' in skill[4:], 'SKILL.md frontmatter missing')
@@ -415,10 +436,11 @@ def main():
     check_calculators()
     check_triage()
     check_udf()
+    check_tahliye()
     check_frontmatter()
     check_links()
     print(f'PASS: {stats["records"]} decisions, file/text hashes, law, links, frontmatter, '
-          'CLI, UDF and rejection checks')
+          'eviction catalog, CLI, UDF and rejection checks')
 
 
 if __name__ == '__main__':

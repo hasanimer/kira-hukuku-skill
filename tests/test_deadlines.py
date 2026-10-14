@@ -1,5 +1,5 @@
 import json
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 import subprocess
 import sys
@@ -7,7 +7,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from deadlines import add_months, calculate, parse_date
+from deadlines import RULES, add_months, calculate, parse_date
 
 TIMEOUT = 120
 
@@ -96,8 +96,72 @@ class DeadlineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculate('uets', date(2026, 1, 1), backward=True)
 
+    def test_tbk316_mirrors_tbk315_days_but_not_its_meaning(self):
+        self.assertEqual(self.dates('tbk316', '2026-09-01'), {'otuzuncu_gun': '2026-10-01'})
+        # Gün hesabıdır: ay sonunda ay hesabına kırpılmaz; artık yılda şubat 29 gündür.
+        self.assertEqual(self.dates('tbk316', '2026-01-31')['otuzuncu_gun'], '2026-03-02')
+        self.assertEqual(self.dates('tbk316', '2026-02-01')['otuzuncu_gun'], '2026-03-03')
+        self.assertEqual(self.dates('tbk316', '2028-02-01')['otuzuncu_gun'], '2028-03-02')
+        for value in ('2026-01-31', '2028-02-29', '2026-12-15'):
+            self.assertEqual(self.dates('tbk316', value), self.dates('tbk315', value))
+        result = calculate('tbk316', date(2026, 9, 1))
+        self.assertIn('TBK 316/2', result['basis'])
+        self.assertIn('konut ve çatılı işyeri', result['basis'])
+        for phrase in ('tebliğ', 'keşide', 'aykırılığın başladığı', 'TBK 92/1', 'uets',
+                       'fesih, arabuluculuk, dava veya tahliye tarihi değildir'):
+            self.assertIn(phrase, result['meaning'])
+        self.assertNotEqual(result['meaning'], calculate('tbk315', date(2026, 9, 1))['meaning'])
+        checks = ' '.join(result['pending_checks'])
+        for phrase in ('316/3', 'tbk315', 'TBK 93', 'HUAK 18/B', 'UETS', 'TBK 349/3', '+1 gün'):
+            self.assertIn(phrase, checks)
+        tbk315_checks = ' '.join(calculate('tbk315', date(2026, 9, 1))['pending_checks'])
+        self.assertIn('tbk316', tbk315_checks)
+        self.assertIn('iik269', tbk315_checks)
+
+    def test_iik269_payment_order_dates(self):
+        self.assertEqual(self.dates('iik269', '2026-09-01'), {
+            'itiraz_suresi_ham_sonu': '2026-09-08',
+            'odeme_suresi_ham_sonu': '2026-10-01',
+            'en_erken_tahliye_talebi_ham_gunu': '2026-10-02',
+            'tahliye_talebi_alti_ay_ham_sonu': '2027-04-01'})
+        # Ay sonu: O = 31.08.2026; altı ay 28.02.2027'ye kırpılır.
+        self.assertEqual(self.dates('iik269', '2026-08-01'), {
+            'itiraz_suresi_ham_sonu': '2026-08-08',
+            'odeme_suresi_ham_sonu': '2026-08-31',
+            'en_erken_tahliye_talebi_ham_gunu': '2026-09-01',
+            'tahliye_talebi_alti_ay_ham_sonu': '2027-02-28'})
+        # Artık yıl: O = 31.08.2027; altı ay 29.02.2028.
+        self.assertEqual(self.dates('iik269', '2027-08-01')['tahliye_talebi_alti_ay_ham_sonu'], '2028-02-29')
+        # Altı ay ödeme süresinin bitiminden (O) tek adımda sayılır; tebliğden altı ay + 30 gün farklı çıkar.
+        start = date(2026, 8, 1)
+        self.assertEqual(add_months(start, 6) + timedelta(days=30), date(2027, 3, 3))
+        self.assertEqual(self.dates('iik269', '2026-08-01')['tahliye_talebi_alti_ay_ham_sonu'],
+                         add_months(start + timedelta(days=30), 6).isoformat())
+        # Ödeme süresinin sonu tbk315/takvim 30 gün ile aynı ham günü verir.
+        self.assertEqual(self.dates('iik269', '2026-01-31')['odeme_suresi_ham_sonu'],
+                         self.dates('takvim', '2026-01-31', count=30, unit='gun')['ham_bitis'])
+        result = calculate('iik269', date(2026, 9, 1))
+        self.assertIn('MevzuatNo=2004', result['source_url'])
+        self.assertIn('resmî metinden doğrula', result['basis'])
+        for phrase in ('13 örnek', 'tebliğ', 'takip talebi', 'noter ihtarnamesinin tebliği', 'konut ve çatılı işyeri',
+                       "Altı ay O'dan sayılır", 'Yedi günün geçmesi ödeme süresini kısaltmaz', 'uets'):
+            self.assertIn(phrase, result['meaning'])
+        checks = ' '.join(result['pending_checks'])
+        for phrase in ('TBK 362/2', 'İİK 19', 'HGK 2017/2340 E., 2021/261 K.', '2025/7021 E., 2025/5902 K.',
+                       'karşıoy', 'resmî metinden doğrula', 'HUAK 18/B', 'itirazın kaldırılması', 'UETS', 'TBK 349/3'):
+            self.assertIn(phrase, checks)
+
+    def test_undertaking_rule_documents_iik272_without_new_rule(self):
+        self.assertNotIn('iik272', RULES)
+        result = calculate('tbk352', date(2026, 1, 31))
+        self.assertEqual(result['raw_dates'], {'bir_aylik_basvuru_ham_sonu': '2026-02-28'})
+        checks = ' '.join(result['pending_checks'])
+        for phrase in ('İİK 272', 'ayrı kural yoktur', 'İİK 19', 'TBK 93'):
+            self.assertIn(phrase, checks)
+
     def test_outputs_are_not_final_deadlines(self):
-        for rule in ['takvim', 'tbk344', 'tbk345', 'tbk315', 'tbk350', 'tbk351', 'tbk352', 'tbk347', 'uets']:
+        self.assertTrue({'tbk316', 'iik269'} <= set(RULES))
+        for rule in RULES:
             args = {'count': 1, 'unit': 'gun'} if rule == 'takvim' else {}
             result = calculate(rule, date(2026, 1, 1), **args)
             self.assertEqual(result['status'], 'takvim_adayi_hukuki_kontrol_gerekli')
@@ -111,6 +175,11 @@ class DeadlineTests(unittest.TestCase):
                 calculate('takvim', date(2026, 1, 1), **kwargs)
         with self.assertRaises(ValueError):
             calculate('uets', date(2026, 1, 1), count=30)
+        for rule, kwargs in (('iik269', {'count': 60, 'unit': 'gun'}), ('tbk316', {'backward': True})):
+            with self.assertRaises(ValueError):
+                calculate(rule, date(2026, 1, 1), **kwargs)
+        with self.assertRaises(ValueError):
+            calculate('tbk3522', date(2026, 1, 1))
 
     def test_cli_portable_and_bad_date_fails_without_output(self):
         command = [sys.executable, str(ROOT / 'scripts/deadlines.py')]
@@ -141,6 +210,24 @@ class DeadlineTests(unittest.TestCase):
                                 timeout=TIMEOUT)
         self.assertEqual(result.returncode, 2)
         self.assertEqual(result.stdout, '')
+
+    def test_cli_new_eviction_rules(self):
+        command = [sys.executable, str(ROOT / 'scripts/deadlines.py')]
+        result = subprocess.run(command + ['iik269', '01.09.2026'], capture_output=True, encoding='utf-8',
+                                timeout=TIMEOUT, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        output = json.loads(result.stdout)
+        self.assertEqual(output['raw_dates']['tahliye_talebi_alti_ay_ham_sonu'], '2027-04-01')
+        self.assertFalse(output['holiday_adjustment_applied'])
+        result = subprocess.run(command + ['tbk316', '2026-09-01'], capture_output=True, encoding='utf-8',
+                                timeout=TIMEOUT, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)['raw_dates'], {'otuzuncu_gun': '2026-10-01'})
+        for extra in (['tbk316', '2026-09-01', '--count', '30', '--unit', 'gun'], ['iik269', '2026-09-01', '--geri'],
+                      ['tbk3522', '2026-09-01']):
+            result = subprocess.run(command + extra, capture_output=True, encoding='utf-8', timeout=TIMEOUT, check=False)
+            self.assertEqual(result.returncode, 2, extra)
+            self.assertEqual(result.stdout, '')
 
 
 if __name__ == '__main__':

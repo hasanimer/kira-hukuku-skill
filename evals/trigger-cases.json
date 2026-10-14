@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "2026-10-09",
+  "version": "2026-10-14",
   "fictional": true,
   "status": "not_measured",
   "note": "Yalnız yapı doğrulanır; tetiklenme oranı canlı oturumlarda ölçülmedi. module alt konu etiketidir (cases.json topic değerleriyle aynı), modules altı modül anahtarıdır.",
@@ -139,6 +139,56 @@
       "note": "Kira kefaletinin şekli ve kapsamı."
     },
     {
+      "id": "T14",
+      "query": "Ev sahibi aynı yıl içinde iki kez noterden kira ihtarı çekti, ikisinde de sonradan ödedim; şimdi iki haklı ihtar diye beni çıkarmak için dava açacakmış, açabilir mi?",
+      "should_trigger": true,
+      "module": "iki_hakli_ihtar",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "TBK 352/2 iki haklı ihtar; kira yılı ve dava süresi."
+    },
+    {
+      "id": "T15",
+      "query": "Oturduğum daire satıldı, yeni ev sahibi oğlu oturacak diye altı ay sonra çıkmamı istiyor; ihtarı da tapudan bir ay sonra geldi. Çıkmak zorunda mıyım?",
+      "should_trigger": true,
+      "module": "yeni_malik",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "TBK 351 yeni malik; bildirimin edinmeden bir ay içinde tebliği."
+    },
+    {
+      "id": "T16",
+      "query": "Kiracım gece geç saatlere kadar gürültü yapıyor, komşular yönetime şikâyet etti; bu yüzden kiracıyı evden çıkarabilir miyim?",
+      "should_trigger": true,
+      "module": "akde_aykirilik",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "TBK 316 komşulara saygı borcu; otuz günlük giderim ihtarı."
+    },
+    {
+      "id": "T17",
+      "query": "Ev sahibinin ihtiyaç davasında tahliye kararı çıktı, istinafa gideceğim; karar kesinleşmeden icra beni evden çıkarabilir mi?",
+      "should_trigger": true,
+      "module": "tahliye_sonrasi",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "Tahliye ilamının icrası, istinaf ve tehir-i icra; TBK 355."
+    },
+    {
+      "id": "T18",
+      "query": "Ev sahibi kira geç kaldı diye kapının kilidini değiştirmiş, eşyalarım içeride kaldı; suyu da kestirmiş. Ne yapabilirim?",
+      "should_trigger": true,
+      "module": "kendiliginden_tahliye",
+      "modules": [
+        "tahliye"
+      ],
+      "note": "Kiraya verenin kendiliğinden tahliyesi sözleşme ihlali; kiracılık sıfatının tespiti ve tazminat."
+    },
+    {
       "id": "N01",
       "query": "Ev satın alırken tapu harcını alıcı mı satıcı mı öder?",
       "should_trigger": false,
@@ -241,6 +291,30 @@
       "module": null,
       "modules": [],
       "note": "Kapsam dışı: komşuluk hukuku."
+    },
+    {
+      "id": "N14",
+      "query": "Paylı mülkiyetteki arsanın satış yoluyla ortaklığının giderilmesinde ihale bedeli paydaşlara nasıl dağıtılır?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: ortaklığın giderilmesi ve satış bedelinin paylaşımı; kira ilişkisi yok."
+    },
+    {
+      "id": "N15",
+      "query": "Leasing sözleşmesi feshedildi, finansal kiralama şirketi aracı iade etmemi istiyor; aracı teslim etmezsem ne olur?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: finansal kiralamada araç iadesi; TBK konut ve çatılı işyeri kirası değil."
+    },
+    {
+      "id": "N16",
+      "query": "Dükkânımı devrederken aldığım hava parası ve devir bedeli için KDV ve gelir vergisi nasıl hesaplanır?",
+      "should_trigger": false,
+      "module": null,
+      "modules": [],
+      "note": "Yakın konu ama kapsam dışı: işyeri devrinde vergilendirme."
     }
   ]
 }

@@ -410,6 +410,308 @@
         "İhtiyaç anlatımıyla çelişen somut belgeler",
         "Farklı dava tarihi ve arabuluculuk kronolojisi"
       ]
+    },
+    {
+      "id": "K11",
+      "title": "13 örnek ödeme emri geldi: itiraz mı, ödeme mi?",
+      "story": "Konut kiracısına iki aylık kira için tahliye talepli ödeme emri tebliğ ediliyor. Kiracı bir ayı takipten önce elden ödediğini ama belgesi olmadığını söylüyor ve ödeme emrindeki otuz günü itiraz süresi sanıyor.",
+      "keywords": [
+        "13 örnek",
+        "ödeme emri",
+        "tahliye ihtarlı",
+        "itiraz süresi",
+        "yedi gün",
+        "otuz gün",
+        "temerrüt",
+        "ilamsız tahliye"
+      ],
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
+      "documents": [
+        "Ödeme emri ve takip talebinin tam metni (tahliye istemi, dönemler, tutarlar, ödeme süresi)",
+        "Tebliğ şerhi veya UETS kaydı",
+        "Kira sözleşmesi (ödeme günü, ödeme yeri, imza)",
+        "Takipten önceki ve sonraki ödemelere ait dekont, makbuz veya yazılı kayıtlar",
+        "İtiraz dilekçesi ve icra dairesine verildiği tarih",
+        "Kiracıların listesi ve varsa TMK 194/son bildirimi"
+      ],
+      "decisive_questions": [
+        "Ödeme emri hangi gün ve usulüne uygun tebliğ edildi; yedi günlük itiraz süresi G(T,7) ile otuz günlük ödeme süresi G(T,30) ayrı ayrı ne zaman doluyor?",
+        "Takip talebinde açıkça tahliye istenmiş mi; ödeme emrinde süre ve dönemler doğru gösterilmiş mi?",
+        "Takipten önceki ödeme İİK 269/c'de sayılan nitelikte bir belgeyle ispatlanabiliyor mu; ispatlanamıyorsa takip konusu kiralar ödeme süresi içinde tam ödenecek mi?",
+        "Ödeme kiraya verenin tasarrufuna geçecek biçimde mi yapıldı; tedbirle bloke edilen veya masraf düşülerek eksik kalan ödeme var mı?",
+        "Takip sözleşmedeki bütün kiraya verenlerce, bütün kiracılara ve bildirim yapmış eşe karşı mı yapıldı?"
+      ],
+      "search_queries": [
+        "13 örnek ödeme emri itiraz etmeyen kiracı takipten önce ödeme icra mahkemesi",
+        "ilamsız tahliye ödeme emri tebliğ edilmeden haricen itiraz",
+        "takip talebinde tahliye istemi bulunmaması ödeme emri tahliye ihtarı"
+      ],
+      "decision_ids": [
+        "685746400",
+        "746178000",
+        "920523900",
+        "686165600"
+      ],
+      "coverage": "Dört HGK kararı ilamsız tahliyeyi çözer. HGK 2021/261 (oy çokluğu, kiracı aleyhine): itiraz etmeyen kiracı icra mahkemesinde yalnız ödeme süresi içinde ödediğini ileri sürebilir. HGK 2021/1707 (oy çokluğu, kiracı aleyhine): tedbirle alacaklıya geçmesi engellenen ödeme temerrüdü önlemez. HGK 2023/642 (oy çokluğu, kesin; kiracı lehine): hiç tebliğ edilmeyen ödeme emrinde süreler başlamaz; usulsüz tebliği çözmez. HGK 2021/648 (oybirliği, kiracı lehine): takip talebinde açık tahliye istemi yoksa ihtar hak doğurmaz. Elden ödemenin ispatını çözen karar yok; İİK metnini doğrula.",
+      "counterfacts": [
+        "Takipten önceki ödemenin banka dekontu veya kiraya verenin imzalı makbuzuyla belgelenmesi",
+        "Ödeme emrinin usulsüz tebliğ edilmesi ve öğrenmeden itibaren şikâyet yoluna gidilmesi",
+        "Takip talebinde tahliye isteminin bulunmaması veya ödeme süresinin eksik gösterilmesi",
+        "Kiraya verenin ödemeyi kabulden kaçınması ve ödeme yeri belirlenmesi"
+      ]
+    },
+    {
+      "id": "K12",
+      "title": "Aynı kira yılında iki ihtar ve tahliye davası",
+      "story": "Kiracı aynı kira yılı içinde iki kez ihtar alıp kirayı sonradan ödüyor; ödemelerden biri tebliğle aynı gün yapılmış. Kiraya veren iki haklı ihtar nedeniyle hemen dava açacağını söylüyor.",
+      "keywords": [
+        "iki haklı ihtar",
+        "ihtarname",
+        "kira yılı",
+        "aynı gün ödeme",
+        "peşin kira",
+        "dava süresi"
+      ],
+      "modules": [
+        "tahliye"
+      ],
+      "documents": [
+        "Kira sözleşmesi (başlangıç, süre, ödeme günü, peşin ödeme kaydı)",
+        "Her iki ihtarın veya ödeme emrinin metni, keşide ve tebliğ tarihleri (saat dahil)",
+        "Banka dekontları ve ödeme saatleri",
+        "Kira yılı çizelgesi (python scripts/hesap.py donemler --baslangic <S>)",
+        "Arabuluculuk başvurusu, son tutanak ve dava tarihi"
+      ],
+      "decisive_questions": [
+        "İhtarlar aynı kira yılı içinde tebliğ edildi mi; her biri kira muaccel olduktan sonra mı keşide edildi?",
+        "İlk ihtar anında muaccel olan aylar ikinci ihtara bölünerek mi bırakıldı?",
+        "Her ödeme tebliğden önce mi sonra mı yapıldı; aynı gün tebliğ ve ödemede saat kayıtları sıralamayı gösteriyor mu?",
+        "Dava, kira süresinin veya ihtarların yapıldığı kira yılının bitiminden sonra ve bir ay içinde mi açıldı; peşin ödenen kirada kiranın ait olduğu yıl mı esas alınmalı?",
+        "Dava 01.09.2023 veya sonrasında açıldıysa arabuluculuğa kira yılı bittikten sonra mı başvuruldu?"
+      ],
+      "search_queries": [
+        "iki haklı ihtar dava süresi ihtarların yapıldığı kira yılının bitimi",
+        "iki haklı ihtar muaccel kira bölünerek ikinci takip",
+        "ihtar tebliği ile aynı gün ödeme saat iki haklı ihtar"
+      ],
+      "decision_ids": [
+        "720126200",
+        "427128300",
+        "444696400",
+        "1159454200"
+      ],
+      "coverage": "HGK 2021/1314 (direnme uygun, dosya 3. HD'ye gönderildi; kiracı aleyhine): tebliğden sonraki ödeme haklılığı kaldırmaz; doktrine dayanan koşul listesi otuz gün ve dava uyarısını da sayar. 3. HD 2018/5354 (kiracı lehine bozma; 6570 dönemi davası): muaccel kira bölünerek ikinci ihtara konu edilemez. 3. HD 2018/9394 (giderler yönünden kiracı lehine bozma): tebliğ saati belirlenemeyen aynı gün ödeme tebliğden önce sayıldı. 3. HD 2025/3118 (onama; kiraya veren aleyhine): peşin taksitli kirada kiranın ait olduğu yıl esas alındı, erken dava reddedildi; tek karar. Arabuluculuk zamanlaması çözülmedi.",
+      "counterfacts": [
+        "İhtarların farklı kira yıllarında tebliğ edilmiş olması",
+        "İkinci ihtarın ilk ihtar anında muaccel olan bir aya ilişkin olması",
+        "Ödemenin tebliğden önce yapıldığının saat kaydıyla ispatı",
+        "Davanın kira yılı bitmeden veya bitimden sonraki bir ayı aşarak açılması",
+        "İhtarın kira muaccel olmadan keşide edilmesi"
+      ]
+    },
+    {
+      "id": "K13",
+      "title": "Boş kâğıda imzalatılan taahhütle tahliye emri geldi",
+      "story": "Kiracı, kira sözleşmesini imzalarken anahtar teslimden önce boş bir kâğıdı da imzaladığını söylüyor. Kâğıda sonradan düzenleme ve boşaltma tarihi yazılmış; buna dayanılarak Örnek 14 tahliye emri tebliğ ediliyor.",
+      "keywords": [
+        "tahliye taahhüdü",
+        "boş kâğıt",
+        "açığa imza",
+        "örnek 14",
+        "tahliye emri",
+        "teslimden önce",
+        "itiraz"
+      ],
+      "modules": [
+        "tahliye"
+      ],
+      "documents": [
+        "Taahhüdün aslı (matbu ve el yazısı kısımlar, 'kiracı olarak bulunduğum' gibi ibareler)",
+        "Kira sözleşmesi ve anahtar teslim tarihini gösteren belge veya ilk ödeme kaydı",
+        "Takip talebi, takip tarihi, tahliye emri ve tebliğ belgesi",
+        "Doldurma anlaşmasına veya imza koşullarına ilişkin yazılı kayıtlar",
+        "Taahhütten sonra yapılan sözleşme veya protokoller",
+        "İtiraz dilekçesi ve icra dairesine verildiği tarih"
+      ],
+      "decisive_questions": [
+        "Tahliye emri hangi gün tebliğ edildi; yedi günlük itiraz süresi G(T,7) ne zaman doluyor ve itiraz yapıldı mı?",
+        "Taahhüt kiralananın tesliminden önce mi sonra mı verildi; bunu gösteren yazılı delil var mı?",
+        "Kiracı imzayı mı, tarihi mi, yoksa doldurma anlaşmasına aykırılığı mı tartışıyor; hileyle habersiz imzalatma mı ileri sürülüyor?",
+        "Takip, taahhüt edilen tarihten başlayarak bir ay içinde A(B,1) ve B gününden sonra mı yapıldı?",
+        "Taahhütten sonra yeni bir kira sözleşmesi kuruldu mu?"
+      ],
+      "search_queries": [
+        "tahliye taahhüdü kira sözleşmesiyle aynı tarihte teslimden önce geçersiz",
+        "tahliye taahhüdü boş kağıda imza yazılı delil yemin",
+        "örnek 14 tahliye emrine itiraz adi taahhüt tarih inkarı icra mahkemesi"
+      ],
+      "decision_ids": [
+        "191fe3e9-f690-420c-ad33-23cfeb89e8ad",
+        "979779900"
+      ],
+      "coverage": "İki karar da kiracı aleyhinedir. İstanbul BAM 36. HD 2026/377 (istinaf esastan reddedildi, kesin): sözleşmeyle aynı tarihte veya önce alınan taahhüdün geçersiz olduğunu aktarır, ama imzayı kabul eden kiracının boş ve baskı altında imzalatma savunmasını yazılı delil yokluğundan dinlemez; HGK 2008/394 ayrımı karşısında mutlak sayma (K5). 3. HD 2023/168 (onama): 'kiracı olarak bulunduğum' ibaresinin sonradan düzenlemeyi gösterdiği gerekçesi onanan BAM'ındır; işyeri. İtiraz süresi, İİK 275 ve yeni sözleşmenin etkisi çözülmedi.",
+      "counterfacts": [
+        "Teslimden önce verildiğini gösteren yazılı delil (tarihli yazışma, teslim tutanağı)",
+        "İmzanın kiracıya ait olmaması",
+        "Takibin taahhüt edilen tarihten başlayarak bir aylık süre geçtikten sonra yapılması",
+        "Taahhütten sonra yeni bir kira sözleşmesi kurulması",
+        "Tahliye emrine yedi gün içinde itiraz edilmemiş olması"
+      ]
+    },
+    {
+      "id": "K14",
+      "title": "Ev satıldı, yeni malik oğlu için çıkmamı istiyor",
+      "story": "Kiracının oturduğu daire satılıyor. Yeni malik bir süre sonra noter ihtarı gönderip altı ay sonra oğlu için tahliye davası açacağını bildiriyor; kiracı satışın muvazaalı olduğunu ve ihtarın geç geldiğini düşünüyor.",
+      "keywords": [
+        "yeni malik",
+        "ev satıldı",
+        "edinme",
+        "altı ay",
+        "ihtiyaç",
+        "muvazaa",
+        "tapu"
+      ],
+      "modules": [
+        "tahliye"
+      ],
+      "documents": [
+        "Tapu kaydı (tescil tarihi ve yevmiye)",
+        "Yeni malikin ihtarnamesi; keşide ve tebliğ tarihleri, UETS kaydı",
+        "Önceki malikle yapılan kira sözleşmesi ve özel şartları (ihbar kaydı)",
+        "Kira başlangıcı ve dönem sonları (python scripts/hesap.py donemler --baslangic <S>)",
+        "Arabuluculuk başvurusu ve son tutanak",
+        "İhtiyaçlının konut durumu ve başka konutu olup olmadığına ilişkin kayıtlar"
+      ],
+      "decisive_questions": [
+        "Yeni malikin yazılı bildirimi edinmeden başlayarak bir ay içinde kiracıya tebliğ edildi mi; keşide ve tebliğ tarihleri ayrı mı?",
+        "Arabuluculuk başvurusu veya dava edinmeden itibaren altı ay dolmadan mı yapıldı?",
+        "351/1 yolu kapandıysa yeni malik dönem sonu yolunu (351/2 veya kiraya veren sıfatıyla 350) hangi pencerede kullanabilir; önceki sözleşmedeki ihbar kaydına uyuldu mu?",
+        "İhtiyaçlı yasal kişi çevresinde mi; ihtiyaç gerçek, samimi, zorunlu ve yargılama boyunca süren nitelikte mi?"
+      ],
+      "search_queries": [
+        "yeni malik bildirim edinmeden bir ay içinde tebliğ keşide",
+        "yeni malik ihtiyaç sözleşme sonu seçimlik hak",
+        "yeni malik tahliye muvazaa savunması dinlenmez"
+      ],
+      "decision_ids": [
+        "371154500",
+        "686798500",
+        "1163474000",
+        "97355400"
+      ],
+      "coverage": "3. HD 2017/12812 (kiracı lehine bozma): bildirimin edinmeden bir ay içinde tebliği zorunludur, keşide yetmez, eksiklik giderilemez; dönem sonu yolunu kapatmaz. HGK 2021/878 (giderler yönünden yeni malik lehine bozma; 6570 dönemi): yeni malik yararına olan yolu seçer, ihtiyaç yargılama boyunca sürmelidir. 3. HD 2025/1440 (uyuşmazlık giderme; kiraya veren aleyhine): sözleşmedeki ihbar kaydına uyulmazsa sözleşme bir yıl uzar; TBK 350 kararı, yeni malike kıyasen. 6. HD 2014/10948 (yeni malik lehine bozma; kiracı aleyhine): muvazaa savunması dinlenmez. 351 için arabuluculuk zamanlaması çözülmedi.",
+      "counterfacts": [
+        "Bildirimin edinmeden bir ay içinde tebliğ edilmiş olması",
+        "Dava veya arabuluculuğun altı ay dolduktan sonra yapılması",
+        "İhtiyaçlının başka uygun konutunun bulunduğunun ispatı",
+        "Önceki sözleşmedeki ihbar kaydına süresinde uyulması",
+        "Yeni malikle yeni bir kira sözleşmesi imzalanmış olması"
+      ]
+    },
+    {
+      "id": "K15",
+      "title": "On yıl doldu diye fesih bildirimi geldi",
+      "story": "Kiracı on yılı aşkın süredir aynı işyerinde; arada malik değişmiş ve yeni malikle yeni bedel ve süreyle sözleşme imzalanmış. Malik başlangıçtan on yıl geçtiğini söyleyerek sebep göstermeden fesih bildirimi gönderiyor ve hemen dava açacağını bildiriyor.",
+      "keywords": [
+        "on yıl",
+        "on yıllık uzama",
+        "fesih bildirimi",
+        "uzama yılı",
+        "yeni sözleşme",
+        "sebepsiz tahliye"
+      ],
+      "modules": [
+        "tahliye",
+        "sozlesme"
+      ],
+      "documents": [
+        "İlk kira sözleşmesi ve sonraki bütün sözleşme ve protokoller",
+        "Tapu kaydı ve malik değişikliği tarihi",
+        "Fesih bildiriminin metni, keşide ve tebliğ tarihi",
+        "İlk süre ve uzama yılları çizelgesi (python scripts/hesap.py tahliye-10yil --baslangic <S> --sure-yil <n>)",
+        "Arabuluculuk başvurusu, son tutanak ve dava tarihi",
+        "Bildirimden sonra yapılan ödemelerin açıklamaları"
+      ],
+      "decisive_questions": [
+        "On yıllık süre hangi sözleşmenin bitiminden hesaplanmalı: ilk sözleşme mi, sonradan yeni süre ve bedelle yapılan sözleşme mi; belge yalnız bedeli mi güncelliyor?",
+        "İlk sözleşme süresi kaç yıl; F = Y(E,11) hangi tarih ve bildirim Y(E,10) ile A(F,-3) arasında mı tebliğ edildi?",
+        "Dava ve arabuluculuk F günü veya sonrasında mı yapıldı?",
+        "Sözleşme 01.07.2012'den önce kurulduysa 6101 geçici 2 eşikleri uygulanıyor mu?"
+      ],
+      "search_queries": [
+        "TBK 347 on yıllık uzama yeni sözleşme süreyi yeniden başlatır",
+        "on yıllık uzama dava en erken dönem sonu erken açılan dava",
+        "347 ilk süre on yıl uzama izleyen yıl üç ay önce bildirim"
+      ],
+      "decision_ids": [
+        "686728500",
+        "361252700",
+        "bb12b6b8-f33f-43ff-aded-6c9a2d166985",
+        "748198200"
+      ],
+      "coverage": "HGK 2021/614 (direnme bozuldu, oy çokluğu; kiracı lehine): malik değişikliğinden sonra yeni maliklerle yapılan yenileme sözleşmesi on yıllık süreyi yeniden başlatır; karşıoylar farklıdır, bedel protokolünü çözmez. 3. HD 2017/6383 (kiracı lehine bozma): dava en erken dönem sonu günü açılabilir. İstanbul BAM 36. HD 2023/2382 (istinaf esastan reddedildi, kesin): ilk süre + on uzama yılı + izleyen yıl; erken dava reddedildi; künye Dejure üst verisi. 3. HD 2022/1103 (kiracı lehine bozma): el değiştirme sözleşmeyi değiştirmez; 347 kararı değildir. Dava üst sınırı çözülmedi.",
+      "counterfacts": [
+        "Yeni belgenin yalnız kira bedelini güncelleyen bir protokol olması",
+        "Bildirimin hedef uzama yılı içinde ve yıl sonundan en az üç ay önce tebliğ edilmiş olması",
+        "Kiralananın baskın vasfının açık alan olması (TBK 327)",
+        "Sözleşmenin 01.07.2012'den önce kurulmuş olması ve geçiş eşikleri"
+      ]
+    },
+    {
+      "id": "K16",
+      "title": "Tahliye kararı çıktı: istinaf, tehir-i icra ve TBK 355",
+      "story": "İhtiyaç nedeniyle verilen tahliye kararı kiracıya tebliğ ediliyor ve kiraya veren kararı hemen icraya koyuyor. Kiracı istinaf ederse karar kesinleşmeden çıkarılamayacağını düşünüyor; ev başkasına kiralanırsa ne isteyebileceğini soruyor.",
+      "keywords": [
+        "tahliye kararı",
+        "istinaf",
+        "tehir-i icra",
+        "icra emri",
+        "yeniden kiralama",
+        "tazminat",
+        "kesinleşme"
+      ],
+      "modules": [
+        "tahliye",
+        "alacak"
+      ],
+      "documents": [
+        "Gerekçeli karar ve tebliğ şerhi",
+        "İcra emri ve tebliğ tarihi",
+        "İstinaf dilekçesi ve başvuru tarihi",
+        "Teminat ve mehil belgeleri",
+        "Tahliye davasının açılış tarihi, arabuluculuk başvurusu ve son tutanak",
+        "Son kira yılında ödenen kiraların dekontları",
+        "Tahliye, anahtar teslim veya tevdi tutanağı; yeni kira sözleşmesi, ilan veya abonelik kayıtları"
+      ],
+      "decisive_questions": [
+        "İcra emrindeki tahliye süresi G(T,7) istinaf süresinden G(T,14) önce mi doluyor (İİK 26, resmî metinden doğrula)?",
+        "Kanun yolu başvurusu belgelenip teminat gösterilerek icranın geri bırakılması (İİK 36) istendi mi?",
+        "Boşaltma icra yoluyla mı, anlaşmalı fesih ve teslim belgesiyle mi, yoksa ilam olmadan ihtar üzerine mi oldu?",
+        "Kiralanan boşaltmadan sonra üç yıl içinde haklı sebep olmaksızın başkasına kiralandı mı; son kira yılında ödenen kira ve bunu aşan zarar nasıl ispatlanacak?",
+        "Dava 01.09.2023 veya sonrasında açıldıysa arabuluculuk başvurusu dava hakkı doğduktan sonra mı yapılmıştı?"
+      ],
+      "search_queries": [
+        "tahliye ilamı istinaf icrayı durdurmaz İİK 36 tehir-i icra teminat",
+        "TBK 355 yeniden kiralama yasağı tazminat bir yıllık kira",
+        "ihtiyaç tahliye ilamından sonra fesih ve teslim belgesi tazminat"
+      ],
+      "decision_ids": [
+        "22c1c746-82ef-49f2-9db7-66b4e2326652",
+        "b5ba4a69-f80a-4b47-891c-2229d452eb5d",
+        "485159800",
+        "1155987500"
+      ],
+      "coverage": "İİK 36 tehir-i icrası için havuzda karar yok; İİK 26 ve 36 ile AYM E.2025/92 sonucu doğrulanmadı. İstanbul BAM 35. HD 2018/40 (istinaf esastan reddedildi, kesin; kiracı aleyhine): ilamdan sonra fesih ve teslim belgesiyle, ilam icraya konmadan çıkışta 355 reddedildi; tek BAM kararı. 3. HD 2025/230 (onama): yeniden kiralamada bir yıllık kira tazminatı korundu, fazlası ispatlanamadı. 3. HD 2019/871 (kiraya veren lehine bozma): dava açılmadan ihtar üzerine çıkışta 355 doğmaz. 3. HD 2025/3048 (kesin): TBK 350 arabuluculuğu dava hakkı doğduktan sonra yapılmalıdır.",
+      "counterfacts": [
+        "Kanun yolu başvurusuyla birlikte teminat gösterilip icranın geri bırakılması kararı alınması",
+        "Tahliyenin gereksinim dışındaki bir sebebe (temerrüt, taahhüt, on yıllık uzama) dayanması",
+        "Yeniden kiralamanın üç yıl geçtikten sonra veya haklı sebeple yapılması",
+        "Kiracının ilamdan sonra anlaşmalı fesih ve teslim belgesi imzalaması",
+        "İlamın kanun yolunda kaldırılması veya bozulması"
+      ]
     }
   ]
 }
