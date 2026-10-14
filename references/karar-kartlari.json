@@ -25,7 +25,9 @@
         "url": "https://app.dejure.ai/dokuman/68d56bc1-56de-4c48-897f-26496fe36633",
         "text_chars": 25110,
         "text_sha256_utf8": "43fcd9aa67736d2a3911477a7f4122c1378f2a65df138e8782e646554064bdea",
-        "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula"
+        "review_scope": "gerekce_ve_hukum_incelendi_somut_dosyada_yeniden_dogrula",
+        "local_document_id": "1155987500",
+        "local_note": "Aynı karar yerel derleme seçkisinde (derleme-v5-selected.jsonl, Bedesten kopyası) bulunur. Sağlayıcı farkı nedeniyle metin uzunluğu ve hash farklıdır; alıntıyı hangi kopyaya dayandırıyorsan onunla denetle."
       },
       "checked_on": "2026-09-20",
       "review_status": "reasoning_and_disposition_reviewed",

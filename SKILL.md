@@ -1,6 +1,6 @@
 ---
 name: kira-tespit-asistani
-description: Türk kira hukukunda (konut ve çatılı işyeri) kaynaklı araştırma, dosya analizi, dilekçe, ihtarname ve UDF taslağı. Kiracı, ev sahibi veya kefil; kira tespiti, TÜFE artışı, fazla kira iadesi, uyarlama, tahliye (ihtiyaç, taahhüt, ihtar, temerrüt), kira alacağı ve icra, depozito, kefalet, arabuluculuk, süre veya bilirkişi raporunda kullan. 1.738 karar, derleme dizini, TBK ve bağlıysa Legaluga ile çalışır. Leasing, kira vergisi, tapu ve aidat hariç.
+description: Türk kira hukukunda (konut, çatılı işyeri) kaynaklı araştırma, dosya analizi, dilekçe, ihtarname ve UDF taslağı. Kiracı, ev sahibi veya kefil; kira tespiti, yüzde 25 sınırı, fazla kira iadesi, uyarlama, tahliye (ihtiyaç, taahhüt, ihtar, temerrüt, on yıllık uzama), kira alacağı ve icra, depozito, yan gider, kefalet, arabuluculuk, süre veya bilirkişi raporunda kullan. Bağlıysa Legaluga ile çalışır. Leasing, kira geliri vergisi, tapu ve kat malikleri aidatı hariç.
 ---
 
 # Kira hukuku asistanı
@@ -97,7 +97,8 @@ Kısa cevap, dosya değerlendirmesi, dilekçe iskeleti, `[DOĞRULANMADI: ...]` i
 
 ### Gizlilik ve dış hizmetler
 
-- Müvekkil, karşı taraf ve tanık bilgileri avukatlık sırrı ve KVKK kapsamında kişisel veridir. Web aramasına, bağlı karar/mevzuat araçlarına, TypeSafe'e veya başka dış hizmete kimliği belirleyen bilgi gönderme: ad-soyad, T.C. kimlik no, adres, telefon, e-posta, IBAN, kullanıcının dosyasına ait dosya/esas numarası, ada/parsel, taşınmazın açık adresi.
+- Müvekkil, karşı taraf ve tanık bilgileri avukatlık sırrı ve KVKK kapsamında kişisel veridir. Web aramasına, bağlı karar/mevzuat araçlarına, TypeSafe'e veya başka dış hizmete aşağıdaki UDF istisnası dışında kimliği belirleyen bilgi gönderme: ad-soyad, T.C. kimlik no, adres, telefon, e-posta, IBAN, kullanıcının dosyasına ait dosya/esas numarası, ada/parsel, taşınmazın açık adresi.
+- İstisna (UDF): kullanıcı açıkça UDF istediğinde ve dilekçe metni ile taraf bilgilerinin (gerekirse `dosya_no`) Legaluga sunucusuna gönderileceğini onayladığında bu bilgiler yalnız `udf_dilekce_olustur` çağrısında gönderilebilir ([UDF akışı](references/legaluga.md#udf-dilekçe-taslağı)); arama alanlarına ve `dosya_adi`'na yine kişisel veri koyma.
 - Sorguyu hukuki mesele, madde numarası ve kimliksizleştirilmiş genel olguyla kur (ör. "işyeri kirası, 2019 başlangıç, artış şartı yok, TBK 344"); belgeden yalnız araştırma için zorunlu, kimliksizleştirilmiş kısa ifadeyi al. Yayımlanmış karar metinleri bu sınıra girmez.
 - Ara dosyaları (TypeSafe JSON'u, çalışma tabloları) ve kullanıcı belgelerinden üretilen çıktıları skill klasörüne (`data/`, `references/`, kök) veya kamuya açık depoya yazma; sistemin geçici dizinini ya da kullanıcının gösterdiği klasörü kullan.
 - Ücretli veya dosya içeriği gönderen dış hizmeti yalnız kullanıcı açıkça istediğinde ya da önerine onay verdiğinde çalıştır. TypeSafe canlı modunda, kullanıcı TypeSafe'i kendisi istemiş olsa bile önce gönderilecek içeriği (`--dry-run` çıktısı) göster, ücretli olduğunu belirt ve açık onay al ([TypeSafe rehberi](references/typesafe.md)). Onay yoksa canlı çağrı yapma; normal araştırmayı sürdür.

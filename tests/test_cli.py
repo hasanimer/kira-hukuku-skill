@@ -57,7 +57,7 @@ class EncodingTests(unittest.TestCase):
 
     def test_isolated_mode_finds_sibling_modules(self):
         # -I (3.11+'da -P içerir) betik klasörünü sys.path'e eklemez; betikler kendisi ekler.
-        for script in ('quality.py', 'scenarios.py', 'decision_qa.py', 'triage.py'):
+        for script in ('quality.py', 'scenarios.py', 'decision_qa.py', 'triage.py', 'derleme.py'):
             with self.subTest(script=script):
                 run(script, '--help', flags=('-I',))
 

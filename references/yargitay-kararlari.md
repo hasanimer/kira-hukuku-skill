@@ -8,7 +8,7 @@ python scripts/pool.py get 3ed4fe74-ff6b-4f4e-891c-e355ee63f916
 python scripts/pool.py quote 3ed4fe74-ff6b-4f4e-891c-e355ee63f916 "olağan kullanımdan mı yoksa hor kullanımdan mı kaynaklandığının araştırılması"
 ```
 
-`--court-type yargitay` filtresi yalnız bu on kararlık seçkiyi değil, ana havuzdaki kararların tamamını da kapsar: yardımcı, ana havuz kayıtlarına `court_type: yargitay` etiketini okuma sırasında ekler (BAM seçkisi bu filtreye girmez). Seçki kararlarını sonuçlarda `source_provider: Dejure` ve Dejure `source_url` alanından ayırt et; ana havuz kayıtlarında `source_provider` değeri `Bedesten (kimlikten türetildi)` olur ve bu notlardaki inceleme onlar için geçerli değildir. Birebir alıntıdan önce tam metni oku ve `quote` ile doğrula.
+`--court-type yargitay` filtresi bu on kararlık seçkiyle birlikte ana havuzdaki kararların tamamını ve derleme seçkisindeki Yargıtay kararlarını da kapsar: yardımcı, ana havuz kayıtlarına `court_type: yargitay` etiketini okuma sırasında ekler (BAM seçkisi bu filtreye girmez). Sonuçların kaynağını kayıttaki `collection` alanından ayırt et: `yargitay-selected.jsonl` bu seçkidir (`source_provider: Dejure`, Dejure `source_url`); `topic-rescan-assistant-adjusted.jsonl` ana havuzdur (`source_provider: Bedesten (kimlikten türetildi)`); `derleme-v5-selected.jsonl` [derleme seçkisidir](derleme-v5.md) (`source_provider: Bedesten (Legaluga MCP karar_getir)`). Bu notlardaki inceleme yalnız bu seçki için geçerlidir. Birebir alıntıdan önce tam metni oku ve `quote` ile doğrula.
 
 ## Yargıtay 3. Hukuk Dairesi, E. 2017/4355, K. 2019/607, T. 04.02.2019
 

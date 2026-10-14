@@ -22,7 +22,7 @@ API anahtarı kullanıcı tarafından belirtilen yerel env dosyasından okundu; 
 
 `python -m unittest discover -s tests -v`: kaynak kimliklerinin korunması, sıralamada düşük puanlı adayların kaybolmaması, eksik yanıt ve geçersiz olasılıkların reddi, yinelenen kaynak ve belirsiz tam metin durumunun reddi. Sonradan eklenen testler, TypeSafe'e aday başına yalnız izinli alanların gönderildiğini ve env dosyasından anahtar okuma kurallarını da denetler.
 
-`python scripts/validate.py`: `data/manifest.json` içindeki tüm kararların (20.09.2026 itibarıyla 1.603), dosya ve metin özetlerinin, mevzuat metninin, yerel bağlantıların, SKILL.md ön bilgisinin, `agents/openai.yaml` çağrı adının ve yardımcı komutların denetimi. Bu denetimler canlı servislerin her zaman erişilebilirliğini veya hukuki sonuçların doğruluğunu garanti etmez.
+`python scripts/validate.py`: `data/manifest.json` içindeki tüm kararların (kayıt sayısı manifestin `records` alanındadır), dosya ve metin özetlerinin, derleme dizininin, mevzuat metninin, yerel bağlantıların, SKILL.md ön bilgisinin, `agents/openai.yaml` çağrı adının, UDF kaydetme yardımcısının ve yardımcı komutların denetimi. Bu denetimler canlı servislerin her zaman erişilebilirliğini veya hukuki sonuçların doğruluğunu garanti etmez.
 
 ## 20.09.2026 — ek karar elemesi
 

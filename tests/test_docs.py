@@ -66,6 +66,7 @@ class CorpusFigureTests(unittest.TestCase):
             f"{tr(files['topic-rescan-assistant-adjusted.jsonl'])} ana havuz",
             f"{tr(files['bam-selected.jsonl'])} BAM seçkisi",
             f"{tr(files['yargitay-selected.jsonl'])} Yargıtay seçkisi",
+            f"{tr(files['derleme-v5-selected.jsonl'])} derleme seçkisi",
             f"{tr(courts['Yargıtay 3. Hukuk Dairesi'])} karar Yargıtay 3. HD",
             f"{tr(courts['Yargıtay 6. Hukuk Dairesi'])} karar Yargıtay 6. HD",
             f"{tr(sum(v for y, v in years.items() if 2010 <= y <= 2015))} karar 2010–2015",
@@ -73,6 +74,14 @@ class CorpusFigureTests(unittest.TestCase):
         ]
         for phrase in expected:
             self.assertPhrase(phrase, self.readme, 'README.md')
+
+    def test_skill_collection_figures_match_data(self):
+        files = collections.Counter(r['collection'] for r in self.rows)
+        self.assertPhrase(
+            f"{tr(len(self.rows))} kararın (ana havuz {tr(files['topic-rescan-assistant-adjusted.jsonl'])}, "
+            f"BAM seçkisi {tr(files['bam-selected.jsonl'])}, Yargıtay seçkisi {tr(files['yargitay-selected.jsonl'])}, "
+            f"derleme seçkisi {tr(files['derleme-v5-selected.jsonl'])})",
+            self.skill, 'SKILL.md')
 
     def test_skill_period_figures_match_data(self):
         # SKILL.md ajana havuzun yaş dağılımını verir; veri değişirse bu sayılar da güncellenmeli.

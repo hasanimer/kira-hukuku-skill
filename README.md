@@ -213,7 +213,7 @@ Yerel karar havuzu kira tespiti ağırlıklıdır. Diğer kira hukuku konuların
 | **Karar havuzu** | 1.738 karar · 14.10.2004–21.05.2026 |
 | **İçerik türü** | 578 esas gerekçesi · 572 usul gerekçesi · 14 sınırda · 574 kısa karar (ana havuzda model etiketi, seçkilerde asistan etiketi; insan onaysız) |
 | **Dağılım** | 1.576 ana havuz · 17 BAM seçkisi · 10 Yargıtay seçkisi · 135 derleme seçkisi; 1.105 karar Yargıtay 3. HD, 557 karar Yargıtay 6. HD; 1.229 karar 2010–2015, 152 karar 2020 ve sonrası |
-| **Emsal derlemesi** | Av. Hakan Dimdik derlemesindeki (5. sürüm, 12.09.2026) 278 atıf konu dizininde; 135 kararın tam metni Bedesten'den çift aktarımla alındı, 6'sı ana havuzda, 101 atıf Bedesten'de bulunamadı (çoğu BAM) |
+| **Emsal derlemesi** | Av. Hakan Dimdik derlemesindeki (5. sürüm, 12.09.2026) 278 atıf konu dizininde: 171 atfın gösterdiği 135 kararın tam metni Bedesten'den çift aktarımla pakete alındı, 6 atfın kararı zaten ana havuzda, 101 atıf Bedesten'de bulunamadı (çoğu BAM) |
 | **Kaynak izi** | Ana havuzda ve derleme seçkisinde Bedesten belge kimliği ve resmî adres; BAM/Yargıtay seçkilerinde kayıttaki üçüncü taraf (Dejure) adresi |
 | **Mevzuat** | 6098 sayılı Türk Borçlar Kanunu |
 | **Kaynak kontrolü** | Metin hash'i ve birebir alıntı doğrulaması; künye kayıttaki alanlardan, ana havuzda resmî adres belge kimliğinden türetilir (adres çevrimdışı açılıp doğrulanmaz) |
@@ -243,7 +243,9 @@ python scripts/tbk.py 344
 python scripts/pool.py quote KARAR_KIMLIGI "Pasaj" --ignore-space
 
 # Legaluga'nın döndürdüğü imzasız UDF taslağını doğrulayıp kaydedin
-python scripts/udf.py kaydet yanit.b64 --sha256 YANITTAKI_SHA256 --cikti dilekce.udf
+# (istisna: bu komutu depo kökünde değil kendi çalışma dizininizde çalıştırın; .b64/.udf dosyalarını
+#  skill klasörüne yazmayın, işlem bitince .b64 dosyasını silin)
+python SKILL_KLASORU/scripts/udf.py kaydet yanit.b64 --sha256 YANITTAKI_SHA256 --cikti kira-tespit-dava.udf
 
 # Paketin bütünlüğünü kontrol edin
 python scripts/validate.py
@@ -263,6 +265,7 @@ kira-tespit-asistani/
 ├── references/          Çalışma akışı, modül rehberleri, senaryolar ve karar kartları
 ├── scripts/             Yerel yardımcılar (yalnız Python standart kütüphanesi)
 │   ├── pool.py          Karar havuzunda arama, tam metin ve birebir alıntı doğrulama
+│   ├── derleme.py       Emsal derlemesi konu dizininde arama, gösterme ve doğrulama
 │   ├── tbk.py           6098 sayılı TBK madde erişimi
 │   ├── hesap.py         Kira dönemi çizelgesi, TBK 345 hedef dönem koşulu ve TBK 347 takvimi
 │   ├── deadlines.py     Kira süreleri ve UETS için takvim adayları
@@ -270,6 +273,7 @@ kira-tespit-asistani/
 │   ├── triage.py        İsteğe bağlı TypeSafe yönlendirmesi ve aday sıralama
 │   ├── quality.py       Sınama seti, karar kartları ve insan değerlendirmesi puanlama
 │   ├── decision_qa.py   Kararlardan hazırlanmış soru–yanıt seti
+│   ├── udf.py           Legaluga'nın imzasız UDF taslağını SHA-256 ve zip denetimiyle kaydetme
 │   └── validate.py      Paket bütünlüğü ve komut kontrolleri
 ├── evals/               Sınama dosyaları (cases.json), tetiklenme sorguları (trigger-cases.json) ve karar soru–yanıtları (decision-qa.json)
 ├── tests/               Birim testleri (python -m unittest discover -s tests -v)
@@ -299,7 +303,7 @@ kira-tespit-asistani/
 
 ## Lisans
 
-Betikler, rehberler, etiketler, karar kartları ve yönergeler [MIT lisansı](LICENSE) ile dağıtılır. `data/` altındaki mahkeme kararları ve 6098 sayılı Türk Borçlar Kanunu metni resmî metinlerdir; 5846 sayılı Fikir ve Sanat Eserleri Kanunu'nun 31. maddesi uyarınca, resmen yayımlanmış veya ilan edilmiş olmak şartıyla çoğaltılabilir ve yayılabilir. MIT lisansı bu metinler üzerinde hak iddiası doğurmaz. Karar koleksiyonlarının kaynakları (ana havuz: UYAP Mevzuat ve İçtihat/Bedesten; Yargıtay ve BAM seçkileri: Dejure) ile bütünlük bilgileri [veri notunda](data/README.md) belirtilir; bu açıklama, metinlerin alındığı üçüncü taraf veri tabanlarının kullanım koşullarını kendiliğinden ortadan kaldırmaz.
+Betikler, rehberler, etiketler, karar kartları ve yönergeler [MIT lisansı](LICENSE) ile dağıtılır. Av. Hakan Dimdik derlemesinin (5. sürüm) konu başlıkları, sınıflandırması ve atıf düzeni (`references/derleme-v5.md`, `data/derleme-v5-index.json` ve `data/derleme-v5-selected.jsonl` içindeki derleme atıfları) derleyene aittir, derleyenin izniyle kullanılır ve MIT lisansı kapsamında değildir. `data/` altındaki mahkeme kararları ve 6098 sayılı Türk Borçlar Kanunu metni resmî metinlerdir; 5846 sayılı Fikir ve Sanat Eserleri Kanunu'nun 31. maddesi uyarınca, resmen yayımlanmış veya ilan edilmiş olmak şartıyla çoğaltılabilir ve yayılabilir. MIT lisansı bu metinler üzerinde hak iddiası doğurmaz. Karar koleksiyonlarının kaynakları (ana havuz: UYAP Mevzuat ve İçtihat/Bedesten; derleme seçkisi: UYAP Mevzuat ve İçtihat/Bedesten, Legaluga MCP `karar_getir` ile alındı; Yargıtay ve BAM seçkileri: Dejure) ile bütünlük bilgileri [veri notunda](data/README.md) belirtilir; bu açıklama, metinlerin alındığı üçüncü taraf veri tabanlarının kullanım koşullarını kendiliğinden ortadan kaldırmaz.
 
 ---
 

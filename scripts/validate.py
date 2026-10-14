@@ -119,6 +119,7 @@ def check_pool(manifest, pool):
             fetched = {**pool.metadata(by_id[key]), 'text': by_id[key]['text']}
             require(fetched['text'] == bam['text'] and fetched['source_url'] == bam['source_url']
                     and fetched['collection'] == bam_file.name, 'BAM text or provenance lost')
+            require(fetched.get('court_type') == 'bam', f'BAM selection record lost court_type: {key}')
             if bam.get('redactions'):
                 require(fetched['redactions'] == bam['redactions'] and
                         fetched['source_text_sha256'] == bam['source_text_sha256'],
@@ -135,6 +136,10 @@ def check_pool(manifest, pool):
                        for row in pool_rows)
         require(filtered['total_matches'] == expected, 'BAM filter missed records')
         require(all(r['court_type'] == 'bam' for r in filtered['results']), 'BAM filter leaked')
+        # Hesaplanan beklentiden bağımsız çapa: seçkideki her kayıt filtrede görünmeli.
+        everything = run('pool.py', 'search', 'kira', '--court-type', 'bam', '--limit', '2000')
+        require(sum(r['collection'] == bam_file.name for r in everything['results']) ==
+                manifest['collections'][bam_file.name], 'BAM selection dropped out of --court-type bam')
     yargitay_file = ROOT / 'data/yargitay-selected.jsonl'
     if yargitay_file.exists():
         selected = read_jsonl(yargitay_file)

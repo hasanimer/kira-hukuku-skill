@@ -42,7 +42,7 @@ Aşağıdaki beş kararın tam metni de `data/bam-selected.jsonl` içindedir. İ
 
 Usulden ret kaldırılarak ihtiyaç nedeniyle tahliyeye yeniden hükmedildi.
 
-26.05.2025 tarihli içtihattan önce açılmış 05.08.2024 tarihli davaya özgü öngörülebilirlik değerlendirmesidir; sonraki davalarda erken arabuluculuğun yeterli olduğunu söylemez. Aktarılan Yargıtay 3. HD E.2025/1495 K.2025/3048 kararının gerekçe ve hükmü sonradan ayrıca incelendi (bkz. [kart C01](karar-kartlari.json) ve [tahliye kontrolü](tahliye-ve-uyarlama-kontrol.md)); tam metni yerel havuzda değildir ve BAM metnindeki alıntının lafzı bu kaynakla karşılaştırılmadı. Aktarılan AYM kararı (B. No: 2014/13916, 12/1/2017) bağımsız tam metinden doğrulanmadı. İhtiyaç değerlendirmesinde sözleşme, dekont ve tanık birlikte ele alınmıştır; kirada oturma beyanını tek başına kesin delil sayma.
+26.05.2025 tarihli içtihattan önce açılmış 05.08.2024 tarihli davaya özgü öngörülebilirlik değerlendirmesidir; sonraki davalarda erken arabuluculuğun yeterli olduğunu söylemez. Aktarılan Yargıtay 3. HD E.2025/1495 K.2025/3048 kararının gerekçe ve hükmü sonradan ayrıca incelendi (bkz. [kart C01](karar-kartlari.json) ve [tahliye kontrolü](tahliye-ve-uyarlama-kontrol.md)); tam metni yerel derleme seçkisindedir (`python scripts/pool.py get 1155987500`; resmî adres https://mevzuat.adalet.gov.tr/ictihat/1155987500) ve BAM kararındaki alıntı, boşluk farkları dışında bu metinle lafzen örtüşür. Aktarılan AYM kararı (B. No: 2014/13916, 12/1/2017) bağımsız tam metinden doğrulanmadı. İhtiyaç değerlendirmesinde sözleşme, dekont ve tanık birlikte ele alınmıştır; kirada oturma beyanını tek başına kesin delil sayma.
 
 E./K. numaraları karar metninde yer almaz; Dejure üst verisinden alınmıştır, dilekçede kullanmadan önce doğrula.
 
@@ -185,6 +185,6 @@ python scripts/pool.py get KIMLIK
 python scripts/pool.py quote KIMLIK "Dilekçede kullanılacak alıntının tamamı"
 ```
 
-Bu sayfada `Kimlik` olarak verilen her kayıt aynı komutla okunur.
+Bu sayfada `Kimlik` olarak verilen her kayıt aynı komutla okunur. `--court-type bam` derleme seçkisindeki 4 BAM kararını da döndürür (`collection: derleme-v5-selected.jsonl`, adres resmî Bedesten sayfası); bunların `research_notes` alanı derleme kaynağını ve atıflarını taşır, kullanım notları [derleme dizinindedir](derleme-v5.md).
 
 Sonuçlardaki `research_notes` asistan değerlendirmesidir; mahkeme metni değildir. Atıf ve alıntıdan önce `get` ile metni oku ve `quote` ile birebir eşleşmeyi kontrol et. Bu seçki ülke çapındaki BAM uygulamasının tamamını temsil etmez.
