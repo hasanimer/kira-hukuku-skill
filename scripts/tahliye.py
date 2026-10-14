@@ -2,7 +2,7 @@
 
 Katalog references/tahliye-yollari.json, rehber references/tahliye.md dosyasıdır. Yalnız standart
 kütüphane kullanır. Komutlar: list, yol, emsal, validate. Sebep anahtarla, aksan/büyük harf farkı
-gözetmeden veya kısa adla verilebilir (ör. temerrüt, 315, 352/2, yeni malik).
+gözetmeden veya kısa adla verilebilir (ör. temerrüt, 315, TBK 316/2, İİK 269, 352/2, yeni malik).
 
 `yol --tarih` her kurala aynı tarihi girdi olarak verir; sonuç deadlines.py ile aynı ham takvim
 adayıdır, hukuki son gün görüşü değildir. Tatil, adli tatil, arabuluculuk durması ve TBK 353
@@ -10,10 +10,12 @@ uzaması uygulanmaz. Her süreyi kendi başlangıç olayının tarihiyle ayrı h
 """
 import argparse
 from datetime import date
+import functools
 import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 # Kardeş modül içe aktarımı PYTHONSAFEPATH / python -I altında da çalışsın.
@@ -39,9 +41,10 @@ GROUNDS = ('ortak_usul', 'temerrut', 'iki_hakli_ihtar', 'taahhut', 'ihtiyac', 'y
            'on_yillik_uzama', 'akde_aykirilik', 'kiracinin_konutu_ve_diger', 'tahliye_sonrasi')
 # Kısa adlar canonical() biçiminde: aksansız, küçük harf, ayraçlar tek tire.
 _ALIAS_SOURCE = {
-    'temerrut': ('temerrüt', 'temerrut', '315', 'odeme'),
+    'temerrut': ('temerrüt', 'temerrut', '315', 'odeme', '269', 'ilamsiz', 'ilamsiz-tahliye',
+                 '13-ornek'),
     'iki_hakli_ihtar': ('iki-ihtar', 'iki-hakli-ihtar', '352-2'),
-    'taahhut': ('taahhüt', 'taahhut', 'taahhutname', '352-1'),
+    'taahhut': ('taahhüt', 'taahhut', 'taahhutname', '352-1', '272', '14-ornek'),
     'ihtiyac': ('ihtiyaç', 'ihtiyac', 'gereksinim', '350', 'yeniden-insa'),
     'yeni_malik': ('yeni-malik', '351'),
     'on_yillik_uzama': ('on-yil', '10yil', '10-yil', '347', 'uzama'),
@@ -50,6 +53,11 @@ _ALIAS_SOURCE = {
     'ortak_usul': ('usul', 'arabuluculuk', 'ortak'),
     'tahliye_sonrasi': ('sonrasi', 'tehir', '355', 'icra'),
 }
+# Kanun önekli yazım (TBK 350, İİK 269): önek yalnız kendi kanununun madde kısa adında düşer.
+IIK_ARTICLES = ('269', '272')
+LAW_PREFIX = re.compile(r'(tbk|iik)-?(\d{3}(?:-\d)?)')
+# Fıkra veya bent yazımı (316/2, 350/1) maddenin kısa adına iner; 352 fıkraları ayrı sebeptir.
+PARAGRAPHS = {'315': 2, '316': 3, '347': 3, '350': 2, '351': 2}
 TOP_KEYS = ('schema_version', 'version', 'checked_on', 'note', 'grounds')
 ENTRY_KEYS = ('key', 'title', 'guide_heading', 'legal_basis', 'requester', 'scope', 'notice',
               'preconditions', 'deadlines', 'routes', 'tenant_defenses', 'pitfalls', 'decisions',
@@ -89,12 +97,26 @@ for _key, _names in _ALIAS_SOURCE.items():
         ALIASES[canonical(_name)] = _key
 
 
+def _candidates(sebep):
+    """Kısa ad adayları: yazıldığı gibi, kanun öneki atılmış ve fıkrası atılmış biçim."""
+    wanted = canonical(sebep)
+    candidates = [wanted]
+    prefixed = LAW_PREFIX.fullmatch(wanted)
+    if prefixed:
+        law, bare = prefixed.groups()
+        if (law == 'iik') == (bare in IIK_ARTICLES):
+            candidates.append(bare)
+    article, _, paragraph = candidates[-1].partition('-')
+    if paragraph.isdigit() and 1 <= int(paragraph) <= PARAGRAPHS.get(article, 0):
+        candidates.append(article)
+    return candidates
+
+
 def resolve(sebep, keys=GROUNDS):
     """Sebebi katalog anahtarına çevirir; bulunamazsa None."""
     if sebep in keys:
         return sebep
-    wanted = canonical(sebep)
-    for candidate in (wanted, wanted.removeprefix('tbk-')):
+    for candidate in _candidates(sebep):
         for key in keys:
             if canonical(key) == candidate:
                 return key
@@ -132,6 +154,11 @@ def read_catalog(root=ROOT):
 
 def _text(value, limit=MAX_TEXT):
     return isinstance(value, str) and bool(value.strip()) and len(value) <= limit
+
+
+def _member(value, allowed):
+    """Değer izinli metin anahtarlarından biri mi; liste veya nesne TypeError doğurmaz."""
+    return isinstance(value, str) and value in allowed
 
 
 def _iso_day(value):
@@ -215,6 +242,39 @@ def command_problems(command, rule):
     return []
 
 
+@functools.lru_cache(maxsize=None)
+def _help_output(script, subcommand):
+    """Betiğin (alt komutunun) --help çıktısı: (çıkış kodu, metin). Süreç başına bir kez çalışır."""
+    args = [sys.executable, str(SCRIPTS / script), *([subcommand] if subcommand else []), '--help']
+    # Python 3.14 argparse renkli yardım basabilir; renk kodları seçenek aramasını bozmasın.
+    env = {name: value for name, value in os.environ.items() if name != 'FORCE_COLOR'}
+    env.update(PYTHONIOENCODING='utf-8', COLUMNS='200', NO_COLOR='1', PYTHON_COLORS='0')
+    try:
+        proc = subprocess.run(args, capture_output=True, timeout=60, env=env, cwd=str(ROOT))
+    except (OSError, subprocess.SubprocessError) as exc:
+        return None, str(exc)
+    return proc.returncode, proc.stdout.decode('utf-8', errors='replace')
+
+
+def probe_command(command):
+    """deadlines.py dışındaki komutun alt komutunu ve seçeneklerini betiğin --help çıktısıyla sınar.
+    Biçimi command_problems ile geçerli komut beklenir; boş liste geçerli demektir."""
+    tokens = command.split()
+    script, args = tokens[1][len('scripts/'):], tokens[2:]
+    subcommand = None
+    if args and not args[0].startswith('-') and not PLACEHOLDER.fullmatch(args[0]):
+        subcommand = args[0]
+    shown = ' '.join(['python', tokens[1], *([subcommand] if subcommand else []), '--help'])
+    code, text = _help_output(script, subcommand)
+    if code != 0:
+        return [f'{shown} çalışmadı (çıkış {code}); alt komutu denetle']
+    problems = []
+    for flag in (token.split('=', 1)[0] for token in args if token.startswith('--')):
+        if not re.search(rf'(?<![\w-]){re.escape(flag)}(?![\w-])', text):
+            problems.append(f'{flag} seçeneği {shown} çıktısında yok')
+    return problems
+
+
 def _check_keys(item, expected, where, need):
     present = set(item)
     missing = [k for k in expected if k not in present]
@@ -244,7 +304,7 @@ def _check_deadline(item, where, need):
     rule_ok = need(rule is None or (isinstance(rule, str) and rule in deadlines.RULES),
                    f'{where}.rule: null veya deadlines.py kuralı ({", ".join(deadlines.RULES)}) '
                    f'olmalı: {rule!r}')
-    need(item.get('confidence') in CONFIDENCE,
+    need(_member(item.get('confidence'), CONFIDENCE),
          f'{where}.confidence: {"/".join(CONFIDENCE)} olmalı: {item.get("confidence")!r}')
     command = item.get('command')
     if rule_ok and _text(command):
@@ -255,7 +315,7 @@ def _check_deadline(item, where, need):
 def _check_route(item, where, need):
     _check_keys(item, ROUTE_KEYS, where, need)
     _check_texts(item, ROUTE_TEXT, where, need)
-    need(item.get('arabuluculuk') in MEDIATION,
+    need(_member(item.get('arabuluculuk'), MEDIATION),
          f'{where}.arabuluculuk: {"/".join(MEDIATION)} olmalı: {item.get("arabuluculuk")!r}')
 
 
@@ -286,6 +346,11 @@ def _check_entry(entry, where, need):
                 label = f'{where}.{field}[{index}]'
                 if need(isinstance(item, dict), f'{label}: nesne olmalı'):
                     check(item, label, need)
+    deadline_items = entry.get('deadlines')
+    names = [item['name'] for item in (deadline_items if isinstance(deadline_items, list) else [])
+             if isinstance(item, dict) and _text(item.get('name'))]
+    repeated = sorted({name for name in names if names.count(name) > 1})
+    need(not repeated, f'{where}.deadlines: aynı ad iki kez: {", ".join(repeated)}')
     if 'decisions' in entry:
         decisions = _check_list(entry['decisions'], f'{where}.decisions', need)
         need(len(decisions) <= MAX_DECISIONS, f'{where}.decisions: en çok {MAX_DECISIONS} karar')
@@ -325,7 +390,8 @@ def check_structure(catalog):
     if not need(isinstance(catalog, dict), 'Katalog bir JSON nesnesi olmalı'):
         return errors
     _check_keys(catalog, TOP_KEYS, 'katalog', need)
-    need(catalog.get('schema_version') == SCHEMA_VERSION,
+    # bool int alt türüdür ve 1.0 == 1'dir; şema sürümü tam sayı olarak yazılmalı.
+    need(type(catalog.get('schema_version')) is int and catalog['schema_version'] == SCHEMA_VERSION,
          f'schema_version {SCHEMA_VERSION} olmalı: {catalog.get("schema_version")!r}')
     version = catalog.get('version')
     need(isinstance(version, str) and VERSION.fullmatch(version)
@@ -443,8 +509,10 @@ def check_sources(catalog, rows):
 
 
 def schedule(entry, start):
-    """Kuralı olan her süre için deadlines.calculate sonucunu üretir (aynı girdi tarihiyle)."""
-    items = []
+    """Kuralı olan her süre için deadlines.calculate sonucunu üretir (aynı girdi tarihiyle).
+    Aynı komutu (aynı kural, yer tutucu ve seçenekler) paylaşan sonraki satırda sonuç tekrarlanmaz:
+    sonuc null, sonuc_ayni hesaplanan ilk satırın adıdır."""
+    items, computed = [], {}
     for item in entry['deadlines']:
         rule = item['rule']
         if rule is None:
@@ -452,25 +520,32 @@ def schedule(entry, start):
         tokens = item['command'].split()
         _, options = deadline_call(tokens[2:])
         tokens[3] = start.isoformat()
-        row = {'name': item['name'], 'rule': rule, 'baslangic_olayi': item['start_event'],
-               'guven': item['confidence'], 'komut': ' '.join(tokens)}
+        row = {'name': item['name'], 'sure': item['duration'], 'rule': rule,
+               'baslangic_olayi': item['start_event'], 'guven': item['confidence'],
+               'komut': ' '.join(tokens)}
         if isinstance(options.get('count'), str):
             row['sonuc'] = None
             row['atlandi'] = (f'Süre miktarı belgeye bağlı ({options["count"]}); komutu --count '
                               'değeriyle ayrı çalıştır.')
+        elif item['command'] in computed:
+            row['sonuc'] = None
+            row['sonuc_ayni'] = computed[item['command']]
         else:
             row['sonuc'] = deadlines.calculate(rule, start, **options)
+            computed[item['command']] = item['name']
         items.append(row)
     return items
 
 
 def schedule_warning(start):
-    return (f'Aynı tarih ({start.isoformat()}) bütün kurallara girdi olarak verildi; her süre kendi '
-            'başlangıç olayından (baslangic_olayi) işler ve her kuralın girdi anlamı sonuc.meaning '
-            'alanında yazılıdır. Bu tarih çoğu kural için doğru girdi değildir: her süreyi belgeden '
-            'belirlediğin kendi başlangıç tarihiyle ayrı çağır (komut alanı). Ham takvim adayıdır; '
-            'tatil, adli tatil, arabuluculuk durması ve TBK 353 uzaması uygulanmadı. Güveni orta veya '
-            'düşük süreleri resmî metinden ve güncel içtihattan doğrula.')
+    return (f'Aynı tarih ({_gg_aa_yyyy(start.isoformat())}) bütün kurallara girdi olarak verildi; her '
+            'süre kendi başlangıç olayından (baslangic_olayi) işler ve her kuralın girdi anlamı '
+            'sonuc.meaning alanında yazılıdır. Bu tarih çoğu kural için doğru girdi değildir: her süreyi '
+            'belgeden belirlediğin kendi başlangıç tarihiyle ayrı çağır (komut alanı). Aynı komutu '
+            'paylaşan satırın sonucu bir kez verilir (sonuc_ayni). Ham takvim adayıdır; tatil, adli tatil, '
+            'arabuluculuk durması ve TBK 353 uzaması uygulanmadı. Güveni orta veya düşük süreleri ve İİK, '
+            'HMK, HUAK veya TMK dayanaklı süreleri resmî metinden ve güncel içtihattan doğrula; her '
+            'kuralın kontrolleri sonuc.pending_checks (metinde "Kontrol") satırlarındadır.')
 
 
 def validate(root=ROOT, pool_dir=None):
@@ -490,6 +565,11 @@ def validate(root=ROOT, pool_dir=None):
                 schedule(entry, PROBE_DAY)
             except (ValueError, OverflowError, TypeError) as exc:
                 errors.append(f'{entry["key"]}: deadlines.py hesabı çalışmadı: {exc}')
+            # Diğer betik komutlarının alt komutu ve seçenekleri betiğin --help çıktısında olmalı.
+            for index, item in enumerate(entry['deadlines']):
+                if item['rule'] is None and item['command'] != NO_TOOL:
+                    errors += [f'{entry["key"]}.deadlines[{index}].command: {problem}'
+                               for problem in probe_command(item['command'])]
     errors += check_guide(catalog, root)
     try:
         rows, _ = pool.load_pool(Path(pool_dir) if pool_dir else root / 'data')
@@ -564,13 +644,19 @@ def render_text(card):
     if 'takvim' in card:
         lines.extend(['', f"Ham takvim adayı (girdi {_gg_aa_yyyy(card['tarih'])}):", card['uyari']])
         for item in card['takvim']:
-            head = f"- {item['name']} [{item['rule']}; güven: {CONFIDENCE[item['guven']]}]"
-            if item['sonuc'] is None:
+            head = (f"- {item['name']} ({item['sure']}) "
+                    f"[{item['rule']}; güven: {CONFIDENCE[item['guven']]}]")
+            if 'sonuc_ayni' in item:
+                lines.append(f"{head}: sonuç “{item['sonuc_ayni']}” satırındadır (aynı komut).")
+            elif item['sonuc'] is None:
                 lines.append(f"{head}: hesaplanmadı. {item['atlandi']}")
             else:
+                result = item['sonuc']
                 shown = ', '.join(f'{name} {_gg_aa_yyyy(value)}'
-                                  for name, value in item['sonuc']['raw_dates'].items())
-                lines.extend([f'{head}: {shown}', f"  Girdinin anlamı: {item['sonuc']['meaning']}"])
+                                  for name, value in result['raw_dates'].items())
+                lines.extend([f'{head}: {shown}', f"  Girdinin anlamı: {result['meaning']}",
+                              f"  Araç dayanağı: {result['basis']}"])
+                lines.extend(f'  Kontrol: {check}' for check in result['pending_checks'])
             lines.append(f"  Ayrı çağır: {item['komut']}")
     lines.extend(['', f"Katalog sürümü: {card['katalog_surumu']}"])
     return '\n'.join(lines) + '\n'
@@ -584,13 +670,6 @@ class Parser(argparse.ArgumentParser):
         self.exit(EXIT_USAGE, f'HATA: {message}\n')
 
 
-def _arg_date(value):
-    try:
-        return deadlines.parse_date(value)
-    except ValueError as exc:
-        raise argparse.ArgumentTypeError(str(exc)) from None
-
-
 def build_parser():
     root_help = 'Skill kökü (varsayılan: bu betiğin üst klasörü); katalog ve rehber buradan okunur'
     parser = Parser(description=__doc__, epilog=EPILOG,
@@ -599,13 +678,13 @@ def build_parser():
     # --root alt komuttan sonra da yazılabilir; verilmezse üst ayrıştırıcının değeri korunur.
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument('--root', type=Path, default=argparse.SUPPRESS, help=root_help)
-    sebep_help = ('Sebep anahtarı veya kısa adı (ör. temerrut, ihtiyaç, 352/2, yeni malik); '
-                  'liste için: python scripts/tahliye.py list')
+    sebep_help = ('Sebep anahtarı veya kısa adı (ör. temerrut, ihtiyaç, TBK 316/2, İİK 269, 352/2, '
+                  'yeni malik); liste için: python scripts/tahliye.py list')
     sub = parser.add_subparsers(dest='command', required=True, parser_class=Parser)
     sub.add_parser('list', parents=[common], help='Sebepleri, dayanaklarını ve rehber bağlantısını listeler')
     yol = sub.add_parser('yol', parents=[common], help='Sebebin rota kartı (koşullar, süreler, yollar, emsaller)')
     yol.add_argument('sebep', help=sebep_help)
-    yol.add_argument('--tarih', type=_arg_date,
+    yol.add_argument('--tarih', type=deadlines._arg_date,
                      help='YYYY-AA-GG, GG.AA.YYYY veya GG/AA/YYYY; kuralı olan her süreye aynı tarih '
                           'girdi olarak verilir (ham takvim adayı; her süreyi ayrıca kendi tarihiyle hesapla)')
     yol.add_argument('--metin', action='store_true', help='JSON yerine kısa Türkçe metin bas')
@@ -634,8 +713,9 @@ def main(argv=None):
         key = resolve(args.sebep)
         if key is None:
             print(f'HATA: Bilinmeyen tahliye sebebi: {args.sebep!r}. Geçerli anahtarlar: '
-                  f'{", ".join(GROUNDS)}. Kısa adlar da kabul edilir (ör. temerrüt, 352/2, '
-                  'yeni malik, 10yil, tehir).', file=sys.stderr)
+                  f'{", ".join(GROUNDS)}. Kısa adlar da kabul edilir (ör. temerrüt, TBK 316/2, '
+                  'İİK 269, 352/2, yeni malik, 10yil, tehir); 352 için fıkrayı yaz (352/1, 352/2, '
+                  '352/3).', file=sys.stderr)
             return EXIT_NOT_FOUND
     catalog = load_catalog(args.root)
     if args.command == 'list':

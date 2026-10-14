@@ -170,7 +170,7 @@ python scripts/tahliye.py yol "yeni malik" --metin
 python scripts/tahliye.py emsal temerrut
 ```
 
-`yol` sebebin koşullarını, sürelerini (başlangıç olayı, formül, güven düzeyi), yollarını, arabuluculuk durumunu ve emsallerini verir; `emsal` doğrulanmış kararları `python scripts/pool.py get <id>` komutlarıyla listeler. Sebep anahtarla veya kısa adla (ör. `temerrüt`, `352/2`) verilebilir. `--tarih` her kurala aynı tarihi verir; her süreyi kendi başlangıç olayının tarihiyle ayrıca hesaplayın. Katalog, rehber başlıkları ve alıntılar `python scripts/tahliye.py validate` ile denetlenir.
+`yol` sebebin koşullarını, sürelerini (başlangıç olayı, formül, güven düzeyi), yollarını, arabuluculuk durumunu ve emsallerini verir; `emsal` doğrulanmış kararları `python scripts/pool.py get <id>` komutlarıyla listeler. Sebep anahtarla veya kısa adla (ör. `temerrüt`, `352/2`, `316/2`, `iik269`) verilebilir. `--tarih` her kurala aynı tarihi verir; her süreyi kendi başlangıç olayının tarihiyle ayrıca hesaplayın. `python scripts/tahliye.py validate` katalog yapısını, süre komutlarını, katalogdaki künye ve alıntıları ve rehber başlıklarını denetler; rehber ve şablon metnindeki künye ve alıntıları denetlemez, bunları `python scripts/pool.py quote` ile ayrıca doğrulayın.
 
 ### Süre ve kira dönemi hesapları
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "2026-10-14.1",
+  "version": "2026-10-14.2",
   "checked_on": "2026-10-14",
   "note": "Tahliye yolları için yönlendirme haritasıdır; hukuki görüş değildir. Tarihler ham takvim adayıdır; tatil, durma ve uzama ayrıca incelenir.",
   "grounds": [
@@ -15,11 +15,11 @@
         "HUAK 18/4–5 (anlaşma belgesi; fıkraları resmî metinden doğrula)",
         "HMK 4/1-a",
         "HMK 316/1-a, 317 (resmî metinden doğrula)",
-        "HMK 6, 7, 17, 19 (resmî metinden doğrula)",
+        "HMK 6, 7, 10, 17, 19 (resmî metinden doğrula)",
         "HMK 20/1, 115",
         "HMK 345, 361/1, 362/1-b, Ek m.1 (resmî metinden doğrula)",
         "492 s.K. m.17; m.28/1-a (resmî metinden doğrula)",
-        "TBK 89",
+        "TBK 89/1-2 (ifa yeri; yetki HMK 10)",
         "TBK 14, 15, 348",
         "TBK 349/3; TMK 194 (TMK metnini resmî kaynaktan doğrula)",
         "TBK 353, 354",
@@ -29,7 +29,7 @@
       ],
       "requester": "Kiraya veren; malik olması gerekmez (12. HD 2025/7823). Takipte sözleşmedeki bütün kiraya verenler bütün kiracılara ve TMK 194/son bildirimi yapmış eşe karşı hareket eder; ölümde mirasçılar elbirliğiyle (TMK 640). Taahhüde dayalı yolu yalnız kiraya veren kullanır (3. HD 2025/4997); TBK 350 davasını kiraya veren olmayan malik de açabilir (3. HD 2018/1605, HUMK dönemi). Dava yolunda birlikte hareket şartını yalnız İstanbul BAM 36. HD aramıştır.",
       "scope": "HUAK 18/B/1-a ve HMK 4/1-a lafzen bütün kira ilişkilerini kapsar; TBK 354 sınırlılığı yalnız konut ve çatılı işyerindedir. Finansal kiralama ve 2886 m.75 idari tahliye dışarıda. Dava şartı 01.09.2023 ve sonrasında açılan davalara uygulanır; ölçüt dava tarihidir. 6217 geçici 2 döneminde (01.07.2012–01.07.2020) de sözleşmeyle ek tahliye sebebi konamaz (3. HD 2024/217). HUMK ve 818/6570 dönemi kararlarını usulde ihtiyatla kullan.",
-      "notice": "Sebebe bağlıdır: TBK 315, 316/2, 347/1, 347/2, 351/1 ve 352/2 yazılı bildirim ister; TBK 353 isteğe bağlıdır; 350, 352/1, 352/3 ön ihtar istemez. Arabuluculuk ihtar yerine geçmez. Yazılı ve imzalı (TBK 14, 348): noter, UETS veya güvenli e-imza. Bütün kiraya verenler adına, bütün kiracılara, bildirim yapmış eşe ayrı ayrı (TBK 349/3) ve TBK 356 uyarınca sürdürenlere. Belirleyici tarih tebliğdir; UETS'de G(U,5).",
+      "notice": "Sebebe bağlıdır: TBK 315, 316/2, 347/1, 347/2, 351/1 ve 352/2 yazılı bildirim ister; TBK 353 isteğe bağlıdır; belirli süreli sözleşmede 350, 352/1, 352/3 kanuni ön ihtar istemez; 350'de belirsiz sürede TBK 328–329'a göre yazılı fesih bildirimi, kiraya vereni bağlayan sözleşmesel ihbar kaydı varsa ona uygun bildirim gerekir. Arabuluculuk ihtar yerine geçmez. Yazılı ve imzalı (TBK 14, 348): noter (gerekirse noterin UETS üzerinden tebliği) veya güvenli e-imza; özel kişi UETS'yi doğrudan kullanamaz. Bütün kiraya verenler adına, bütün kiracılara, bildirim yapmış eşe ayrı ayrı (TBK 349/3) ve TBK 356 uyarınca sürdürenlere. Belirleyici tarih tebliğdir; UETS'de G(U,5).",
       "preconditions": [
         "Kira ilişkisi ve türü belirlenmiş olmalı (TBK 299, 339, 357); ilamsız tahliye dışındaki bütün uyuşmazlıklarda sulh hukuk görevlidir (HMK 4/1-a).",
         "Yol seçilmiş olmalı: sulh hukukta dava (TBK 347, 350–352; 315, 316, 331 feshine dayalı tahliye) veya ilamsız icra (İİK 269, 272). TBK 352/2 yalnız dava; konut ve çatılı işyerinde salt süre bitimine 14 örnek dayanamaz (TBK 347/1).",
@@ -45,11 +45,11 @@
           "name": "Arabuluculuk başvurusu: TBK 350/1 ihtiyaç",
           "start_event": "E = belirli sürelide süre veya TBK 347/1 ile uzamış kira yılının bitimi; belirsiz sürelide genel hükümlere göre fesih tarihi",
           "duration": "E'den sonra başlayan bir ay; E'den önce başvurma",
-          "formula": "E < başvuru ≤ A(E,1); başvurudan son tutanağa kadar süre durur (18/A/15)",
+          "formula": "E < başvuru ≤ A(E,1); başvurudan son tutanağa kadar süre durur (18/A/15). Sınır günleri tartışmalı: temkinli pencere G(E,1)–A(G(E,-1),1) (gereksinim bölümü).",
           "rule": "tbk350",
           "command": "python scripts/deadlines.py tbk350 <sure-sonu>",
           "basis": "TBK 350/1; HUAK 18/B/1-a, 18/A/15; 3. HD 2025/1495–3048",
-          "confidence": "high"
+          "confidence": "medium"
         },
         {
           "name": "Arabuluculuk başvurusu: TBK 350/2 yeniden inşa",
@@ -72,13 +72,23 @@
           "confidence": "low"
         },
         {
-          "name": "Arabuluculuk başvurusu: TBK 351/2, 352/2, 352/3",
-          "start_event": "Sözleşme süresinin veya ilgili kira yılının bitimi E",
+          "name": "Arabuluculuk başvurusu: TBK 351/2, 352/3",
+          "start_event": "Sözleşme süresinin veya uzama yılının bitimi E",
           "duration": "İhtiyaten E'den sonra ve bir ay içinde",
           "formula": "E < başvuru ≤ A(E,1); güven, pencereden önce yapılan başvurunun yeterliliğine ilişkindir (Yargıtay kararı yok); pencere hesabının güveni sebep bölümündedir",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <sure-sonu> --count 1 --unit ay",
-          "basis": "TBK 351/2, 352/2, 352/3; HUAK 18/B/1-a (Yargıtay kararı yok)",
+          "basis": "TBK 351/2, 352/3; HUAK 18/B/1-a (Yargıtay kararı yok)",
+          "confidence": "low"
+        },
+        {
+          "name": "Arabuluculuk başvurusu: TBK 352/2 iki haklı ihtar",
+          "start_event": "Kira süresinin veya ihtarların yapıldığı kira yılının son günü E1; yıldönümü E2 = G(E1,1)",
+          "duration": "İhtiyaten yıldönümünün ertesi gününden kira yılı bitimini izleyen bir ayın sonuna kadar",
+          "formula": "G(E2,1) ≤ başvuru ≤ A(E1,1) (3. HD 2018/5110 kira yılı sonunu yıldönümü saydı); güven, pencereden önce yapılan başvurunun yeterliliğine ilişkindir (Yargıtay kararı yok); peşin kirada W1/W2 ayrımı iki haklı ihtar bölümündedir",
+          "rule": "takvim",
+          "command": "python scripts/deadlines.py takvim <kira-yili-son-gunu> --count 1 --unit ay",
+          "basis": "TBK 352/2; HUAK 18/B/1-a; 3. HD 2018/5110; 3. HD 2025/3118 (Yargıtay kararı yok)",
           "confidence": "low"
         },
         {
@@ -92,13 +102,23 @@
           "confidence": "low"
         },
         {
-          "name": "Dava süresi öngörülmeyen yollar (TBK 347, 315, 316, 331)",
-          "start_event": "347/1: izleyen uzama yılının sonu F; 347/2: genel hükümlere göre fesih tarihi; 315, 316, 331: sözleşmenin sona erdiği gün",
-          "duration": "Üst sınırlı süre yok; sona ermeden sonra",
-          "formula": "347/1: dava ≥ F (3. HD 2017/6383); temkinli başvuru > F. Diğerleri: başvuru > sona erme günü",
+          "name": "Dava süresi öngörülmeyen yol: TBK 347 (araç yalnız 347/1)",
+          "start_event": "İzleyen uzama yılının sonu F (347/2: genel hükümlere göre fesih dönemi sonu P)",
+          "duration": "Üst sınırlı süre yok; dava F günü dahil sonrası, arabuluculuk temkinli G(F,1) ve sonrası",
+          "formula": "347/1: dava ≥ F (3. HD 2017/3032–6383); temkinli arabuluculuk başvurusu ≥ G(F,1) (F günü 3. HD 2025/3048 kıyasıyla tartışmalı). Gecikme zımni yenileme tartışması doğurabilir; gecikmeden başvur (çıkarım).",
           "rule": "tbk347",
           "command": "python scripts/deadlines.py tbk347 <ilk-sure-bitimi>",
-          "basis": "TBK 347, 315, 316, 331; HUAK 18/B/1-a; 3. HD 2017/3032–6383",
+          "basis": "TBK 347; HUAK 18/B/1-a; 3. HD 2017/3032–6383; 3. HD 2017/7129–17713 (347/2)",
+          "confidence": "medium"
+        },
+        {
+          "name": "Dava süresi öngörülmeyen yollar: TBK 315, 316, 331 feshine dayalı tahliye",
+          "start_event": "Sözleşmenin sona erdiği gün (315: ödeme süresinin bitimi; 316: giderim süresinin bitimi veya derhal feshin ulaşması; 331: bildirim süresinin sonu)",
+          "duration": "Üst sınırlı süre yok; sona ermeden sonra",
+          "formula": "başvuru > sona erme günü; kanuni üst sınır yok. Gecikme ve çekincesiz kira kabulü zımni yenileme veya fesihten feragat tartışması doğurabilir; gecikmeden başvur (çıkarım). tbk347 aracı bu yollar için tarih üretmez.",
+          "rule": null,
+          "command": "yok",
+          "basis": "TBK 315, 316, 331; HUAK 18/B/1-a (Yargıtay kararı yok)",
           "confidence": "medium"
         },
         {
@@ -172,13 +192,23 @@
           "confidence": "medium"
         },
         {
-          "name": "İlamsız tahliye: ödeme veya tahliye emrine itiraz",
-          "start_event": "Ödeme emrinin (13 örnek) veya tahliye emrinin (14 örnek) tebliği T",
+          "name": "İlamsız tahliye: 13 örnek ödeme emrine itiraz (İİK 269)",
+          "start_event": "Ödeme emrinin (13 örnek) tebliği T",
           "duration": "Yedi gün",
-          "formula": "G(T,7)",
+          "formula": "G(T,7); yedi gün ödeme süresini kısaltmaz. Süre Yargıtay kararlarında aktarılan madde metninden kontrol edildi; resmî metinden doğrula.",
           "rule": "takvim",
-          "command": "python scripts/deadlines.py takvim <emir-teblig-tarihi> --count 7 --unit gun",
-          "basis": "İİK 269, 272 (resmî metinden doğrula); arabuluculuk aranmaz",
+          "command": "python scripts/deadlines.py takvim <odeme-emri-teblig-tarihi> --count 7 --unit gun",
+          "basis": "İİK 269/2 (12. HD 2025/5902 ve 2025/7528 aktarımı; resmî metinden doğrula); arabuluculuk aranmaz",
+          "confidence": "high"
+        },
+        {
+          "name": "İlamsız tahliye: 14 örnek tahliye emrine itiraz (İİK 272)",
+          "start_event": "Tahliye emrinin (14 örnek) tebliği T",
+          "duration": "Yedi gün",
+          "formula": "G(T,7); son gün resmî tatile rastlarsa İİK 19 (araç uygulamaz).",
+          "rule": "takvim",
+          "command": "python scripts/deadlines.py takvim <tahliye-emri-teblig-tarihi> --count 7 --unit gun",
+          "basis": "İİK 272 (ikincil kaynak; resmî metinden doğrula); arabuluculuk aranmaz",
           "confidence": "medium"
         },
         {
@@ -205,7 +235,7 @@
       "routes": [
         {
           "route": "Sulh hukukta tahliye davası (TBK 347, 350, 351, 352; TBK 315, 316, 331 feshine dayalı tahliye)",
-          "forum": "Sulh hukuk mahkemesi (HMK 4/1-a). Yetki: davalının veya davalılardan birinin yerleşim yeri ya da sözleşme kurulurken taşınmazın bulunduğu ifa yeri (TBK 89); kesin yetki yok (6. HD 2013/14529).",
+          "forum": "Sulh hukuk mahkemesi (HMK 4/1-a). Yetki: davalının veya davalılardan birinin yerleşim yeri (HMK 6, 7/1) ya da sözleşme kurulurken taşınmazın bulunduğu ifa yeri (HMK 10, TBK 89/1-2; HMK'yi resmî metinden doğrula); kesin yetki yok (6. HD 2013/14529).",
           "arabuluculuk": "dava_sarti",
           "arabuluculuk_note": "Dava ≥ 01.09.2023. Hiç başvuru yoksa işlem yapılmaksızın usulden ret; son tutanak eksikse bir haftalık kesin süre (18/A/2). TBK 350/1'de başvuru hak doğduktan sonra ve süre içinde (3. HD 2025/3048); diğer süreli yollarda ihtiyaten aynı pencere; süresiz yollarda sona ermeden sonra. Süre başvurudan son tutanağa kadar durur (18/A/15).",
           "procedure": "Basit yargılama. Ekler: son tutanak aslı veya onaylı örneği, sözleşme, bildirim ve tebliğ belgeleri. Harç yıllık kira üzerinden nispi; vekâlet ücreti AAÜT 9. Cevap iki hafta, cevaba cevap yok; yetki itirazı cevapta. İstinaf iki hafta; üç aylık kira temyiz sınırını aşmıyorsa BAM kararı kesin (HMK 362/1-b). Sebepler terditli ileri sürülebilir; her birinin süresini ayrı denetle."
@@ -249,7 +279,7 @@
         "Bildirim yapmış eşe fesih bildirimi ve ödeme süresi ayrıca gönderilmemiş (TBK 349/3); bildirimin takipten sonra yapılması hâlinde eş zorunlu takip arkadaşı değildir (8. HD 2018/11923).",
         "İmzasız WhatsApp, SMS veya e-posta TBK 14–15 anlamında yazılı şekli karşılamaz (tartışmalı; doğrulanmış karar yok).",
         "Görev itirazı ve süresinde, cevap dilekçesinde yetki itirazı; tahliyede kesin yetki yoktur (6. HD 2013/14529).",
-        "Dava süresi: TBK 350–352 süreleri kamu düzenindendir; TBK 347/1'de dava izleyen uzama yılının sonundan önce açılamaz (3. HD 2017/6383).",
+        "Dava süresi: TBK 350–352 süreleri kamu düzenindendir; TBK 347/1'de dava izleyen uzama yılının sonundan önce açılamaz (3. HD 2017/3032–6383).",
         "Kesinlik: üç aylık kira tutarı temyiz sınırını aşıyorsa temyiz açıktır; BAM'ın 'kesin' kaydı bağlamaz (3. HD 2021/3680); aşmıyorsa temyiz reddedilir (3. HD 2022/7440).",
         "Yargılamada usulünce anahtar teslimi davayı konusuz bırakır; giderler dava tarihindeki haklılığa göre yüklenir (HMK 331/1; İstanbul BAM 36. HD 2021/1779)."
       ],
@@ -274,7 +304,7 @@
       "decisions": [
         {
           "document_id": "1155987500",
-          "kunye": "Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, T. 26.05.2025",
+          "kunye": "Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025",
           "outcome": "BAM daireleri arasındaki uyuşmazlık Bursa BAM 4. HD görüşüyle giderildi; oybirliği, kesin (kiracı lehine usul itirazı).",
           "holding": "TBK 350 ihtiyaç davasında dava şartı arabuluculuk başvurusu dava açma hakkı doğduktan sonra, dava süresi içinde yapılmalıdır: belirli sürelide süre sonu, belirsiz sürelide genel hükümlere göre fesih tarihi ölçüttür. Hak doğduktan sonraki başvuruda arabuluculuk süresi hak kaybettirmez. HUAK 18/B/1-a ve 18/A/2 lafzını aktarır.",
           "quote": "açılacak olan ihtiyaç nedeniyle tahliye davalarında, dava şartı olan zorunlu arabuluculuk başvurusunun; tahliye davası açma hakkının doğumundan sonra diğer bir anlatımla dava açma süresi içerisinde yapılması gerektiğine",
@@ -282,7 +312,7 @@
         },
         {
           "document_id": "aa156eaa-5348-4eef-963a-75a3f84b14a7",
-          "kunye": "İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, T. 30.12.2025",
+          "kunye": "İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, 30.12.2025",
           "outcome": "İstinaf kabul edildi; usulden ret kaldırıldı ve tahliyeye karar verildi; oybirliği, HMK 362/1-b uyarınca kesin (kiraya veren lehine).",
           "holding": "05.08.2024'te, 3. HD 2025/3048'den önce açılmış davada sonradan oluşan içtihada dayanarak erken başvuru gerekçesiyle ret öngörülemez ve mahkemeye erişimi orantısız güçleştirir; dava şartı yerine gelmiş sayıldı. Esasta ihtiyaç kabul edildi.",
           "quote": "ilgili kararın verildiği 26.05.2025 tarihinden önce açılan davalar bakımından arabuluculuk başvurusunun dava açma süresinden önce yapıldığı gerekçesiyle davanın dava şartı yokluğundan reddine karar verilmesi davacı için öngörülebilir nitelikte olmayıp",
@@ -290,7 +320,7 @@
         },
         {
           "document_id": "1202391900",
-          "kunye": "Yargıtay HGK, E. 2025/255, K. 2026/11, T. 21.01.2026",
+          "kunye": "Yargıtay HGK, E. 2025/255, K. 2026/11, 21.01.2026",
           "outcome": "Direnme kararı oybirliğiyle bozuldu (HMK 371).",
           "holding": "Görevsizlik kararı verildikten sonra, dosya görevli mahkemeye gönderilmeden tamamlanan arabuluculukla dava şartı tamamlanmış sayılır; görevli mahkemede yeniden arabuluculuk gerekmez (mahkemeye erişim ve usul ekonomisi). HMK 20/1 ve 115'i aktarır.",
           "quote": "görevsiz veya yetkisiz mahkemede dava açıldıktan sonra ve fakat dava dosyasının görevli veya yetkili mahkemeye gönderilmesinden önce dava şartı arabuluculuğa ilişkin dava şartı eksikliği tamamlanmış ise görevli veya yetkili mahkemede davaya devam edildiğinde dava şartı tamdır.",
@@ -298,7 +328,7 @@
         },
         {
           "document_id": "1202171700",
-          "kunye": "Ankara BAM 31. HD, E. 2025/763, K. 2026/339, T. 09.04.2026",
+          "kunye": "Ankara BAM 31. HD, E. 2025/763, K. 2026/339, 09.04.2026",
           "outcome": "İlk derece kararı kaldırıldı, dava arabuluculuk dava şartı yokluğundan usulden reddedildi; arabuluculuk ücreti davacıya yüklendi; oybirliği, temyize açık.",
           "holding": "Asliye hukukta açılıp görevsizlik kararından sonra arabulucuya başvurulan ticari alacak davasında dava şartının sonradan tamamlanamayacağını kabul etti (HGK olayıyla aynı kalıp).",
           "quote": "Asliye hukuk mahkemesine dava açılmadan önce, arabuluculuk dava şartının tamamlanmadığı, bu hususun sonradan tamamlanamaz bir dava şartı olduğu",
@@ -306,7 +336,7 @@
         },
         {
           "document_id": "1201163600",
-          "kunye": "Yargıtay 12. HD, E. 2025/6920, K. 2025/7823, T. 03.12.2025",
+          "kunye": "Yargıtay 12. HD, E. 2025/6920, K. 2025/7823, 03.12.2025",
           "outcome": "Kiracının temyizi kısmen kabul edildi; Antalya BAM 12. HD kararı oybirliğiyle bozuldu (kiracı lehine).",
           "holding": "Üç kiraya verenden ikisinin başlattığı 13 örnek takipte tahliye borcu bölünemez; takip bütün kiraya verenlerce bütün kiracılara karşı yapılmalıdır. Eksiklik icra mahkemesinde giderilemez, tapudaki çoğunluk yetmez; kiraya veren ve malik sıfatları bağımsızdır.",
           "quote": "Tahliye borcu bölünemez bir borç olduğu için ilamsız tahliye takibinin tüm kiraya verenler tarafından tüm kiracıları taraf gösterilerek başlatılması gerekir.",
@@ -314,7 +344,7 @@
         },
         {
           "document_id": "353815800",
-          "kunye": "Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, T. 21.06.2017",
+          "kunye": "Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, 21.06.2017",
           "outcome": "Fer'i müdahil eşin temyizi kabul edildi; icra mahkemesinin tahliye kararı oybirliğiyle bozuldu (kiracı tarafı lehine).",
           "holding": "Takipten önce TMK 194 ihtarı gönderen eş, taşınmazda aile konutu şerhi bulunmasa da sözleşmenin tarafıdır; takip ve dava her iki kiracıya yöneltilmelidir. Davadaki eksiklik giderilebilir, takipteki giderilemez; tahliye istemi reddedilmelidir.",
           "quote": "Davanın açılmasındaki eksiklik sonradan giderilebilir ise de, icra takibindeki eksikliğin sonradan giderilmesi mümkün olmadığından",
@@ -322,7 +352,7 @@
         },
         {
           "document_id": "140680600",
-          "kunye": "Yargıtay 20. HD, E. 2015/9347, K. 2015/10565, T. 05.11.2015",
+          "kunye": "Yargıtay 20. HD, E. 2015/9347, K. 2015/10565, 05.11.2015",
           "outcome": "Yargı yeri belirlendi: sulh hukuk mahkemesi görevli; oybirliği.",
           "holding": "Tacir şirketler arasındaki kira sözleşmesinden doğan alacak için açılan itirazın iptali davasında, HMK 4/1 kira ilişkisinden doğan bütün uyuşmazlıklarda dava değerine bakılmaksızın sulh hukuku görevli kılar; tacir sıfatı ve ticari işyeri sonucu değiştirmez.",
           "quote": "HMK'nın 4/1. maddesi gereğince davaya bakma görevi, dava konusunun değerine bakılmaksızın sulh hukuk mahkemesine ait olup kira sözleşmesi hükümlerine göre çözümlenecek olan uyuşmazlığın sulh hukuk mahkemesinde görülüp sonuçlandırılması gerekmektedir.",
@@ -330,7 +360,7 @@
         },
         {
           "document_id": "815297500",
-          "kunye": "Yargıtay 3. HD, E. 2022/4537, K. 2022/7440, T. 06.10.2022",
+          "kunye": "Yargıtay 3. HD, E. 2022/4537, K. 2022/7440, 06.10.2022",
           "outcome": "Taraf vekillerinin temyiz istemi miktardan reddedildi; oybirliği.",
           "holding": "Tahliye ve kira bedelinin belirlenmesi davasında HMK 362/1-b ve Ek m.1'i uyguladı: hükmün verildiği tarihteki kesinlik sınırı 107.090 TL iken üç aylık kira bu sınırın altında kaldığından BAM kararı temyize kapalıdır.",
           "quote": "temyiz edilen hükmün verildiği tarihte kesinlik sınırı 107.090 TL olup, uyuşmazlığa konu kira ilişkisinden doğan diğer davada üç aylık kira tutarı, bu sınırın altındadır.",
@@ -370,7 +400,7 @@
       ],
       "requester": "Kiraya veren; malik olması gerekmez. Sözleşmedeki bütün kiraya verenler birlikte hareket eder; eksiklik icra mahkemesinde giderilemez (12. HD 2025/7823). Mirasçılar elbirliğiyle (TMK 640); yeni malik TBK 310 ile edinmeden sonraki dönemler için. Talep bütün kiracılara ve TMK 194/son bildirimiyle taraf olmuş eşe yöneltilir (8. HD 2017/9518). Kiracı bu yolu başlatamaz; savunma, şikâyet, menfi tespit ve tevdi yollarını kullanır.",
       "scope": "Konut ve çatılı işyerinde en az 30, diğer kiralarda en az 10, ürün kirasında en az 60 gün süre. Belirli ve belirsiz süreli kirada aynı; sözleşme sonu beklenmez. 01.07.2012 sonrası temerrüt TBK'ya, öncesi mülga BK 260/288'e tabidir (6101 m.1; resmî metinden doğrula). 6217 geçici 2 TBK 315'i ertelemez. TBK 339 kapsamındaki altı ay ve daha kısa geçici kullanım kiralarında hangi sürenin uygulanacağı açıktır. Yan gideri kapsar; fer'iler tahliye sebebi değildir.",
-      "notice": "Dava yolunda yazılı ihtar şart: ay ay dönem ve tutar, ödeme yeri veya IBAN, en az 30 (10/60) gün, sürede ödenmezse fesih ve tahliye davası uyarısı; süre tebliğin ertesi günü başlar. Noter veya UETS; WhatsApp, SMS, imzasız e-posta yetmez (TBK 14/2). Taraf olmuş eşe ayrıca (TBK 349/3). İlamsız yolda açık tahliye istemli takip ve 13 örnek ödeme emri ihtar yerine geçer (İİK 269/1). İnkâr dışı itirazda dava için ihtiyaten ayrı ihtar gönder.",
+      "notice": "Dava yolunda yazılı ihtar şart: ay ay dönem ve tutar, ödeme yeri veya IBAN, en az 30 (10/60) gün, sürede ödenmezse fesih ve tahliye davası uyarısı; süre tebliğin ertesi günü başlar. Noter (gerekirse noterin UETS üzerinden tebliği) veya güvenli e-imzalı metin; WhatsApp, SMS, imzasız e-posta yetmez (TBK 14/2). Taraf olmuş eşe ayrıca (TBK 349/3). İlamsız yolda açık tahliye istemli takip ve 13 örnek ödeme emri ihtar yerine geçer (İİK 269/1). İnkâr dışı itirazda dava için ihtiyaten ayrı ihtar gönder.",
       "preconditions": [
         "Kiralanan teslim edilmiş; kira veya yan gider teslimden sonra ve ihtar ya da takip tarihinden önce muaccel olmalı (sözleşmedeki ödeme günü, yoksa TBK 314 ay sonu). TBK 346'ya aykırı muacceliyet kaydına dayanılmaz; kira tespit farkı kararın kesinleşmesiyle muaccel olur (8. HD 2019/7466).",
         "Yazılı ihtar veya 13 örnek ödeme emri usulüne uygun tebliğ edilmiş olmalı; bila tebliğ iadede itiraz ve ödeme süreleri başlamaz, haricen öğrenip itiraz etmek bunu değiştirmez (HGK 2023/642).",
@@ -391,13 +421,23 @@
           "confidence": "high"
         },
         {
-          "name": "TBK 315 diğer kiralar ve TBK 362/2 ürün kirası ödeme süresi",
+          "name": "TBK 315/2 diğer kiralar ödeme süresi (konut ve çatılı işyeri dışı)",
           "start_event": "Yazılı ihtarın kiracıya tebliği T",
-          "duration": "Diğer kiralarda en az 10 gün; ürün kirasında en az 60 gün (--count 60)",
-          "formula": "G(T,10) / G(T,60)",
+          "duration": "En az 10 gün",
+          "formula": "G(T,10) veya ihtarda verilen daha uzun süre G(T,n)",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <teblig-tarihi> --count 10 --unit gun",
-          "basis": "TBK 315/2; TBK 362/2",
+          "basis": "TBK 315/2",
+          "confidence": "high"
+        },
+        {
+          "name": "TBK 362/2 ürün kirası ödeme süresi",
+          "start_event": "Yazılı ihtarın kiracıya tebliği T",
+          "duration": "En az 60 gün",
+          "formula": "G(T,60) veya ihtarda verilen daha uzun süre G(T,n)",
+          "rule": "takvim",
+          "command": "python scripts/deadlines.py takvim <teblig-tarihi> --count 60 --unit gun",
+          "basis": "TBK 362/2",
           "confidence": "high"
         },
         {
@@ -444,7 +484,7 @@
           "name": "İtiraz üzerine icra mahkemesinden itirazın kaldırılması ve tahliye",
           "start_event": "Borçlunun itirazının alacaklıya tebliği I; ödeme süresinin bitimi O",
           "duration": "Ödeme süresi geçtikten sonra ve itirazın tebliğinden itibaren altı ay içinde",
-          "formula": "En erken G(O,1); son A(I,6)",
+          "formula": "En erken G(O,1); temkinli son A(I,6). Altı ay yalnız ikincil kaynakta görüldü ve tahliye talebine uygulanması tartışmalı; bu tarihi dilekçeye son gün diye yazma, erken başvur.",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <itiraz-teblig-tarihi> --count 6 --unit ay",
           "basis": "İİK 269/b–c; İİK 68/1 (269/d yollaması; altı ay yalnız ikincil kaynakta görüldü, resmî metinden doğrula); HGK 2023/642",
@@ -464,10 +504,10 @@
           "name": "Sulh hukukta TBK 315'e dayalı fesih ve tahliye davası",
           "start_event": "TBK 315 ihtar süresinin (veya itiraz edilen 13 örnekteki ödeme süresinin) bitimi O",
           "duration": "Hak düşürücü dava süresi yok; arabuluculuk ve dava O'dan sonra",
-          "formula": "En erken G(O,1); son gün yok",
+          "formula": "En erken TBK 93 düzeltmeli O'nun ertesi günü: son gün tatile rastlarsa izleyen ve tatil olmayan ilk güne geçer, kiracı o gün de ödeyebilir (13 örnekte İİK 19; resmî metinden doğrula); G(T,31) kısayolunu kullanma; son gün yok",
           "rule": null,
           "command": "yok",
-          "basis": "TBK 315; HUAK 18/B; HGK 2023/642",
+          "basis": "TBK 315, 93; HUAK 18/B; HGK 2023/642",
           "confidence": "medium"
         },
         {
@@ -544,7 +584,7 @@
           "forum": "Sulh hukuk mahkemesi (HMK 4/1-a); basit yargılama; yetki HMK 6 ve 10 seçimlik, kesin yetki yok (resmî metin ve güncel içtihatla doğrula).",
           "arabuluculuk": "dava_sarti",
           "arabuluculuk_note": "Dava 01.09.2023 veya sonrasında açılıyorsa dava şartı; başvurusuz dava usulden reddedilir (HUAK 18/A/2). Başvuruyu ihtar süresi bittikten sonra yap; 3. HD 2025/3048 TBK 350 içindir ama erken başvuru riski aynıdır.",
-          "procedure": "Noter veya UETS ile TBK 315 ihtarı; süre bitince arabuluculuk; anlaşma yoksa son tutanakla dava. Mahkeme ihtarın usulüne uygunluğunu, muacceliyeti, süre içinde tam ödemeyi ve taraf teşkilini inceler. Tahliye ilamı ilamlı icrayla yerine getirilir; kanun yolu icrayı kendiliğinden durdurmaz (İİK 36; resmî metinden doğrula)."
+          "procedure": "Noterle (gerekirse noterin UETS üzerinden tebliği) TBK 315 ihtarı; süre bitince arabuluculuk; anlaşma yoksa son tutanakla dava. Mahkeme ihtarın usulüne uygunluğunu, muacceliyeti, süre içinde tam ödemeyi ve taraf teşkilini inceler. Tahliye ilamı ilamlı icrayla yerine getirilir; kanun yolu icrayı kendiliğinden durdurmaz (İİK 36; resmî metinden doğrula)."
         },
         {
           "route": "İlamsız takibe itiraz üzerine sulh hukukta itirazın iptali ve tahliye davası",
@@ -592,7 +632,7 @@
       "decisions": [
         {
           "document_id": "746178000",
-          "kunye": "Yargıtay HGK, E. 2017/1918, K. 2021/1707, T. 21.12.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1918, K. 2021/1707, 21.12.2021",
           "outcome": "Alacaklının temyizi kabul edildi; tahliye istemini reddeden icra mahkemesinin direnme kararı oy çokluğuyla bozuldu (kiraya veren lehine).",
           "holding": "Kiracı 30 günlük süre içinde parayı icra dosyasına yatırmış, menfi tespit davasında aldığı tedbirle alacaklıya ödenmesini engellemiştir. Kira götürülecek borçtur; ifa paranın alacaklının tasarrufuna geçmesidir. Bu ödeme haczi engeller, temerrüdü engellemez; tahliye gerekir. Ödeme emrinde süre noksansa tahliye reddedilir.",
           "quote": "bu hâlde borçlu kiracı icra dairesine ödemiş olduğu paranın alacaklı kiralayana ödenmesine muvafakat etmediğinden, borçlu temerrüde düşmüş olur. İhtar süresi içinde yapılan bu ödeme ile borçlu hakkında haciz uygulanmasına engel olup, temerrüdü engellemez.",
@@ -600,7 +640,7 @@
         },
         {
           "document_id": "685746400",
-          "kunye": "Yargıtay HGK, E. 2017/2340, K. 2021/261, T. 16.03.2021",
+          "kunye": "Yargıtay HGK, E. 2017/2340, K. 2021/261, 16.03.2021",
           "outcome": "Alacaklının temyizi kabul edildi; tahliye istemini reddeden icra mahkemesinin direnme kararı oy çokluğuyla bozuldu (kiraya veren lehine).",
           "holding": "Ödeme emrine itiraz etmeyen kiracı sözleşmeyi ve takipteki borcu kabul etmiş sayılır; icra mahkemesi yalnız ödeme süresi içinde tam ödeme yapılıp yapılmadığını inceler. Takipten önceki ödeme ancak süresinde itiraz ve 269/c belgeleriyle ileri sürülür. Ödeme süresi dolmadan tahliye istenemez; fer'iler tahliye sebebi değildir.",
           "quote": "İİK’nın 269/a maddesinin açık hükmüne göre ödeme emrine itiraz etmeyen borçlu icra mahkemesinde sadece ihtar süresi içinde ödeme yaptığını ileri sürebilir. Takibin kesinleşmesinden önce ödeme yaptığı iddiasını ileri süremez.",
@@ -608,7 +648,7 @@
         },
         {
           "document_id": "920523900",
-          "kunye": "Yargıtay HGK, E. 2021/996, K. 2023/642, T. 21.06.2023",
+          "kunye": "Yargıtay HGK, E. 2021/996, K. 2023/642, 21.06.2023",
           "outcome": "Borçlunun temyizi kabul edildi; BAM'ın itirazın kaldırılmasına ilişkin direnme kararı oy çokluğuyla, kesin olarak bozuldu (kiracı lehine).",
           "holding": "13 örnek ödeme emri tebliğ edilemeden iade edilmişse, borçlunun takibi haricen öğrenip itiraz etmesi itiraz ve ödeme sürelerini başlatmaz; temerrüt oluşmaz ve itirazın kaldırılması da reddedilir. Gerekçe: ihtarda fesih ve tahliye uyarısı zorunlu; itirazda yalnız tahliye istenemez; itiraz edilen ödeme emri sulh hukuk davasında ihtar yerine geçer.",
           "quote": "Ödeme emri ile ihtar tebliğ edilmediğinden kiracının temerrüdünden de söz edilemez. Borçlunun haricen icra takibini öğrenip, icra müdürlüğüne itiraz etmesi 2004 sayılı Kanun'un emredici hükümleri karşısında hukuki sonuç doğurmaz.",
@@ -616,7 +656,7 @@
         },
         {
           "document_id": "686165600",
-          "kunye": "Yargıtay HGK, E. 2017/1842, K. 2021/648, T. 01.06.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1842, K. 2021/648, 01.06.2021",
           "outcome": "Borçlunun temyizi kabul edildi; tahliyeye karar veren icra mahkemesinin direnme kararı oybirliğiyle bozuldu (kiracı lehine).",
           "holding": "İlamsız tahliye için takip talebinde açıkça tahliye istenmelidir. “Tahliye adresindeki taşınmazdan kaynaklanan” ifadesi muğlaktır; icra dairesinin 13 örnek göndermesi alacaklıya tahliye hakkı vermez. Bu durumda sulh hukukta da 269/b'ye dayanarak tahliye istenemez.",
           "quote": "O hâlde alacaklı tarafından düzenlenen takip talebinde tahliye isteği bulunmadığından, icra dairesince borçluya gönderilen ödeme emrinde tahliye ihtarının bulunması alacaklıya tahliye açısından bir hak vermez.",
@@ -624,7 +664,7 @@
         },
         {
           "document_id": "720125600",
-          "kunye": "Yargıtay HGK, E. 2017/980, K. 2021/1302, T. 02.11.2021",
+          "kunye": "Yargıtay HGK, E. 2017/980, K. 2021/1302, 02.11.2021",
           "outcome": "Davacı kiraya verenin temyizi kabul edildi; sulh hukukun ret yönündeki direnme kararı oy çokluğuyla bozuldu (kiraya veren lehine).",
           "holding": "Kira götürülecek para borcudur (TBK 89). Banka havale masrafı kiracıya aittir; masraf düşülerek yapılan ödeme eksiktir ve yasal ödeme sayılmaz; itirazın iptali ve tahliyeye karar verilmelidir. İlamsız takibe itiraz üzerine sulh hukukta itirazın iptali ve tahliye davası açılamayacağı görüşü çoğunlukça benimsenmedi.",
           "quote": "Kira bedelinin kiraya verenin banka hesabına yatırılması durumunda banka tarafından kesilen havale giderinden kiracı sorumludur. Açıklanan şekilde yapılmayan ödemeler yasal ödeme olarak kabul edilemez.",
@@ -632,7 +672,7 @@
         },
         {
           "document_id": "1178900700",
-          "kunye": "Yargıtay 12. HD, E. 2025/7021, K. 2025/5902, T. 06.10.2025",
+          "kunye": "Yargıtay 12. HD, E. 2025/7021, K. 2025/5902, 06.10.2025",
           "outcome": "Alacaklının temyizi reddedildi; tahliye istemini reddeden BAM kararı gerekçesi düzeltilerek oy çokluğuyla onandı (sonuç kiracı lehine).",
           "holding": "Daire, yalnız yan gidere dayalı 13 örnek takipte de 30 günlük sürede ödenmeyen yan gider için tahliyeye karar verilebileceğini ilke olarak kabul etti. Ancak sözleşmede ortak gider payının miktarı veya oranı belirlenmediğinden alacak yargılamaya muhtaçtır; ret sonucu doğrudur.",
           "quote": "O halde, Bölge Adliye Mahkemesince, takip konusu alacağın varlığı ve miktarı yargılamaya muhtaç olduğu gerekçesiyle davanın reddi ile işin esasına girilmediğinden tazminata karar verilmesine yer olmadığına karar verilmesi gerekirken davanın yazılı gerekçe ile reddi yerinde değil ise de sonucu doğru kararın onanması gerekmiştir.",
@@ -640,7 +680,7 @@
         },
         {
           "document_id": "1201163600",
-          "kunye": "Yargıtay 12. HD, E. 2025/6920, K. 2025/7823, T. 03.12.2025",
+          "kunye": "Yargıtay 12. HD, E. 2025/6920, K. 2025/7823, 03.12.2025",
           "outcome": "Borçlunun temyizi kısmen kabul edildi; şikâyeti reddeden BAM kararı oybirliğiyle bozuldu, takibin borçlu yönünden iptali gerekir (kiracı lehine).",
           "holding": "İlamsız tahliye takibinin aktif tarafı kiraya verendir; malik sıfatı belirleyici değildir. Tahliye borcu bölünemediğinden takip sözleşmedeki bütün kiraya verenlerce, bütün kiracılara karşı yapılır. Üç kiraya verenden ikisinin takibindeki ihtar haklı değildir; eksiklik icra mahkemesinde giderilemez. Tapuya göre pay ve paydaş çoğunluğu yetmez.",
           "quote": "Takip talebinde zorunlu takip arkadaşlarından birinin eksik olması halinde bu eksiklik nedeniyle borçlulara gönderilen tahliye ihtarlı ödeme emrindeki ihtar haklı ihtar sayılamaz. Bu eksikliğin icra mahkemesinde görülen tahliye incelemesinde de giderilmesi mümkün değildir.",
@@ -648,7 +688,7 @@
         },
         {
           "document_id": "353815800",
-          "kunye": "Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, T. 21.06.2017",
+          "kunye": "Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, 21.06.2017",
           "outcome": "Fer'i müdahil eşin temyizi kabul edildi; icra mahkemesinin tahliye kararı oybirliğiyle bozuldu (kiracı ve eşi lehine).",
           "holding": "Kiracının eşi takipten önce kiraya verene TMK 194/son bildirimi yapmış, sözleşmenin tarafı ve kiracı olmuştur. Takip her iki kiracıya karşı yapılmalıydı; davadaki eksiklik giderilebilirse de icra takibindeki eksiklik sonradan giderilemez, tahliye istemi reddedilmelidir.",
           "quote": "Davanın açılmasındaki eksiklik sonradan giderilebilir ise de, icra takibindeki eksikliğin sonradan giderilmesi mümkün olmadığından tahliye isteğinin reddine karar verilmesi gerekirken",
@@ -691,7 +731,7 @@
       "preconditions": [
         "Kiralanan konut veya çatılı işyeri olmalı ve TBK 339 dışında kalmamalı.",
         "Farklı dönemlere ait, ayrı ayrı yapılmış iki yazılı ihtar; ardışık aylar için tek ihtar tek ihtar sayılır (HGK 2021/1314).",
-        "Her ihtar, ilgili kira sözleşmedeki ödeme gününe (yoksa TBK 314 ay sonuna) göre muaccel olduktan sonra keşide edilmeli (3. HD 2017/15623); “peşin” kaydı bağlar (3. HD 2021/10994).",
+        "Her ihtar, ilgili kira sözleşmesindeki ödeme gününe (yoksa TBK 314 ay sonuna) göre muaccel olduktan sonra keşide edilmeli (3. HD 2017/15623); “peşin” kaydı bağlar (3. HD 2021/10994).",
         "İlk ihtar anında muaccel olan aylar ilk ihtara konmalı; ikinci ihtara bölünerek saklanamaz (3. HD 2018/5354).",
         "İki ihtar aynı kira süresi veya kira yılındaki aylara ilişkin olmalı ve o yıl içinde tebliğ edilmeli; bir yıllık sözleşmede TBK 347/1 uzama yılları ayrı kira yılıdır (HGK 2021/1314).",
         "Tebliğ anında (usulsüz tebliğde öğrenme anında) kira ödenmemiş olmalı; tebliğden sonraki ödeme haklılığı kaldırmaz, önceki ödeme kaldırır (HGK 2021/1314; 6. HD 2013/5989).",
@@ -835,7 +875,7 @@
         "Kira ihtarın tebliğinden önce ödendi; belirleyici olan keşide değil tebliğ tarihidir (6. HD 2013/5989).",
         "Aynı gün tebliğ ve ödemede tebliğin önce olduğu ispatlanamıyor; ödeme önce kabul edilmeli (3. HD 2018/9394).",
         "UETS tebliğinde ödeme, ulaşmayı izleyen beşinci günün sonundan önce yapıldı (7201 TK 7/a/4).",
-        "İhtar, kira sözleşmedeki ödeme günü gelmeden keşide edildi (3. HD 2017/15623).",
+        "İhtar, kira sözleşmesindeki ödeme günü gelmeden keşide edildi (3. HD 2017/15623).",
         "İkinci ihtar, ilk ihtar anında muaccel olan kiranın bölünmesiyle yapıldı (3. HD 2018/5354).",
         "İhtarlar farklı kira yıllarına ait veya aynı kira yılı içinde tebliğ edilmedi (HGK 2021/1314); ihtarda ayların belirtilmemesi (İstanbul BAM 36. HD 2021/1779 ölçütü).",
         "İhtar yazılı değil ya da konusu kira bedeli değil (aidat, yan gider, tartışmalı artış farkı).",
@@ -862,7 +902,7 @@
       "decisions": [
         {
           "document_id": "720126200",
-          "kunye": "Yargıtay HGK, E. 2017/1289, K. 2021/1314, T. 02.11.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1289, K. 2021/1314, 02.11.2021",
           "outcome": "Direnme kararı oybirliğiyle uygun bulundu; davalının sair temyiz itirazları için dosya 3. HD'ye gönderildi. Esas hakkında nihai sonuç bu metinde yok (sonuç kiracı aleyhine).",
           "holding": "HGK, Kanık'a atıfla iki haklı ihtarın koşullarını saydı: aynı kira süresi veya kira yılı; her ay için ayrı ihtar; muacceliyetten sonra ihtar; hangi ayın ödenmediği ile otuz gün ve tahliye davası uyarısı; o yıl içinde tebliğ; tebliğden sonraki ödemenin haklılığı kaldırmaması. Somut ihtarların bu şartları taşıdığını kabul etti.",
           "quote": "İki haklı ihtarın bir kira döneminde ve bir yıl içindeki aylarla ilgili olması ve o yıl içinde kiracıya tebliğ edilmesi zorunludur. İhtar kiracıya tebliğ edildikten sonra ödeme yapılması kiraya verenin haklılığını ortadan kaldırmaz",
@@ -870,7 +910,7 @@
         },
         {
           "document_id": "1159454200",
-          "kunye": "Yargıtay 3. HD, E. 2024/2951, K. 2025/3118, T. 28.05.2025",
+          "kunye": "Yargıtay 3. HD, E. 2024/2951, K. 2025/3118, 28.05.2025",
           "outcome": "BAM'ın ret kararı gerekçesi değiştirilerek ve düzeltilerek oybirliğiyle onandı (kiraya veren aleyhine).",
           "holding": "Otel kirasında yedinci yıl kirası iki peşin taksitle 2021 yazında ödenecekti. Daire 01.07.2020 sonrası muacceliyet şartını geçersiz saydı; ancak kiranın ait olduğu 2022 kira yılının bitimini esas alarak 26.01.2022 tarihli davayı erken buldu.",
           "quote": "kira bedelinin ait olduğu kira yılının bitiminden başlayarak bir ay içinde dava yoluyla kira sözleşmesinin sona erdirilmesi gerekirken 26.01.2022 tarihinde açılan dava süresinde değildir.",
@@ -878,7 +918,7 @@
         },
         {
           "document_id": "423999800",
-          "kunye": "Yargıtay 3. HD, E. 2017/16973, K. 2018/5110, T. 14.05.2018",
+          "kunye": "Yargıtay 3. HD, E. 2017/16973, K. 2018/5110, 14.05.2018",
           "outcome": "Tahliyeye ilişkin kabul hükmü oybirliğiyle bozuldu (kiracı lehine).",
           "holding": "01.01.2007 başlangıçlı bir yıllık sözleşme uzamıştı; 2013 kiraları için iki ihtar vardı. Daire kira yılı sonunu 01.01.2014 kabul etti; 27.06.2013 tarihli dava kira yılı bitmeden açıldığından reddedilmelidir. Davalı cevap vermemiş olsa da süre aykırılığı bozma sebebi yapıldı.",
           "quote": "Dava ise 27.06.2013 tarihinde, ihtarların gönderildiği kira yılının bitimi beklenilmeden açılmış olduğundan, Mahkemece süresinde açılmayan davanın reddine karar verilmesi gerekirken",
@@ -886,7 +926,7 @@
         },
         {
           "document_id": "712191900",
-          "kunye": "Yargıtay 3. HD, E. 2021/7138, K. 2021/10994, T. 08.11.2021",
+          "kunye": "Yargıtay 3. HD, E. 2021/7138, K. 2021/10994, 08.11.2021",
           "outcome": "BAM kararı kaldırıldı; ilk derecenin ret kararı oybirliğiyle bozuldu (kiraya veren lehine).",
           "holding": "İlk derece, peşin ödeme hükmü bulunmadığını kabul ederek Ekim kirasının takip tarihinde muaccel olmadığını söylemişti. Daire, ayın 15'inde peşin ödeme hükmünün bağlayıcı olduğunu belirterek 352/2 koşullarının buna göre yeniden değerlendirilmesi için bozdu.",
           "quote": "kira sözleşmesinde kira bedelinin ait olduğu ayın 15. gününde banka hesabına peşin ödeneceğine dair hüküm bulunduğu gözetilerek, TBK'nın 352 nci maddesinin ikinci fıkrası hükmü uyarınca tahliye koşulların oluşup oluşmadığının değerlendirilmesi gerekirken",
@@ -894,7 +934,7 @@
         },
         {
           "document_id": "385800700",
-          "kunye": "Yargıtay 3. HD, E. 2017/6324, K. 2017/15623, T. 09.11.2017",
+          "kunye": "Yargıtay 3. HD, E. 2017/6324, K. 2017/15623, 09.11.2017",
           "outcome": "Ret hükmü değiştirilen gerekçeyle düzeltilerek oybirliğiyle onandı (kiraya veren aleyhine).",
           "holding": "Daire, ihtarda 1 iş günü süre verildiği için ret gerekçesini yanlış buldu: 352/2 ihtarında 30 gün gerekmez. Ancak kira ayın ilk 5 gününde ödenecekken ikinci ihtar 04.09.2015'te, muacceliyetten önce keşide edildiğinden haklı değildir.",
           "quote": "TBK'nun 315. maddesinden farklı olarak davalıya gönderilecek ihtarlarda 30 günlük ödeme süresi verilmesine gerek olmayıp, muaccel hale gelen kira bedelinin ödenmesinin talep edilmesi ve ödemenin ihtarnamenin tebliğinden sonra yapılması gerekli ve yeterlidir.",
@@ -902,7 +942,7 @@
         },
         {
           "document_id": "427128300",
-          "kunye": "Yargıtay 3. HD, E. 2017/11179, K. 2018/5354, T. 16.05.2018",
+          "kunye": "Yargıtay 3. HD, E. 2017/11179, K. 2018/5354, 16.05.2018",
           "outcome": "Tahliye hükmü oybirliğiyle bozuldu (kiracı lehine).",
           "holding": "Kira her ayın başında peşin ödenecekti. İlk takipte Eylül 2007–Haziran 2010 kiraları istenmiş, Temmuz kirası ilk takip tarihinde muaccel olduğu hâlde ikinci takibe bırakılmıştı. Muaccel kira bölünerek ayrı takibe konu edilemez; ikinci ihtar haklı değildir. Yeni malikler taraf kabul edildi.",
           "quote": "Temmuz ayı kira bedeli 06.07.2010 tarihinde yapılan ilk icra takibi sırasında sözleşmedeki ödeme gününe göre muaccel olup istenebilecek iken bölünerek ayrı icra takibine konu edilemeyeceğinden bu ikinci ihtar haklı sayılamaz.",
@@ -910,7 +950,7 @@
         },
         {
           "document_id": "444696400",
-          "kunye": "Yargıtay 3. HD, E. 2018/5827, K. 2018/9394, T. 02.10.2018",
+          "kunye": "Yargıtay 3. HD, E. 2018/5827, K. 2018/9394, 02.10.2018",
           "outcome": "Konusuzluk kararının giderlere ilişkin kısmı oybirliğiyle kiracı yararına bozuldu.",
           "holding": "İkinci ihtar tebliğ edildiği gün Aralık kirası saat 09:27'de ödenmişti; tebliğ saati belirlenemediğinden ödemenin tebliğden önce yapıldığı kabul edilmelidir. İki haklı ihtar oluşmadığından konusuz kalan davada giderler ve vekâlet ücreti kiracıya yüklenemez.",
           "quote": "ikinci ihtara konu Aralık 2015 kira bedelinin, ihtarnamenin tebliğinden önce ödendiğinin kabulü gerekir.",
@@ -918,7 +958,7 @@
         },
         {
           "document_id": "fa461f44-de8b-43e1-aaa4-60c85a683530",
-          "kunye": "İstanbul BAM 36. HD, E. 2019/3134, K. 2021/1779, T. 22.09.2021",
+          "kunye": "İstanbul BAM 36. HD, E. 2019/3134, K. 2021/1779, 22.09.2021",
           "outcome": "Kiraya verenin istinafı kabul edildi; ilk derece kararı kaldırıldı, konusuz davada giderler ve vekâlet ücreti kiracıya yüklendi; HMK 362/1-b uyarınca kesin, oybirliği.",
           "holding": "BAM dört koşul saydı: aynı kira döneminde farklı ayların kirası, muacceliyet, ayların açıkça belirtilmesi ve tebliğden önce ödenmemiş olma. İcra dosyasındaki tarama saatlerine göre kiracı ödeme emirlerine önce itiraz edip sonra ödemişti; usulsüz tebliğe rağmen emirler öğrenilmiş sayıldı ve dava tarihinde koşullar oluşmuştu.",
           "quote": "davalının ödeme emirlerine itiraz ettikten sonra bankaya giderek takibe konu kira bedellerini yatırdığı, bu durumda her iki ödeme emrinin davalı tarafından öğrenildiğinin kabulü gerektiği",
@@ -967,7 +1007,7 @@
         "B tarihinde kiralanan boşaltılmamış olmalı.",
         "B'den başlayarak bir ay içinde (A(B,1)) takip yapılmalı veya dava açılmalı; süre hak düşürücüdür ve resen gözetilir.",
         "Taahhütten sonra yeni kira ilişkisi kurulmamış olmalı; yerel havuzda bunu doğrudan çözen karar yok.",
-        "Aile konutunda eşin TMK 194/son bildirimi taahhütten önceyse iki eşin imzası veya açık rıza aranır (2025/4997, obiter); sonraysa taahhüt geçerli kalır (2025/4997).",
+        "Aile konutunda eşin TMK 194/son bildirimi taahhütten önceyse iki eşin imzası veya açık rıza aranır (3. HD 2025/4997, obiter); sonraysa taahhüt geçerli kalır (3. HD 2025/4997).",
         "Dava yolunda ve dava 01.09.2023 veya sonrasında açılıyorsa arabuluculuk son tutanağı eklenmeli (HUAK 18/A/2, doğrula).",
         "Takip bütün kiraya verenlerce bütün kiracılara (takipten önce bildirim yapmış eş dahil) yöneltilmeli; takipteki eksiklik icra mahkemesinde giderilemez (12. HD 2025/7823; 8. HD 2017/9518)."
       ],
@@ -1092,8 +1132,8 @@
           "route": "Sulh hukukta itirazın iptali ve tahliye davası",
           "forum": "Sulh hukuk mahkemesi, basit yargılama (HMK 4/1-a, 316/1-a; doğrula)",
           "arabuluculuk": "tartismali",
-          "arabuluculuk_note": "Depo rehberi dava şartına tabi sayar, karşı görüş var; BAM 2026/377 ve 2025/4997 alt dosyalarında tartışılmadı, bu sessizlikten kural çıkarma. Dava 01.09.2023 veya sonrasında açılacaksa ihtiyaten arabulucuya başvur.",
-          "procedure": "İtirazın tebliğinden sonra açılır (İİK 67/1 kıyasıyla bir yıl, doğrula). İmza itirazında bilirkişi incelemesi; senede karşı savunmalar HMK 200–201'e göre yazılı delil, yoksa yeminle. Terditli ihtiyaç talebi eklenebilir (BAM 2026/377). Kabulde ilamlı icra (İİK 26) ve tehir-i icra (İİK 36); resmî metinden doğrula."
+          "arabuluculuk_note": "Depo rehberi dava şartına tabi sayar, karşı görüş var; İstanbul BAM 36. HD 2026/377 ve 3. HD 2025/4997 alt dosyalarında tartışılmadı, bu sessizlikten kural çıkarma. Dava 01.09.2023 veya sonrasında açılacaksa ihtiyaten arabulucuya başvur.",
+          "procedure": "İtirazın tebliğinden sonra açılır (İİK 67/1 kıyasıyla bir yıl, doğrula). İmza itirazında bilirkişi incelemesi; senede karşı savunmalar HMK 200–201'e göre yazılı delil, yoksa yeminle. Terditli ihtiyaç talebi eklenebilir (İstanbul BAM 36. HD 2026/377). Kabulde ilamlı icra (İİK 26) ve tehir-i icra (İİK 36); resmî metinden doğrula."
         },
         {
           "route": "Doğrudan tahliye davası (TBK 352/1 'dava açmak')",
@@ -1117,8 +1157,8 @@
         "İmza veya tarih inkârı: imza incelemesi yapılır; adi belgede icra mahkemesi yolunu kapatır (İİK 275/1, doğrula).",
         "Bir aylık süre geçmiştir veya takip B'den önce yapılmıştır.",
         "Taahhütten sonra yeni kira ilişkisi kurulmuş veya kiraya veren vazgeçmiştir; yalnız kira ve aidat ödemeleri 2023/168'de sonucu değiştirmedi.",
-        "Aile konutu bildirimi taahhütten önce yapılmıştır; ya da takipten önce yapılmış ve takip yalnız kiracı eşe yöneltilmiştir (8. HD 2017/9518; 2025/4997 obiter).",
-        "Takip yapan kiraya veren değildir veya bütün kiraya verenler katılmamıştır (BAM 2026/377; 12. HD 2025/7823).",
+        "Aile konutu bildirimi taahhütten önce yapılmıştır; ya da takipten önce yapılmış ve takip yalnız kiracı eşe yöneltilmiştir (8. HD 2017/9518; 3. HD 2025/4997 obiter).",
+        "Takip yapan kiraya veren değildir veya bütün kiraya verenler katılmamıştır (İstanbul BAM 36. HD 2026/377; 12. HD 2025/7823).",
         "Dava yolunda arabuluculuk dava şartı eksiktir; itirazın iptali davasında tartışmalıdır, savunmayı yalnız buna dayandırma.",
         "Taahhütte belli tarih yok, şart gerçekleşmemiş veya taahhüdü kiracı ya da yetkili temsilcisi vermemiş.",
         "Geç tahliye cezası TBK 346 veya 334/2'ye aykırıdır; değilse TBK 182/3 uyarınca indirilmelidir.",
@@ -1130,8 +1170,8 @@
         "Doğrudan tahliye davasında arabuluculuğu atlama; itirazın iptali davasında da ihtiyaten başvur.",
         "Yargıtay 3. HD 2025/1495–3048'in erken arabuluculuk kuralını taahhüde kesin kural gibi taşıma; başvuruyu B'den sonra ve A(B,1) içinde yap.",
         "İcra mahkemesi yolunda belge ölçütünü İİK 68'e göre kurma; ölçüt İİK 275/1'dir. Zorla tahliye İİK 273, itiraz İİK 274'tür.",
-        "BAM 2026/377'deki 'dinlenemez' ifadesini mutlak sayma ve oradaki 'TBK 26' atfını dilekçeye taşıma.",
-        "2025/4997 içinde aktarılan Başkanlar Kurulu ve BAM gerekçelerini Yargıtay görüşü gibi sunma; Yargıtay gerekçesi IV. bölümdür.",
+        "İstanbul BAM 36. HD 2026/377'deki 'dinlenemez' ifadesini mutlak sayma ve oradaki 'TBK 26' atfını dilekçeye taşıma.",
+        "3. HD 2025/4997 içinde aktarılan Başkanlar Kurulu ve BAM gerekçelerini Yargıtay görüşü gibi sunma; Yargıtay gerekçesi IV. bölümdür.",
         "Takibi iki eşe yöneltmeyi TBK 349/3'e dayandırma; dayanak TMK 194/son ve zorunlu takip arkadaşlığıdır.",
         "Kira sözleşmesinin içine yazılmış 'süre sonunda tahliye' kaydını 352/1 taahhüdü sayma; TBK 354 karşısında değerlendir.",
         "818 dönemi ceza koşulu kararlarını (6. HD 2014/8813) TBK 346 ve 334/2 incelemesi yapmadan taşıma; 3. HD 2017/17040 taahhüt kararı değildir.",
@@ -1141,7 +1181,7 @@
       "decisions": [
         {
           "document_id": "1187870600",
-          "kunye": "Yargıtay 3. HD, E. 2025/3374, K. 2025/4997, T. 20.10.2025",
+          "kunye": "Yargıtay 3. HD, E. 2025/3374, K. 2025/4997, 20.10.2025",
           "outcome": "BAM'lar arası uyuşmazlık kiraya veren lehine görüş benimsenerek giderildi (5235 s.K. 35/3; oybirliği, kesin).",
           "holding": "Kiracı olmayan eşin TMK 194 bildirimi yalnız sonrası için sonuç doğurur; bildirimden önce tek kiracı eşin verdiği ve 352/1 koşullarını taşıyan taahhüt geçerli kalır. Taahhüt, kira sözleşmesinin ileri tarihli feshi niteliğindedir. Obiter: taahhüde yalnız kiraya veren dayanır; bildirimden sonra takip ve dava iki eşe birlikte yöneltilir.",
           "quote": "Aile konutunun eşlerden biri tarafından kiralanması halinde, kiracı olmayan eşin 4721 sayılı Kanunun 194. maddesi uyarınca sonradan kiraya verene yapacağı bildirim ile sözleşmenin tarafı haline gelmiş olmasının, kiracı eş tarafından bu bildirim öncesinde verilen yazılı tahliye tahhütnamesinin geçerliliğine bir etkisinin bulunmadığına",
@@ -1149,7 +1189,7 @@
         },
         {
           "document_id": "191fe3e9-f690-420c-ad33-23cfeb89e8ad",
-          "kunye": "İstanbul BAM 36. HD, E. 2024/5083, K. 2026/377, T. 04.02.2026",
+          "kunye": "İstanbul BAM 36. HD, E. 2024/5083, K. 2026/377, 04.02.2026",
           "outcome": "Kiracının istinafı esastan reddedildi; taahhüde dayalı itirazın iptali ve tahliye kararı korundu (HMK 362/1-b, kesin, oybirliği).",
           "holding": "B = 30.09.2023, takip 12.10.2023 süresinde. İmzayı kabul eden kiracının boş ve baskı altında imzalatma savunması yazılı delil olmadığından reddedildi; sözleşmeden önce yazılı aile konutu bildirimi olmadığından o savunma dinlenmedi. Sözleşmeyle aynı gün veya önce alınan taahhüt batıl; kiraya veren olmayan paydaşın husumet ehliyeti yok.",
           "quote": "davalının taahhüt altındaki imzayı kabul etmiş olması durumunda, tahliye taahhüdünü boş olarak verdiği ve üzerinin sonradan doldurulduğu iddiası dinlenemez.",
@@ -1157,7 +1197,7 @@
         },
         {
           "document_id": "339cd8cf-0eab-47de-90ba-2f0b52a02c73",
-          "kunye": "Yargıtay 3. HD, E. 2022/8302, K. 2023/167, T. 21.02.2023",
+          "kunye": "Yargıtay 3. HD, E. 2022/8302, K. 2023/167, 21.02.2023",
           "outcome": "BAM'ın esastan ret kararı onandı (HMK 370/1, oybirliği); tahliye ve itirazın iptali korundu.",
           "holding": "Şirket kiracının imza ve tarih itirazında bilirkişi imzanın yetkiliye ait olduğunu belirledi; Yargıtay HGK 2008/394 ilkesini aktararak savunmanın kesin delille ispatlanamadığı gerekçesiyle onadı.",
           "quote": "davalı tarafın savunmasında bildirdiği hususları kesin deliller ile ispat edemediğinin anlaşılmasına göre",
@@ -1165,7 +1205,7 @@
         },
         {
           "document_id": "979779900",
-          "kunye": "Yargıtay 3. HD, E. 2022/8307, K. 2023/168, T. 21.02.2023",
+          "kunye": "Yargıtay 3. HD, E. 2022/8307, K. 2023/168, 21.02.2023",
           "outcome": "BAM'ın esastan ret kararı onandı (HMK 370/1, oybirliği); tahliye korundu.",
           "holding": "Onanan BAM gerekçesine göre taahhütteki 'içinde kiracı olarak bulunduğum' ibaresi belgenin kira sözleşmesinden sonra düzenlendiğini gösterir; Yargıtay HGK 2008/394 ve HMK 200–201'i aktararak tarih savunmasının yazılı delille ispatlanamadığını kabul etti.",
           "quote": "tanzim tarihi bulunmasa da tahliye taahhüdünde \"içinde kiracı olarak bulunduğum\" ibaresinin yazılması nedeni ile kira sözleşmesinden daha sonra düzenlendiği anlaşılan tahliye taahhüdünün geçerli olduğu",
@@ -1173,7 +1213,7 @@
         },
         {
           "document_id": "202209-1215-0532-2008369-2008394-0adafbc2-c10f-47aa-94f6-c2327d600cce",
-          "kunye": "Yargıtay HGK, E. 2008/369, K. 2008/394, T. 28.05.2008",
+          "kunye": "Yargıtay HGK, E. 2008/369, K. 2008/394, 28.05.2008",
           "outcome": "Sulh hukukun direnme kararı kiraya veren yararına oy çokluğuyla bozuldu (HUMK 429).",
           "holding": "Anlaşmaya aykırı doldurma iddiası tanıkla ispatlanamaz; yazılı delil, yoksa dayanılmışsa yemin gerekir. Hileyle habersiz imzalatma savunması sahtelik iddiasıdır, bu konuda yemin teklif edilemez. 'Kiracı olarak bulunduğumuz mecuru' ifadeli ve sonraki tarihli taahhüt geçerli sayıldı; BK 31 (TBK 39) hakkının kullanılmaması kiracı aleyhine değerlendirildi.",
           "quote": "boş olarak altı imzalanıp verilen bir belgenin üstünün taraflar arasındaki anlaşmaya aykırı olarak doldurulduğu iddiasının tanıkla ispatının olanaklı olmadığında; ancak yazılı delille ispatı gerektiğinde ve yazılı delil de yoksa dayanılmış olması koşuluyla yemin delilinin söz konusu olabileceğinde uyuşmazlık bulunmamaktadır.",
@@ -1181,7 +1221,7 @@
         },
         {
           "document_id": "353815800",
-          "kunye": "Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, T. 21.06.2017",
+          "kunye": "Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, 21.06.2017",
           "outcome": "Fer'i müdahil eşin temyizini reddeden ek karar kaldırıldı; icra mahkemesinin tahliye kararı kiraya veren aleyhine bozuldu.",
           "holding": "Takipten önce TMK 194/son bildirimi yapan eş sözleşmenin tarafıdır; takip ve dava iki kiracıya yöneltilmelidir. Davadaki eksiklik sonradan giderilebilir, takipteki eksiklik giderilemez; tahliye talebi reddedilmeliydi.",
           "quote": "Davanın açılmasındaki eksiklik sonradan giderilebilir ise de, icra takibindeki eksikliğin sonradan giderilmesi mümkün olmadığından tahliye isteğinin reddine karar verilmesi gerekirken",
@@ -1189,7 +1229,7 @@
         },
         {
           "document_id": "1193585500",
-          "kunye": "Yargıtay 12. HD, E. 2025/7725, K. 2025/7528, T. 24.11.2025",
+          "kunye": "Yargıtay 12. HD, E. 2025/7725, K. 2025/7528, 24.11.2025",
           "outcome": "Alacaklıların temyizi kabul edildi; BAM kararı kaldırılıp icra mahkemesinin ret kararı oybirliğiyle bozuldu.",
           "holding": "İlamsız tahliye takibinin aktif tarafı kiraya verendir; tahliye borcu bölünemez olduğundan takip bütün kiraya verenlerce bütün kiracılara karşı başlatılır ve eksiklik icra mahkemesinde giderilemez. Somut olayda mülkiyet takipten önce paylıya çevrildiğinden pay ve paydaş çoğunluğunun takibi usule uygun bulundu.",
           "quote": "Tahliye borcu bölünemez bir borç olduğu için ilamsız tahliye takibinin tüm kiraya verenler tarafından tüm kiracılar taraf gösterilerek başlatılması gerekir.",
@@ -1197,7 +1237,7 @@
         },
         {
           "document_id": "97263600",
-          "kunye": "Yargıtay 6. HD, E. 2013/16564, K. 2014/8813, T. 02.07.2014",
+          "kunye": "Yargıtay 6. HD, E. 2013/16564, K. 2014/8813, 02.07.2014",
           "outcome": "Cezai şartın indirilmesine ilişkin itiraz kabul edilerek hüküm kiracı yararına bozuldu (HUMK 428); diğer itirazlar reddedildi.",
           "holding": "Taahhüde eklenen, boşaltılmazsa aylık kiranın üç katının ödeneceği kaydı geçerli bir ceza koşuludur ve kiracıyı bağlar; ancak mahkeme TBK 182/son (BK 161/son) uyarınca indirimi tartışmalıydı. Ticari olmayan işte indirim re'sen incelenir.",
           "quote": "İlgili taahhüt cezai şart niteliğindedir ve geçerlidir. Bu nedenle davalı kiracıyı bağlar.",
@@ -1238,8 +1278,8 @@
         "TMK 194; TBK 349/3 (TMK metnini resmî kaynaktan doğrula)"
       ],
       "requester": "Kiraya veren (sözleşme tarafı; malik olması şart değil). Kiraya veren olmayan malik de içtihaden dava açabilir; malik davasında paylı mülkiyette pay ve paydaş çoğunluğu, elbirliğinde bütün ortaklar aranır, eksiklikte muvafakat için süre verilir (3. HD 2018/1605; 6. HD 2013/4227). İhtiyaçlı: kiraya verenin kendisi, eşi, altsoyu, üstsoyu, kanunen bakmakla yükümlü olduğu kişiler. Gerçek kişi şirketinin, tüzel kişi ortağının ihtiyacı için dava açamaz.",
-      "scope": "Yalnız konut ve çatılı işyeri (TBK 339); arsa ve baskın vasfı açık alan genel hükümlere tabidir (3. HD 2017/15002). Belirli ve belirsiz süreli sözleşmeler. Sona erme 01.07.2012'den sonraysa TBK; süreci başlatan işlemler önceyse 6570 uygulanabilir (HGK 2021/878; 6101'i doğrula). Dava 01.09.2023 veya sonrasında açılıyorsa arabuluculuk dava şartı; 26.05.2025 ve sonrası davalarda 2025/3048 zamanlaması uygulanır. Edinen için TBK 351.",
-      "notice": "Belirli sürelide kanun ayrıca ihtar aramaz (6. HD 2015/9532). Sözleşmede kiraya vereni de bağlayan süre bitiminden önce ihbar kaydı varsa ihbar süresinde ulaşmalı, yoksa sözleşme bir yıl uzar (3. HD 2025/1440). Belirsiz sürelide fesih dönemine en az üç ay önce yazılı bildirim (TBK 328–329, 348). TBK 353 uzaması için 'dava açacağım' içerikli yazılı bildirim en geç dava süresi içinde ulaşmalı. Noter veya UETS kullan; WhatsApp ve SMS'e dayanma.",
+      "scope": "Yalnız konut ve çatılı işyeri (TBK 339); arsa ve baskın vasfı açık alan genel hükümlere tabidir (3. HD 2017/15002). Belirli ve belirsiz süreli sözleşmeler. Sona erme 01.07.2012'den sonraysa TBK; süreci başlatan işlemler önceyse 6570 uygulanabilir (HGK 2021/878; 6101'i doğrula). Dava 01.09.2023 veya sonrasında açılıyorsa arabuluculuk dava şartıdır ve başvuru hak doğduktan sonra, süre içinde yapılır (3. HD 2025/3048; Daire, Bursa BAM 4. HD'nin 08.01.2024 tarihli davadaki usulden ret görüşü yönünde uyuşmazlığı giderdi). 26.05.2025'ten önce açılmış davada erken başvuruyu yeterli sayan yalnız İstanbul BAM 35. HD 2025/3212'dir (tek BAM, kesin). Edinen için TBK 351.",
+      "notice": "Belirli sürelide kanun ayrıca ihtar aramaz (6. HD 2015/9532). Sözleşmede kiraya vereni de bağlayan süre bitiminden önce ihbar kaydı varsa ihbar süresinde ulaşmalı, yoksa sözleşme bir yıl uzar (3. HD 2025/1440). Belirsiz sürelide fesih dönemine en az üç ay önce yazılı bildirim (TBK 328–329, 348). TBK 353 uzaması için 'dava açacağım' içerikli yazılı bildirim en geç dava süresi içinde ulaşmalı. Noter (gerekirse noterin UETS üzerinden tebliği) veya güvenli e-imzalı metin kullan; özel kişi UETS'yi doğrudan kullanamaz; WhatsApp ve SMS'e dayanma.",
       "preconditions": [
         "Kiralanan konut veya çatılı işyeri olmalı (TBK 339); arsa veya açık alanda baskın vasfı keşifle belirle (3. HD 2017/15002).",
         "Davacı kiraya veren veya kiraya veren olmayan malik; malik davasında pay ve paydaş çoğunluğu veya bütün ortaklar (3. HD 2018/1605). Kiraya veren tarafın tek başına açtığı davada bu şartın aranıp aranmadığını güncel içtihatla doğrula.",
@@ -1296,11 +1336,11 @@
           "name": "HUAK 18/A/15 durma ve son tutanaktan sonra dava",
           "start_event": "B = arabuluculuk başvurusu (E'den sonra, süre içinde); T = son tutanak",
           "duration": "Dava süresinin başvuruya kadar işlememiş kısmı",
-          "formula": "Kalan = B'den temkinli sona kadar işlememiş süre; dava son günü ≈ T + kalan. Ayı 30 güne çevirme. Erken başvuruda durma güvence vermez.",
+          "formula": "Kalan = B'den temkinli sona kadar işlememiş süre; dava son günü ≈ T + kalan. Ayı 30 güne çevirme; başvuru ve son tutanak günlerinin sayımı tartışmalı. Erken başvuruda durma güvence vermez.",
           "rule": null,
           "command": "yok",
           "basis": "HUAK 18/A/15 (resmî metinden doğrula); 3. HD 2025/1495–3048",
-          "confidence": "medium"
+          "confidence": "low"
         },
         {
           "name": "HUAK 18/B: arabulucunun görev süresi",
@@ -1375,8 +1415,8 @@
         "Süre: dava erken açıldı (resen gözetilir) ya da bir aylık veya 353 ile uzamış süre geçti; belirsiz sürelide fesih dönemi ve üç aylık yazılı bildirime uyulmadı.",
         "Sözleşmedeki kiraya veren aleyhine ihbar kaydına uyulmadı; sözleşme bir yıl uzadı (3. HD 2025/1440; 2025/3576).",
         "İhtiyaçlı kanuni listede değil ya da ihtiyaç şirkete veya ortağa ait (3. HD 2021/4476; 6. HD 2015/9921, 2015/9922).",
-        "İhtiyaç geçici, henüz doğmamış veya yargılamada sona erdi (HGK 2021/878); boş ve elverişli başka taşınmaz var (boşluğu kiracı ispatlar, 6. HD 2015/9532).",
-        "Kira artışı veya tespit uyuşmazlığı tek başına samimiyetsizlik değildir (3. HD 2018/1605 bozması); savunmayı somut delille destekle ve araştırma iste.",
+        "İhtiyaç geçici, henüz doğmamış veya yargılamada sona erdi (HGK 2021/878); boş ve elverişli başka taşınmaz var (6. HD 2015/9532 boşluğun ispatını somut olayda kiracıya yükledi; kapatılan 6. HD, güncel 3. HD uygulamasıyla doğrula).",
+        "Samimiyet itirazları (kira artışı veya tespit uyuşmazlığından sonra dava, boşalan başka taşınmazı üçüncü kişiye kiralama) tek başına yetmeyebilir: 3. HD 2017/3268–15724 bozması (3. HD 2021/4476'da aktarılır) ve 3. HD 2018/1605 eksik inceleme bozması; savunmayı somut delille destekle ve araştırma iste.",
         "Kiralanan ihtiyaca elverişli değil; işyerinde işe uygunluk ve tek başına kullanım denetlenebilir raporla araştırılmalı.",
         "Davacı sıfatı eksik: paylı mülkiyette çoğunluk, elbirliğinde bütün ortaklar yok (3. HD 2018/1605); mahkeme önce muvafakat için süre verir (6. HD 2013/4227).",
         "Kira genel hükümlere tabi (arsa veya açık alan), 350 uygulanmaz (3. HD 2017/15002); savunma genel hükümlerde süre sonu tahliyesine kapı açabilir.",
@@ -1398,7 +1438,7 @@
       "decisions": [
         {
           "document_id": "1155987500",
-          "kunye": "Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, T. 26.05.2025",
+          "kunye": "Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025",
           "outcome": "BAM'lar arası uyuşmazlık Bursa BAM 4. HD görüşüyle giderildi; Bursa BAM Başkanlar Kurulu önerisi benimsenmedi. Oybirliği, kesin.",
           "holding": "TBK 350 ihtiyaç davasında dava şartı arabuluculuk başvurusu, belirli sürelide süre sonundan, belirsiz sürelide usulüne uygun fesih tarihinden sonra ve dava süresi içinde yapılmalıdır; erken başvuru şartı karşılamaz. Hak doğduktan sonraki başvuruda arabuluculuk süresi dava süresinden yemez; erken dava zamansızdır.",
           "quote": "dava şartı olan zorunlu arabuluculuk başvurusunun; tahliye davası açma hakkının doğumundan sonra diğer bir anlatımla dava açma süresi içerisinde yapılması gerektiğine",
@@ -1406,7 +1446,7 @@
         },
         {
           "document_id": "aa156eaa-5348-4eef-963a-75a3f84b14a7",
-          "kunye": "İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, T. 30.12.2025",
+          "kunye": "İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, 30.12.2025",
           "outcome": "İlk derecenin usulden ret kararı kaldırıldı (HMK 353/1-b-2), davanın kabulüyle tahliyeye hükmedildi. Oybirliği; karar kendini HMK 362/1-b uyarınca kesin niteler.",
           "holding": "05.08.2024'te açılan davada erken arabuluculuk nedeniyle ret öngörülemez olur ve mahkemeye erişimi orantısız güçleştirir; dava şartı sağlanmış sayılır. Esasta kirada oturma ihtiyacın başlıca kanıtıdır, ama kira sözleşmesinin sıhhati dekont ve tanıkla desteklenmelidir.",
           "quote": "26.05.2025 tarihinden önce açılan davalar bakımından arabuluculuk başvurusunun dava açma süresinden önce yapıldığı gerekçesiyle davanın dava şartı yokluğundan reddine karar verilmesi davacı için öngörülebilir nitelikte olmayıp",
@@ -1414,7 +1454,7 @@
         },
         {
           "document_id": "1163474000",
-          "kunye": "Yargıtay 3. HD, E. 2024/2446, K. 2025/1440, T. 10.03.2025",
+          "kunye": "Yargıtay 3. HD, E. 2024/2446, K. 2025/1440, 10.03.2025",
           "outcome": "İstanbul BAM 35. ve 36. HD arasındaki uyuşmazlık 36. HD görüşüyle giderildi. Oybirliği, kesin.",
           "holding": "Belirli süreli kirada kiraya verenin süre bitiminden önce fesih ihbarını öngören kayıt kiracı lehine geçerlidir; ihbar süresinde yapılmazsa sözleşme bir yıl uzar ve bir aylık sürede açılan ihtiyaç davası süresinde sayılmaz. Kiraya veren 'sözleşme süresinin veya uzayan yılın bitiminden itibaren bir ay içinde' dava açabilir.",
           "quote": "kiraya veren tarafından sözleşmede kararlaştırılan feshi ihbar şartına uyulmaması halinde, süre bitiminde kira sözleşmesinin bir yıl için uzamış olacağına",
@@ -1422,7 +1462,7 @@
         },
         {
           "document_id": "682264200",
-          "kunye": "Yargıtay 3. HD, E. 2021/2159, K. 2021/4476, T. 21.04.2021",
+          "kunye": "Yargıtay 3. HD, E. 2021/2159, K. 2021/4476, 21.04.2021",
           "outcome": "Tahliye kararı davalı kiracı yararına bozuldu (HUMK 428). Oybirliği.",
           "holding": "Gereksinim kişi çevresi sınırlıdır; kiralananda işletmek üzere kurucusu ve münferiden temsile yetkilisi olduğu şirketi kuran davacı, şirketin ihtiyacı için tahliye isteyemez. İhtiyaç gerçek, samimi, zorunlu olmalı ve yargılama boyunca sürmelidir.",
           "quote": "Kanun hükmüne ve Yargıtay’ın yerleşik içtihatlarına göre gerçek kişi, şirketin ihtiyacı nedeniyle tahliye isteminde bulunamaz.",
@@ -1430,7 +1470,7 @@
         },
         {
           "document_id": "149048900",
-          "kunye": "Yargıtay 6. HD, E. 2015/6245, K. 2015/9532, T. 05.11.2015",
+          "kunye": "Yargıtay 6. HD, E. 2015/6245, K. 2015/9532, 05.11.2015",
           "outcome": "Ret kararı davacı kiraya veren lehine bozuldu. Oybirliği.",
           "holding": "Yıldan yıla uzamış sözleşmede son dönem sonundan sonra açılan dava süresindedir; ayrıca üç aylık bildirim aranmaz. Evli, çocuklu davacının annesiyle oturması ihtiyaç için yeterlidir. Kiracı diğer taşınmazların boş olduğunu ispatlayamadı.",
           "quote": "Davacının annesiyle birlikte oturuyor olması başlı başına ihtiyacın varlığı için yeterlidir.",
@@ -1438,7 +1478,7 @@
         },
         {
           "document_id": "686798500",
-          "kunye": "Yargıtay HGK, E. 2017/1540, K. 2021/878, T. 29.06.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1540, K. 2021/878, 29.06.2021",
           "outcome": "Direnme kararı Özel Daire bozması doğrultusunda bozuldu. Esasta oybirliği; karşıoy yalnız ön sorun (direnme mi yeni hüküm mü) hakkındadır.",
           "holding": "İhtiyaç gerçek, samimi, zorunlu olmalı; dava tarihinde bulunması yetmez, yargılama boyunca sürmelidir. Yurt dışından kesin dönüş tanık, istifa ve ikametgâh belgeleriyle ispatlandı. Kiracı yargılamada çıkınca dava konusuz kaldı; giderler HMK 331/1 uyarınca dava tarihindeki haklılığa göre belirlenir.",
           "quote": "Davanın açıldığı tarihte ihtiyaç sebebinin varlığı yeterli olmayıp bu ihtiyacın yargılama sırasında da devam etmesi gerekir.",
@@ -1446,7 +1486,7 @@
         },
         {
           "document_id": "409436600",
-          "kunye": "Yargıtay 3. HD, E. 2018/619, K. 2018/1605, T. 26.02.2018",
+          "kunye": "Yargıtay 3. HD, E. 2018/619, K. 2018/1605, 26.02.2018",
           "outcome": "Ret kararı davacılar lehine bozuldu (eksik inceleme). Oybirliği.",
           "holding": "Kiraya veren olmayan malik de dava açabilir; paylı mülkiyette pay ve paydaş çoğunluğu, elbirliğinde bütün ortakların katılımı gerekir ve resen gözetilir. Aynı apartmanda başka daire kiralanması tek başına ihtiyacı çürütmez; diğer dairenin maliki, kiralanma tarihi ve ihtiyaca elverişliliği gerekirse keşifle araştırılmalıdır.",
           "quote": "Kiralanan paylı mülkiyete konu ise pay ve paydaş çoğunluğunun sağlanması, elbirliği halinde mülkiyete konu teşkil ediyorsa tüm ortakların davaya katılmaları gerekir.",
@@ -1454,7 +1494,7 @@
         },
         {
           "document_id": "485159800",
-          "kunye": "Yargıtay 3. HD, E. 2017/4956, K. 2019/871, T. 07.02.2019",
+          "kunye": "Yargıtay 3. HD, E. 2017/4956, K. 2019/871, 07.02.2019",
           "outcome": "Tazminatın kabulüne ilişkin hüküm davalı kiraya veren yararına bozuldu. Oybirliği.",
           "holding": "Kiraya veren yalnız ihtarla ihtiyacını bildirmiş, dava açmamıştır; kiracı kendiliğinden çıkmış, yer sonra başkasına kiralanmıştır. Kiracı yargı kararı veya icra marifetiyle tahliye edilmediğinden TBK 355 tazminat koşulları oluşmamıştır.",
           "quote": "Davalı kiraya verenin, gereksinim amacıyla bir tahliye davası açmadığı anlaşılmakta olup davacı kiracı taşınmazı bir yargı kararı veya icra marifetiyle tahliye etmemiştir.",
@@ -1505,7 +1545,7 @@
         "Gereksinim yeni malikin kendisi, eşi, altsoyu, üstsoyu veya kanunen bakmakla yükümlü olduğu kişiler için olmalı; gerçek kişinin şirketi kapsam dışı (3. HD 2021/4476; 6. HD 2015/9921).",
         "Gereksinim gerçek, samimi, zorunlu olmalı, dava tarihinde bulunup yargılama boyunca sürmeli (HGK 2021/878); kirada oturma ihtiyaca yeter, aksini kiracı ispatlar (6. HD 2014/10948).",
         "351/1'de yazılı bildirim A(D,1) içinde (temkinli G(A(D,1),-1)) kiracıya tebliğ edilmiş olmalı (3. HD 2017/12812).",
-        "351/1'de arabuluculuk ve dava altı ay dolduktan sonra, temkinli G(A(D,6),1) veya sonrasında; dava sözleşme sonuna kadar açılabilir (3. HD 2017/12812), HGK 2021/878 par. 18 nedeniyle gecikme.",
+        "351/1'de arabuluculuk ve dava altı ay dolduktan sonra, temkinli G(A(D,6),1) veya sonrasında; dava sözleşme sonuna kadar açılabilir (3. HD 2017/12812), ancak HGK 2021/878 par. 18 obiteri ('takip eden altı ay') nedeniyle gecikmeden başvur, mümkünse A(D,12)'yi geçirme (çıkarım).",
         "351/2 veya 350'de başvuru ve dava dönem sonundan sonra, temkinli G(N,1)–A(L,1) içinde; sözleşmesel ihbar kaydına uyulmuş olmalı (3. HD 2025/1440, kıyasen).",
         "Dava 01.09.2023 veya sonrasında açılıyorsa son tutanak dilekçeye eklenmeli (HUAK 18/A/2; resmî metinden doğrula).",
         "Paylı mülkiyette pay ve paydaş çoğunluğu, elbirliğinde bütün ortaklar (3. HD 2018/1605; 6. HD 2013/4227; 350 dosyalarından kıyas)."
@@ -1659,7 +1699,7 @@
       "decisions": [
         {
           "document_id": "371154500",
-          "kunye": "Yargıtay 3. HD, E. 2017/4691, K. 2017/12812, T. 27.09.2017",
+          "kunye": "Yargıtay 3. HD, E. 2017/4691, K. 2017/12812, 27.09.2017",
           "outcome": "Tahliye kararı davalı kiracı lehine bozuldu (HUMK 428); diğer temyiz itirazları incelenmedi.",
           "holding": "Edinme 16.05.2014, ihtarın tebliği 19.06.2014: bildirim edinmeden bir ay içinde tebliğ edilmediğinden 351'e dayanan dava süresinde değildir; eksiklik sonradan giderilemez. Süre ve koşullar resen denetlenir; dava altı ayın sonunda hemen değil sözleşme sonuna kadar açılabilir; dönem sonu yolu da vardır.",
           "quote": "Davanın altı ayın sonunda hemen açılması şart olmayıp sözleşme sonuna kadar açılması mümkündür. Ancak edinmeyi izleyen bir ay içerisinde bildirimin tebliği zorunlu olup bunun sonradan giderilmesi mümkün değildir.",
@@ -1667,7 +1707,7 @@
         },
         {
           "document_id": "686798500",
-          "kunye": "Yargıtay HGK, E. 2017/1540, K. 2021/878, T. 29.06.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1540, K. 2021/878, 29.06.2021",
           "outcome": "Direnme kararı davacı yeni malik lehine (yargılama giderleri yönünden) bozuldu. Esas oybirliğiyle; ön sorun oy çokluğuyla, karşıoy yalnız ön sorunda.",
           "holding": "Yeni malik eski sözleşmenin sonunda veya edinmeye bağlı sürelerle dava açabilir ve yararına olanı seçer. İhtiyaç dava tarihinde bulunmalı ve yargılama boyunca sürmeli; yurt dışından dönüş belgelerle ispatlandı. Kiracı yargılamada çıkınca giderler HMK 331/1 uyarınca dava tarihindeki haklılığa göre belirlenir.",
           "quote": "Yeni malikin bu seçeneklerden hangisi yararına ise onu tercih etme hakkı vardır.",
@@ -1675,7 +1715,7 @@
         },
         {
           "document_id": "209437800",
-          "kunye": "Yargıtay 6. HD, E. 2015/10452, K. 2016/3567, T. 02.05.2016",
+          "kunye": "Yargıtay 6. HD, E. 2015/10452, K. 2016/3567, 02.05.2016",
           "outcome": "Ret kararı davacı yeni malik (TBB) lehine bozuldu.",
           "holding": "TBB binayı Ankara Barosu'na tahsis amacıyla edinmiş, ihtarı edinmeden 15 gün sonra tebliğ ettirmişti. Daire ihtiyacın 351 kapsamı dışında ve samimiyetsiz olduğu gerekçesiyle verilen reddi bozdu; ihtiyacın varlığını kabul etti, seçimlik hak ve bir aylık tebliğ formülünü tekrarladı.",
           "quote": "davacı tarafından dava konusu taşınmasın da bulunduğu binanın tamamının Ankara Barosuna tahsis edilmek üzere satın alındığı ,ve ihtiyacın da bulunduğu tespit edildiği halde , Mahkemece ihtiyaç iddiasının varlığının kabulü ile kiralananın tahliyesine karar verilmesi gerekirken",
@@ -1683,7 +1723,7 @@
         },
         {
           "document_id": "9ca8de68-9bcb-444d-9c07-3257427162e2",
-          "kunye": "Gaziantep BAM 3. HD, E. 2017/288, K. 2017/286, T. 21.03.2017",
+          "kunye": "Gaziantep BAM 3. HD, E. 2017/288, K. 2017/286, 21.03.2017",
           "outcome": "Kiracının istinafı esastan reddedildi, tahliye korundu; kesin, oybirliği.",
           "holding": "Edinme 08.09.2015, ihtar 20.10.2015 keşide ve 27.10.2015 tebliğ: 351'e dayanılamaz. Yeni malik eski sözleşmeye dayanarak TBK 350 uyarınca sözleşme sonundan bir ay içinde dava açabilir; 02.12.2015 davası süresinde. Kirada oturma ihtiyaç karinesidir; tarihi ve yeri ispatlanmayan ilan fotoğrafı karineyi çürütmez.",
           "quote": "Eldeki dava 02/12/2015 tarihinde, yani kira döneminin bitiminden itibaren 1 aylık yasal süre içinde açılmış olduğuna göre davanın süresinde olduğunun kabulü gerekecektir.",
@@ -1691,7 +1731,7 @@
         },
         {
           "document_id": "1163474000",
-          "kunye": "Yargıtay 3. HD, E. 2024/2446, K. 2025/1440, T. 10.03.2025",
+          "kunye": "Yargıtay 3. HD, E. 2024/2446, K. 2025/1440, 10.03.2025",
           "outcome": "BAM daireleri arasındaki uyuşmazlık İstanbul BAM 36. HD görüşüyle giderildi; kesin, oybirliği.",
           "holding": "TBK 350 ihtiyaç davasında sözleşmede kiraya veren aleyhine kararlaştırılan süre bitiminden önce fesih ihbarı şartı geçerlidir; uyulmazsa sözleşme bir yıl uzar ve bir aylık sürede açılan dava süresinde sayılmaz.",
           "quote": "TBK’nın 350. maddesine göre belirli süreli konut ve çatılı iş yeri kira sözleşmelerinde, ihtiyaç nedeniyle tahliye davasında, kiraya veren tarafından sözleşmede kararlaştırılmışsa fesih ihbar şartına uyulması gerektiği",
@@ -1699,7 +1739,7 @@
         },
         {
           "document_id": "1160316700",
-          "kunye": "Yargıtay 3. HD, E. 2025/2396, K. 2025/3576, T. 25.06.2025",
+          "kunye": "Yargıtay 3. HD, E. 2025/2396, K. 2025/3576, 25.06.2025",
           "outcome": "Aynı konuda 2025/1440 ile karar verildiğinden yeniden karar verilmesine yer olmadığına oybirliğiyle karar verildi.",
           "holding": "Bursa BAM Başkanlar Kurulu, 'bir ay evvel yazılı ihtar yoksa yenilenmiş sayılır' kaydının ihtiyaç davasını ön bildirime bağlamadığını savunmuştu. Bursa dosyası davacı yeni malik dosyasıdır. Daire 2025/1440 sonucunu aktararak ayrılmadı.",
           "quote": "Balıkesir 3. Sulh Hukuk Mahkemesinin 24.01.2024 tarihli ve 2023/1685 E., 2024/128 K. sayılı dosyasında; davacı yeni malik tarafından ihtiyaç sebebiyle kiralananın tahliyesine karar verilmesi talep edildiği",
@@ -1707,7 +1747,7 @@
         },
         {
           "document_id": "379431100",
-          "kunye": "Yargıtay 3. HD, E. 2017/5585, K. 2017/15002, T. 01.11.2017",
+          "kunye": "Yargıtay 3. HD, E. 2017/5585, K. 2017/15002, 01.11.2017",
           "outcome": "Tahliye ve alacak hükmü davalı kiracı lehine bozuldu.",
           "holding": "Yeni malik arsa nitelikli, çatısız, hurda ve geri dönüşüm işinde kullanılan taşınmazı edinip ihtar tebliğ ettirmişti. Genel hükümlere tabi bu kiralanandan yeni iktisap ve ihtiyaç nedeniyle tahliye istenemez; genel hükümlere göre tahliye koşulları incelenmelidir.",
           "quote": "Türk Borçlar Kanunu Genel Hükümlerine tabi olan dava konusu arsa vasfındaki kiralanandan yeni iktisap ve ihtiyaç nedeniyle tahliye istemine dayanılarak dava açılması mümkün değildir.",
@@ -1715,7 +1755,7 @@
         },
         {
           "document_id": "97355400",
-          "kunye": "Yargıtay 6. HD, E. 2014/9523, K. 2014/10948, T. 13.10.2014",
+          "kunye": "Yargıtay 6. HD, E. 2014/9523, K. 2014/10948, 13.10.2014",
           "outcome": "Ret kararı davacı yeni malik lehine bozuldu.",
           "holding": "İlk derecenin muvazaalı satış ve iyiniyete aykırılık gerekçesi isabetsizdir: yeni malikin açtığı tahliye davasında iktisabın muvazaalı olduğu savunması dinlenmez. İhtiyaçlının kirada oturması ihtiyacın varlığına yeter; aksini davalı kanıtlamalıdır.",
           "quote": "yeni malikin açtığı tahliye davasında iktisabın muvazaalı olduğu savunması bu dava içerisinde dinlenemez.",
@@ -1755,7 +1795,7 @@
         "HMK 4/1-a, 316/1-a (resmî metinden doğrula)",
         "İİK 272 (347 feshine uygulanabilirliği doğrulanmadı)"
       ],
-      "requester": "Kira sözleşmesinin kiraya veren tarafı; malik olması gerekmez. Yeni malik TBK 310 ile hakkı kullanır; salt el değiştirme on yıllık süreyi yeniden başlatmaz (3. HD 2022/1103 kıyası), yeni malikle yeni süre ve bedelle yapılan sözleşme başlatır (HGK 2021/614 çoğunluk). Birden çok kiraya verende bildirim ve dava hepsince, miras hâlinde bütün mirasçılarca yapılır (12. HD 2025/7823, 2025/7528; icra bağlamından kıyas). Vekaletnamede fesih yetkisi aranır.",
+      "requester": "Kira sözleşmesinin kiraya veren tarafı; malik olması gerekmez. Yeni malik TBK 310 ile hakkı kullanır; salt el değiştirme on yıllık süreyi yeniden başlatmaz (3. HD 2022/1103 kıyası), yeni malikle yeni süre ve bedelle yapılan sözleşme başlatır (HGK 2021/614 çoğunluk). Birden çok kiraya verende temkinli yol bildirimi ve davayı hepsinin, miras hâlinde bütün mirasçıların yapmasıdır (12. HD 2025/7823, 2025/7528; icra bağlamından kıyas). Vekaletnamede fesih yetkisi aranır.",
       "scope": "Yalnız konut ve çatılı işyeri (TBK 339; altı ay veya daha kısa geçici kullanım hariç, kamu kiraları dahil). Baskın vasfı açık alan olanda TBK 327, ürün kirasında 367–368, 2886/75 idare kirasında özel rejim. Belirli sürelide 347/1 c.3, belirsiz sürelide 347/2 ile 328–329. 01.07.2012 öncesi belirli süreli sözleşmede 6101 geçici 2 eşikleri (01.07.2014, 01.07.2017); 6217 geçici 2 ertelemesi 347'yi kapsamaz. Dava ≥ 01.09.2023 ise HUAK 18/B.",
       "notice": "Gerekli: yazılı ve imzalı fesih bildirimi (TBK 348, 14); noter ihtarnamesi önerilir; imzasız mesaja güvenme. İçerik: TBK 347'ye dayanıldığı, sona erme tarihi F, tahliye ve teslim talebi; sebep gerekmez. Belirli sürelide Y(E,10) ≤ tebliğ ≤ A(G(F,-1),-3); belirsiz sürelide tebliğ ≥ Y(S,10) ve fesih dönemi sonu P'den en az üç ay önce. Bütün kiracılara; TBK 349/3 ile taraf olmuş eşe ayrıca. Keşide değil ulaşma esastır; UETS'de G(U,5).",
       "preconditions": [
@@ -1765,9 +1805,9 @@
         "Yazılı bildirim hedef uzama yılı içinde, F'den en az üç ay önce tebliğ edilmiştir: Y(E,10+k) ≤ tebliğ ≤ A(F,-3), temkinli üst eşik A(G(F,-1),-3).",
         "Belirsiz sürelide başlangıçtan on yıl geçmiş, bildirim ihtiyaten Y(S,10)'dan sonra ve fesih dönemi sonundan (yerel âdet yoksa başlangıçtan sayılan altı aylık dönem) üç ay önce tebliğ edilmiştir; geç bildirim sonraki dönem için geçerlidir (TBK 328/2; 3. HD 2017/17713).",
         "01.07.2012 öncesi belirli süreli sözleşmede 6101 geçici 2 eşiği (01.07.2014 veya 01.07.2017) aşılmıştır; bildirimin eşikten önce tebliği engel değildir (HGK 2021/1517).",
-        "Bildirim ve dava bütün kiraya verenlerce bütün kiracılara yöneltilmiştir (12. HD 2025/7823 kıyası); bildirimden önce TBK 349/3 kapsamında taraf olmuş eşe ayrıca bildirim yapılmıştır.",
-        "Dava hedef uzama yılı sonu F günü veya sonrasında açılmıştır (3. HD 2017/6383).",
-        "Dava 01.09.2023 veya sonrasındaysa arabuluculuğa F günü veya sonrasında başvurulmuş ve son tutanak alınmıştır (HUAK 18/B/1-a; 3. HD 2025/3048 kıyası).",
+        "Bildirim ve dava bütün kiraya verenlerce bütün kiracılara yöneltilmiştir (temkinli; 12. HD 2025/7823 icra kıyası); bildirimden önce TBK 349/3 kapsamında taraf olmuş eşe ayrıca bildirim yapılmıştır.",
+        "Dava hedef uzama yılı sonu F günü veya sonrasında açılmıştır (3. HD 2017/3032–6383).",
+        "Dava 01.09.2023 veya sonrasındaysa arabuluculuğa temkinli olarak G(F,1) veya sonrasında başvurulmuş ve son tutanak alınmıştır (HUAK 18/B/1-a; 3. HD 2025/3048 kıyası; F günü tartışmalı).",
         "Sözleşmede kiraya veren aleyhine daha uzun bildirim veya ihbar şartı varsa ona uyulmuştur (TBK 350 için 3. HD 2025/1440 kıyası; 347'ye uygulanması doğrulanmadı)."
       ],
       "deadlines": [
@@ -1802,14 +1842,24 @@
           "confidence": "medium"
         },
         {
-          "name": "Tahliye davası ve arabuluculuk başvurusu: en erken tarih",
+          "name": "Tahliye davası: en erken tarih",
           "start_event": "Hedef uzama yılı sonu F (belirsiz sürelide seçilen fesih dönemi sonu P)",
           "duration": "F günü dahil sonrası",
-          "formula": "En erken dava ve başvuru günü = F (yıldönümü okuması); F'den önce açılan dava süre yönünden reddedilir, bekletilerek düzeltilmez.",
+          "formula": "En erken dava günü = F (yıldönümü okuması); F'den önce açılan dava süre yönünden reddedilir, bekletilerek düzeltilmez.",
           "rule": null,
           "command": "yok",
-          "basis": "Yargıtay 3. HD 2017/6383; İstanbul BAM 36. HD 2023/2382; HGK 2021/1517; arabuluculuk için 3. HD 2025/3048 kıyası",
+          "basis": "Yargıtay 3. HD 2017/3032–6383; İstanbul BAM 36. HD 2023/2382; HGK 2021/1517",
           "confidence": "high"
+        },
+        {
+          "name": "Dava şartı arabuluculuk başvurusu: en erken tarih",
+          "start_event": "Hedef uzama yılı sonu F (belirsiz sürelide seçilen fesih dönemi sonu P)",
+          "duration": "Temkinli olarak F'yi izleyen gün ve sonrası",
+          "formula": "Temkinli en erken başvuru G(F,1). F gününde başvuru 3. HD 2025/3048 kıyasıyla tartışmalı: o kararda aktarılan bir ilk derece kararı hakkı yıldönümünün ertesi günü doğmuş saydı. Dava son tutanaktan sonra açılır.",
+          "rule": null,
+          "command": "yok",
+          "basis": "HUAK 18/B/1-a, 18/A/2; 3. HD 2025/1495–3048 (TBK 350; kıyas); 347 için karar yok",
+          "confidence": "medium"
         },
         {
           "name": "Tahliye davasının üst sınırı",
@@ -1875,7 +1925,7 @@
           "name": "İstinaf ve temyiz",
           "start_event": "Gerekçeli kararın tebliği T",
           "duration": "İki hafta",
-          "formula": "G(T,14); kesinlik sınırını (değer bir yıllık kira) ve HMK 362/1-b'yi ayrıca doğrula; tatil ve adli tatil araçta yok.",
+          "formula": "G(T,14). Temyiz kesinliği HMK 362/1-b'de üç aylık kira tutarına göre belirlenir (3. HD 2022/7440); istinaf sınırına (HMK 341/2) esas değerin yıllık kira olup olmadığı doğrulanmadı; resmî metinden doğrula. Tatil ve adli tatil araçta yok.",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <teblig-tarihi> --count 2 --unit hafta",
           "basis": "HMK 341, 345, 361/1, 362/1-b (resmî metinden doğrula)",
@@ -1887,7 +1937,7 @@
           "route": "Sulh hukukta TBK 347/1 c.3 fesih bildirimine dayalı tahliye davası",
           "forum": "Sulh hukuk mahkemesi (HMK 4/1-a); yetki HMK 6 ve 10, HMK 12 kesin yetkisi uygulanmaz (resmî metinden doğrula)",
           "arabuluculuk": "dava_sarti",
-          "arabuluculuk_note": "Dava 01.09.2023 veya sonrasında açılıyorsa HUAK 18/B/1-a dava şartı; başvurusuz dava usulden reddedilir (18/A/2). Başvuruyu F günü veya sonrasında yap: 3. HD 2025/3048 erken başvuruyu TBK 350 için yetersiz saydı; 347 için karar yok. İstanbul BAM 35. HD 2025/3212'nin 26.05.2025 öncesi davada erken başvuruyu yeterli sayması tek BAM görüşüdür, 347'ye taşıma.",
+          "arabuluculuk_note": "Dava 01.09.2023 veya sonrasında açılıyorsa HUAK 18/B/1-a dava şartı; başvurusuz dava usulden reddedilir (18/A/2). Başvuruyu temkinli olarak G(F,1) veya sonrasında yap (F günü tartışmalı): 3. HD 2025/3048 erken başvuruyu TBK 350 için yetersiz saydı; 347 için karar yok. İstanbul BAM 35. HD 2025/3212'nin 26.05.2025 öncesi davada erken başvuruyu yeterli sayması tek BAM görüşüdür, 347'ye taşıma.",
           "procedure": "Basit yargılama (HMK 316/1-a). Ekler: bütün sözleşmeler, ihtarname ve tebliğ belgesi, son tutanak, tapu ve mirasçılık belgesi, vekaletname. Dava F günü veya sonrasında açılır; nitelik tartışmalıysa keşif ve bilirkişi. Tahliye ilamı İİK 26 ile icra edilir, tehir-i icra İİK 36 (resmî metinden doğrula)."
         },
         {
@@ -1915,22 +1965,23 @@
       "tenant_defenses": [
         "On yıllık süre dolmadı: ilk süre atlandı veya 'başlangıç + 10' kısayolu kullanıldı; doğru hesap ilk süre + 10 + 1'dir (İstanbul BAM 36. HD 2023/2382).",
         "Taraflar sonradan yeni süre ve bedelle sözleşme yaptı; süre son sözleşmenin bitiminden hesaplanır (HGK 2021/614 çoğunluk). Kiraya veren karşıoylardaki ayrımlara dayanabilir.",
-        "Dava hedef uzama yılı sonundan önce açıldı (3. HD 2017/6383; BAM 2023/2382).",
+        "Dava hedef uzama yılı sonundan önce açıldı (3. HD 2017/3032–6383; İstanbul BAM 36. HD 2023/2382).",
         "Bildirim F'den üç ay önce ulaşmadı, on yıllık uzama dolmadan gönderildi, yazılı veya imzalı değil (TBK 348, 14) ya da yetkisiz vekilce yapıldı.",
         "Bildirim veya dava sözleşmedeki bütün kiraya verenlerce yapılmadı; tapudaki çoğunluk bunu gidermez (12. HD 2025/7823 kıyası).",
         "Bildirimden önce taraf olmuş eşe ayrıca bildirim yapılmadı (TBK 349/3); eşin bildirimi geriye etkili değildir, bu nedenle önceki bildirime karşı savunma zayıftır (kıyas).",
         "6101 geçici 2 eşiği gözetilmedi; HGK 2021/1517 eşikten önce yapılan bildirimi geçerli saydığından yalnız hedef yıl sonu eşikten önceyse işe yarar.",
-        "Arabuluculuk yok veya F'den önce başvuruldu (2025/3048 kıyası; 347 için tartışmalı).",
+        "Arabuluculuk yok, F'den önce ya da F günü başvuruldu (3. HD 2025/3048 kıyası; 347 için tartışmalı).",
         "Sözleşmede kiraya veren aleyhine daha uzun ihbar şartı var ve uyulmadı (TBK 350 için 3. HD 2025/1440 kıyası).",
         "Belirsiz sürelide fesih dönemine uyulmadı; bu bildirimi düşürmez, sonraki döneme kaydırır (TBK 328/2).",
-        "F'den sonra uzun bekleme ve kira olarak bedel kabulüyle ilişki zımnen yenilendi (havuzda doğrulanmadı); TMK 2 savunması zayıftır."
+        "F'den sonra uzun bekleme ve kira olarak bedel kabulüyle ilişki zımnen yenilendi (havuzda doğrulanmadı); TMK 2 savunması zayıftır.",
+        "TBK 347 feshine veya salt süre bitimine dayalı 14 örnek takibe itiraz et; konut ve çatılı işyerinde bu ilamsız yolun dayanağı doğrulanmadı (TBK 347/1; İİK 272'yi resmî metinden doğrula)."
       ],
       "pitfalls": [
         "'Başlangıç + 10 yıl' kısayolunu kullanma; çok yıllı ilk süreyi araca vermezsen hesap.py 12 ay varsayar ve tarih yıllarca erken çıkar.",
         "Bildirimi Y(E,10)'dan önce gönderme; hedef yıldan önceki bildirimi geçerli sayan karar havuzda yok.",
         "hesap.py tahliye-10yil ve deadlines.py tbk347 6101 geçici 2'yi uygulamaz; eski sözleşmede geçmiş tarih verir, ilk uygun uzama yılı sonunu elle bul.",
         "Araçları belirsiz süreli sözleşmeye uygulama; fesih dönemi başlangıçtan hesaplanır, herhangi bir güne üç ay eklemek dönem seçmek değildir.",
-        "Tek gün erken dava bozma sebebidir (2017/6383); arabuluculuğa da F'den önce başvurma.",
+        "Tek gün erken dava bozma sebebidir (3. HD 2017/3032–6383); arabuluculuğa F'den önce başvurma, temkinli olarak G(F,1)'i bekle.",
         "Keşide değil tebliğ esastır; UETS'de ulaşma + 5 gün.",
         "Kiralananın satışı süreyi yeniden başlatmaz; yalnız bedel güncelleyen protokolü otomatik yeni sözleşme sayma.",
         "6217 geçici 2 ertelemesi 347'yi kapsamaz; '2020'ye kadar işyerinde 347 uygulanmaz' sonucu yanlıştır.",
@@ -1943,7 +1994,7 @@
       "decisions": [
         {
           "document_id": "724738400",
-          "kunye": "Yargıtay HGK, E. 2017/1546, K. 2021/1517, T. 30.11.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1546, K. 2021/1517, 30.11.2021",
           "outcome": "Direnme kararı Özel Daire bozma gerekçesiyle bozuldu; kiraya veren lehine, oybirliği.",
           "holding": "6101 geçici 2 ertelemesi bildirim tarihini ertelemez: 14.03.2014'te tebliğ edilip uzama yılı sonu 01.07.2014'ü hedefleyen bildirim süresindedir. 347 koşulları: süre bitimi, yeni sözleşme olmadan on yıllık uzama, on yıldan sonra uzama yılı bitiminden en az üç ay önce bildirim, uzama yılı sonunda dava.",
           "quote": "Ancak 6101 sayılı Kanun’un Geçici 2. maddesinde belirtilen ve dava açmak için şart olunan bildirim tarihinin de 01.07.2014 tarihine kadar ertelendiği anlamı çıkarılamamalıdır.",
@@ -1951,7 +2002,7 @@
         },
         {
           "document_id": "686728500",
-          "kunye": "Yargıtay HGK, E. 2017/458, K. 2021/614, T. 25.05.2021",
+          "kunye": "Yargıtay HGK, E. 2017/458, K. 2021/614, 25.05.2021",
           "outcome": "Direnme kararı bozuldu; kiracı lehine, oy çokluğu (iki ayrı karşıoy).",
           "holding": "Çoğunluk: ilk sözleşmeden sonra taraflar yeni kira sözleşmesi yapmışsa on yıllık süre bu sözleşmenin bitiminden hesaplanır; 2005 tarihli son sözleşmeye göre on yıl dolmamıştır.",
           "quote": "İlk sözleşmeden sonra taraflar bir araya gelerek yeniden bir kira sözleşmesi yapmışlar ise on yıllık süre bu sözleşmenin bitim tarihinden sonra hesaplanmalıdır. Yani her dönemde yapılan yenileme sözleşmesi on yıllık süreyi yeniden başlatır",
@@ -1959,7 +2010,7 @@
         },
         {
           "document_id": "361252700",
-          "kunye": "Yargıtay 3. HD, E. 2017/3032, K. 2017/6383, T. 02.05.2017",
+          "kunye": "Yargıtay 3. HD, E. 2017/3032, K. 2017/6383, 02.05.2017",
           "outcome": "Tahliye kabul hükmü kiracı yararına bozuldu; oybirliği.",
           "holding": "01.08.1969 başlangıçlı sözleşmede uzama yılı 01.08.2015'te biter; feshi ihbarlar süresinde olsa da 31.07.2015'te açılan dava erkendir, dava en erken 01.08.2015 dahil sonrasında açılmalıydı.",
           "quote": "Davanın en erken dönem sonu olan 01.08.2015 tarihinden sonra (bu tarih dahil) açılması gerekir.",
@@ -1967,7 +2018,7 @@
         },
         {
           "document_id": "bb12b6b8-f33f-43ff-aded-6c9a2d166985",
-          "kunye": "İstanbul BAM 36. HD, E. 2021/1010, K. 2023/2382, T. 19.10.2023",
+          "kunye": "İstanbul BAM 36. HD, E. 2021/1010, K. 2023/2382, 19.10.2023",
           "outcome": "Kiraya verenin istinafı esastan reddedildi, ret kararı korundu; HMK 362/1-b uyarınca kesin, oybirliği.",
           "holding": "01.11.2009 başlangıçlı bir yıllık kirada ilk süre 01.11.2010, on yıllık uzama 01.11.2020'de biter; ihtar bu tarihten sonra ve 01.11.2021'den en az üç ay önce tebliğ edilmeli, dava 01.11.2021'den sonra açılmalıdır; 03.11.2020 davası erkendir.",
           "quote": "10 yıllık uzama süresinin 01/11/2020 itibariyle dolacağı, bu tarihten sonra 01.11.2021 kira süresinin dolmasından 3 ay öncesinde tahliye ihtarnamesinin tebliğ edilerek, 01/11/2021 tarihinden sonra TBKnın 347. Maddesine dayalı olarak dava açabileceği",
@@ -1975,7 +2026,7 @@
         },
         {
           "document_id": "389655600",
-          "kunye": "Yargıtay 3. HD, E. 2017/7129, K. 2017/17713, T. 14.12.2017",
+          "kunye": "Yargıtay 3. HD, E. 2017/7129, K. 2017/17713, 14.12.2017",
           "outcome": "Süre yönünden ret kararı kiraya veren lehine bozuldu; oybirliği.",
           "holding": "Belirsiz süreli sözlü kirada TBK 347/2 uygulanır; 09.01.2015'te tebliğ edilen ihtar TBK 328/son uyarınca bir sonraki fesih dönemi için geçerlidir, 23.10.2015 davası süresindedir.",
           "quote": "Bu durumda davalıya 09.01.2015 tarihinde tebliğ edilen ihtar TBK' nun 328/son maddesi uyarınca bir sonraki fesih dönemi için geçerli olacağından",
@@ -1983,7 +2034,7 @@
         },
         {
           "document_id": "748198200",
-          "kunye": "Yargıtay 3. HD, E. 2022/202, K. 2022/1103, T. 15.02.2022",
+          "kunye": "Yargıtay 3. HD, E. 2022/202, K. 2022/1103, 15.02.2022",
           "outcome": "İstanbul BAM 35. HD kararı kiracı yararına bozuldu; oybirliği.",
           "holding": "TBK 310 gereği sözleşme tüm hak ve borçlarıyla yeni malike geçer; kiraya verenin değişmesi sözleşmeyi ve niteliğini ortadan kaldırmaz. 2886/75 ayrıcalığı yalnız 2886'ya göre yapılan kiralarda uygulanır; baskın vasfı açık alan olan kiralananda TBK 327 uygulanmalıdır.",
           "quote": "Bu durumda kiraya verenin değişmesi akdi ve akdin niteliğini ortadan kaldırmaz.",
@@ -1991,7 +2042,7 @@
         },
         {
           "document_id": "514822400",
-          "kunye": "Yargıtay 3. HD, E. 2019/3021, K. 2019/5814, T. 26.06.2019",
+          "kunye": "Yargıtay 3. HD, E. 2019/3021, K. 2019/5814, 26.06.2019",
           "outcome": "Ret kararı kiraya veren lehine bozuldu; oybirliği.",
           "holding": "Kiralananın rejimi tahsis amacına göre baskın vasıfla belirlenir; çay ocağı olarak kiralanan yer gayrimusakkaf sayılarak TBK 327'ye tabi tutuldu ve süresinde açılan dava kabul edilmeliydi.",
           "quote": "Plaj, çay bahçesi, akaryakıt istasyonu olarak kiralanan arsalar üzerine bunlardan yararlanabilmek için zorunlu binalar yapılsa bile bu taşınmazlar üstün yararlanma biçimi açısından üstü örtülü-musakkaf olarak kabul edilemez.",
@@ -1999,7 +2050,7 @@
         },
         {
           "document_id": "1155987500",
-          "kunye": "Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, T. 26.05.2025",
+          "kunye": "Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025",
           "outcome": "BAM daireleri arasındaki uyuşmazlık Bursa BAM 4. HD görüşü doğrultusunda giderildi; oybirliği, kesin.",
           "holding": "TBK 350 davasında dava şartı arabuluculuk başvurusu tahliye davası açma hakkı doğduktan sonra, dava süresi içinde yapılmalıdır; erken başvuru dava şartını karşılamaz.",
           "quote": "dava şartı olan zorunlu arabuluculuk başvurusununda, tahliye davası açma hakkının doğumundan sonra yapılması gerekir.",
@@ -2030,7 +2081,7 @@
         "TBK 321",
         "TBK 322/2–3",
         "TBK 358 (ürün kirası atfı)",
-        "TBK 318; TBK 334",
+        "TBK 301, 304, 318; TBK 334",
         "TBK 339",
         "TBK 14–15",
         "TBK 92–93",
@@ -2042,11 +2093,11 @@
         "HMK 4/1-a, 316/1-a, 400 vd. (resmî metinden doğrula)",
         "TMK 691, 702, 640 (resmî metinden doğrula)"
       ],
-      "requester": "Kira sözleşmesinin kiraya veren tarafı; malik olması gerekmez. Yeni malik edinmeden sonraki aykırılık için kendi ihtarını çeker (TBK 310); eski malikin ihtarına dayanmak açık sorudur. Paylı mülkiyette pay ve paydaş çoğunluğu, elbirliğinde bütün ortaklar veya tereke temsilcisi; eksik muvafakate mahkeme süre verir (6. HD 2013/4227 kıyası). Kiraya veren haklarını alt kiracıya karşı da kullanır (TBK 322/3). Kiracı 316 ile tahliye isteyemez.",
+      "requester": "Kira sözleşmesinin kiraya veren tarafı; malik olması gerekmez. Yeni malik edinmeden sonraki aykırılık için kendi ihtarını çeker (TBK 310); eski malikin ihtarına dayanmak açık sorudur. Sözleşmede birden çok kiraya veren varsa temkinli yol hepsinin birlikte ihtar etmesi ve davacı olmasıdır (İstanbul BAM 36. HD görüşü, 3. HD 2024/3125'te aktarılır; Yargıtay genel ilkeyi tartışmadı). Pay ve paydaş çoğunluğu, elbirliğinde bütün ortaklar veya tereke temsilcisi ve eksik muvafakate süre verilmesi TBK 350 malik davalarından kıyastır (6. HD 2013/4227); kiraya veren tarafın birlikte hareketi için Yargıtay ölçütü havuzda yok. Kiraya veren haklarını alt kiracıya karşı da kullanır (TBK 322/3). Kiracı 316 ile tahliye isteyemez.",
       "scope": "Bütün kira türleri. Konut ve çatılı işyerinde en az 30 günlük yazılı giderim ihtarı (316/2), kasten ağır zarar, yararsızlık veya çekilmezlikte derhal fesih (316/3); diğer kiralarda ve ürün kirasında (TBK 358) ihtarsız yazılı fesih. Rejimi baskın vasıf belirler (3. HD 2019/5814). Süre türü fark etmez; kanuni dava süresi yok. İhtar ve fesih 01.07.2012 öncesindeyse 818 BK 256. 316 ve 322 ertelenmedi. Dava ≥ 01.09.2023 ise HUAK 18/B; ilamsız yol yok.",
       "notice": "Konut ve çatılı işyerinde zorunlu: yazılı ve imzalı (TBK 14–15), noter önerilir. İçerik: aykırılığın somut tanımı, istenen giderim, en az 30 gün süre, giderilmezse sözleşmenin feshedileceği uyarısı (3. HD 2026/1193 dava uyarısını yeterli saydı). Yalnız tahliye isteyen ihtar yetmez (HGK 2014/83). Süre tebliğden işler; UETS'de G(U,5). Bütün kiracılara, ihtiyaten alt kiracı ve kullanıcıya; taraf olmuş eşe fesih bildirimi ayrıca (TBK 349/3).",
       "preconditions": [
-        "Geçerli kira ilişkisi ve davacının kiraya veren sıfatı; birden çok malik, paydaş veya mirasçıda gereken çoğunluk ya da birlikte hareket (6. HD 2013/4227 kıyası).",
+        "Geçerli kira ilişkisi ve davacının kiraya veren sıfatı; sözleşmede birden çok kiraya veren varsa temkinli yol hepsinin birlikte hareketidir. Pay ve paydaş çoğunluğu kuralı TBK 350 malik davalarından kıyastır (6. HD 2013/4227).",
         "Kiracı veya alt kiracı 316/1 yükümlülüğüne somut biçimde aykırı davranmıştır: amaç dışı kullanım, izinsiz tadilat veya taşıyıcı sisteme müdahale, yazılı rızasız alt kira veya devir (322/2), komşuları rahatsız eden kullanım.",
         "Aykırılık önemli ve doğrudan kiralananın kullanımıyla ilgilidir; rızaya aykırı kullanımda ayrıca zarar aranmaz (3. HD 2018/11200).",
         "Aykırılık kiralananın içindedir; sözleşme dışı alan için tahliye değil, el atmanın önlenmesi ve ecrimisil istenir (HGK 2014/83; 3. HD 2019/189).",
@@ -2092,11 +2143,11 @@
           "name": "TBK 331 olağanüstü fesih bildirim süresi (alternatif yol)",
           "start_event": "Önemli sebebe dayanan yazılı fesih bildiriminin ulaşması B",
           "duration": "3 ay",
-          "formula": "A(B,3); 'her zaman' ifadesi nedeniyle fesih dönemi aranmaması yorumdur, içtihatla doğrula.",
+          "formula": "A(B,3); fesih dönemi sonuna bağlı olup olmadığı açık ('her zaman' ifadesinden çıkan yorum), içtihatla doğrula.",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <bildirim-ulasma-tarihi> --count 3 --unit ay",
           "basis": "TBK 331, 329, 347/3",
-          "confidence": "medium"
+          "confidence": "low"
         },
         {
           "name": "Kira arabuluculuğunun sonuçlandırılma süresi",
@@ -2135,7 +2186,7 @@
           "forum": "Sulh hukuk mahkemesi (HMK 4/1-a); HMK 6 ve 10 seçimlik yetki, HMK 12 kesin yetkisi yok (resmî metinden doğrula)",
           "arabuluculuk": "dava_sarti",
           "arabuluculuk_note": "Dava ≥ 01.09.2023 ise HUAK 18/B/1-a dava şartı; ilamsız yol olmadığından istisna uygulanmaz. Başvuruyu süre (TBK 93 düzeltmesiyle) bittikten sonra yap; 316 için karar yok, 3. HD 2025/3048 (TBK 350) kıyas riski taşır.",
-          "procedure": "Basit yargılama (HMK 316/1-a). Ekler: sözleşme, ihtar ve tebliğ belgesi, delil tespiti, tanık listesi, bilirkişi ve keşif talebi, son tutanak. Kullanım amacında sektör uzmanı, tadilatta inşaat ve statik bilirkişi. Alt kirada kullananı da davalı göster (3. HD 2018/6300). İlam İİK 24–26 ile icra edilir (doğrula)."
+          "procedure": "Basit yargılama (HMK 316/1-a). Ekler: sözleşme, ihtar ve tebliğ belgesi, delil tespiti, tanık listesi, bilirkişi ve keşif talebi, son tutanak. Kullanım amacında sektör uzmanı, tadilatta inşaat ve statik bilirkişi. Alt kirada kullananı da davalı göster (3. HD 2018/6300). İlam İİK 26 (24 atfı) ile icra edilir (doğrula)."
         },
         {
           "route": "TBK 316/3 derhal fesih ve tahliye davası",
@@ -2187,21 +2238,21 @@
         "Aykırılık önemsiz veya kullanımla doğrudan ilgili değil; sözleşmesel tahliye şartı geçersizdir (3. HD 2018/11200; 3. HD 2024/217). HGK 2013/859 çoğunluğunun 818 dönemindeki aksi görüşünü hesaba kat.",
         "Kiraya verenin yazılı izni var ve kapsamı aşılmadı; taşıyıcı sisteme zarar uzman raporuyla saptanmadan tahliye verilemez (6. HD 2014/11304; TBK 321/2).",
         "Kiraya veren aykırı kullanımı baştan bildi ve zımnen rıza gösterdi; tanıkla ispat (6. HD 2011/12769, 818 dönemi). Alt kirada TBK 322/2 yazılı rıza aradığından zayıftır (3. HD 2018/6300).",
-        "Zarar teslimdeki ayıptan doğdu (TBK 318); tacir 'tam ve mükemmel teslim' kaydını imzaladıysa ispat yükü kendisindedir (3. HD 2026/1193).",
+        "Zarar kiralananın teslim anındaki ayıbından doğdu (TBK 301, 304); kiracı ayıbı TBK 318 uyarınca bildirdiyse belgele; tacir 'tam ve mükemmel teslim' kaydını imzaladıysa ispat yükü kendisindedir (3. HD 2026/1193).",
         "316/3 koşulları ispatlanmadı; kişisel husumet tanıkla kanıtlanamadı (3. HD 2019/189).",
         "Arabuluculuk yok, giderim süresi dolmadan başvuruldu (2025/3048 kıyası, tartışmalı) veya dava süre dolmadan açıldı (3. HD 2017/6924 bozması).",
-        "Taraf sıfatı yok: davacı kiraya veren değil, pay ve paydaş çoğunluğu yok (6. HD 2013/4227) veya taraf olmuş eşe fesih bildirimi yapılmadı (TBK 349/3).",
+        "Taraf sıfatı yok: davacı kiraya veren değil, sözleşmedeki bütün kiraya verenler ihtar etmemiş veya davada değil (İstanbul BAM 36. HD görüşü, 3. HD 2024/3125'te aktarılır), malik davasında pay ve paydaş çoğunluğu yok (6. HD 2013/4227, kıyas) ya da taraf olmuş eşe fesih bildirimi yapılmadı (TBK 349/3).",
         "Mahkeme kararı olmadan zorla çıkarma, el koyma veya yıkım sözleşme ihlalidir; kiracılık tespiti ve tazminat istenebilir (3. HD 2022/7594; 3. HD 2019/6280; 3. HD 2025/4234).",
         "Kiraya veren ihtarsız feshe dayanıyorsa baskın vasfın konut veya çatılı işyeri olduğunu, 30 günlük ihtar gerektiğini ileri sür; keşif ve bilirkişi iste (3. HD 2019/5814).",
         "Asıl amaç tahliyeye zorlamaktır (TMK 2); 3. HD 2026/1193'te ileri sürülmüş, sonuca etkili olmamıştır."
       ],
       "pitfalls": [
-        "TBK 315 ödeme ihtarı ile 316 giderim ihtarını karıştırma; deadlines.py tbk315 ön ayarını 316 için kullanma, takvim --count 30 --unit gun kullan.",
+        "TBK 315 ödeme ihtarı ile 316 giderim ihtarını karıştırma; 316 için python scripts/deadlines.py tbk316 <ihtar-teblig-tarihi> kullan (ihtarda 30 günden uzun süre varsa takvim --count <n> --unit gun), tbk315 ön ayarını kullanma.",
         "818 dönemi kararlarını süre bakımından TBK'ya taşıma: HGK 2013/859'daki bir günlük giderim süresi tartışılmamıştır; 'açıktan açığa fena kullanım' 316/3 ile aynı değildir.",
         "HGK 2013/859'u oy çokluğuyla verildiğini ve karşıoyu belirtmeden aktarma; karşıoyu çoğunluk gibi sunma.",
         "TBK 317 temizlik ve bakım gideridir; ayıp bildirimi 318'dedir ve yaptırımı tazminattır; 316 tahliyesini otomatik kurma.",
         "TBK 321 yenilik ve değişiklik iznini 316 kullanım amacına aykırılıkla aynı mesele sayma.",
-        "Kendiliğinden tahliye (kilit değiştirme, su veya elektrik kesme, eşya çıkarma, yıkım) yapma; tahliye ilamı gerekir (3. HD 2022/7594; 3. HD 2025/4234).",
+        "Kendiliğinden tahliye yapma; tahliye ilamı gerekir. Tek yanlı fesih ve kiralanana el koyma (3. HD 2022/7594) ile tahliye davası açmadan yıkım (3. HD 2025/4234) sözleşme ihlalidir; kilit değiştirme, su veya elektrik kesme ve eşya çıkarma aynı riski taşır (çıkarım; 2025/4234'te su ve elektrik yalnız davacı iddiası).",
         "Bozma kararlarını kesinleşmiş tahliye hükmü gibi, taraf iddialarını Yargıtay tespiti gibi sunma.",
         "Derlemedeki Antalya BAM 6. HD 2019/1061 K. ve Bursa BAM 4. HD 2025/74 K. havuzda bulunamadı; atıf yapma. §3 VI.A ve VI.C'deki bazı alıntılar birebir değildir.",
         "Kısa süreli turizm kiralamasında (7464 s.K.) izin belgesi yokluğunu tek başına tahliye sebebi sayma; 322/2 ve 316 ihtar yolundan geçir.",
@@ -2213,7 +2264,7 @@
       "decisions": [
         {
           "document_id": "1216459800",
-          "kunye": "Yargıtay 3. HD, E. 2025/4165, K. 2026/1193, T. 04.03.2026",
+          "kunye": "Yargıtay 3. HD, E. 2025/4165, K. 2026/1193, 04.03.2026",
           "outcome": "Onama (HMK 370/1); BAM'ın istinafı esastan ret kararı onandı, tahliye kiraya veren lehine kesinleşti; oybirliği.",
           "holding": "Tacir kiracının muvafakatsiz taşıyıcı sistem müdahalesi akde aykırıdır; kiracı 'tam ve mükemmel teslim' kaydının aksini ispatlayamamıştır. 30 gün süre veren ve giderilmezse tahliye davası açılacağını bildiren ihtar usulüne uygundur.",
           "quote": "davalıya tebliğ olunan ihtarnamede sözleşmeye aykırılığın giderilmesi için 30 günlük süre verildiğinin ve bu sürede aykırılık giderilmediğinde tahliye davası açılacağının usulünce bildirildiğinin anlaşılmasına göre",
@@ -2221,7 +2272,7 @@
         },
         {
           "document_id": "454723600",
-          "kunye": "Yargıtay 3. HD, E. 2018/6432, K. 2018/11200, T. 07.11.2018",
+          "kunye": "Yargıtay 3. HD, E. 2018/6432, K. 2018/11200, 07.11.2018",
           "outcome": "Ret kararı kiraya veren yararına bozuldu (ikinci bozma); oybirliği.",
           "holding": "Yalnız kafeterya olarak kiralanan yerin lokantaya çevrilmesi iddiasında rızaya aykırı her kullanma akde aykırıdır ve zarar aranmaz; ancak tahliye için aykırılık önemli, kullanımla doğrudan ilgili ve ihtar süresinden sonra da devam ediyor olmalıdır. Uzman heyet raporu alınmalıdır.",
           "quote": "Kiraya veren kiralananı sadece kafeterya olarak kullanılması için kiraya verdiğinden, onun rızasına aykırı her kullanma, akde aykırı bir kullanmadır. Bu kullanımın kiralanana zarar verip vermemesi önemli değildir.",
@@ -2229,7 +2280,7 @@
         },
         {
           "document_id": "020e7adb-ba73-49cc-8228-2aa4bdf70f18",
-          "kunye": "Yargıtay 3. HD, E. 2018/2258, K. 2018/6300, T. 04.06.2018",
+          "kunye": "Yargıtay 3. HD, E. 2018/2258, K. 2018/6300, 04.06.2018",
           "outcome": "Ret kararı eksik inceleme nedeniyle kiraya veren yararına bozuldu; oybirliği.",
           "holding": "AVM mağazasının başka şirketçe kullanılması iddiasında TBK 322/2 yazılı rızası ve sözleşmedeki yazılı muvafakat maddesi esastır; franchise savunması, şirket bağlantısı ve kiracının yazılı muvafakat delilleri araştırılmadan ret verilemez.",
           "quote": "kiraya verenin yazılı muvafakatine ilişkin sözleşme hükümleri üzerinde durulup davalının yazılı muvafakate ilişkin varsa delillerinin ibrazı sağlanıp belirtilen hususların tamamı birlikte değerlendirilerek sonucuna göre karar verilmesi gerekirken",
@@ -2237,7 +2288,7 @@
         },
         {
           "document_id": "781105300",
-          "kunye": "Yargıtay 3. HD, E. 2021/3201, K. 2022/2605, T. 22.03.2022",
+          "kunye": "Yargıtay 3. HD, E. 2021/3201, K. 2022/2605, 22.03.2022",
           "outcome": "BAM'ın ret kararı kiraya veren yararına bozuldu; oybirliği.",
           "holding": "Rödovans sözleşmesi ürün kirasıdır; TBK 358 atfıyla 316 uygulanır ve kiraya veren önceden ihtar yapmadan yazılı bildirimle sözleşmeyi hemen feshedebilir; BAM'ın süreli ihtar araması yerinde değildir.",
           "quote": "TBK'nın 358. maddesi atfıyla aynı Kanun'un 316. maddesi uyarınca, ürün kirasına ilişkin sözleşmede kiraya verenin, davalı kiracıya önceden bir ihtarda bulunmaksızın, yazılı bir bildirimle sözleşmeyi hemen feshedebileceği gözetilerek",
@@ -2245,7 +2296,7 @@
         },
         {
           "document_id": "77430100",
-          "kunye": "Yargıtay HGK, E. 2013/6-96, K. 2013/859, T. 19.06.2013",
+          "kunye": "Yargıtay HGK, E. 2013/6-96, K. 2013/859, 19.06.2013",
           "outcome": "Direnme kararı oy çokluğuyla onandı; fesih ve tahliye kiraya veren lehine; karşıoy var.",
           "holding": "Çoğunluk: AVM'deki kiracının ihtara rağmen sürdürdüğü fişsiz ve faturasız satış nedeniyle sözleşme feshedilince kiracının taşınmazda kalması yeni uyuşmazlıklara yol açacağından tahliyeye de karar verilmelidir. Karşıoy ve Özel Daire: kullanımla ilgisiz ihlal yalnız feshi gerektirir.",
           "quote": "aktin feshine karar verilmesinden sonra, davalı kiracının halen taşınmazda oturmasına izin verilmesinin taraflar arasında yeni ihtilaflara sebebiyet vereceği, olayda akte aykırı davranıldığı hususunun hem mahkemece, hem de Özel Daire’ce kabul edildiğine göre kiralananın tahliyesine de karar verilmesi gerektiği",
@@ -2253,7 +2304,7 @@
         },
         {
           "document_id": "84014200",
-          "kunye": "Yargıtay HGK, E. 2013/378, K. 2014/83, T. 05.02.2014",
+          "kunye": "Yargıtay HGK, E. 2013/378, K. 2014/83, 05.02.2014",
           "outcome": "Direnme kararı bozuldu, tahliye kararı kiracı lehine bozuldu; oybirliği.",
           "holding": "Kiralanan içindeki değişiklikler için giderim süresi veren ihtar yoktur; sözleşme kapsamı dışındaki ortak otopark alanının kapatılması tahliyeye dayanak olamaz. Benimsenen bozmaya göre kiracının kabul ettiği bir sözleşme şartının yerine getirilmemesi tahliyeyi gerektirmez.",
           "quote": "Sözleşme kapsamı dışında kalan taşınmaz kısmı hakkında akde aykırılık veya pek fena kullanım nedeniyle taşınmazın tahliyesi istenemez.",
@@ -2261,7 +2312,7 @@
         },
         {
           "document_id": "477596700",
-          "kunye": "Yargıtay 3. HD, E. 2017/4483, K. 2019/189, T. 16.01.2019",
+          "kunye": "Yargıtay 3. HD, E. 2017/4483, K. 2019/189, 16.01.2019",
           "outcome": "Fesih hükmü eksik inceleme nedeniyle bozuldu (kiracı lehine); oybirliği.",
           "holding": "Kötü söz ve davranış tanıkla ispatlanamamıştır; sözleşme dışı alan için akde aykırılık nedeniyle fesih istenemez; hurdacılığın kiralanan alanda yapılıp yapılmadığı tespit edilip TBK 316/3 çerçevesinde değerlendirilmelidir.",
           "quote": "Sözleşme dışında kalan taşınmaz kısmı hakkında akde aykırı davranış nedenine dayanarak kira sözleşmesinin feshinin istenemeyeceği kuşkusuzdur.",
@@ -2269,7 +2320,7 @@
         },
         {
           "document_id": "838265700",
-          "kunye": "Yargıtay 3. HD, E. 2022/5351, K. 2022/7594, T. 11.10.2022",
+          "kunye": "Yargıtay 3. HD, E. 2022/5351, K. 2022/7594, 11.10.2022",
           "outcome": "BAM kararı kaldırıldı, ilk derecenin ret kararı kiracı yararına bozuldu; oybirliği.",
           "holding": "Kira sözleşmesi mahkeme kararı, uygun irade beyanları veya kiralananın yok olmasıyla sona erer; fesih koşulları bulunsa bile tahliye ilamı alınmadıkça sona ermiş sayılmaz. Kiraya verenin tek yanlı feshi ve kiralanana el koyması sözleşme ihlalidir.",
           "quote": "Akdin feshi ve tahliye davası açma koşullarının bulunması durumunda bile mahkeme kararı ile tahliye ilamı alınmadığı sürece akdin sona erdiğinden söz edilemez.",
@@ -2316,7 +2367,7 @@
         "İİK 26, 36 (resmî metinden doğrula)",
         "TMK 683 ve ecrimisil içtihadı (doğrula)"
       ],
-      "requester": "352/3 davasını kiraya veren açar (3. HD 2017/12337); birden çok kiraya verende pay ve paydaş çoğunluğu, elbirliğinde bütün ortaklar aranır (3. HD 2018/1605, TBK 350 bağlamında kıyasen). Kiraya veren olmayan malikin 352/3 davası açıp açamayacağı açıktır. 331'i iki taraf da kullanır; 332 kiraya verenin, 333 fesih hakkı kiracının mirasçılarınındır. Kira ilişkisi yoksa el atma ve ecrimisili kural olarak malik veya paydaş ister.",
+      "requester": "352/3 davasını kiraya veren açar (3. HD 2017/12337); sözleşmede birden çok kiraya veren varsa temkinli yol hepsinin davacı olmasıdır; pay ve paydaş çoğunluğu, elbirliğinde bütün ortaklar kuralı TBK 350 malik davalarından kıyastır (3. HD 2018/1605), kiraya veren tarafın birlikte hareketi için Yargıtay ölçütü havuzda yok. Kiraya veren olmayan malikin 352/3 davası açıp açamayacağı açıktır. 331'i iki taraf da kullanır; 332 kiraya verenin, 333 fesih hakkı kiracının mirasçılarınındır. Kira ilişkisi yoksa el atma ve ecrimisili kural olarak malik veya paydaş ister.",
       "scope": "352/3 konut ve çatılı işyeri bölümündedir (TBK 339; altı ay veya daha kısa geçici kullanım hariç); işyeri kiracısına uygulanıp uygulanmayacağı açıktır. Genel kira ve ürün kirasında 352/3 uygulanmaz. 331–333 ve 325 genel kira ile konut ve çatılı işyerine uygulanır; ürün kirasında 369–371 önce gelir (TBK 358). 01.07.2012 sonrası sona erme TBK'ya tabidir; dava 01.09.2023 veya sonrasındaysa HUAK 18/B dava şartı aranır.",
       "notice": "352/3 ön ihtar istemez. TBK 353 uzaması için 'dava açacağım' içerikli yazılı bildirim A(E,1) dolmadan kiracıya (taraf olmuş eşe ayrıca) ulaşmalı; 352/3'e uygulanması sistematik yorumdur. 331 ve 333 fesih bildirimleri yazılı olmazsa geçersizdir (TBK 348); üç aylık süreye uyulur (TBK 329). 332'de güvence istemi kiracıya ve iflas masasına yazılı yapılır. Aile konutunda kiracı feshi eşin açık rızasına bağlıdır (TBK 349/1).",
       "preconditions": [
@@ -2365,13 +2416,23 @@
           "confidence": "medium"
         },
         {
-          "name": "TBK 331 olağanüstü fesihte bildirim süresi",
+          "name": "TBK 331 olağanüstü fesihte bildirim süresi (taşınmaz kirası)",
           "start_event": "Yazılı fesih bildiriminin karşı tarafa ulaştığı tarih T",
-          "duration": "3 ay (TBK 329); ürün kirasında en az 6 ay (TBK 368–369)",
-          "formula": "En erken sona erme A(T,3); fesih dönemi sonuna bağlı olup olmadığı açık. Süre sonunda çıkılmazsa tahliye davası.",
+          "duration": "3 ay (TBK 329)",
+          "formula": "En erken sona erme A(T,3); fesih dönemi sonuna bağlı olup olmadığı açık ('her zaman' ifadesinden çıkan yorum). Süre sonunda çıkılmazsa tahliye davası.",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <bildirim-ulasma-tarihi> --count 3 --unit ay",
           "basis": "TBK 331, 329, 348; TBK 347/3; aile konutunda TBK 349/1",
+          "confidence": "low"
+        },
+        {
+          "name": "TBK 331 olağanüstü fesihte bildirim süresi (ürün kirası)",
+          "start_event": "Yazılı fesih bildiriminin karşı tarafa ulaştığı tarih T",
+          "duration": "En az 6 ay (TBK 368)",
+          "formula": "En erken sona erme A(T,6); 331'deki yasal bildirim süresinin ürün kirasında TBK 368 olduğu ve dönem sonuna bağlılık açık (yorum).",
+          "rule": "takvim",
+          "command": "python scripts/deadlines.py takvim <bildirim-ulasma-tarihi> --count 6 --unit ay",
+          "basis": "TBK 331, 358, 368",
           "confidence": "low"
         },
         {
@@ -2496,9 +2557,9 @@
         "Konut kiracıya veya birlikte yaşadığı eşine ait değildir; yalnız pay veya intifa vardır; eşle fiilen ayrı yaşanmaktadır (açık sorular).",
         "Bir aylık süre veya TBK 353 koşulları sağlanmamıştır; bildirim ulaşmamış veya geç ulaşmıştır.",
         "Dava şartı arabuluculuk yok, son tutanak eklenmemiş veya başvuru erken yapılmış.",
-        "Aktif veya pasif taraf teşkili eksik: pay ve paydaş çoğunluğu yok; TMK 194 bildirimi yapmış eş davalı gösterilmemiş.",
+        "Aktif veya pasif taraf teşkili eksik: sözleşmedeki bütün kiraya verenler davada yok veya malik davasında (kıyasen) pay ve paydaş çoğunluğu yok; TMK 194 bildirimi yapmış eş davalı gösterilmemiş.",
         "Sözleşmeye konan ek tahliye sebebi ve bağlı cezai şart geçersizdir (TBK 354; 3. HD 2024/217).",
-        "Kiraya verenin kilit değiştirme, elektrik veya su kesme, yıkım gibi kendiliğinden tahliyesi sözleşme ihlalidir; kiracılık sıfatının tespiti ve tazminat istenebilir (3. HD 2022/7594; 3. HD 2025/4234).",
+        "Kiraya verenin tek yanlı feshi ve kiralanana el koyması (3. HD 2022/7594) ile tahliye davası açmadan yıkımı (3. HD 2025/4234) sözleşme ihlalidir; kiracılık sıfatının tespiti ve tazminat istenebilir. Kilit değiştirme, su veya elektrik kesme de bu nitelikte sayılabilir (çıkarım; bu kararlarda yalnız taraf iddiası).",
         "331'e karşı: sebep önemli veya çekilmez değil, bildirim yazılı değil veya üç aya uyulmadı; kullanım aykırılığında TBK 316/2 ihtarı ve alan içi aykırılık aranır (3. HD 2019/189).",
         "325'e karşı: haklı fesih veya sözleşmesel çıkış hakkı (Adana BAM 5. HD 2024/1605), yeni kiracı önerisi, zararı azaltma ödevi (TBK 52, 112), uzman bilirkişi ve depozito mahsubu (3. HD 2020/7199).",
         "333/356: konutta birlikte oturan sözleşmeyi sürdürmektedir; kiraya verenin ölüme dayalı fesih hakkı yoktur.",
@@ -2523,7 +2584,7 @@
       "decisions": [
         {
           "document_id": "367438100",
-          "kunye": "Yargıtay 3. HD, E. 2017/4366, K. 2017/12337, T. 20.09.2017",
+          "kunye": "Yargıtay 3. HD, E. 2017/4366, K. 2017/12337, 20.09.2017",
           "outcome": "Kiraya veren yararına bozma (HUMK 428, oybirliği); ilk derece kiracı dava sırasında çıktığı için karar verilmesine yer olmadığına ve giderlerin davacıya yüklenmesine hükmetmişti.",
           "holding": "352/3 davasında dava hakkı kiraya verene aittir; aynı ilçe veya belde sınırında konut bulunması ile davalının sosyal durumu ve aile nüfusuna elverişlilik birlikte aranır. Konutun inşaat hâlinde ve izinsiz olduğu savunulduğundan keşif avansı için HMK 324'e uygun kesin süre verilip elverişlilik araştırılmalı ve giderler dava tarihindeki haklılığa göre belirlenmeliydi.",
           "quote": "tahliye kararı verilebilmesi için kiracının veya birlikte yaşadığı eşinin aynı ilçe veya belde belediye sınırları içinde oturmaya elverişli bir konutunun bulunması ve davalının sosyal durumu, aile nüfus sayısı itibariyle oturmasına elverişli bulunması gerekir. Bu iki koşulun bir arada bulunması zorunludur.",
@@ -2531,7 +2592,7 @@
         },
         {
           "document_id": "409436600",
-          "kunye": "Yargıtay 3. HD, E. 2018/619, K. 2018/1605, T. 26.02.2018",
+          "kunye": "Yargıtay 3. HD, E. 2018/619, K. 2018/1605, 26.02.2018",
           "outcome": "Davacılar yararına bozma (HUMK 428, oybirliği); ihtiyacı samimi bulmayan ret kararı eksik araştırma nedeniyle bozuldu.",
           "holding": "TBK 350 davasında dava hakkı kural olarak kiraya verenindir, kiraya veren olmayan malik de dava açabilir. Paylı mülkiyette pay ve paydaş çoğunluğu, elbirliğinde bütün ortakların katılımı gerekir; sonradan onay veya tereke temsilcisiyle sağlanabilir ve mahkeme kendiliğinden gözetir.",
           "quote": "Ancak kiraya veren durumunda olmayan malikin de bu davaları açabileceği içtihaden kabul edilmiştir. Kiralanan paylı mülkiyete konu ise pay ve paydaş çoğunluğunun sağlanması, elbirliği halinde mülkiyete konu teşkil ediyorsa tüm ortakların davaya katılmaları gerekir.",
@@ -2539,7 +2600,7 @@
         },
         {
           "document_id": "998664800",
-          "kunye": "Yargıtay 3. HD, E. 2023/2475, K. 2024/217, T. 17.01.2024",
+          "kunye": "Yargıtay 3. HD, E. 2023/2475, K. 2024/217, 17.01.2024",
           "outcome": "Onama (oybirliği); kiraya verenin sözleşme maddesine dayalı tahliye ve cezai şart istemi ilk derecede reddedilmiş, BAM istinafı esastan reddetmişti.",
           "holding": "Kiracının tacir olduğu işyeri kirasında 6217 geçici 2 nedeniyle TBK 354 uygulanmasa bile tahliye sebepleri kanunda sınırlı ve emredicidir; sözleşmeye konan tahliye şartı ve ona bağlı cezai şart geçersizdir.",
           "quote": "ne var ki tahliye sebepleri Kanun'da sınırlı sayıda sayıldığından ve bu husus emredici olarak düzenlendiğinden, emredici hukuk kurallarına aykırı olarak düzenlenen tahliye şartı geçersiz olduğu gibi, bu şarta bağlı olarak öngörülen cezai şartın da geçersiz olacağı",
@@ -2547,7 +2608,7 @@
         },
         {
           "document_id": "1182772600",
-          "kunye": "Yargıtay 3. HD, E. 2024/3898, K. 2025/4234, T. 23.09.2025",
+          "kunye": "Yargıtay 3. HD, E. 2024/3898, K. 2025/4234, 23.09.2025",
           "outcome": "Davacı kiracılar yararına bozma (oybirliği); BAM kararı ortadan kaldırıldı.",
           "holding": "Kiraya verenin daha önce açtığı el atmanın önlenmesi davaları, kiralananın çatılı işyeri olduğu ve tahliye davası açılması gerektiği gerekçesiyle reddedilip kesinleşmiştir; 3. HD bunu nitelik bakımından kesin delil saydı. Kiraya veren tahliye davası açmadan yıkarak ilişkinin haksız sona ermesine yol açtığından kazanç kaybı incelenmelidir.",
           "quote": "Davalı ..., davacı kiracılar hakkında, usulüne uygun tahliye davası açarak kiracıları tahliye etmeden, kiralanan iş yerlerini yıkarak haksız şekilde kira ilişkisinin sona ermesine neden olmuştur.",
@@ -2555,7 +2616,7 @@
         },
         {
           "document_id": "477596700",
-          "kunye": "Yargıtay 3. HD, E. 2017/4483, K. 2019/189, T. 16.01.2019",
+          "kunye": "Yargıtay 3. HD, E. 2017/4483, K. 2019/189, 16.01.2019",
           "outcome": "Davalı kiracı lehine bozma (HUMK 428, oybirliği); ilk derece 'çekilmez hâl' iddiasıyla açılan kira sözleşmesinin iptali davasını kabul etmişti.",
           "holding": "Daire TBK 316/2 ve 316/3'ü aktararak uyuşmazlığı özenle kullanma borcu çerçevesinde incelemeye yöneltti; kötü söz ve davranış ispatlanamadı, kiralanan alan dışındaki davranış için akde aykırılık feshi istenemez, hurdacılık faaliyetinin kiralanan alanda yapılıp yapılmadığı belirlenmeliydi.",
           "quote": "O halde Mahkemece uyuşmazlığın, 6098 Sayılı TBK.nun 316/3 maddesi gereğince kiralananın özenle kullanılması yükümlülüğü çerçevesinde değerlendirilmek suretiyle, akde aykırılık olarak ileri sürülen hurdacılık faaliyetinin kiralanan alanda yapılıp yapılmadığının tespiti ile sonucuna göre karar verilmesi gerekirken",
@@ -2563,7 +2624,7 @@
         },
         {
           "document_id": "e5c8048b-4685-4456-8ad1-39133abef50f",
-          "kunye": "Yargıtay 3. HD, E. 2023/2841, K. 2024/1036, T. 06.03.2024",
+          "kunye": "Yargıtay 3. HD, E. 2023/2841, K. 2024/1036, 06.03.2024",
           "outcome": "BAM kararı ortadan kaldırıldı; ilk derece kararı davacı kiraya veren yararına bozuldu (oybirliği).",
           "holding": "Kiracı ayıp gerekçesiyle feshetmiş, ancak giderilmesi için süre vermemiş ve fesih bildirdiği tarihlerde çıkmamıştır; bu iki olgu birlikte haklı fesih bulunmadığını gösterir. Kiracı anahtar teslimine kadar kiradan, sonra makul süre kirasından sorumludur; kiraya verenin zararı azaltma ödevi vardır (TBK 52, 112).",
           "quote": "ayıpların giderilmesi için davacı tarafa bir süre tanınmadığı gibi sözleşmenin feshedileceğinin bildirildiği tarihlerde de tahliyenin gerçekleştirilmediği anlaşılmakta olup, bu durumda ayıba dayalı haklı fesihten söz edilemeyeceğinin kabulü gerekir.",
@@ -2571,7 +2632,7 @@
         },
         {
           "document_id": "627898900",
-          "kunye": "Yargıtay 3. HD, E. 2020/10233, K. 2020/7199, T. 30.11.2020",
+          "kunye": "Yargıtay 3. HD, E. 2020/10233, K. 2020/7199, 30.11.2020",
           "outcome": "Davalı kiracı yararına kısmi bozma (2. ve 3. bentler; HUMK 428, oybirliği); diğer itirazlar reddedildi.",
           "holding": "Erken çıkışta kiracı çıkışa kadar kiradan, sonra makul süre kirasından sorumludur; makul süre hukukçu değil uzman bilirkişiyle belirlenir ve depozito mahsup edilir. Anahtar teslimi kiracı tarafından yazılı delille ispatlanır. TBK 335 yazılı bildirimi yoksa olağan incelemeyle görülebilecek hasar istenemez.",
           "quote": "Kiralananın anahtarının usulüne uygun olarak kiraya verene teslim edilerek tahliye edildiği kiracı tarafından yazılı delillerle ispatlanmalıdır. Yasal anahtar teslimi bizzat anahtarı kiraya verene teslim etmek suretiyle veya notere ya da mahkemeye tevdi mahalli tayini suretiyle yapılır.",
@@ -2579,7 +2640,7 @@
         },
         {
           "document_id": "7ad0f708-0612-47c9-956d-f722f4fe55fe",
-          "kunye": "Adana BAM 5. HD, E. 2022/1189, K. 2024/1605, T. 14.11.2024",
+          "kunye": "Adana BAM 5. HD, E. 2022/1189, K. 2024/1605, 14.11.2024",
           "outcome": "Kiraya verenin istinafı esastan reddedildi (HMK 353/1-b-1; oybirliği, kesin); kiracının borçlu olmadığının tespiti korundu.",
           "holding": "Sözleşmede 3. yıldan sonra 6 ay önceden bildirimle çıkış hakkı vardı; bu hakkı kullanan, bedeli tevdi mahalline yatıran ve anahtarı tutanakla teslim eden kiracı erken tahliye etmiş sayılmaz, kiraya verenin alacağı yoktur.",
           "quote": "Davacı davaya konu sözleşmeye dayanarak haklı fesih hakkını kullanmış kira sözleşmesini feshetmiştir. Davacı kiracı sözleşme süresine veya fesih dönemine uymaksızın kiralananı erken tahliye etmemiştir.",
@@ -2605,11 +2666,11 @@
       "title": "Tahliye kararından sonra: ilamlı ve ilamsız tahliyenin icrası, icranın geri bırakılması, TBK 355 yeniden kiralama yasağı ve tasfiye alacakları (kira, ecrimisil, depozito, hasar)",
       "guide_heading": "Tahliye kararından sonra: icra, tehir ve TBK 355",
       "legal_basis": [
-        "İİK 24–26 (resmî metinden doğrula)",
+        "İİK 26 (24 atfı; resmî metinden doğrula)",
         "İİK 16 (resmî metinden doğrula)",
         "İİK 33, 36 (resmî metinden doğrula; AYM E.2025/92, K.2025/127)",
         "İİK 40 (resmî metinden doğrula)",
-        "İİK 72/5 (HGK 2021/1707 aktarımı)",
+        "İİK 72/5 (HGK 2021/1707 gerekçesindeki doktrin aktarımı; resmî metinden doğrula)",
         "İİK 41, 276 (resmî metinden doğrula)",
         "İİK 269/a, 363–364 (resmî metinden doğrula)",
         "TBK 334, 335",
@@ -2629,7 +2690,7 @@
       "notice": "İcra için ihtar gerekmez; icra emrini icra dairesi tebliğ eder (UETS'de G(U,5)). Yeniden inşadan sonra kiraya veren yeni durumu ve bedeli eski kiracıya yazılı bildirir (TBK 355/2). Hasar geri verme sırasında hemen ve yazılı bildirilir (TBK 335). Kiraya veren dava veya takibi sona ermeyi izleyen üç ay içinde bankaya yazılı bildirir (TBK 342/3). Anahtarı almayan kiraya verene önce yazılı davet, sonra tevdi ve bildirim.",
       "preconditions": [
         "İlamlı tahliye için eda hükmü içeren ilam veya ilam niteliğinde belge; kira tespiti ilamı icra edilemez ve bu resen gözetilir (12. HD 2019/3733).",
-        "Arabuluculuk anlaşma belgesi şerhle veya taraflar, avukatları ve arabulucunun ortak imzasıyla ilam niteliği kazanır; tarihi belli, eda içeren bir teslim edimi taşımalıdır (12. HD 2025/7199; 3. HD 2024/4021).",
+        "Arabuluculuk anlaşma belgesi şerhle veya taraflar, avukatları ve arabulucunun ortak imzasıyla ilam niteliği kazanır (HUAK 18/4, resmî metinden doğrula; 3. HD 2024/4021). Belge icraya elverişli bir edim içermelidir: 12. HD 2025/7199 yeni kira sözleşmesi yapma edimini icra edilemez saydı, taşınmaz teslimini yalnız obiter andı. Tahliye tarihini ve teslimi açık yaz; anlaşma belgesinin İİK 26 ile icrası havuzda doğrudan çözülmedi.",
         "Kesinleşme şartı yoktur; icrayı durdurmak için İİK 36 uyarınca teminat ve geri bırakma kararı gerekir (resmî metinden doğrula).",
         "İlamsız yolda itiraz edilmemesi tahliyeyi sağlamaz; ödeme süresi bitiminden itibaren altı ay içinde icra mahkemesinden tahliye istenir (İİK 269/a; HGK 2021/1707).",
         "TBK 355 tazminatı: boşaltma gereksinim veya yeniden inşa amacıyla sağlanmış (ihtar üzerine çıkış yetmez: 3. HD 2019/871, 2019/1687; ilam icraya konmadan anlaşmalı teslim yetmez: İstanbul BAM 35. HD 2018/40), üç yıl dolmadan başkasına kiralanmış, haklı sebep yok.",
@@ -2685,8 +2746,8 @@
           "formula": "G(T,14)",
           "rule": "takvim",
           "command": "python scripts/deadlines.py takvim <karar-teblig-tarihi> --count 2 --unit hafta",
-          "basis": "HMK 345 (temyizde 361); istinaf icrayı durdurmaz",
-          "confidence": "high"
+          "basis": "HMK 345 (temyizde 361; resmî metinden doğrula); istinaf icrayı durdurmaz",
+          "confidence": "medium"
         },
         {
           "name": "İcra mahkemesinin tahliye kararına istinaf",
@@ -2809,14 +2870,14 @@
           "forum": "İcra dairesi; menfi tespit davası için sulh hukuk mahkemesi",
           "arabuluculuk": "istisna",
           "arabuluculuk_note": "İlamsız icra yoluyla tahliye hükümleri HUAK 18/B istisnasındadır. Menfi tespit davasının istisnaya girip girmediği açık; ihtiyaten arabulucuya başvur.",
-          "procedure": "Tahliye kararı istinafa rağmen icra edilebilir (İİK 363/4; resmî metinden doğrula). Kiracı menfi tespit davasında teminatla tedbir isteyebilir; kiracı lehine kesinleşirse icra eski hâle iade edilir ve taşınmaz geri teslim edilir (HGK 2021/1707, İİK 72/5). İİK 36'nın icra mahkemesi kararlarına uygulanması tartışmalı."
+          "procedure": "Tahliye kararı istinafa rağmen icra edilebilir (İİK 363/4; ikincil kaynak, resmî metinden doğrula). Kiracı menfi tespit davasında teminatla tedbir isteyebilir; kiracı lehine kesinleşirse icra eski hâle iade edilir ve taşınmaz geri teslim edilir (İİK 72/5; HGK 2021/1707 gerekçesindeki doktrin aktarımı). İİK 36'nın icra mahkemesi kararlarına uygulanması tartışmalı."
         },
         {
           "route": "Üçüncü kişi ve eş itirazı, şikâyet (İİK 16, 276)",
           "forum": "İcra mahkemesi",
           "arabuluculuk": "uygulanmaz",
           "arabuluculuk_note": "İcra hukuku şikâyeti ve itirazıdır.",
-          "procedure": "Tahliye sırasında resmî belge sunulur (ayrı kira sözleşmesi, eşin mülkü olan konutta aile konutu şerhi, TMK 194/son bildirimi, tedbir veya tahsis kararı). İcra memuru bildirir; mahkeme tahliyeye ya da yedi günde dava açılmasına karar verir. İcra mahkemesi muvazaa veya aile konutu davasını bekletici mesele yapmaz (12. HD 2023/2309). Kiracının eşi ve hısımları üçüncü kişi değildir."
+          "procedure": "Tahliye sırasında resmî belge sunulur (ayrı kira sözleşmesi, eşin mülkü olan konutta aile konutu şerhi, TMK 194/son bildirimi, tedbir veya tahsis kararı). İcra memuru bildirir; mahkeme tahliyeye ya da yedi günde dava açılmasına karar verir. İcra mahkemesi muvazaa veya aile konutu davasını bekletici mesele yapmaz (12. HD 2023/2309). Kiracının eşi ve hısımları kural olarak üçüncü kişi değildir; TMK 194/son bildirimiyle taraf olmuş eşe tahliye isteminin ve ilamın yöneltilip yöneltilmediği ayrı bir taraf sıfatı meselesidir (8. HD 2017/9518 kıyası)."
         },
         {
           "route": "TBK 355 tazminat davası ve yeniden inşada öncelik hakkının ihlali",
@@ -2837,9 +2898,9 @@
         "İlama karşı istinaf veya temyiz ve İİK 36 uyarınca teminatla icranın geri bırakılması (merci için AYM E.2025/92 notunu kontrol et).",
         "İİK 33: ilamdan sonra kiraya verenin yazılı yeni sözleşmesi, süre vermesi veya feragati varsa icranın geri bırakılması.",
         "İİK 16 şikâyeti (öğrenmeden yedi gün): icra emrinin ilama aykırılığı, eda hükmü içermeyen ilamla takip (12. HD 2019/3733), yanlış borçlu veya taşınmaz, usulsüz tebliğ.",
-        "İlamsız tahliyede menfi tespit ve teminatlı tedbir; kiracı lehine kesinleşen karardan sonra eski hâle iade ve geri teslim (HGK 2021/1707, İİK 72/5).",
+        "İlamsız tahliyede menfi tespit ve teminatlı tedbir; kiracı lehine kesinleşen karardan sonra eski hâle iade ve geri teslim (İİK 72/5; HGK 2021/1707 gerekçesindeki doktrin aktarımı).",
         "İlam BAM'ca kaldırılır veya bozulursa icranın durduğunu ileri sür; yeni hüküm kesinleşince İİK 40 ile eski hâle iade iste (resmî metinden doğrula); zarar için genel hükümler.",
-        "Üçüncü kişi itirazı (İİK 276): ayrı kira sözleşmesi, aile konutu şerhi, TMK 194/son bildirimi, tedbir veya tahsis kararı; eş ve hısımlar üçüncü kişi değildir.",
+        "Üçüncü kişi itirazı (İİK 276): ayrı kira sözleşmesi, aile konutu şerhi, tedbir veya tahsis kararı gibi resmî belge sun. Kiracının eşi ve hısımları kural olarak üçüncü kişi değildir. Eş TMK 194/son bildirimiyle sözleşmenin tarafı olmuşsa bildirimi sun; tahliye isteminin ve ilamın ona da yöneltilip yöneltilmediği ayrı bir taraf sıfatı meselesidir (8. HD 2017/9518 kıyası; ilamlı icrada etkisini doğrula).",
         "TBK 355 tazminatı: üç yıl içinde başkasına kiralama veya öncelik bildirimi yapılmadan kiralama; alt sınır bir yıllık kira, fazlası ispatla.",
         "Kira veya ecrimisil talebine karşı anahtar teslim veya tevdi tarihini yazılı delille ispat et; kiraya verenin kaçınması (TBK 106–107); ciddi teslim çabasında usul eksikliğine dayanmak hakkın kötüye kullanılmasıdır (3. HD 2021/5531, olaya özgü).",
         "Hasar talebine karşı: TBK 335 bildirimi yok (3. HD 2020/7199), olağan kullanım, yıpranma payı, delil tespiti raporunun tek başına yetersizliği (İstanbul BAM 55. HD 2024/2656); TBK 334/2'ye aykırı ek tazminat taahhüdü geçersiz.",
@@ -2861,14 +2922,14 @@
         "Yargılamada kendiliğinden boşaltmanın masrafsız olacağını varsayma (HMK 331/1).",
         "İcra mahkemesinin muvazaa veya aile konutu davasını bekletici mesele yapmasını bekleme (12. HD 2023/2309); tedbir veya şerh gerektiği çıkarımdır.",
         "Tahliye ilamının icrasına arabuluculuk arama; ama 01.09.2023 ve sonrasında açılan 355, depozito, hasar ve kira davalarını arabuluculuksuz açma.",
-        "Anlaşma belgesine dayanmadan önce şerhi veya ortak imzayı ve tarihi belli teslim edimini kontrol et (12. HD 2025/7199).",
+        "Anlaşma belgesine dayanmadan önce şerhi veya ortak imzayı, tahliye tarihini ve teslim edimini kontrol et; 12. HD 2025/7199 yalnız sözleşme yapma edimini icra edilemez saydı, tahliye edimini çözmedi.",
         "İlamdan sonra ihtirazi kayıtsız kira kabul etmek veya ilamı uzun süre icraya koymamak yeni kira ilişkisi savunmasına yol açabilir (havuzda doğrulanmadı).",
         "İİK sürelerini ve 36. maddenin güncel metnini ezberden yazma; AYM E.2025/92, K.2025/127 hüküm fıkrası doğrulanmadı."
       ],
       "decisions": [
         {
           "document_id": "22c1c746-82ef-49f2-9db7-66b4e2326652",
-          "kunye": "İstanbul BAM 35. HD, E. 2017/1061, K. 2018/40, T. 10.01.2018",
+          "kunye": "İstanbul BAM 35. HD, E. 2017/1061, K. 2018/40, 10.01.2018",
           "outcome": "Kiracının istinafı esastan reddedildi; oybirliği; 7251 öncesi HMK 362/1-b uyarınca kesin (kiraya veren lehine).",
           "holding": "Kızının konut ihtiyacı için alınan tahliye kararı kesinleşmiş, taraflar sonra 'fesih ve teslim belgesi' düzenlemiş, taşınmaz başkasına kiralanmıştır. Sona erme fesih ve fiilî tahliyeyi gerektirir; sözleşme ortak iradeyle sona ermiş ve ilam icraya konmamıştır; 355 tazminatının reddi doğrudur.",
           "quote": "sözleşmenin sona ermesinin ve tahliyenin fiilen vaki olmadığı",
@@ -2876,7 +2937,7 @@
         },
         {
           "document_id": "485159800",
-          "kunye": "Yargıtay 3. HD, E. 2017/4956, K. 2019/871, T. 07.02.2019",
+          "kunye": "Yargıtay 3. HD, E. 2017/4956, K. 2019/871, 07.02.2019",
           "outcome": "Tazminatı kabul eden yerel mahkeme hükmü davalı kiraya veren yararına bozuldu (HUMK 428); oybirliği.",
           "holding": "Konut ihtiyacı ihtarı üzerine kiracı dava açılmadan çıkmış, ev başkasına kiralanmıştır. Gereksinim davası açılmadığından ve tahliye yargı kararı veya icra yoluyla olmadığından 355 koşulları oluşmamıştır. Aynı Daire 2017/4632–2019/1687'de aynı gerekçeyle ret kararını onadı.",
           "quote": "Davalı kiraya verenin, gereksinim amacıyla bir tahliye davası açmadığı anlaşılmakta olup davacı kiracı taşınmazı bir yargı kararı veya icra marifetiyle tahliye etmemiştir. Bu durumda 6098 sayılı Türk Borçlar Kanununun 355. maddesi uyarınca tazminat koşulları oluşmamıştır.",
@@ -2884,7 +2945,7 @@
         },
         {
           "document_id": "b5ba4a69-f80a-4b47-891c-2229d452eb5d",
-          "kunye": "Yargıtay 3. HD, E. 2023/4785, K. 2025/230, T. 14.01.2025",
+          "kunye": "Yargıtay 3. HD, E. 2023/4785, K. 2025/230, 14.01.2025",
           "outcome": "Davacı kiracının temyizi reddedildi, BAM kararı onandı (HMK 370/1); oybirliği.",
           "holding": "Davacı anlatımına göre ihtiyaç ilamından sonra icra yoluyla tahliye edilen işyeri kiracısının talebinde ilk derece son kira yılında ödenen bir yıllık kiraya (18.094,32 TL) hükmetti, kazanç kaybı ve manevi tazminatı reddetti. Yargıtay bir yıllık kirayı aşan zararın ispatlanmadığını belirterek onadı.",
           "quote": "Davacının, 6098 sayılı Kanun’un 355/3. maddesi uyarınca bir yıllık kira bedelinden fazla zararı olduğunu ispatlamayadığının anlaşılmasına göre, davacının temyiz itirazlarının reddi ile usul ve kanuna uygun bulunan kararın onanmasına karar vermek gerekmiştir.",
@@ -2892,7 +2953,7 @@
         },
         {
           "document_id": "746178000",
-          "kunye": "Yargıtay HGK, E. 2017/1918, K. 2021/1707, T. 21.12.2021",
+          "kunye": "Yargıtay HGK, E. 2017/1918, K. 2021/1707, 21.12.2021",
           "outcome": "Direnme kararı oy çokluğuyla alacaklı kiraya veren yararına bozuldu; karşıoy var.",
           "holding": "Ödeme süresinde icra dosyasına yatırılıp menfi tespit tedbiriyle alacaklıya geçmesi engellenen para temerrüdü önlemez. Gerekçeye göre itiraz edilmemesi tahliyeyi kendiliğinden sağlamaz; kiracı tahliye kararından sonra da menfi tespitte teminatla tedbir isteyebilir; lehine kesinleşirse icra eski hâle iade edilir ve taşınmaz geri teslim edilir (İİK 72/5).",
           "quote": "Borçlu kiracı icra mahkemesinin tahliye kararından sonra da menfi tespit davası açabilir ve teminat karşılığında tahliye kararının icrasının durdurulması için ihtiyatî tedbir kararı verilmesini isteyebilir",
@@ -2900,7 +2961,7 @@
         },
         {
           "document_id": "890028300",
-          "kunye": "Yargıtay 12. HD, E. 2022/9584, K. 2023/2309, T. 04.04.2023",
+          "kunye": "Yargıtay 12. HD, E. 2022/9584, K. 2023/2309, 04.04.2023",
           "outcome": "Şikâyetçi üçüncü kişinin temyizi reddedildi, Ankara BAM 32. HD kararı onandı (İİK 364/2 atfıyla HMK 370); oybirliği (kiracı tarafı aleyhine).",
           "holding": "Taahhüde dayalı ilamsız takip kesinleştikten sonra aile konutu ve muvazaa iddiasıyla tahliyenin durdurulması istenmiş; tapuda şerh ve muvazaa davasında tedbir yoktu. BAM, icra mahkemesinin başka bir davayı bekletici mesele yapamayacağını belirtti; Yargıtay İİK 276'ya atıfla onadı.",
           "quote": "İcra Mahkemelerinin önlerine gelen uyuşmazlığı takip hukuku kurallarına göre ve basit usulde yargılama yaparak çözmekle görevli olduğu, takip hukukuna ilişkin uyuşmazlıkları çözme görevini yerine getirirken bir başka dava dosyasının bekletici mesele yapılamayacağı",
@@ -2908,7 +2969,7 @@
         },
         {
           "document_id": "627898900",
-          "kunye": "Yargıtay 3. HD, E. 2020/10233, K. 2020/7199, T. 30.11.2020",
+          "kunye": "Yargıtay 3. HD, E. 2020/10233, K. 2020/7199, 30.11.2020",
           "outcome": "Hüküm davalı kiracı yararına bozuldu (HUMK 428); oybirliği.",
           "holding": "Dava öncesinde hasarlar kiracıya yazılı bildirilmemiş ve olağan incelemeyle görülebilir nitelikteydi; TBK 335 bildirimi makul sürede yapılmadığından hor kullanma tazminatına hükmedilemez. Anahtar teslim edilmedikçe kiralanan kiracının kullanımında sayılır, teslimi kiracı yazılı delille ispatlar; depozito alacaktan mahsup edilir.",
           "quote": "Kiracının sorumlu tutulabilmesi, ayıp ve eksikliklerin makul süre (kanun icabı yenilenen kira süresi bitmeden) içinde kiracıya yazılı olarak bildirilmesi koşuluna bağlanmıştır.",
@@ -2916,7 +2977,7 @@
         },
         {
           "document_id": "672421100",
-          "kunye": "Yargıtay 3. HD, E. 2021/1573, K. 2021/5531, T. 26.05.2021",
+          "kunye": "Yargıtay 3. HD, E. 2021/1573, K. 2021/5531, 26.05.2021",
           "outcome": "BAM kararı kaldırılarak ilk derece kararı davacı kiracı yararına bozuldu; oybirliği.",
           "holding": "Tahliye tarihi çekişmeliyse boşaltma ve anahtar teslimini kiracı ispatlar; yıllık kira senetle ispat sınırını aşıyorsa yazılı delil gerekir. Kural olarak tevdi usulü aranır; ancak anahtarlar PTT ile sözleşmedeki adrese gönderilip noterle bildirildiğinden usulsüzlüğe dayanmak hakkın kötüye kullanılmasıdır (TMK 2).",
           "quote": "tahliye tarihinin taraflar arasında çekişmeli olması halinde; kiralananın fiilen boşaltıldığını ve anahtarın teslim edildiğini, böylece kira ilişkisinin kendisince ileri sürülen tarihte hukuken sona erdirildiğini kanıtlama yükümlülüğü, kiracıya aittir.",
@@ -2924,7 +2985,7 @@
         },
         {
           "document_id": "1190882100",
-          "kunye": "Yargıtay 12. HD, E. 2025/6239, K. 2025/7199, T. 06.11.2025",
+          "kunye": "Yargıtay 12. HD, E. 2025/6239, K. 2025/7199, 06.11.2025",
           "outcome": "Borçlunun temyizi kısmen kabul edildi; Tekirdağ BAM 2. HD kararı kaldırıldı, icra mahkemesi kararı bozuldu; oybirliği.",
           "holding": "İcra edilebilirlik şerhli arabuluculuk anlaşma belgesi ilam niteliğindedir ve ilamların icrası hükümlerine tabidir; ancak eda hükmü içermeyen veya irade beyanı gerektiren 'yeni kira sözleşmesi yapma' edimi icra yoluyla zorlanamaz; takip iptal edilmelidir.",
           "quote": "Gerek İİK'da belirtilsin gerekse de özel kanunlarda belirtilsin, ilam niteliğinde olan bu belgeler ilamların icrası hakkındaki hükümlere tabidir.",
@@ -2941,7 +3002,7 @@
         "Tahliye kararı sözleşmeyi hangi tarihte sona erdirir; bu dönemde kira mı ecrimisil mi istenir; TBK 342/3 başlangıcı ve kefil sorumluluğu?",
         "HUAK 18/B kapsamı: sona erme sonrası ecrimisil, ilamsız tahliyeye bağlı menfi tespit, İİK 33/36 başvuruları ve tahliye taahhüdü içeren anlaşma belgesinin İİK 26 ile icrası.",
         "İlam icradan sonra bozulursa ve taşınmaz üçüncü kişiye kiralanmışsa İİK 40 eski hâle iade nasıl uygulanır?",
-        "İİK 24–26 (yedi gün), 26/4, 41–276, 16, 33, 363/1 metinleri ve 6570 dönemi boşaltmalar resmî kaynaktan doğrulanmadı."
+        "İİK 26 ve 24 atfı (yedi gün), 26/4, 41–276, 16, 33, 363/1 metinleri ve 6570 dönemi boşaltmalar resmî kaynaktan doğrulanmadı."
       ]
     }
   ]
