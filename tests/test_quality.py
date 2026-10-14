@@ -140,7 +140,7 @@ class QualityTests(unittest.TestCase):
     def test_deadline_cases_fix_scenario_date(self):
         # Süreye bağlı senaryolar değerlendirme tarihini soru metninde taşır.
         prompts = {c['id']: c['prompt'] for c in self.suite['cases']}
-        for key in ('B06', 'B14', 'B50', 'B55'):
+        for key in ('B06', 'B14', 'B54', 'B59'):
             self.assertRegex(prompts[key], r'^(Bugünün|Değerlendirme) tarihi \d{2}\.\d{2}\.\d{4}\b', key)
 
     def test_card_search_folds_turkish_and_citation_forms(self):

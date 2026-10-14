@@ -39,7 +39,7 @@ Canlı çağrı anahtarı şöyle bulur: `--env-file` verilmişse yalnız o dosy
 
 ## Kaynak araçlarıyla çalışma
 
-Yerel paket ve dış kaynak araçlarının (DeJure, Legaluga, bağlı mevzuat/içtihat araçları) kullanım kuralları [havuz rehberindedir](havuz.md#dış-kaynak-araçları).
+Yerel paket ve dış kaynak araçlarının (Legaluga, DeJure, bağlı mevzuat/içtihat araçları) kullanım kuralları [havuz rehberindedir](havuz.md#dış-kaynak-araçları); Legaluga ayrıntıları [Legaluga akışındadır](legaluga.md). TypeSafe adayı hazırlarken Legaluga sonuçlarında `provider` olarak `legaluga-bedesten` veya `legaluga-core` yaz; `documentId`, `canonical_ref`, görüş sahibi ve kesilme alanlarını koru. `get_case_v1` yalnız kesit döndürmüşse (`excerpt_truncated`) `full_text: false` işaretle. Aynı Bedesten kimliği yerel havuzda da varsa tek aday gönder.
 
 ## Teknik dayanak ve doğrulama
 

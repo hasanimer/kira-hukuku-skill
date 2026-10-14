@@ -1,10 +1,12 @@
 # Veri paketi
 
-Karar havuzu 1.603 kayıt içerir; kararların hukuki içeriği korunur. Açık kişi adı çıkarılan kayıtlarda anonimleştirme `redactions` alanında belirtilir; `source_text_sha256` kaynak metnini, `text_sha256` dağıtılan metni izler. Seçim ve etiketleme yöntemleri [havuz rehberinde](../references/havuz.md) açıklanır. Bu paket tüm kira uyuşmazlıklarını veya güncel içtihadın tamamını kapsadığı iddiasını taşımaz.
+Karar havuzu 1.738 kayıt içerir; kararların hukuki içeriği korunur. Açık kişi adı çıkarılan kayıtlarda anonimleştirme `redactions` alanında belirtilir; `source_text_sha256` kaynak metnini, `text_sha256` dağıtılan metni izler. Seçim ve etiketleme yöntemleri [havuz rehberinde](../references/havuz.md) açıklanır. Bu paket tüm kira uyuşmazlıklarını veya güncel içtihadın tamamını kapsadığı iddiasını taşımaz.
 
 | Dosya | Amaç |
 | --- | --- |
 | `yargitay-selected.jsonl` | On Yargıtay kararının tam metni, kaynak bağlantısı ve inceleme notları |
+| `derleme-v5-selected.jsonl` | Av. Hakan Dimdik derlemesinde atıf yapılan ve Bedesten'de bulunan 135 kararın tam metni, resmî adresi ve derleme atıfları |
+| `derleme-v5-index.json` | Derlemedeki 278 atıfın konu başlığı, eşleştiği karar ve doğrulama durumu; okunur sürümü `references/derleme-v5.md` |
 | `bam-selected.jsonl` | On yedi BAM kararının tam metni, kaynak bağlantısı ve asistan inceleme notları |
 | `topic-rescan-assistant-adjusted.jsonl` | Karar künyesi, tam metin, metin hash'i ve değerlendirme etiketleri |
 | `topic-rescan-report.md` | Sıkı havuz seçiminin yöntemi |
@@ -17,7 +19,7 @@ Karar havuzu 1.603 kayıt içerir; kararların hukuki içeriği korunur. Açık 
 
 Rapor dosyalarında adı geçen ara çıktılar (`topic-rescan-keep.jsonl`, `topic-rescan-exclude.jsonl`, `topic-rescan-review.jsonl`, `topic-rescan-new-exclusions.jsonl`, `verified-topic-pool.jsonl`, `quality-excluded.jsonl`, `assistant-quality-audit.json`, `quality-human-queue.tsv`) kaynak projede kalmıştır; bu pakete dahil değildir ve yardımcıların çalışması için gerekmez. Veri dizininde bu açıklama dosyası ile yukarıdaki tabloda listelenen dosyalar bulunur.
 
-Kanunun resmî adresi kaynak JSON dosyasındadır. Kararlarda `document_id`, künye ve `text_sha256` izleri korunur. `raw_sha256` yalnız ana havuzdaki 1.576 kayıtta bulunur. `source_text_sha256` Yargıtay seçkisinin 10 kaydında ve BAM seçkisinin 9 kaydında yer alır; kalan 8 BAM kaydında yalnız `text_sha256` vardır. Ana havuzdaki `document_id` UYAP Mevzuat ve İçtihat (Bedesten) belge kimliğidir; `scripts/pool.py` resmî adresi `https://mevzuat.adalet.gov.tr/ictihat/<document_id>` olarak türetir ve `source_provider` alanında işaretler. Veri dosyasına adres yazılmaz; dosya baytları ve hash'ler değişmez. Metin hash'i yerel bütünlüğü gösterir; tek başına resmî doğrulama değildir. Çalıştırma ortamı ve anahtar yuvası gibi iç operasyon alanları pakete dahil edilmez.
+Kanunun resmî adresi kaynak JSON dosyasındadır. Kararlarda `document_id`, künye ve `text_sha256` izleri korunur. `raw_sha256` yalnız ana havuzdaki 1.576 kayıtta bulunur. `source_text_sha256` Yargıtay seçkisinin 10 kaydında ve BAM seçkisinin 9 kaydında yer alır; kalan 8 BAM kaydında yalnız `text_sha256` vardır. Ana havuzdaki `document_id` UYAP Mevzuat ve İçtihat (Bedesten) belge kimliğidir; `scripts/pool.py` resmî adresi `https://mevzuat.adalet.gov.tr/ictihat/<document_id>` olarak türetir ve `source_provider` alanında işaretler. Ana havuz kayıtlarına adres yazılmaz; dosya baytları ve hash'ler değişmez. Derleme seçkisinin kayıtları ise resmî Bedesten adresini `source_url` alanında taşır. Metin hash'i yerel bütünlüğü gösterir; tek başına resmî doğrulama değildir. Çalıştırma ortamı ve anahtar yuvası gibi iç operasyon alanları pakete dahil edilmez.
 
 `yargitay-selected.jsonl` ve `bam-selected.jsonl` dosyalarındaki 27 kararın tam metni Dejure (app.dejure.ai) üzerinden alınmıştır; kayıtlardaki `source_provider` ve `source_url` alanları bu kaynağı gösterir. Bu bağlantılar üyelik girişi gerektirebilir. Metinler mahkeme kararıdır; Dejure kullanım koşullarının yeniden dağıtıma etkisi ayrıca kontrol edilmelidir. Dilekçede kaynak gösterirken künyeyi resmî kayıttan (UYAP Emsal / Yargıtay Karar Arama) doğrulayın. Mahkeme kararları ve kanun metninin lisans durumu için [README'nin Lisans bölümüne](../README.md#lisans) bakın.
 

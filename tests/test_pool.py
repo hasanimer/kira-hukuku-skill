@@ -12,8 +12,8 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from pool import (BEDESTEN_URL, QUOTE_MAX_OCCURRENCES, SCOPE_CAUTIONS, enrich,  # noqa: E402
-                  kind_of, kunye, load_pool, metadata, normalize, read_rows, search_rows,
-                  term_pattern, text_decision_date)
+                  find_ignoring_space, kind_of, kunye, load_pool, metadata, normalize,
+                  read_rows, search_rows, squash, term_pattern, text_decision_date)
 
 MAIN = 'topic-rescan-assistant-adjusted.jsonl'
 BAM = 'bam-selected.jsonl'
@@ -86,7 +86,7 @@ class PoolTests(unittest.TestCase):
         self.assertEqual(bam.returncode, 0, stderr_of(bam))
         self.assertIsNone(parsed(bam)['source_url'])
         self.assertIsNone(parsed(bam)['source_provider'])
-        self.assertEqual(parsed(bam)['pool_file'], BAM)
+        self.assertEqual(parsed(bam)['collection'], BAM)
         self.assertEqual(parsed(main)['source_url'], BEDESTEN_URL.format('2'))
 
     def test_written_source_url_is_not_overwritten(self):
@@ -133,7 +133,7 @@ class PoolTests(unittest.TestCase):
         self.assertEqual(result['results'][0]['kunye'],
                          'Yargıtay 3. HD, E. 2017/1, K. 2019/2, T. 28.05.2019')
         self.assertEqual(result['results'][0]['source_url'], BEDESTEN_URL.format('2'))
-        self.assertEqual(result['results'][0]['pool_file'], MAIN)
+        self.assertEqual(result['results'][0]['collection'], MAIN)
         self.assertEqual(list(result['pool_files']), [MAIN])
         self.assertIs(result['manifest_verified'], False)
         # Çıktı zarfı yerel mutlak yol içermez.
@@ -427,13 +427,13 @@ class PoolTests(unittest.TestCase):
 
     def test_date_warning_names_the_metadata_source(self):
         text = 'ONANMASINA, 28.05.2018 tarihinde oybirliğiyle karar verildi.'
-        main = metadata(enrich(dict(row('9', text, 'kisa_karar'), pool_file=MAIN), bedesten_ids=True))
+        main = metadata(enrich(dict(row('9', text, 'kisa_karar'), collection=MAIN), bedesten_ids=True))
         self.assertIn('Bedesten', main['date_warning'])
         self.assertIn('source_url', main['date_warning'])
         selection = metadata(enrich(dict(
             row('615160e1-x', text, 'esas_gerekcesi', source_provider='Dejure',
                 source_url='https://app.dejure.ai/x', court_type='bam',
-                court='Ankara Bölge Adliye Mahkemesi 6. Hukuk Dairesi'), pool_file=BAM)))
+                court='Ankara Bölge Adliye Mahkemesi 6. Hukuk Dairesi'), collection=BAM)))
         warning = selection['date_warning']
         self.assertIn('28.05.2018', warning)
         self.assertIn('Dejure', warning)
@@ -441,9 +441,9 @@ class PoolTests(unittest.TestCase):
         self.assertIn('resmî sayfa değildir', warning)
 
     def test_metadata_includes_provenance_fields(self):
-        meta = metadata(enrich(dict(row('1', 'm', 'kisa_karar', raw_sha256='abc'), pool_file=MAIN)))
+        meta = metadata(enrich(dict(row('1', 'm', 'kisa_karar', raw_sha256='abc'), collection=MAIN)))
         self.assertEqual(meta['raw_sha256'], 'abc')
-        self.assertEqual(meta['pool_file'], MAIN)
+        self.assertEqual(meta['collection'], MAIN)
         for key in ('needs_scope_review', 'scope_uncertain', 'scope_haric_probability', 'out_of_scope'):
             self.assertIn(key, meta)
 
@@ -472,6 +472,41 @@ class PoolTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 1)
         self.assertNotIn('HATA', stderr)
         self.assertNotIn('Traceback', stderr)
+
+    def test_squash_keeps_original_positions(self):
+        text = 'Kira  bedeli\n\n tespit'
+        squashed, kept = squash(text)
+        self.assertEqual(squashed, 'Kirabedelitespit')
+        self.assertEqual([text[i] for i in kept], list(squashed))
+        count, hits = find_ignoring_space(text, 'bedeli tespit')
+        self.assertEqual(count, 1)
+        self.assertEqual(hits[0]['matched_text'], 'bedeli\n\n tespit')
+        self.assertEqual(text[hits[0]['start']:hits[0]['end']], hits[0]['matched_text'])
+        self.assertEqual(find_ignoring_space(text, 'bedel  yok'), (0, []))
+
+    def test_quote_ignore_space_is_opt_in_and_keeps_exact_meaning(self):
+        text = 'Birinci  satır\n\nikinci satır'
+        with tempfile.TemporaryDirectory(prefix='kira-pool-') as directory:
+            path = Path(directory) / 'topic-rescan-assistant-adjusted.jsonl'
+            path.write_text(json.dumps(row('9', text, 'esas_gerekcesi'), ensure_ascii=False) + '\n',
+                            encoding='utf-8')
+
+            def quote(quotation, *flags):
+                out = subprocess.run([sys.executable, str(ROOT / 'scripts/pool.py'), '--root',
+                                      directory, 'quote', '9', quotation, *flags],
+                                     capture_output=True, text=True, encoding='utf-8', timeout=120)
+                return out.returncode, json.loads(out.stdout)
+
+            code, plain = quote('Birinci satır\nikinci')
+            self.assertEqual((code, plain['exact_match'], plain['match_mode']), (3, False, None))
+            code, loose = quote('Birinci satır\nikinci', '--ignore-space')
+            self.assertEqual((code, loose['exact_match'], loose['match_mode']),
+                             (0, False, 'ignore_space'))
+            self.assertEqual(loose['occurrences'][0]['start'], 0)
+            self.assertEqual(loose['occurrences'][0]['matched_text'], 'Birinci  satır\n\nikinci')
+            code, exact = quote('ikinci satır', '--ignore-space')
+            self.assertEqual((code, exact['exact_match'], exact['match_mode']), (0, True, 'exact'))
+            self.assertEqual(exact['occurrences'][0]['matched_text'], 'ikinci satır')
 
 
 if __name__ == '__main__':

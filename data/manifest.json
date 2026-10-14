@@ -1,6 +1,6 @@
 {
-  "snapshot_date": "2026-09-20",
-  "records": 1603,
+  "snapshot_date": "2026-10-09",
+  "records": 1738,
   "source_sha256": "44135540d2ca7bbe42140a59a7b42269082e456504b20d1138d4d2594c4dd8b0",
   "labels_source_sha256": "24c105c9f12b2e51d3040a25d80e9990dacd81e1c558f14a692bf786722c11c0",
   "label_join": [
@@ -12,21 +12,24 @@
     "bam-selected.jsonl": "8fe5c7bd118ce3e29025bfddb01daaf610fa4c104ba729ca36cd58b61d4bb8f3",
     "mevzuat/6098-source.json": "3aa27ae98b6ebc9a0b852e029cd6032fdcdfbc08fb5d4f93fa1786e650244564",
     "mevzuat/6098-turk-borclar-kanunu.md": "d4dd19c35202b7d9c73e99b14cc58217648a9c5c405f6d91d9bce2cb63910d69",
-    "README.md": "de77df5ec888039bc97ab03da72be6136da1df885c0485b3dac1a0e39fc56518",
+    "README.md": "3f3a4a9ee23a313ac63e020a46f02c94d11e165a1a7f987658d7e14a8c8e6a9e",
     "topic-rescan-assistant-adjusted.jsonl": "700b7cdd1f6f1f8961605e3e3fb6a9a3108634fe71937c1e43b682c029f1ac63",
     "topic-rescan-report.md": "c311b56954dec76f3912983fc7cca1077837a7cbfdf02d9ddae298539d879e87",
     "verified-topic-report.md": "7e82acb72e6b5b664dba354736d01258b4641184d6b2563595f629655e4af59d",
-    "yargitay-selected.jsonl": "c7bdaf8ffe0570a44bf6bef31a7c8d2e623b159d3d3773fd38a1b5d674840004"
+    "yargitay-selected.jsonl": "c7bdaf8ffe0570a44bf6bef31a7c8d2e623b159d3d3773fd38a1b5d674840004",
+    "derleme-v5-selected.jsonl": "7d447e8e2f4930b9f6cc4533a7cc043f40e3e66668f139da93012e1a55eac00f",
+    "derleme-v5-index.json": "7008a3afcd5995d94d09dd0416b75d18ff9b5313410db425da61f5c37726204d"
   },
   "collections": {
     "topic-rescan-assistant-adjusted.jsonl": 1576,
     "bam-selected.jsonl": 17,
-    "yargitay-selected.jsonl": 10
+    "yargitay-selected.jsonl": 10,
+    "derleme-v5-selected.jsonl": 135
   },
   "kinds": {
-    "esas_gerekcesi": 471,
-    "usul_gerekcesi": 551,
-    "sinirda": 11,
-    "kisa_karar": 570
+    "esas_gerekcesi": 578,
+    "usul_gerekcesi": 572,
+    "sinirda": 14,
+    "kisa_karar": 574
   }
 }

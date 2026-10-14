@@ -59,7 +59,7 @@ class CorpusFigureTests(unittest.TestCase):
                           'README.md')
 
     def test_readme_distribution_matches_data(self):
-        files = collections.Counter(r['pool_file'] for r in self.rows)
+        files = collections.Counter(r['collection'] for r in self.rows)
         courts = collections.Counter(full_court(r) for r in self.rows)
         years = collections.Counter(int(r['karar_tarihi'][:4]) for r in self.rows)
         expected = [

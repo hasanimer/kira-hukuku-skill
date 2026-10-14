@@ -1,7 +1,9 @@
 """Paketin kaynak bütünlüğünü, belge tutarlılığını ve taşınabilir komut davranışını
 çevrimdışı doğrular (yalnız standart kütüphane)."""
 import argparse
+import base64
 import hashlib
+import io
 import json
 from pathlib import Path
 import re
@@ -9,6 +11,7 @@ import subprocess
 import sys
 import tempfile
 import unicodedata
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 TIMEOUT = 300  # saniye; tam doğrulama birkaç saniye sürer, Windows CI için geniş pay
@@ -107,7 +110,7 @@ def check_pool(manifest, pool):
     # quote yalnız girdiyi NFC'ye getirir; bunun önkoşulu bütün metinlerin NFC olmasıdır.
     for row in pool_rows:
         require(unicodedata.is_normalized('NFC', row['text']),
-                f'Corpus text not NFC: {row["pool_file"]} {row["document_id"]}')
+                f'Corpus text not NFC: {row["collection"]} {row["document_id"]}')
     bam_file = ROOT / 'data/bam-selected.jsonl'
     if bam_file.exists():
         for bam in read_jsonl(bam_file):
@@ -115,7 +118,7 @@ def check_pool(manifest, pool):
             require(key in by_id, f'BAM record missing from pool: {key}')
             fetched = {**pool.metadata(by_id[key]), 'text': by_id[key]['text']}
             require(fetched['text'] == bam['text'] and fetched['source_url'] == bam['source_url']
-                    and fetched['pool_file'] == bam_file.name, 'BAM text or provenance lost')
+                    and fetched['collection'] == bam_file.name, 'BAM text or provenance lost')
             if bam.get('redactions'):
                 require(fetched['redactions'] == bam['redactions'] and
                         fetched['source_text_sha256'] == bam['source_text_sha256'],
@@ -126,8 +129,11 @@ def check_pool(manifest, pool):
                         bam['redactions']['replacement_count'],
                         'Anonymization count mismatch')
         filtered = run('pool.py', 'search', 'kira', '--court-type', 'bam')
-        require(filtered['total_matches'] == manifest['collections']['bam-selected.jsonl'],
-                'BAM filter missed records')
+        # Seçkilerin hepsindeki BAM kayıtları (derleme dahil); pool.py'nin sözcük başı eşleşmesiyle.
+        pattern = pool.term_pattern('kira')
+        expected = sum(row.get('court_type') == 'bam' and bool(pattern.search(pool.normalize(row['text'])))
+                       for row in pool_rows)
+        require(filtered['total_matches'] == expected, 'BAM filter missed records')
         require(all(r['court_type'] == 'bam' for r in filtered['results']), 'BAM filter leaked')
     yargitay_file = ROOT / 'data/yargitay-selected.jsonl'
     if yargitay_file.exists():
@@ -146,12 +152,25 @@ def check_pool(manifest, pool):
         require(all(r['court_type'] == 'yargitay' for r in filtered['results']),
                 'Yargitay filter leaked')
     # Seçki kimlikleri (UUID) için CLI quote yolunu gerçek veriyle bir kez sına.
-    for name in ('bam-selected.jsonl', 'yargitay-selected.jsonl'):
+    for name in pool.SELECTIONS:
         if (ROOT / 'data' / name).exists():
             sample = read_jsonl(ROOT / 'data' / name)[0]
             quoted = run('pool.py', 'quote', str(sample['document_id']), '--', sample['text'][-100:])
-            require(quoted['exact_match'] and quoted['pool_file'] == name,
+            require(quoted['exact_match'] and quoted['collection'] == name,
                     f'{name}: final text quote failed')
+    derleme_file = ROOT / 'data/derleme-v5-selected.jsonl'
+    if derleme_file.exists():
+        index = run('derleme.py', 'validate')
+        require(index['structural_validation'] == 'pass', 'Compilation index invalid')
+        compiled = read_jsonl(derleme_file)
+        require(all(d['source_url'] == pool.BEDESTEN_URL.format(d['document_id']) for d in compiled),
+                'Compilation texts must carry their Bedesten address')
+        # CLI yolunu ilk ve son kayıtla sına; tüm kayıtlar aynı okuyucudan geçer.
+        for decision in (compiled[0], compiled[-1]):
+            fetched = run('pool.py', 'get', str(decision['document_id']))
+            require(fetched['text'] == decision['text'] and
+                    fetched['research_notes'] == decision['research_notes'] and
+                    fetched['collection'] == derleme_file.name, 'Compilation text or provenance lost')
     # Kod tarafındaki kapsam uyarıları ve kapanış tarihi uyarısı veriyle eşleşmeyi sürdürmeli.
     for key in ('1018247800', '504158200'):
         require(key in by_id and by_id[key]['out_of_scope'] and by_id[key]['research_notes'],
@@ -179,6 +198,15 @@ def check_pool_cli():
     span = row['text'][max(0, idx - 20):idx + 20]
     nfd = run('pool.py', 'quote', row['document_id'], '--', unicodedata.normalize('NFD', span))
     require(nfd['exact_match'] and nfd['input_normalized'], 'NFD quote not normalized')
+    # Bedesten çıktısı yerel metinden yalnız boşlukta ayrışabilir; gevşek mod isteğe bağlıdır.
+    loose = re.sub(r'\s+', lambda m: m.group(0) + ' ', quote, count=1)
+    require(loose != quote, 'Whitespace probe needs a quote with spaces')
+    run('pool.py', 'quote', row['document_id'], loose, expected=3)
+    spaced = run('pool.py', 'quote', row['document_id'], loose, '--ignore-space')
+    require(spaced['match_mode'] == 'ignore_space' and not spaced['exact_match'] and
+            spaced['occurrences'][0]['start'] == len(quote) - len(quote.lstrip()) and
+            spaced['occurrences'][0]['matched_text'] == quote.strip(),
+            'Whitespace-insensitive quote mapping failed')
     with tempfile.TemporaryDirectory(prefix='kira-integrity-') as directory:
         corrupt = dict(row, text=row['text'] + 'changed')
         path = Path(directory) / 'topic-rescan-assistant-adjusted.jsonl'
@@ -283,6 +311,26 @@ def check_triage():
                 and len(dry['state']['candidates'][0]['text_sha256']) == 64, 'triage.py dry-run request lost')
 
 
+def check_udf():
+    archive = io.BytesIO()
+    with zipfile.ZipFile(archive, 'w') as udf:
+        udf.writestr('content.xml', '<content>KURGU SINAMA</content>')
+    with tempfile.TemporaryDirectory(prefix='kira-udf-') as directory:
+        encoded = Path(directory) / 'yanit.b64'
+        encoded.write_bytes(base64.b64encode(archive.getvalue()))
+        target = str(Path(directory) / 'taslak.udf')
+        digest = hashlib.sha256(archive.getvalue()).hexdigest()
+        saved = run('udf.py', 'kaydet', str(encoded), '--sha256', digest, '--cikti', target)
+        require(saved['kaydedildi'] and Path(target).read_bytes() == archive.getvalue(),
+                'UDF save failed')
+        rejected = run('udf.py', 'kaydet', str(encoded), '--sha256', '0' * 64, '--cikti',
+                       str(Path(directory) / 'baska.udf'), expected=2)
+        require(not rejected['kaydedildi'] and not (Path(directory) / 'baska.udf').exists(),
+                'UDF hash mismatch was saved')
+        run('udf.py', 'kaydet', str(encoded), '--sha256', digest, '--cikti', target, expected=1,
+            parse=False)
+
+
 def check_frontmatter():
     skill = (ROOT / 'SKILL.md').read_text(encoding='utf-8')
     require(skill.startswith('---\n') and '\n---\n' in skill[4:], 'SKILL.md frontmatter missing')
@@ -298,8 +346,12 @@ def check_frontmatter():
     require({'name', 'description'} <= set(meta) <= FRONTMATTER_KEYS, 'SKILL.md frontmatter keys invalid')
     require(re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', meta['name']) and len(meta['name']) <= 64
             and meta['name'] == SKILL_NAME, 'Skill name invalid')
-    require(0 < len(meta['description']) <= 1024 and not ({'<', '>'} & set(meta['description'])),
+    description = meta['description']
+    require(0 < len(description) <= 1024 and not ({'<', '>'} & set(description)),
             'Skill description invalid')
+    # Düz YAML skaleri ': ' ve ' #' taşıyamaz; özel karakterle başlayamaz.
+    require(': ' not in description and ' #' not in description
+            and description[0] not in '>|[]{}&*!%@`\'"#,?:-', 'SKILL.md description unsafe for YAML')
     # Codex önceki skill belgelerinde açıklamayı tek satır ve 500 karakterle sınırlıyordu; bayt sayımına karşı temkinli.
     require(len(meta['description'].encode('utf-8')) <= 500, 'Skill description exceeds 500-byte Codex budget')
     require('$' + meta['name'] in (ROOT / 'agents/openai.yaml').read_text(encoding='utf-8'),
@@ -357,9 +409,11 @@ def main():
     check_law()
     check_calculators()
     check_triage()
+    check_udf()
     check_frontmatter()
     check_links()
-    print(f'PASS: {stats["records"]} decisions, file/text hashes, law, links, CLI and rejection checks')
+    print(f'PASS: {stats["records"]} decisions, file/text hashes, law, links, frontmatter, '
+          'CLI, UDF and rejection checks')
 
 
 if __name__ == '__main__':

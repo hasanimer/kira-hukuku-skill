@@ -1,6 +1,6 @@
 # Karar kartları ve dosya sınaması
 
-Bu sürümde **58 özgün kurgu sınama dosyası (B01–B58)**, her biri için üç ölçüt ve **10 yapılandırılmış karar kartı** vardır. Sınama dosyaları gerçek müvekkil dosyaları değildir; [kiracı senaryoları (K1–K10)](kiraci-senaryolari.md) bundan ayrı bir settir. Ölçütler mevcut kaynaklı rehberlerden türetilmiş yazar taslağıdır; bağımsız hukukçu değerlendirmesi yapılmış bir altın standart değildir. Paket testinin geçmesi asistanın hukuki cevaplarının başarılı olduğunu göstermez.
+Bu sürümde **62 özgün kurgu sınama dosyası (B01–B62)**, her biri için üç ölçüt ve **10 yapılandırılmış karar kartı** vardır. Sınama dosyaları gerçek müvekkil dosyaları değildir; [kiracı senaryoları (K1–K10)](kiraci-senaryolari.md) bundan ayrı bir settir. Ölçütler mevcut kaynaklı rehberlerden türetilmiş yazar taslağıdır; bağımsız hukukçu değerlendirmesi yapılmış bir altın standart değildir. Paket testinin geçmesi asistanın hukuki cevaplarının başarılı olduğunu göstermez.
 
 Komutları skill kökünde çalıştır; `python` bulunmazsa `python3`, Windows'ta gerekirse `py -3` kullan.
 
@@ -62,6 +62,6 @@ python scripts/quality.py score research-private/review.json
 
 ## Ölçümün anlamı
 
-Her dosyada hukuki ayrım (`analysis`), gerekli soru/belge (`questions`) ve yanlış genellemeden kaçınma (`avoid`) değerlendirilir. Bir dosya üçü de karşılandığında geçer. Hukuki ayrım ve yanlış sonuç ölçütündeki başarısızlık ayrıca kritik hata sayılır; yüksek toplam puan bunu gizlemez. Yalnız incelenen örneklerdeki oran, bütün set başarısı değildir; eksik dosya varken `suite_passed` false kalır. Henüz bu 58 soruyla canlı model performansı ölçülmedi.
+Her dosyada hukuki ayrım (`analysis`), gerekli soru/belge (`questions`) ve yanlış genellemeden kaçınma (`avoid`) değerlendirilir. Bir dosya üçü de karşılandığında geçer. Hukuki ayrım ve yanlış sonuç ölçütündeki başarısızlık ayrıca kritik hata sayılır; yüksek toplam puan bunu gizlemez. Yalnız incelenen örneklerdeki oran, bütün set başarısı değildir; eksik dosya varken `suite_passed` false kalır. Henüz bu 62 soruyla canlı model performansı ölçülmedi. B46–B49 Legaluga entegrasyonundaki hata türlerini sınar; araç çıktısı soruda verildiği için canlı bağlantı gerektirmez. Bunlarda `run` açıklamasına Legaluga erişimini de yaz.
 
 Yeni eklenen kaynakların konu/kapsam kontrolü [eğitim materyali kaydındadır](egitim-materyalleri.md). Ham eğitim metinleri ve gerçek dosya yanıtlarını kamuya açık depoya ekleme; yalnız anonimleştirilmiş ve paylaşılması uygun değerlendirmeleri ayrıca seç.

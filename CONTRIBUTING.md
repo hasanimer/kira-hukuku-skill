@@ -28,5 +28,6 @@ Standart kütüphane yeterlidir. GitHub Actions aynı denetimi Windows, macOS ve
 - Kanun sürümü değişirse bütün bölümleri, alınma bilgisini ve okunabilir metni birlikte güncelleyin.
 - Yeni sürümde dosya adlarını veya komut davranışını değiştiriyorsanız kullanıcı belgelerini de güncelleyin.
 - `evals/decision-qa.json`, `evals/cases.json` veya karar kartları değişirse `references/kararlardan-soru-yanit.md` sayfasını elle düzenlemeyin; `python scripts/decision_qa.py render --write` ile yeniden üretip `python scripts/validate.py` çalıştırın. Çıktıyı kabuk yönlendirmesiyle (`>`) dosyaya yazmayın; Windows PowerShell dosyayı UTF-16 veya farklı kod sayfasıyla kaydedebilir.
+- Legaluga veya TypeSafe araştırma dökümlerini, araç yanıtlarını ve UDF dosyalarını public depoya eklemeyin; yalnız anonim ve paylaşılması uygun doğrulama özetlerini ekleyin.
 
 Bir veri kaydının yayımlanmaması gerektiğini düşünüyorsanız hassas içeriği tekrar yayımlamadan yalnız kayıt kimliğini ve gerekçeyi belirtin.

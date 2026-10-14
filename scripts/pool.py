@@ -21,15 +21,18 @@ import unicodedata
 BEDESTEN_URL = 'https://mevzuat.adalet.gov.tr/ictihat/{}'
 # Okunan havuz dosyaları; ilki zorunlu ana havuzdur, seçkiler varsa eklenir.
 POOL_FILES = ('topic-rescan-assistant-adjusted.jsonl', 'bam-selected.jsonl',
-              'yargitay-selected.jsonl')
+              'yargitay-selected.jsonl', 'derleme-v5-selected.jsonl')
 MAIN_POOL = POOL_FILES[0]
+# Ana havuzla birlikte okunan seçkiler; kayıt hangi dosyadan geldiyse collection alanı onu gösterir.
+SELECTIONS = POOL_FILES[1:]
 EXIT_OK, EXIT_DATA, EXIT_USAGE, EXIT_NOT_FOUND = 0, 1, 2, 3
 EPILOG = (
     'Çıkış kodları: 0 başarılı; 1 veri/bütünlük hatası (hash veya manifest uyuşmazlığı, tekrarlanan kimlik,\n'
     'okunamayan dosya; stderr "HATA (veri bütünlüğü)" ile başlar) ya da çıktıyı okuyan sürecin erken kapanması (ör. | head;\n'
     'Linux/macOS\'ta stderr boş kalır; Windows\'ta "[Errno 22] Invalid argument" içeren bir HATA iletisi\n'
     'görünebilir; ikisi de veri hatası değildir); 2 kullanım hatası; 3 bulunamadı (quote: alıntı\n'
-    'belgede yok, JSON yine basılır ve exact_match false olur; get/quote: kimlik havuzda yok, stdout boş kalır).\n'
+    'belgede yok — --ignore-space ile boşluk farkı yok sayılarak da bulunamadı —, JSON yine basılır ve\n'
+    'exact_match false olur; get/quote: kimlik havuzda yok, stdout boş kalır).\n'
     '"-" ile başlayan alıntı için: python scripts/pool.py quote KARAR_KIMLIGI -- "-alıntı"')
 # Arama sıralaması: konu dışı kayıt en sona; sonra içerik türü, kapsam belirsizliği, sözcük geçişi.
 KIND_ORDER = {'esas_gerekcesi': 0, 'usul_gerekcesi': 1, 'sinirda': 2, 'kisa_karar': 3}
@@ -162,7 +165,7 @@ def read_rows(path, bedesten_ids=None):
                 raise ValueError(f'Text hash mismatch: {key} ({where})')
             if not str(row.get('court') or '').strip():
                 raise ValueError(f'Missing court: {key} ({where})')
-            row['pool_file'] = path.name
+            row['collection'] = path.name
             yield enrich(row, bedesten_ids=bedesten_ids)
 
 
@@ -282,7 +285,7 @@ def text_decision_date(row):
 
 
 def metadata(row):
-    keys = ('document_id', 'pool_file', 'kunye', 'court', 'esas_no', 'karar_no', 'karar_tarihi',
+    keys = ('document_id', 'collection', 'kunye', 'court', 'esas_no', 'karar_no', 'karar_tarihi',
             'text_sha256', 'raw_sha256', 'human_validated', 'review_level', 'value_assessment',
             'court_type', 'source_url', 'source_provider', 'research_notes',
             'source_text_sha256', 'redactions', 'needs_scope_review', 'scope_uncertain',
@@ -292,7 +295,7 @@ def metadata(row):
     if closing and row.get('karar_tarihi') and closing != row['karar_tarihi']:
         shown = '.'.join(reversed(closing.split('-')))
         provider = row.get('source_provider') or ''
-        if row.get('pool_file') == MAIN_POOL or provider.startswith('Bedesten'):
+        if row.get('collection') == MAIN_POOL or provider.startswith('Bedesten'):
             origin = ('Künye tarihi Bedesten üst verisidir; kapanış cümlesini alıntılarken farkı '
                       'belirt ve resmî sayfadan (source_url) kontrol et.')
         else:
@@ -354,9 +357,34 @@ def find_quotes(text, quotation):
         count += 1
         if len(positions) < QUOTE_MAX_OCCURRENCES:
             end = start + len(quotation)
-            positions.append({'start': start, 'end': end,
+            positions.append({'start': start, 'end': end, 'matched_text': quotation,
                               'context': text[max(0, start - 200):end + 200]})
         offset = start + 1
+    return count, positions
+
+
+def squash(text):
+    """Boşlukları atar; kalan her karakterin özgün metindeki konumunu da döndürür."""
+    kept = [i for i, c in enumerate(text) if not c.isspace()]
+    return ''.join(text[i] for i in kept), kept
+
+
+def find_ignoring_space(text, quotation):
+    """Bedesten çıktısı ile yerel metin yalnız boşlukta ayrışabilir; konumlar özgün metne göredir.
+    (toplam eşleşme sayısı, bağlamıyla en çok ilk QUOTE_MAX_OCCURRENCES eşleşme) döner."""
+    squashed, kept = squash(text)
+    needle = squash(quotation)[0]
+    positions, count, offset = [], 0, 0
+    while needle:
+        at = squashed.find(needle, offset)
+        if at < 0:
+            break
+        count += 1
+        if len(positions) < QUOTE_MAX_OCCURRENCES:
+            start, end = kept[at], kept[at + len(needle) - 1] + 1
+            positions.append({'start': start, 'end': end, 'matched_text': text[start:end],
+                              'context': text[max(0, start - 200):end + 200]})
+        offset = at + 1
     return count, positions
 
 
@@ -405,6 +433,9 @@ def build_parser():
     quote = sub.add_parser('quote', help='Birebir alıntıyı tam metinde arar; bulunamazsa çıkış kodu 3')
     quote.add_argument('document_id', help='Aramada dönen document_id')
     quote.add_argument('quotation', help='Harfi harfine alıntı; "-" ile başlıyorsa önüne -- koy')
+    quote.add_argument('--ignore-space', action='store_true',
+                       help='Birebir eşleşme yoksa boşluk farklarını yok sayarak ara (ör. Bedesten/'
+                            'Legaluga çıktısından alınan pasaj); sonuç match_mode: ignore_space')
     return parser, search, quote
 
 
@@ -431,7 +462,7 @@ def main(argv=None):
         kinds = collections.Counter(kind_of(r) or 'unknown' for r in rows)
         emit({**envelope, 'date_min': dates[0] if dates else None,
               'date_max': dates[-1] if dates else None, 'kinds': dict(kinds),
-              'collections': dict(collections.Counter(r['pool_file'] for r in rows)),
+              'collections': dict(collections.Counter(r['collection'] for r in rows)),
               'human_validated_records': sum(r.get('human_validated') is True for r in rows)})
         return EXIT_OK
     if args.command == 'search':
@@ -447,7 +478,11 @@ def main(argv=None):
         emit({**envelope, **metadata(row), 'text': row['text']})
         return EXIT_OK
     count, positions = find_quotes(row['text'], args.quotation)
-    result = {**envelope, **metadata(row), 'exact_match': bool(count),
+    mode = 'exact' if count else None
+    if not count and args.ignore_space:
+        count, positions = find_ignoring_space(row['text'], args.quotation)
+        mode = 'ignore_space' if count else None
+    result = {**envelope, **metadata(row), 'exact_match': mode == 'exact', 'match_mode': mode,
               'quotation': args.quotation,
               'input_normalized': args.quotation != args.raw_quotation,
               'occurrence_count': count, 'occurrences_truncated': count > len(positions),
