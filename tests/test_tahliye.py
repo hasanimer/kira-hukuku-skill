@@ -37,14 +37,14 @@ HEADINGS = {
 # Gerçek havuz kayıtları; alıntılar pool.py quote ile birebir doğrulanmıştır.
 DECISIONS = [
     {'document_id': '1155987500',
-     'kunye': 'Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, T. 26.05.2025',
+     'kunye': 'Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025',
      'outcome': 'BAM daireleri arasındaki uyuşmazlık giderildi; oybirliği, kesin.',
      'holding': 'TBK 350 davasında dava şartı arabuluculuk başvurusu dava açma hakkı doğduktan '
                 'sonra ve dava açma süresi içinde yapılmalıdır.',
      'quote': 'tahliye davası açma hakkının doğumundan sonra',
      'caveat': 'TBK 350 davaları için verilmiştir; 351 ve 352 yollarına otomatik taşınmaz.'},
     {'document_id': 'aa156eaa-5348-4eef-963a-75a3f84b14a7',
-     'kunye': 'İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, T. 30.12.2025',
+     'kunye': 'İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, 30.12.2025',
      'outcome': 'İlk derecenin usulden ret kararı kaldırıldı; tahliyeye hükmedildi.',
      'holding': '26.05.2025 tarihinden önce açılan davada erken arabuluculuk başvurusu nedeniyle '
                 'usulden ret öngörülemez sayıldı.',
@@ -148,14 +148,20 @@ class ResolveTests(unittest.TestCase):
 
     def test_aliases_and_spelling_variants(self):
         cases = {
-            'temerrut': ('temerrüt', 'TEMERRÜT', 'temerrut', '315', 'TBK 315', 'odeme', 'ödeme'),
-            'iki_hakli_ihtar': ('iki-ihtar', 'iki-hakli-ihtar', 'iki haklı ihtar', '352-2', '352/2'),
-            'taahhut': ('taahhüt', 'taahhut', 'taahhutname', '352-1', 'TBK 352/1'),
+            'temerrut': ('temerrüt', 'TEMERRÜT', 'temerrut', '315', 'TBK 315', 'odeme', 'ödeme',
+                         'tbk315', 'TBK 315/2', '315/1', '269', 'İİK 269', 'iik269', 'ilamsız',
+                         'İlamsız tahliye', '13 örnek'),
+            'iki_hakli_ihtar': ('iki-ihtar', 'iki-hakli-ihtar', 'iki haklı ihtar', '352-2', '352/2',
+                                'TBK 352/2'),
+            'taahhut': ('taahhüt', 'taahhut', 'taahhutname', '352-1', 'TBK 352/1', '272', 'İİK 272',
+                        '14 örnek'),
             'ihtiyac': ('ihtiyaç', 'İHTİYAÇ', 'ihtiyac', 'gereksinim', '350', 'yeniden-insa',
-                        'yeniden inşa'),
-            'yeni_malik': ('yeni-malik', 'yeni malik', 'Yeni_Malik', '351'),
-            'on_yillik_uzama': ('on-yil', '10yil', '10 yıl', '347', 'uzama', 'on yıllık uzama'),
-            'akde_aykirilik': ('aykirilik', 'aykırılık', 'ozen', 'özen', '316', 'komsu', 'komşu'),
+                        'yeniden inşa', 'tbk350', 'TBK 350/1', '350/2'),
+            'yeni_malik': ('yeni-malik', 'yeni malik', 'Yeni_Malik', '351', '351/1', 'TBK 351/2'),
+            'on_yillik_uzama': ('on-yil', '10yil', '10 yıl', '347', 'uzama', 'on yıllık uzama',
+                                '347/1', 'TBK 347/2'),
+            'akde_aykirilik': ('aykirilik', 'aykırılık', 'ozen', 'özen', '316', 'komsu', 'komşu',
+                               '316/2', 'TBK 316/3', 'tbk316'),
             'kiracinin_konutu_ve_diger': ('kiracinin-konutu', 'kiracının konutu', '352-3', 'diger',
                                           'diğer'),
             'ortak_usul': ('usul', 'arabuluculuk', 'ortak', 'Ortak usul'),
@@ -167,7 +173,9 @@ class ResolveTests(unittest.TestCase):
                     self.assertEqual(tahliye.resolve(name), key)
 
     def test_unknown_or_partial_names_do_not_resolve(self):
-        for name in ('xyz', '352', 'tahliye', '', '3155', 'temerrut-x'):
+        # 352 fıkrasız belirsizdir; önek yalnız kendi kanununun maddesinde, fıkra kanundaki sayıyla düşer.
+        for name in ('xyz', '352', 'TBK 352', 'tahliye', '', '3155', 'temerrut-x', 'İİK 315',
+                     'TBK 269', '315/3', '350/3', '316/4', '315/0', 'tbk', 'iik', 'İİK 269/1'):
             with self.subTest(name=name):
                 self.assertIsNone(tahliye.resolve(name))
 
@@ -238,6 +246,7 @@ class ScheduleTests(unittest.TestCase):
         self.assertEqual([item['rule'] for item in plan], ['tbk350', 'takvim', 'takvim'])
         self.assertEqual(plan[0]['sonuc'], deadlines.calculate('tbk350', start))
         self.assertEqual(plan[0]['komut'], 'python scripts/deadlines.py tbk350 2026-12-31')
+        self.assertEqual(plan[0]['sure'], '1 ay')
         self.assertEqual(plan[1]['sonuc'], deadlines.calculate('takvim', start, count=3, unit='hafta'))
         self.assertEqual(plan[1]['guven'], 'medium')
         # Süre miktarı yer tutucuysa hesap uydurulmaz; komut ayrıca çalıştırılmak üzere verilir.
@@ -245,6 +254,23 @@ class ScheduleTests(unittest.TestCase):
         self.assertIn('<n>', plan[2]['atlandi'])
         self.assertEqual(plan[2]['komut'],
                          'python scripts/deadlines.py takvim 2026-12-31 --count <n> --unit ay --geri')
+
+    def test_repeated_command_is_computed_once(self):
+        item = entry('ihtiyac')
+        item['deadlines'].append(deadline('Dava süresi, 353 notu', 'tbk350', TBK350))
+        plan = tahliye.schedule(item, date(2026, 12, 31))
+        first, repeat = plan[0], plan[-1]
+        self.assertEqual(first['sonuc'], deadlines.calculate('tbk350', date(2026, 12, 31)))
+        self.assertNotIn('sonuc_ayni', first)
+        self.assertIsNone(repeat['sonuc'])
+        self.assertEqual(repeat['sonuc_ayni'], 'Dava süresi')
+        self.assertEqual(repeat['komut'], first['komut'])
+        self.assertEqual(repeat['name'], 'Dava süresi, 353 notu')
+        text = tahliye.render_text({**tahliye.route_card(item, make_catalog()), 'tarih': '2026-12-31',
+                                    'uyari': 'u', 'takvim': plan})
+        self.assertIn('- Dava süresi, 353 notu (1 ay) [tbk350; güven: orta]: sonuç “Dava süresi” '
+                      'satırındadır (aynı komut).', text)
+        self.assertEqual(text.count('bir_aylik_dava_ham_sonu 31.01.2027'), 1)
 
 
 class FixtureValidateTests(FixtureCase):
@@ -299,6 +325,35 @@ class FixtureValidateTests(FixtureCase):
         self.assertRejected(report, 'arabuluculuk: dava_sarti/istisna/tartismali/uygulanmaz')
         self.assertRejected(report, 'schema_version')
 
+    def test_non_text_enums_and_schema_types_are_reported(self):
+        for bad_version in (True, 1.0, '1'):
+            def mutate(catalog, bad_version=bad_version):
+                catalog['grounds'][0]['deadlines'][0]['confidence'] = ['high']
+                catalog['grounds'][1]['routes'][0]['arabuluculuk'] = {'dava_sarti': True}
+                catalog['schema_version'] = bad_version
+            with self.subTest(schema_version=bad_version):
+                report = self.check(mutate)
+                self.assertRejected(report, "ortak_usul.deadlines[0].confidence: high/medium/low olmalı: ['high']")
+                self.assertRejected(report, 'temerrut.routes[0].arabuluculuk')
+                self.assertRejected(report, f'schema_version 1 olmalı: {bad_version!r}')
+
+    def test_repeated_deadline_name_fails(self):
+        def mutate(catalog):
+            catalog['grounds'][0]['deadlines'][1]['name'] = 'Dava süresi'
+        self.assertRejected(self.check(mutate), 'ortak_usul.deadlines: aynı ad iki kez: Dava süresi')
+
+    def test_other_script_commands_are_probed_with_help(self):
+        def mutate(catalog):
+            catalog['grounds'][0]['deadlines'][3]['command'] = (
+                'python scripts/hesap.py donemler --baslangic <S> --olmayan <n>')
+            catalog['grounds'][1]['deadlines'][3]['command'] = 'python scripts/hesap.py olmayan-komut <S>'
+        report = self.check(mutate)
+        self.assertRejected(report, 'ortak_usul.deadlines[3].command: --olmayan seçeneği '
+                                    'python scripts/hesap.py donemler --help çıktısında yok')
+        self.assertRejected(report, 'temerrut.deadlines[3].command: python scripts/hesap.py '
+                                    'olmayan-komut --help çalışmadı (çıkış 2)')
+        self.assertFalse(any('--baslangic' in error for error in report['errors']), report['errors'])
+
     def test_empty_lists_and_too_many_decisions_fail(self):
         def mutate(catalog):
             catalog['grounds'][0]['pitfalls'] = []
@@ -330,8 +385,8 @@ class FixtureValidateTests(FixtureCase):
     def test_unknown_decision_and_wrong_kunye_fail(self):
         def mutate(catalog):
             catalog['grounds'][0]['decisions'][0]['document_id'] = '0'
-            catalog['grounds'][1]['decisions'][0]['kunye'] = 'Yargıtay 3. HD, E. 2025/14950, K. 2025/3048, T. 26.05.2025'
-            catalog['grounds'][2]['decisions'][1]['kunye'] = 'Yargıtay 3. HD, E. 2025/5438, K. 2025/3212, T. 30.12.2025'
+            catalog['grounds'][1]['decisions'][0]['kunye'] = 'Yargıtay 3. HD, E. 2025/14950, K. 2025/3048, 26.05.2025'
+            catalog['grounds'][2]['decisions'][1]['kunye'] = 'Yargıtay 3. HD, E. 2025/5438, K. 2025/3212, 30.12.2025'
         report = self.check(mutate)
         self.assertRejected(report, 'karar havuzda yok: 0')
         self.assertRejected(report, 'temerrut.decisions[0].kunye: "E. 2025/1495" içermeli')
@@ -368,8 +423,9 @@ class FixtureCliTests(FixtureCase):
                     'katalog_surumu': '2026-10-14.1'}
         self.assertEqual({k: card[k] for k in expected}, expected)
         self.assertEqual(card['tarih'], '2026-12-31')
-        self.assertIn('Aynı tarih (2026-12-31)', card['uyari'])
-        self.assertIn('meaning', card['uyari'])
+        self.assertIn('Aynı tarih (31.12.2026)', card['uyari'])
+        for fragment in ('sonuc.meaning', 'sonuc.pending_checks', 'İİK, HMK, HUAK veya TMK', 'sonuc_ayni'):
+            self.assertIn(fragment, card['uyari'])
         self.assertEqual(card['takvim'], json.loads(json.dumps(tahliye.schedule(entry('ihtiyac'), date(2026, 12, 31)))))
         self.assertEqual(card['takvim'][0]['sonuc'], deadlines.calculate('tbk350', date(2026, 12, 31)))
         plain = json.loads(run('--root', str(self.root), 'yol', 'ihtiyac').out)
@@ -382,11 +438,17 @@ class FixtureCliTests(FixtureCase):
         self.assertTrue(text.startswith('Sınama sebebi temerrut [temerrut]\n'), text[:80])
         for fragment in ('Rehber: references/tahliye.md#temerrüt-tbk-315-ve-ilamsız-tahliye-takibi',
                          'güven: düşük', 'Araç: araç yok', 'Arabuluculuk: dava şartı',
-                         'Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, T. 26.05.2025',
+                         'Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025',
                          'Tam metin: python scripts/pool.py get 1155987500',
-                         'Ham takvim adayı (girdi 31.12.2026)', 'bir_aylik_dava_ham_sonu 31.01.2027',
+                         'Ham takvim adayı (girdi 31.12.2026)', 'Aynı tarih (31.12.2026)',
+                         '- Dava süresi (1 ay) [tbk350; güven: orta]: bir_aylik_dava_ham_sonu 31.01.2027',
                          'Ayrı çağır: python scripts/deadlines.py tbk350 2026-12-31'):
             self.assertIn(fragment, text)
+        # Kuralın dayanağı ve bütün kontrolleri metin görünümünde de basılır.
+        result = deadlines.calculate('tbk350', date(2026, 12, 31))
+        self.assertIn(f"  Araç dayanağı: {result['basis']}\n", text)
+        for check in result['pending_checks']:
+            self.assertIn(f'  Kontrol: {check}\n', text)
 
     def test_emsal_shape(self):
         result = json.loads(run('--root', str(self.root), 'emsal', '352/3').out)
@@ -401,6 +463,7 @@ class FixtureCliTests(FixtureCase):
         self.assertTrue(proc.err.startswith('HATA: '), proc.err)
         for key in tahliye.GROUNDS:
             self.assertIn(key, proc.err)
+        self.assertIn('352 için fıkrayı yaz', run('--root', str(self.root), 'yol', '352', expected=3).err)
         # Bilinmeyen sebep katalog okunmadan bildirilir.
         self.assertTrue(run('--root', str(self.root / 'yok'), 'emsal', 'xyz', expected=3).err.startswith('HATA: '))
 
@@ -447,8 +510,15 @@ class RealCatalogTests(unittest.TestCase):
     def test_real_schedule_matches_deadlines(self):
         start = date(2026, 12, 31)
         for item in self.catalog['grounds']:
-            for row in tahliye.schedule(item, start):
+            plan = tahliye.schedule(item, start)
+            for row in plan:
                 with self.subTest(key=item['key'], name=row['name']):
+                    if row['sonuc'] is None and 'sonuc_ayni' in row:
+                        same = [r for r in plan if r['name'] == row['sonuc_ayni']]
+                        self.assertEqual(len(same), 1)
+                        self.assertTrue(same[0]['sonuc'])
+                        self.assertEqual(same[0]['komut'], row['komut'])
+                        continue
                     if row['sonuc'] is None:
                         self.assertTrue(row['atlandi'])
                         continue

@@ -8,18 +8,19 @@ Hazırlama: 14.10.2026; dayanak [tahliye rehberi](tahliye.md), paketteki TBK met
 
 | İskelet | Sebep | Asgari süre veya pencere | Güven |
 | --- | --- | --- | --- |
-| Temerrüt ihtarnamesi | TBK 315 davası; TBK 352/2 ihtarı | Ödeme süresi sonu `O = G(T,30)` (diğer kiralar 10, ürün kirası 60 gün); başvuru en erken `G(O,1)` | süre yüksek, başvuru orta |
+| Temerrüt ihtarnamesi | TBK 315 davası; TBK 352/2 ihtarı | Ödeme süresi sonu `O = G(T,30)` (diğer kiralar 10, ürün kirası 60 gün); başvuru en erken TBK 93 düzeltmeli `O`'nun ertesi günü | süre yüksek, başvuru orta |
 | Özen borcu ihtarnamesi | TBK 316/2 | Giderim `G(T,30)`; başvuru TBK 93 düzeltmeli süre sonunun ertesi günü | süre yüksek, başvuru orta |
-| Gereksinim veya dava bildirimi | TBK 350; TBK 353 (352/1 ve 352/3'te de) | 353 bildirimi en geç dava süresinin son günü ulaşmalı; belirsiz sürede fesih dönemi sonu `F` için `A(F,-3)` | orta |
+| Gereksinim veya dava bildirimi | TBK 350; TBK 353 (352/1 ve 352/3'te de); belirsiz sürede fesih | 353 bildirimi en geç dava süresinin son günü (temkinli `A(G(E,-1),1)`) ulaşmalı; belirsiz sürede fesih dönemi sonu `F` için `A(F,-3)`, temkinli `A(G(F,-1),-3)` | orta |
 | Yeni malik bildirimi | TBK 351/1 | Edinme `D`; tebliğ temkinli en geç `G(A(D,1),-1)`; dava en erken `G(A(D,6),1)` | bildirim yüksek, bekleme orta |
 | On yıllık uzama bildirimi | TBK 347/1 | İlk süre bitimi `E`, `F = Y(E,11)`; `Y(E,10)` ≤ tebliğ ≤ `A(G(F,-1),-3)`; dava `F` veya sonrası | yüksek |
 
-Arabuluculuk notu ve dava dilekçesi sulh hukuktaki her tahliye davası, cevap ve itiraz iskeletleri kiracı içindir.
+Arabuluculuk notu ve dava dilekçesi sulh hukuktaki her tahliye davası içindir; cevap ve itiraz iskeletleri kiracı içindir.
 
 - **Ön ihtarsız sebepler:** Taahhüt (TBK 352/1) ve kiracının konutu (TBK 352/3) ihtar gerektirmez. TBK 353 uzaması isteniyorsa gereksinim veya dava bildirimini uyarla; 353'ün 352/1'e uygulanması tartışmalıdır (güven: düşük), takibi veya başvuruyu `A(B,1)` içinde yap.
 - **İki haklı ihtar (TBK 352/2):** Her ihtar için temerrüt iskeletini ayrı kullan: kira muaccel olduktan sonra keşide et (güven: yüksek), iki ihtarı aynı kira yılında tebliğ ettir (güven: orta), ilk ihtara o ana kadar muaccel bütün ayları koy. Yargıtay 3. HD, E. 2017/6324, K. 2017/15623, 09.11.2017 (ret düzeltilerek onandı) 30 gün aramaz; Yargıtay HGK, E. 2017/1289, K. 2021/1314, 02.11.2021 doktrine dayanan listesinde otuz gün ve tahliye uyarısı sayar. İkisini de yaz.
 - **Geçerlilik:** Yazılı ve imzalı metin (TBK 14–15; fesih bildiriminde TBK 348); sebep ve dönem, süre, fesih iradesi veya dava açılacağı açıkça. Gönderen sözleşmedeki bütün kiraya verenler veya ihtar ve fesih yetkili vekil; muhatap bütün kiracılar ve TBK 356 kapsamındakiler.
-- **TBK 349/3:** Kiracı olmayan eş kiraya verene bildirimde bulunarak taraf olmuşsa fesih bildirimini ve fesih ihtarına bağlı ödeme süresini kiracıya ve eşine ayrı ayrı gönder. Takipten önce bildirim yapmış eş atlanırsa takipteki eksiklik giderilemez (Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, 21.06.2017; tahliye kararı bozuldu); bildirim takipten sonraysa eş taraf olmaz (Yargıtay 8. HD, E. 2017/4794, K. 2018/11923, 02.05.2018). Tebliğler farklı günlerdeyse temkinli `G(max(T1,T2),30)` (çıkarım; güven: düşük).
+- **Aile konutu (TBK 349):** Kiracı olmayan eş kiraya verene bildirimde bulunarak taraf olmuşsa (TMK 194/son) fesih bildirimini ve fesih ihtarına bağlı ödeme süresini kiracıya ve eşine ayrı ayrı gönder (TBK 349/3). Takipten önce bildirim yapmış eş atlanırsa takipteki eksiklik giderilemez, davadaki giderilebilir; bildirim anında tapuda aile konutu şerhi yoktu (Yargıtay 8. HD, E. 2017/3527, K. 2017/9518, 21.06.2017; tahliye kararı bozuldu; HUMK dönemi); bildirim takipten sonraysa eş takipte taraf olmaz (Yargıtay 8. HD, E. 2017/4794, K. 2018/11923, 02.05.2018; ret kiraya veren yararına bozuldu). Tebliğler farklı günlerdeyse temkinli `G(max(T1,T2),30)` (çıkarım; güven: düşük). Kiracı eş aile konutunu eşinin açık rızası olmadan feshedemez; rıza alınamaz veya haklı sebep olmadan verilmezse hâkimden karar ister (TBK 349/1–2). Kiracı eşin tek başına fesih veya çıkış beyanını sözleşmenin sona ermesi sayma.
+- **Kendiliğinden tahliye yok:** İhtar veya fesih kiralananı boşaltma yetkisi vermez. Kiraya verenin tek yanlı feshi ve kiralanana el koyması sözleşme ihlalidir; “mahkeme kararı ile tahliye ilamı alınmadığı sürece akdin sona erdiğinden söz edilemez” (Yargıtay 3. HD, E. 2022/5351, K. 2022/7594, 11.10.2022; kiracılık sıfatının tespiti ve tazminat davasında ret kiracı yararına bozuldu); tahliye davası açmadan kiralananı yıkmak kazanç kaybı tazminatı doğurabilir (Yargıtay 3. HD, E. 2024/3898, K. 2025/4234, 23.09.2025; kiracılar yararına bozma). Kilit değiştirme, su veya elektrik kesme ve eşyayı kaldırma aynı riski taşır (çıkarım); ceza hukuku sonuçlarını ayrıca araştır. Tahliyeyi ilamla veya ilamsız icra yoluyla iste.
 - **Kaynak:** Taslaktan önce `iddia | kaynak | doğrulama durumu` tablosu kur ([taslak biçimi](calisma-mantigi.md#yanıt-ve-taslak-biçimi)). Metne yalnız künye yaz; kararı `python scripts/pool.py get <kimlik>` ile oku (ör. `1155987500`), alıntıyı `python scripts/pool.py quote` ile denetle.
 - **Mevzuat:** İİK, HMK, HUAK ve TMK atıfları resmî metinden doğrulanmadı; “resmî metinden doğrula” notlu hükmü, uygulanacak tarihteki metne bakmadan dilekçeye taşıma.
 - **UDF:** Yalnız kullanıcı açıkça isterse, yer tutucusuz ve onaylanmış son metinle SKILL.md akışını izle: Legaluga imzasız taslak üretir, `python scripts/udf.py kaydet` SHA-256 ile doğrulayıp kaydeder ([UDF akışı](legaluga.md#udf-dilekçe-taslağı)). `[DOLDURULACAK` kalmışsa UDF hazırlama.
@@ -32,7 +33,7 @@ Arabuluculuk notu ve dava dilekçesi sulh hukuktaki her tahliye davası, cevap v
 - Dönemleri ay ay, vade ve tutarıyla yaz; “bakiye” kullanma. Yan giderde sözleşme dayanağını ve miktarı veya oranı göster: Yargıtay 12. HD, E. 2025/7021, K. 2025/5902, 06.10.2025 (oy çokluğuyla onama, iki karşıoy) belirsiz ortak gideri yargılamaya muhtaç saymıştır.
 - Konut ve çatılı işyerinde en az 30, diğer kiralarda 10, ürün kirasında 60 gün ver (TBK 315/2, 362/2). Ödeme emrinde süre noksan gösterilmişse icra mahkemesi tahliye talebini reddeder (Yargıtay HGK, E. 2017/1918, K. 2021/1707, 21.12.2021; direnme oy çokluğuyla bozuldu, açıklama gerekçededir).
 - Fesih ve dava uyarısını, ödeme yerini ve IBAN'ı yaz; faiz ve masrafları ayrı göster, fer'ilerin ödenmemesi tahliye sebebi değildir.
-- Hesap: `python scripts/deadlines.py tbk315 <T>`; diğer kiralarda `python scripts/deadlines.py takvim <T> --count 10 --unit gun`. Hak düşürücü dava süresi yoktur; arabulucuya süre sonu `O`'dan sonra başvur (güven: orta).
+- Hesap: `python scripts/deadlines.py tbk315 <T>`; diğer kiralarda `python scripts/deadlines.py takvim <T> --count 10 --unit gun`. Araç ham `O`'yu verir; son gün kanunen tatil olan güne rastlarsa süre izleyen ve tatil olmayan ilk güne geçer, kiracı o gün de ödeyebilir (TBK 93). Hak düşürücü dava süresi yoktur; fesih bildirimini ve arabuluculuk başvurusunu TBK 93 düzeltmeli `O`'dan sonra yap, `G(T,31)` kısayolunu kullanma (güven: orta).
 - 352/2 ihtarı olarak da kullanılacaksa ayları açıkça yaz; orada haklılık tebliğ anında ödenmemiş borca bağlıdır.
 
 ```text
@@ -83,13 +84,15 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 
 **Ne zaman:** TBK 353 uzaması, belirsiz süreli sözleşmede fesih (TBK 328–329, 348) veya kiraya vereni bağlayan sözleşmesel ihbar kaydı için. Belirli süreli sözleşmede TBK 350 davası kanuni ihtar şartına bağlı değildir. Ayrıntı: [gereksinim ve yeniden inşa](tahliye.md#gereksinim-ve-yeniden-inşa-tbk-350).
 
+- Aynı iskeleti 350/2, 352/1 ve 352/3'teki TBK 353 bildirimi için de kullan: KONU'yu, 2. maddeyi ve 3. maddedeki fıkrayı sebebe göre seç, diğer seçenekleri sil. 353'ün 352/1'e uygulanması tartışmalıdır (güven: düşük), 352/3'e uygulanması sistematik yorumdur; dava süresini uzamaya güvenerek planlama.
+- Belirsiz süreli sözleşmede fesih iradesini ayrı cümleyle yaz (TBK 348: yazılı şekil geçerlilik şartı); yalnız dava bildirimi fesih bildirimi yerine geçmeyebilir. Fesih bildiriminin kurucu şart olup olmadığı açık sorudur; ihtiyaten gönder.
 - İhtiyaçlı yalnız kiraya veren, eşi, altsoyu, üstsoyu veya kanunen bakmakla yükümlü olduğu kişidir; gerçek kişi, kurucusu ve temsilcisi olduğu şirketin ihtiyacı için dava açamaz (Yargıtay 3. HD, E. 2021/2159, K. 2021/4476, 21.04.2021; tahliye kiracı yararına bozuldu). İhtiyaç gerçek, samimi, zorunlu ve süreklidir.
 - Kiraya vereni bağlayan ihbar kaydı geçerlidir; ihbar süresinde ulaşmazsa sözleşme bir yıl uzar ve bir aylık sürede açılan dava süresinde sayılmaz (Yargıtay 3. HD, E. 2024/2446, K. 2025/1440, 10.03.2025; uyuşmazlık giderme). Temkinli eşik `A(G(E,-1),-n)` (güven: orta).
 - Belirsiz sürede yerel âdet yoksa altı aylık dönem sonu `F`; bildirim en geç `A(F,-3)` (temkinli `A(G(F,-1),-3)`) ulaşmalı, yetişmeyen bildirim sonraki dönemi hedefler (TBK 328/2; güven: orta).
 - TBK 353'te dava açılacağını açıkça yaz; her ihtar 353 bildirimi değildir. Bildirim en geç dava süresinin son günü (temkinli `A(G(E,-1),1)`) ulaşırsa dava uzamış kira yılının sonuna, temkinli `Y(G(E,-1),1)`'e kadar açılabilir (güven: orta). “Bildirim + 365” kullanma; 353'ü TBK 347'ye uygulama.
 - Bildirim, `E`'den önceki arabuluculuk başvurusunu kurtarmaz (Yargıtay 3. HD, E. 2025/1495, K. 2025/3048, 26.05.2025; uyuşmazlık giderme; hüküm TBK 350 ihtiyaç davaları için).
 - Muhatap: bütün kiracılar, eş ihtiyaten (belirsiz süreli fesih bildiriminde TBK 349/3 doğrudan), TBK 356 kapsamındakiler.
-- Hesap: `python scripts/deadlines.py tbk350 <E>`; belirsiz sürede `python scripts/deadlines.py takvim <F> --count 3 --unit ay --geri`.
+- Hesap: `python scripts/deadlines.py tbk350 <E>` yalnız ham `A(E,1)`'i (`bir_aylik_dava_ham_sonu`) verir; temkinli son için `python scripts/deadlines.py takvim <G(E,-1)> --count 1 --unit ay`. Belirsiz sürede `python scripts/deadlines.py takvim <F> --count 3 --unit ay --geri`, temkinli eşik için girdi `G(F,-1)`.
 
 ```text
 [DOLDURULACAK: noterlik] NOTERLİĞİNE
@@ -97,11 +100,11 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 KEŞİDECİ: [DOLDURULACAK: bütün kiraya verenler veya yetkili vekil]
 MUHATAP: [DOLDURULACAK: bütün kiracılar; TBK 349/3 eşi; TBK 356 kapsamındakiler]
 KİRALANAN: [DOLDURULACAK: adres ve nitelik]
-KONU: Gereksinim nedeniyle sona erdirme ve TBK 353 uyarınca dava bildirimi
+KONU: [DOLDURULACAK: gereksinim / yeniden inşa veya imar / tahliye taahhüdü / kiracının veya eşinin konutu] nedeniyle TBK 353 uyarınca dava bildirimi [DOLDURULACAK: belirsiz süreliyse: ve fesih bildirimi]
 
-1. Sözleşme [DOLDURULACAK: başlangıç] başlangıçlı ve [DOLDURULACAK: süre] sürelidir; içinde bulunulan dönem [DOLDURULACAK: E; belirsiz süreliyse seçilen fesih dönemi sonu F] tarihinde sona erecektir.
-2. Kiralanan, [DOLDURULACAK: ihtiyaçlı ve yakınlığı] için [DOLDURULACAK: konut / işyeri] gereksinimi sebebiyle kullanılacaktır: [DOLDURULACAK: somut gerekçe; 350/2'de iş ve ruhsat].
-3. Kiralananın [DOLDURULACAK: tarih] tarihinde boşaltılarak teslimini; aksi hâlde arabulucuya başvurulacağını ve TBK 350 uyarınca tahliye davası açılacağını TBK 353 uyarınca bildiririm.
+1. Sözleşme [DOLDURULACAK: başlangıç] başlangıçlı ve [DOLDURULACAK: süre / belirsiz] sürelidir. [DOLDURULACAK: belirli süreliyse: İçinde bulunulan dönem E tarihinde sona erecektir. / belirsiz süreliyse: Sözleşmeyi TBK 328 ve 329 uyarınca F tarihi itibarıyla feshediyorum. / 352/1'de: Kiracı, kiralananı B tarihinde boşaltmayı taahhüt tarihli yazılı taahhütnameyle üstlenmiştir.]
+2. [DOLDURULACAK: 350/1'de: Kiralanan, ihtiyaçlı ve yakınlığı için konut / işyeri gereksinimi sebebiyle kullanılacaktır: somut gerekçe. / 350/2'de: Kiralananın yeniden inşası veya imarı amacıyla yapılacak iş, proje ve ruhsat; iş sırasında kullanımın imkânsızlığı. / 352/1'de: taahhüdün teslimden sonra verildiği. / 352/3'te: kiracının veya birlikte yaşadığı eşinin aynı ilçe veya belde belediye sınırları içindeki konutunun adresi ve sahibi; sözleşme kurulurken bilinmediği.]
+3. Kiralananın [DOLDURULACAK: tarih] tarihinde boşaltılarak teslimini; aksi hâlde arabulucuya başvurulacağını ve TBK [DOLDURULACAK: 350/1, 350/2, 352/1 veya 352/3] uyarınca tahliye davası açılacağını TBK 353 uyarınca bildiririm.
 
 Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 ```
@@ -111,7 +114,7 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 **Ne zaman:** Kiralananı sonradan edinen kişi kendisi veya sınırlı sayılan yakını için gereksinim ileri sürüp altı ay sonra dava açacaksa. 351/2 ve 350 yolunda kanuni bildirim yoktur; önceki malikle yapılmış sözleşmedeki ihbar kaydına uy. Ayrıntı: [yeni malik](tahliye.md#yeni-malik-tbk-351).
 
 - Edinme `D` satışta tapu tescil tarihidir; miras, ihale veya mahkeme kararında geçiş tarihini belgele.
-- Bildirim bir ay içinde kiracıya **tebliğ** edilmeli; süresinde keşide yetmez, eksiklik sonradan giderilemez (Yargıtay 3. HD, E. 2017/4691, K. 2017/12812, 27.09.2017; keşide süre içinde, tebliğ süre dışındaydı; tahliye kiracı lehine bozuldu). Temkinli son tebliğ günü `G(A(D,1),-1)` (güven: yüksek): `python scripts/deadlines.py tbk351 <D>`. Arabuluculuk bu süreyi durdurmaz.
+- Bildirim bir ay içinde kiracıya **tebliğ** edilmeli; süresinde keşide yetmez, eksiklik sonradan giderilemez (Yargıtay 3. HD, E. 2017/4691, K. 2017/12812, 27.09.2017; keşide süre içinde, tebliğ süre dışındaydı; tahliye kiracı lehine bozuldu). Temkinli son tebliğ günü `G(A(D,1),-1)` (güven: yüksek). `python scripts/deadlines.py tbk351 <D>` yalnız ham `A(D,1)`'i (`bir_aylik_bildirim_ham_sonu`) verir; temkinli günü `python scripts/deadlines.py takvim <A(D,1)> --count 1 --unit gun --geri` ile bul. Arabuluculuk bu süreyi durdurmaz.
 - Önceki malikin ihtarı da kiranın yeni malike ödenmesi istemi de 351/1 bildiriminin yerine geçmez (çıkarım).
 - Dava ve arabuluculuk en erken `G(A(D,6),1)` (güven: orta; 351/1'de erken başvuruyu esastan çözen Yargıtay kararı havuzda yok). Aynı 3. HD kararı davanın sözleşme sonuna kadar açılabileceğini söyler; Yargıtay HGK, E. 2017/1540, K. 2021/878, 29.06.2021 par. 18'deki “takip eden altı ay içinde” obiter anlatımı nedeniyle gecikme (son sınır güveni: düşük).
 - Eşe ihtiyaten ayrıca tebliğ et; TBK 349/3 yalnız fesih bildirimi ve ödeme süresini sayar (çıkarım).
@@ -137,8 +140,8 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 
 - `E` ilk süre bitimi, on yıllık uzama `Y(E,10)`, hedef yıl sonu `F = Y(E,11)`, sonraki yıllarda `Y(E,11+k)`; “başlangıç + 10 yıl” kısayolunu kullanma. Yeni süre ve bedelle yeni sözleşme yapılmışsa on yıl ondan sayılabilir (Yargıtay HGK, E. 2017/458, K. 2021/614, 25.05.2021; direnme kiracı lehine oy çokluğuyla bozuldu).
 - Tebliğ penceresi `Y(E,10)` ≤ tebliğ ≤ `A(G(F,-1),-3)` (güven: yüksek); İstanbul BAM 36. HD, E. 2021/1010, K. 2023/2382, 19.10.2023 (kiraya verenin istinafı esastan reddedildi; künye Dejure üst verisi, doğrula) ve Yargıtay HGK, E. 2017/1546, K. 2021/1517, 30.11.2021 (direnme bozuldu) ile uyumludur. Hedef yıl başlamadan yapılan bildirimin geçerliliği doğrulanmadı.
-- Dava ve arabuluculuk `F` günü veya sonrası: Yargıtay 3. HD, E. 2017/3032, K. 2017/6383, 02.05.2017 bir gün erken davada kabul hükmünü kiracı yararına bozmuştur. Kanunda üst sınır yok; ihtiyatla `A(G(F,-1),1)` içinde başvur (güven: düşük).
-- 01.07.2012 öncesi sözleşmede 6101 geçici 2 eşiğini ayrıca hesapla; belirsiz sürede (347/2) bildirimi ihtiyaten `Y(S,10)`'dan sonra, altı aylık fesih dönemi sonundan en az üç ay önce tebliğ ettir (güven: orta).
+- Dava `F` günü veya sonrası: Yargıtay 3. HD, E. 2017/3032, K. 2017/6383, 02.05.2017 bir gün erken davada kabul hükmünü kiracı yararına bozmuştur. Arabuluculuğa temkinli olarak `G(F,1)` veya sonrasında başvur (`F` günü 3. HD 2025/3048 kıyasıyla tartışmalı; güven: orta). Kanunda üst sınır yok; ihtiyatla `A(G(F,-1),1)` içinde başvur (güven: düşük).
+- 01.07.2012 öncesi sözleşmede 6101 geçici 2 eşiğini (01.07.2014, 01.07.2017; HGK aktarımı, resmî metinden doğrula) ayrıca hesapla; belirsiz sürede (347/2) bildirimi ihtiyaten `Y(S,10)`'dan sonra, altı aylık fesih dönemi sonundan en az üç ay önce tebliğ ettir (güven: orta).
 - Gönderen bütün kiraya verenler veya mirasçılar; muhatap bütün kiracılar ve TBK 349/3 eşi.
 - Hesap: `python scripts/hesap.py tahliye-10yil --baslangic GG.AA.YYYY --sure-yil N` veya `python scripts/deadlines.py tbk347 <E>`; `en_gec_ihtar_teblig_tarihi` temkinli eşiktir.
 
@@ -163,21 +166,21 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 
 | Sebep | Başvuru penceresi | Güven |
 | --- | --- | --- |
-| TBK 350 | `E` < başvuru ≤ `A(E,1)` veya 353 ile uzamış süre | 350/1 yüksek, 350/2 orta |
+| TBK 350 | `E` < başvuru ≤ `A(E,1)`; temkinli son `A(G(E,-1),1)`; 353 bildirimiyle temkinli `Y(G(E,-1),1)` | 350/1 ve 350/2 orta (sınır günleri tartışmalı) |
 | TBK 351/1 | başvuru ≥ `G(A(D,6),1)`, dönem sonundan önce | orta |
-| TBK 351/2, 352/2, 352/3 | `E` < başvuru ≤ `A(E,1)` | düşük |
+| TBK 351/2, 352/2, 352/3 | `E` < başvuru ≤ `A(E,1)`; temkinli son `A(G(E,-1),1)` (352/2'de `E = E2`, `E1 = G(E2,-1)`, temkinli son `A(E1,1)`) | pencere: 351/2 orta, 352/2 ve 352/3 düşük; erken başvurunun yeterliliği düşük |
 | TBK 352/1 dava yolu | `B` < başvuru ≤ `A(B,1)` | orta |
-| TBK 347/1 | başvuru ≥ `F` | orta |
+| TBK 347/1 | başvuru ≥ `G(F,1)` (temkinli; `F` günü tartışmalı) | orta |
 | TBK 315, 316, 331 | sona erme gerçekleştikten sonra | orta |
 | İtirazın iptali ve tahliye | tartışmalı; ihtiyaten itirazın tebliğinden sonra en erken zamanda | düşük |
 
-Güven, pencereye uyulan başvurunun dava şartını karşılamasına ilişkindir. 350/1 dışındaki yollarda pencereden önce yapılan başvurunun yeterliliğini çözen Yargıtay kararı havuzda yoktur; bu soru her yolda düşük güvenlidir. Alt sınır ihtiyat kuralı, üst sınır kanuni dava süresidir.
+Güven, pencereye uyulan başvurunun dava şartını karşılamasına ilişkindir. 350/1 dışındaki yollarda pencereden önce yapılan başvurunun yeterliliğini çözen Yargıtay kararı havuzda yoktur; bu soru her yolda düşük güvenlidir. Alt sınır ihtiyat kuralıdır; ham `A(E,1)` yıldönümü okumasıdır ve son günü mahkemeler farklı okuduğundan başvuruyu temkinli sona göre planla. `tbk350` yalnız ham `A(E,1)`'i verir; temkinli son için `python scripts/deadlines.py takvim <G(E,-1)> --count 1 --unit ay`.
 
 - 26.05.2025'ten önce açılmış TBK 350 davasında erken başvuruyu yeterli sayan tek BAM görüşü (İstanbul BAM 35. HD, E. 2025/5438, K. 2025/3212, 30.12.2025; usulden ret kaldırıldı; kesin; künye Dejure üst verisi) sonraki davalara taşınmaz.
 - Başvurudan son tutanağa kadar hak düşürücü süre işlemez (HUAK 18/A/15); kalan süre son tutanaktan sonra yürür. Araç durma hesaplamaz; davayı gecikmeden aç.
 - Arabulucu süreci `G(g,21)`, zorunlu hâlde `G(g,28)` içinde bitirir (`g` görevlendirme; HUAK 18/B; resmî metinden doğrula; güven: orta); bu dava açma süresi değildir.
 - Başvuru yeri karşı tarafın yerleşim yeri veya yetkili mahkemenin yerindeki bürodur (HUAK 18/A; resmî metinden doğrula). Taraflar: bütün kiraya verenler, bütün kiracılar, TMK 194 eşi (ihtiyaten).
-- Anlaşmada tahliye tarihini ve teslim koşullarını icraya elverişli yaz: “yeni kira sözleşmesi düzenleme” edimi ilamlı takiple zorlanamamıştır (Yargıtay 12. HD, E. 2025/6239, K. 2025/7199, 06.11.2025; icra mahkemesi kararı bozuldu).
+- Anlaşmada tahliye tarihini ve teslim koşullarını icraya elverişli yaz: “yeni tarihli kira sözleşmesi düzenlenmesi edimi” ilamlı takiple zorlanamamıştır (Yargıtay 12. HD, E. 2025/6239, K. 2025/7199, 06.11.2025; icra mahkemesi kararı bozuldu).
 - Arabuluculuk ihtar yerine geçmez; TBK 353 bildirimi sayılıp sayılmadığı açık sorudur.
 
 ```text
@@ -186,7 +189,7 @@ ARABULUCULUK BAŞVURU BİLGİ NOTU
 Büro: [DOLDURULACAK: yetkili yer]
 Taraflar: [DOLDURULACAK: bütün kiraya verenler; bütün kiracılar; TMK 194 eşi; kimlik, adres, vekil]
 Uyuşmazlık: Tahliye; [DOLDURULACAK: TBK maddesi; kiralanan; başlangıç; süre; aylık kira]
-Dava hakkının doğduğu gün ve pencere: [DOLDURULACAK: E, F, D, B veya O; formül ve araç çıktısı]
+Dava hakkının doğduğu gün ve pencere: [DOLDURULACAK: E, F, D, B veya O; formül; ham ve temkinli son gün; araç çıktısı]
 İstenen: [DOLDURULACAK: tahliye tarihi; teslim koşulları; varsa kira alacağı]
 Ekler: [DOLDURULACAK: sözleşme, ihtar, tebliğ, tapu]
 ```
@@ -214,7 +217,7 @@ ARABULUCULUK: [DOLDURULACAK: büro, dosya no, başvuru ve son tutanak tarihi]
 AÇIKLAMALAR
 1. Kira ilişkisi: [DOLDURULACAK: başlangıç, süre, nitelik, aylık kira]. Delil: kira sözleşmesi.
 2. Sıfat: [DOLDURULACAK: kiraya veren sıfatı; yeni malikte edinme; paylıda çoğunluk]. Delil: tapu kaydı.
-3. Sebebe özgü vakıalar: [DOLDURULACAK: 315'te aylar, ihtar tebliği, O; 316'da aykırılık, tebliğ, süre sonunda devam; 347/1'de E, F, bildirim tebliği; 350–351'de ihtiyaçlı, ihtiyaç, E veya D; 352'de taahhüt ve B ya da iki ihtar]. Delil: [DOLDURULACAK]
+3. Sebebe özgü vakıalar: [DOLDURULACAK: 315'te aylar, ihtar tebliği, O; 316'da aykırılık, tebliğ, süre sonunda devam; 347/1'de E, F, bildirim tebliği; 350–351'de ihtiyaçlı, ihtiyaç, E veya D; 352'de taahhüt ve B ya da iki ihtar]. Delil: [DOLDURULACAK: her vakıanın delili]
 4. Süre: [DOLDURULACAK: formül, araç çıktısı, 18/A/15 kalan süre].
 5. Arabuluculuk [DOLDURULACAK: tarih] tarihli son tutanakla anlaşmasız sonuçlanmıştır.
 
@@ -230,31 +233,32 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 
 **Ne zaman:** Dava dilekçesi kiracıya tebliğ edildiğinde. Cevap süresi `G(T,14)`; ek süre yalnız bu süre içinde istenirse bir defaya mahsus en çok iki hafta verilebilir (HMK 317/2; resmî metinden doğrula). Ayrıntı: [kiracı savunmaları](tahliye.md#kiracı-savunmaları-kontrol-listesi).
 
-- HMK 129 unsurlarını yaz; usul itirazlarını önce sırala: dava şartı arabuluculuk (başvuru yok, erken başvuru, son tutanak kesin sürede sunulmadı), dava süresi, taraf teşkili ve sıfat, görev ve yetki. Yetki itirazı ilk itirazdır; cevapta ileri sürülmezse mahkeme kendiliğinden gözetmez.
+- HMK 129 unsurlarını yaz (resmî metinden doğrula): savunma vakıaları sıra numarasıyla, her birinin delili ve hukuki sebepler. Usul itirazlarını önce sırala: dava şartı arabuluculuk (başvuru yok, erken başvuru, son tutanak kesin sürede sunulmadı), dava süresi, taraf teşkili ve sıfat, görev ve yetki. Yetki itirazı ilk itirazdır; cevapta ileri sürülmezse mahkeme kendiliğinden gözetmez.
 - TBK 350–352 dava süreleri kamu düzenindendir. TBK 352/2'de kira yılı bitmeden açılan dava erkendir (Yargıtay 3. HD, E. 2017/16973, K. 2018/5110, 14.05.2018; tahliye kiracı yararına bozuldu); TBK 347/1'de `F`'den önceki dava da erkendir.
 - Esas savunmasını sebebe göre seç; her vakıaya delil göster.
 
 ```text
 [DOLDURULACAK: mahkeme] SULH HUKUK MAHKEMESİNE
-ESAS NO: [DOLDURULACAK]
+ESAS NO: [DOLDURULACAK: esas no]
 
 DAVALI (KİRACI): [DOLDURULACAK: ad, T.C. kimlik no, adres; vekil]
-DAVACI: [DOLDURULACAK]
+DAVACI: [DOLDURULACAK: bütün kiraya verenler; adres; vekil]
 KONU: Cevaplarımızdır (tebliğ: [DOLDURULACAK: GG.AA.YYYY]).
 
 A. USUL İTİRAZLARI
-1. Dava şartı arabuluculuk: [DOLDURULACAK: başvuru yok / dava hakkı doğmadan başvuru / son tutanak yok; tarihler]
-2. Dava süresi: [DOLDURULACAK: hak doğumu, dava tarihi, formül]
-3. Taraf teşkili ve sıfat: [DOLDURULACAK: eksik kiraya veren veya mirasçı; TMK 194 eşi; kiraya veren olmayan malik]
-4. Görev ve yetki: [DOLDURULACAK: yetki itirazında yetkili yer]
+1. Dava şartı arabuluculuk: [DOLDURULACAK: başvuru yok / dava hakkı doğmadan başvuru / son tutanak yok; tarihler]. Delil: [DOLDURULACAK: arabuluculuk dosyası ve son tutanak]
+2. Dava süresi: [DOLDURULACAK: hak doğumu, dava tarihi, formül]. Delil: [DOLDURULACAK: sözleşme, tebliğ belgesi, tapu kaydı]
+3. Taraf teşkili ve sıfat: [DOLDURULACAK: eksik kiraya veren veya mirasçı; TMK 194 eşi; kiraya veren olmayan malik]. Delil: [DOLDURULACAK: sözleşme, veraset belgesi, TMK 194 bildirimi]
+4. Görev ve yetki: [DOLDURULACAK: yetki itirazında yetkili yer]. Delil: [DOLDURULACAK: yerleşim yeri kaydı]
 
 B. ESASA İLİŞKİN CEVAPLAR (ilgili modülü bırak)
-- TBK 315: [DOLDURULACAK: süresinde tam ödeme; kısa ihtar süresi; muacceliyet yok; tevdi]
-- TBK 316: [DOLDURULACAK: aykırılık önemsiz, giderildi, rızaya dayalı, kiralanan dışında]
-- TBK 350–351: [DOLDURULACAK: ihtiyaç samimi değil; ihtiyaçlı listede değil; 351/1 bildirimi geç]
-- TBK 347: [DOLDURULACAK: bildirim pencere dışında; yeni sözleşme]
-- TBK 352: [DOLDURULACAK: taahhüt teslimden önce; imza veya tarih; A(B,1) dışı; ihtarlar farklı kira yılında]
+- TBK 315: [DOLDURULACAK: süresinde tam ödeme; kısa ihtar süresi; muacceliyet yok; tevdi]. Delil: [DOLDURULACAK: dekont, ihtarname ve tebliğ belgesi]
+- TBK 316: [DOLDURULACAK: aykırılık önemsiz, giderildi, rızaya dayalı, kiralanan dışında]. Delil: [DOLDURULACAK: delil]
+- TBK 350–351: [DOLDURULACAK: ihtiyaç samimi değil; ihtiyaçlı listede değil; 351/1 bildirimi geç]. Delil: [DOLDURULACAK: delil]
+- TBK 347: [DOLDURULACAK: bildirim pencere dışında; yeni sözleşme]. Delil: [DOLDURULACAK: delil]
+- TBK 352: [DOLDURULACAK: taahhüt teslimden önce; imza veya tarih; A(B,1) dışı; ihtarlar farklı kira yılında]. Delil: [DOLDURULACAK: delil]
 
+HUKUKİ SEBEPLER: [DOLDURULACAK: TBK maddeleri; HUAK ve HMK maddelerini resmî metinden doğrula]
 DELİLLER: [DOLDURULACAK: dekont, yazışma, tanık, keşif, bilirkişi, yemin]
 SONUÇ VE İSTEM: Davanın [DOLDURULACAK: usulden / esastan] reddine, yargılama giderleri ve vekâlet ücretinin davacıya yükletilmesine karar verilmesini saygıyla talep ederim.
 Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
@@ -275,15 +279,15 @@ Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 - **Şikâyet veya savunma:** Takip talebinde tahliye istenmemesi (Yargıtay HGK, E. 2017/1842, K. 2021/648, 01.06.2021; tahliye kararı bozuldu); kiraya verenlerden birinin takipte olmaması, eksiklik icra mahkemesinde giderilemez (Yargıtay 12. HD, E. 2025/6920, K. 2025/7823, 03.12.2025; şikâyet yolunda BAM kararı bozuldu); takipten önce bildirim yapmış eşin gösterilmemesi; noksan ödeme süresi; belirsiz yan gider.
 - **Taahhüt (14 örnek):** Teslimden önce veya sözleşmeyle aynı anda alınan taahhüt batıldır (İstanbul BAM 36. HD, E. 2024/5083, K. 2026/377, 04.02.2026; somut olayda yazılı delil yokluğundan savunma reddedildi; kesin). Belli tarih yokluğunu, eksik kiracı imzasını, takibin `B`'den önce veya `A(B,1)`'den sonra yapıldığını kontrol et (`python scripts/deadlines.py tbk352 <B>`; güven: yüksek). Eşin TMK 194 bildirimi taahhütten sonraysa taahhüt geçerlidir (Yargıtay 3. HD, E. 2025/3374, K. 2025/4997, 20.10.2025; uyuşmazlık giderme).
 - **İmza ve tarih (14 örnek):** Adi yazılı taahhütte imza veya tarih inkâr edilirse icra mahkemesi itirazı kaldıramaz; yenileme orada aynı kuvvette belgeyle gösterilir (İİK 275/1; resmî metinden doğrula; güven: düşük). Açığa imza iddiası yazılı delille, yoksa süresinde dayanılan yeminle ispatlanır; hileyle habersiz imzalatma sahtelik iddiasıdır, yemin teklif edilemez (Yargıtay HGK, E. 2008/369, K. 2008/394, 28.05.2008; oy çokluğu; 818 ve HUMK dönemi). TBK 39'daki bir yıllık bildirimi kaçırma.
-- **Süre kaçtıysa:** Gecikmiş itiraz `G(M,3)` (İİK 65; resmî metinden doğrula; güven: orta); istirdat `Y(P,1)` ve menfi tespit (İİK 72; güven: orta).
+- **Süre kaçtıysa:** Gecikmiş itiraz: mazeretin kalktığı gün `M` ise `G(M,3)` (İİK 65; resmî metinden doğrula; güven: orta); istirdat `Y(P,1)` (`P` paranın tamamen ödendiği gün) ve menfi tespit (İİK 72; resmî metinden doğrula; güven: orta).
 - **Belge:** Emir ve tebliğ kaydı, sözleşme, 269/c belgeleri, taahhütname, teslim tutanağı, TMK 194 bildirimi.
 
 ```text
 [DOLDURULACAK: icra dairesi] MÜDÜRLÜĞÜNE
-DOSYA NO: [DOLDURULACAK]
+DOSYA NO: [DOLDURULACAK: icra dosya no]
 
 BORÇLU (KİRACI): [DOLDURULACAK: ad, T.C. kimlik no, adres]
-ALACAKLI: [DOLDURULACAK]
+ALACAKLI: [DOLDURULACAK: bütün alacaklılar; adres; vekil]
 TEBLİĞ TARİHİ: [DOLDURULACAK: GG.AA.YYYY; tebliğ yoksa veya usulsüzse belirt]
 KONU: [DOLDURULACAK: 13 örnek ödeme emrine / 14 örnek tahliye emrine] itirazlarımızdır.
 
@@ -293,6 +297,6 @@ KONU: [DOLDURULACAK: 13 örnek ödeme emrine / 14 örnek tahliye emrine] itirazl
 4. [DOLDURULACAK: 14 örnekte teslim ve taahhüt tarihi, takip tarihi ve A(B,1), aile konutu bildirimi]
 5. Takibin durdurulmasını talep ederim.
 
-Ekler: [DOLDURULACAK]
+Ekler: [DOLDURULACAK: emir ve tebliğ belgesi, 269/c belgeleri, taahhütname, teslim tutanağı]
 Tarih ve imza: [DOLDURULACAK: GG.AA.YYYY]
 ```

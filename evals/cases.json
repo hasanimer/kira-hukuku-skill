@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "2026-10-14.2",
+  "version": "2026-10-14.3",
   "fictional": true,
   "status": "author_drafted_requires_legal_review",
   "cases": [
@@ -2001,8 +2001,8 @@
       ],
       "fictional": true,
       "prompt": "Bugünün tarihi 14.10.2026. Konut kira sözleşmesini yalnız koca imzalamış. Eşi 03.03.2026'da noter aracılığıyla kiraya verene 'bu ev aile konutudur, kira sözleşmesinin tarafı olmak istiyorum' diye bildirim gönderdi (tebliğ 06.03.2026); tapuda şerh yok. Koca Temmuz ve Ağustos 2026 kiralarını ödemedi. Kiraya veren 10.09.2026'da yalnız kocaya TBK 315 ihtarı çekti ve tahliye talepli 13 örnek takibi de yalnız kocaya karşı başlatmak istiyor. Koca ise 'evden çıkıyorum, sözleşmeyi feshediyorum' diyor. Değerlendir.",
-      "reference": "references/tahliye.md",
-      "anchor": "## Temerrüt (TBK 315) ve ilamsız tahliye takibi",
+      "reference": "references/tahliye-sablonlari.md",
+      "anchor": "## Kullanım kuralları",
       "criteria": [
         {
           "id": "analysis",
@@ -2034,12 +2034,12 @@
       "criteria": [
         {
           "id": "analysis",
-          "description": "Kendiliğinden tahliyenin hukuka aykırı olduğunu açıkla: kira sözleşmesi mahkeme kararı, tarafların uygun irade beyanları veya kiralananın yok olmasıyla sona erer; fesih ve tahliye davası koşulları bulunsa bile tahliye ilamı alınmadıkça akdin sona erdiğinden söz edilemez, kiraya verenin tek yanlı feshi ve kiralanana el koyması sözleşme ihlalidir (Yargıtay 3. HD, E. 2022/5351, K. 2022/7594, 11.10.2022: kiracının kiracılık sıfatının tespiti ve tazminat istemi incelenmek üzere bozma; tahliye hükmü değildir). Tahliye davası açmadan hukuk dışı sona erdirmenin kazanç kaybı tazminatı doğurabileceğini (Yargıtay 3. HD, E. 2024/3898, K. 2025/4234, 23.09.2025; yıkım olayı) ve sözleşmedeki boşaltma maddesinin kanunda sınırlı sayılan tahliye sebeplerinin yerini tutmadığını (TBK 354; Yargıtay 3. HD, E. 2023/2475, K. 2024/217, 17.01.2024) belirt. Hukuki yolları göster: ihtarlar TBK 315'e uygunsa (konutta en az otuz gün, fesih uyarısı) ve süre dolduysa arabuluculuk sonrası sulh hukuk davası ya da arabuluculuk gerektirmeyen 13 örnek ilamsız tahliye takibi; ihtarlar aynı kira yılındaysa TBK 352/2 davası yalnız kira yılı bitiminden sonraki bir aylık pencerede. Ceza hukuku riskini ayrıca araştırılacak husus olarak işaretle.",
+          "description": "Kendiliğinden tahliyenin hukuka aykırı olduğunu açıkla: kira sözleşmesi mahkeme kararı, tarafların uygun irade beyanları veya kiralananın yok olmasıyla sona erer; fesih ve tahliye davası koşulları bulunsa bile tahliye ilamı alınmadıkça akdin sona erdiğinden söz edilemez, kiraya verenin tek yanlı feshi ve kiralanana el koyması sözleşme ihlalidir (Yargıtay 3. HD, E. 2022/5351, K. 2022/7594, 11.10.2022: kiracının kiracılık sıfatının tespiti ve tazminat istemi incelenmek üzere bozma; tahliye hükmü değildir). Tahliye davası açmadan hukuk dışı sona erdirmenin kazanç kaybı tazminatı doğurabileceğini (Yargıtay 3. HD, E. 2024/3898, K. 2025/4234, 23.09.2025; yıkım olayı) ve sözleşmedeki boşaltma maddesinin kanunda sınırlı sayılan tahliye sebeplerinin yerini tutmadığını (TBK 354; Yargıtay 3. HD, E. 2023/2475, K. 2024/217, 17.01.2024) belirt. Hukuki yolları göster: ihtarlar TBK 315'e uygunsa (konutta en az otuz gün, fesih uyarısı) ve süre dolduysa arabuluculuk sonrası sulh hukuk davası ya da arabuluculuk gerektirmeyen 13 örnek ilamsız tahliye takibi; ihtarlar aynı kira yılındaysa TBK 352/2 davası yalnız kira yılı bitiminden sonraki bir aylık pencerede.",
           "critical": true
         },
         {
           "id": "questions",
-          "description": "Kiralananın konut mu işyeri mi olduğunu, sözleşmenin başlangıç ve ödeme gününü, iki ihtarın metnini, verilen süreyi ve tebliğ tarihlerini, ödenmeyen ayları, kiracıların ve TMK 194/son bildirimi yapmış eşin durumunu, birden çok kiraya veren olup olmadığını iste.",
+          "description": "Kiralananın konut mu işyeri mi olduğunu, sözleşmenin başlangıç ve ödeme gününü, iki ihtarın metnini, verilen süreyi ve tebliğ tarihlerini, ödenmeyen ayları, kiracıların ve TMK 194/son bildirimi yapmış eşin durumunu, birden çok kiraya veren olup olmadığını iste; ceza hukuku riskini ayrıca araştırılacak husus olarak işaretle.",
           "critical": false
         },
         {

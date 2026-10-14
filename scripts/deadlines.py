@@ -107,8 +107,9 @@ def calculate(rule, start, *, count=None, unit=None, backward=False):
                           'giderilmezse sözleşmenin feshedileceğini açıkça içermeli; 30 günden kısa süre veren ihtarın yasal '
                           'süre sonunda sonuç doğuracağını varsayma.')
             checks.append('Diğer kiralarda (TBK 316/2 son cümle) ve TBK 316/3 hâllerinde süre verilmeden yazılı bildirimle '
-                          'hemen fesih söz konusudur; bu ön ayarı kullanma. Kira bedeli/yan gider temerrüdü için tbk315 '
-                          'kuralını kullan; bu sebebe İİK 269 ilamsız tahliye yolu uygulanmaz.')
+                          'hemen fesih söz konusudur; bu ön ayarı kullanma. TBK 316 aykırılığına İİK 269 ilamsız '
+                          'tahliye yolu uygulanmaz; kira bedeli/yan gider temerrüdünde ihtar için tbk315, 13 örnek '
+                          'ödeme emri için iik269 kuralını kullan.')
             checks.append('Son gün tatile rastlarsa TBK 93 etkisini (aksine anlaşma dahil) ayrıca incele. Ayrı yazılı fesih '
                           'bildirimini (zorunluluğu açık soru, ihtiyatlıdır) ve dava şartı arabuluculuk başvurusunu '
                           '(HUAK 18/B; dava 01.09.2023 ve sonrası) süre, aykırılık giderilmeden dolduktan sonra yap; çıktıya '

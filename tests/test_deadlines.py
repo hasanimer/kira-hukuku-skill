@@ -112,7 +112,8 @@ class DeadlineTests(unittest.TestCase):
             self.assertIn(phrase, result['meaning'])
         self.assertNotEqual(result['meaning'], calculate('tbk315', date(2026, 9, 1))['meaning'])
         checks = ' '.join(result['pending_checks'])
-        for phrase in ('316/3', 'tbk315', 'TBK 93', 'HUAK 18/B', 'UETS', 'TBK 349/3', '+1 gün'):
+        for phrase in ('316/3', 'tbk315', 'iik269', 'TBK 316 aykırılığına İİK 269', 'TBK 93',
+                       'HUAK 18/B', 'UETS', 'TBK 349/3', '+1 gün'):
             self.assertIn(phrase, checks)
         tbk315_checks = ' '.join(calculate('tbk315', date(2026, 9, 1))['pending_checks'])
         self.assertIn('tbk316', tbk315_checks)
