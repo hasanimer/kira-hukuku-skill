@@ -376,7 +376,9 @@ class FixtureCliTests(FixtureCase):
         self.assertNotIn('takvim', plain)
 
     def test_yol_text_rendering(self):
-        text = run('--root', str(self.root), 'yol', 'temerrüt', '--metin', '--tarih', '2026-12-31').out
+        # Windows konsolunda print satır sonunu \r\n yazar; içerik karşılaştırılır.
+        text = run('--root', str(self.root), 'yol', 'temerrüt', '--metin', '--tarih',
+                   '2026-12-31').out.replace('\r\n', '\n')
         self.assertTrue(text.startswith('Sınama sebebi temerrut [temerrut]\n'), text[:80])
         for fragment in ('Rehber: references/tahliye.md#temerrüt-tbk-315-ve-ilamsız-tahliye-takibi',
                          'güven: düşük', 'Araç: araç yok', 'Arabuluculuk: dava şartı',
