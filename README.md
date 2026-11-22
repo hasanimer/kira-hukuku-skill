@@ -322,6 +322,8 @@ kira-tespit-asistani/
 
 Betikler, rehberler, etiketler, karar kartları ve yönergeler [MIT lisansı](LICENSE) ile dağıtılır. Av. Hakan Dimdik derlemesinin (5. sürüm) konu başlıkları, sınıflandırması ve atıf düzeni (`references/derleme-v5.md`, `data/derleme-v5-index.json` ve `data/derleme-v5-selected.jsonl` içindeki derleme atıfları) derleyene aittir, derleyenin izniyle kullanılır ve MIT lisansı kapsamında değildir. `data/` altındaki mahkeme kararları ve 6098 sayılı Türk Borçlar Kanunu metni resmî metinlerdir; 5846 sayılı Fikir ve Sanat Eserleri Kanunu'nun 31. maddesi uyarınca, resmen yayımlanmış veya ilan edilmiş olmak şartıyla çoğaltılabilir ve yayılabilir. MIT lisansı bu metinler üzerinde hak iddiası doğurmaz. Karar koleksiyonlarının kaynakları (ana havuz: UYAP Mevzuat ve İçtihat/Bedesten; derleme seçkisi: UYAP Mevzuat ve İçtihat/Bedesten, Legaluga MCP `karar_getir` ile alındı; Yargıtay ve BAM seçkileri: Dejure) ile bütünlük bilgileri [veri notunda](data/README.md) belirtilir; bu açıklama, metinlerin alındığı üçüncü taraf veri tabanlarının kullanım koşullarını kendiliğinden ortadan kaldırmaz.
 
+Bu beceriyi kullandığınız çalışmalarda [Kira Hukuku Skill](https://github.com/hasanimer/kira-hukuku-skill) bağlantısını paylaşarak atıf yapmanızı rica ederiz.
+
 ---
 
 <div align="center">
